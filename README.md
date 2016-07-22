@@ -1,2 +1,2 @@
-# acumatica-mx
+# AcumaticaMX
 Paquete de Acumatica para estandarización de datos en México
