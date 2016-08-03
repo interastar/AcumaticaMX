@@ -1,0 +1,1045 @@
+<Customization level="10" description="v1.0 - Homologación de campos contables para México">
+    <Page path="~/pages/ar/ar303000.aspx" ControlId="34" pageSource="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">
+        <PXFormView ID="BillAddress" ParentId="phG_tab_Items#1_BillAddress" TypeFullName="PX.Web.UI.PXFormView">
+            <Children Key="Template">
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edStreet" />
+                        <Prop Key="DataField" Value="Street" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXLayoutRule7" />
+                        <Prop Key="Merge" Value="True" />
+                        <Prop Key="ControlSize" Value="XS" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edExtNumber" />
+                        <Prop Key="DataField" Value="ExtNumber" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edIntNumber" />
+                        <Prop Key="DataField" Value="IntNumber" />
+                        <Prop Key="LabelWidth" Value="94" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstLayoutRule6" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edNeighborhood" />
+                        <Prop Key="DataField" Value="Neighborhood" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edMunicipality" />
+                        <Prop Key="DataField" Value="Municipality" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXTextEdit DataField="City" OriginalIndex="4" />
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edReference" />
+                        <Prop Key="DataField" Value="Reference" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXTextEdit DataField="AddressLine1" OriginalIndex="2" Remove="True" />
+                <PXTextEdit DataField="AddressLine2" OriginalIndex="3" Remove="True" />
+            </Children>
+        </PXFormView>
+        <PXFormView ID="DefAddress" ParentId="phG_tab_Items#0_DefAddress" TypeFullName="PX.Web.UI.PXFormView">
+            <Children Key="Template">
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edStreet" />
+                        <Prop Key="DataField" Value="Street" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXLayoutRule9" />
+                        <Prop Key="Merge" Value="True" />
+                        <Prop Key="ControlSize" Value="XS" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edExtNumber" />
+                        <Prop Key="DataField" Value="ExtNumber" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edIntNumber" />
+                        <Prop Key="DataField" Value="IntNumber" />
+                        <Prop Key="LabelWidth" Value="94" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstLayoutRule8" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edNeighborhood" />
+                        <Prop Key="DataField" Value="Neighborhood" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edMunicipality" />
+                        <Prop Key="DataField" Value="Municipality" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXTextEdit DataField="City" OriginalIndex="4" />
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edReference" />
+                        <Prop Key="DataField" Value="Reference" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXTextEdit DataField="AddressLine1" OriginalIndex="2" Remove="True" />
+                <PXTextEdit DataField="AddressLine2" OriginalIndex="3" Remove="True" />
+            </Children>
+        </PXFormView>
+        <PXTabItem Text="Billing Settings" ParentId="phG_tab_Items#1" TypeFullName="PX.Web.UI.PXTabItem">
+            <Children Key="Template">
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXLayoutRule17" />
+                        <Prop Key="StartGroup" Value="True" />
+                        <Prop Key="GroupCaption" Value="Facturacion" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXTextEdit20" />
+                        <Prop Key="DataField" Value="TaxRegistrationID" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXCheckBox TypeFullName="PX.Web.UI.PXCheckBox">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXCheckBox22" />
+                        <Prop Key="DataField" Value="IsNaturalPerson" />
+                    </PXCheckBox>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXTextEdit19" />
+                        <Prop Key="DataField" Value="BillContact.PersonalID" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXLayoutRule OriginalIndex="13" />
+            </Children>
+        </PXTabItem>
+        <PXFormView ID="DefContact" ParentId="phG_tab_Items#0_DefContact" TypeFullName="PX.Web.UI.PXFormView">
+            <Children Key="Template">
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXLayoutRule27" />
+                        <Prop Key="Merge" Value="True" />
+                        <Prop Key="ControlSize" Value="XS" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edFirstName" />
+                        <Prop Key="DataField" Value="FirstName" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edMidName" />
+                        <Prop Key="DataField" Value="MidName" />
+                        <Prop Key="LabelWidth" Value="94" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstLayoutRule28" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edLastName" />
+                        <Prop Key="DataField" Value="LastName" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edSecondLastName" />
+                        <Prop Key="DataField" Value="SecondLastName" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXMailEdit DataField="EMail" OriginalIndex="3" />
+            </Children>
+        </PXFormView>
+        <PXFormView ID="BillContact" ParentId="phG_tab_Items#1_BillContact" TypeFullName="PX.Web.UI.PXFormView">
+            <Children Key="Template">
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXLayoutRule34" />
+                        <Prop Key="Merge" Value="True" />
+                        <Prop Key="ControlSize" Value="XS" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edFirstName" />
+                        <Prop Key="DataField" Value="FirstName" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edMidName" />
+                        <Prop Key="DataField" Value="MidName" />
+                        <Prop Key="LabelWidth" Value="94" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstLayoutRule33" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edLastName" />
+                        <Prop Key="DataField" Value="LastName" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edSecondLastName" />
+                        <Prop Key="DataField" Value="SecondLastName" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXMaskEdit DataField="Phone1" OriginalIndex="3" />
+            </Children>
+        </PXFormView>
+    </Page>
+    <Page path="~/pages/cs/cs102000.aspx" ControlId="9" pageSource="7Rtrb+PG8fMFyH8gWCS4A1LL9uUuzUU+1KZsn1DJVkX57tCiMFbkSmZMkcwuaUst2t/e2QfJJbl8SLJzTZFv0nJ2ZnZeOzMc9r/5szFBS2yMULBM4MeJaf3BNMaIxpiwBxeeD2v/6eUrtHcRktUMzQ9WfM00TpM4PH/AQfzJIziJTsyYJNg0PiLfc1GMp/iXBNP4xFwgn8K6FboSrWUfHR4fHh4eIBqtDxxqGsPgDhMvpicmI3WbApjGzIvZjpsgZj9czrRpfPP+66++/qoPhxD8zTYRNj56JE6QP0HxXRvnbH8fiL+zwiCGAxjDwYnpwO8jxiZfmvjIwR9C38WEPYzuBrZpkCRAcCAbkwdAw5l40acO8aLY8DNJ/owekFg0jRg4A8HgddxTlmHnixeLJHBiLwwMJ1ytUOBOMU38+KVLvzMYK7DllfEvBvjCWxgv5dKBBDZOTgzTRg/YfGXc3hK8IJjejZEXjHGQvHz1E9v3b8ZdT5CUvEbrd5PPAxQjO0yIg/m5XZodjIqDgSipN2dyn3GNfvJcJtOjw8NvQCNwoiu0goeTzwfX85+xE9MDyz44IyhwOAtw7AnxVohsPnr48cQ8O3WcMAnksfsW8v05cu4tcRLKV1PW7NJTQ5AaBsAawxvSmLHPdOAvTKPXZfOFR6hmrx0jEl/hx0sSMuMVR+2EcIR0+Fq2askJfKnHnLouqJFiWtEAQ+LF1h3YGKYdedXuEQS54bTtH+AIB+51cEk898RcEncUOogZLM3Q4HiAFwisVmH4Qnj73siZ7aSLW6MXKK72xsCYYCZ9HYxRpOBYbIkDxJRyshuqirzOV5EfbjAuyIvFLuRsr41MXC0I+j2t8/Yt34OQye8CashHE0wWEHaxyyKrEuAkrn6vFItYSO4pMVkXouXvhih9oQnS8tjsEmBC4pjyv0eV6FcIdxaKmNYgivH4ZtjJikU202Ccj/FqjokS4YyrMMbDwPVA1yFJnY7derSyKl2HnYSEPmMKu4AntgYyUM4w6BjCgqq7EdqESTxNfFzmmscXK/STVZBSGKE59qk8jj0WUgNatvdP0OzncckubLxcgUzh4rw3CuyUSbGjX3jYB9WmEAVEM7iozl0v1oegHDUzuzbkAqYn7q+dpCD+SSlUDm3dYef+LFyLFODu/hTu5IcWrgRE6XAi+Tn1vWUwwou4GKT7PVWZ0vZTC+xi+ez6f11v9pf1Zg95D8cQo3nlVB+wt7yD/2+Oj6N1yfBV+7YSQoBsbua528oMQpxyGONV4T4H4mzNYBZxYl7iABPkQ7a3CE1jiiOWLFwHA8yiQxoJxfay9T+v/b/QhQjwzywclmhlQYHdDUYGpYpM3T2F0I2JHW94QGVWRHGtELWHbz9+5WiVw2sE1CvjzzxXOOlF4vttTprDtGGzkZ/E8jaux6dCVTCCvH0F4zn734RMAjSlT4pwveBeQf4Jz20vbjx7BtKNAIusCoHJXRjg6vWj4E8hOmE6bsV03I7pAq0blc0e5ziKYU2slENbg3vJfLfFvTKokntl613dy7A3gQNZuyeQ84D95V2ucAFhd0jTasBtUkQB7DxAkKu55Wyv1hGl5MDem82vCLcF1kZTLMK1YbW8eNOETTyvYIGSDArTkKRY2LVFNsNqLnPq++Ejo9dYaqkEc1RVC2vjAwxCE1EqPLDOylTU9BoOJJJaRltYqjfoMSZL3Dl6QfmLfNbUaYw7CpRwFNo1Wp4lcRwGnNo8DkqVWMUVeYWhLdrks1Io4Lys4ZdITXhYAmp8xxYiyxLT7aNhPdIucaQtlanHzhsQWYgd4aXMyMhK3rqcmq4ronXRGVpP8dKjMeHbNS6mmIMGWJFgY52WV/Ia9Om1MAxipZFQuBhsD3Sj85CtrgDBU75QjXRfLBGzTh+Qjwg6X8MxmASuEiYUDfIBCaNB+BhslZel6K2ExuEKkxuKlpg1A/dICEp3H1QEIYm9YHl0+OOPTbyUAGvjyTalQ8Hgiz4CKl14y0TYrGHjmJGmFbcoxXrRMJiGPg50mmuO8fnmUm7dQGqLS65CSdnbVBOBpCMUVC/kvEuCKDZEuehsMlEZL+07RLD7qlRWpth+OwVSJviG1gaTAYhApwhV7gpU0629T44tBZzqozF0VmCfIXr+GqFygMUbj5ZwVgBrTUJBT/ZmNQ8bi00VqoJRBOMCn463Qj5v5VRLoAKnBcCdLWP3+Df2qKPz5ZZIsQqDPFY2WJ7DQcHjk0jnCjo7/PJWp9PnxP9rc7GSw3TENyGORav9pzLKFOxpogZTdyfFZfH7t6K0glvzlggralr7JgJoe+GW4SSUbIrW90kH2PeAkfz+bGmKFrS3ICvlbVOj/gpwurce5bdAKXne2YT6HXC0Kv+KFRb+kzdfdmr3FsNaJuasUdtQ+dS9LxhSuduGPO2UsrpTW502tRS0OOwkinifhJ2qlp1ySy3VZ13nukb9+lZ1+6WvVd3ze/NTt6ufo2H9zC3rX6Fp/ZRt66dsXD9J61oXxWsvyW2bKllkyXrUO0WWHYOJJLp9MPm9Ff17K3qnVvT/ddeZX5PIUWZ32prP1WmfZ+9BdwTdr7O8fyVp33lRBBmtMQwopICObNS22erHGVr/De6B5o6KCqXteLWYaKktajFmWYnj4+YLtQQoeIfwCZnU+sQ8bq4cXvT5PAmEDuODt7zz2UAG6CPkqXWKKltQMMlREJ6qGWd8JMsXw0UooBFi8xqmcRYSNRMP1Jy7p2JQ2AGHZ7rPQ7kQ4NgLsnERNpkL/6Udfc/+5r2ATqVQxr+wJTmkk1rm51HJVJWpnY411OXIkNMqe1RPl6MvUj/Z917AX60oqtzrLUX1at1vWqZ+YswaTyAfxtRO5s3OWgLsdH9piJ2vIxxQ3IVcEXRXgheEO0EXgkXQXQkOPMrNuAvFEuyuJC/BNv2QdlIigx3lsE/Ryd61bTIKl+GWvs63NLa4ypNv/8tu/mZ7N+923cMOTsyf+8PV8ibyQ+Qy9EVq7w05I8ukarzkJN4dvTmM1t/JScN3r3+I1q/eSYVyvGViwxVa4pQCJ+rVU6y+x2KkRXmfXlZHx4fKbCPcVewfTw8E1mom+Nx2mo9uNxsrm/XmEiiOe9fMcHJBl+zzVCRYedttFkby8DZGxMlS+tQUBxgM1qeN73nGkFYLHGBY4/AB0rnM8vkyVFVX7LsPdQ0qYkiONGVhX/B4hkg6EC0WoAReuepMu2Io4hW0MmyqCG0Whj4gk2m8EDhwY6QCVHtXItlhI+0sf0qT9OIg/AxBdRJXomembJVcJ2ZSRoxM1n/Bm4bT1nJZGPjfjU3IATWi7PcyneRrI/wAYaPsrcxE+ZNC0FSMlS3D+ZhL0mxaXOVvGj5qOoj9Xs26zBOrzSDGiXhYrJC5fG5vhzQd22Za4FPa8BQiLnOhGf9IK+1+ZD70ljuUpvGkp5WOwsvdf+K7WXtOr7HOeLMzwO0O8tiI8Jb6+ZvtmBxguGhiduUPy6x2P6jomtzeiobHnkhkC2E3LJls0pZjKpbjHfHI7uuOaNhZkooHVm22L6ue9EJJY3jx8u0VXUzxz5IzdqnZwFCqRRrDvedlxiZwlJGYMy9w4ZclvlaUXx3I/AgScDBAkJZMOejfv/0lCeOfSoM/YvEfBx+Rn2D2naP6rmjrzwLY9cXWfyi3Is7/eOH5rBWRM8+zJQg82lSpw+cDWb9QwwN2Z5Z1VByGs6wKiqwFq0VhXdjsWyJyXMzC5WraR8r/b4UcjBFsJThnn9puXhd75+qjlExpcStZSH9joex7U+OI2qGnFpQz7IuX6G+KGLP1bRGeryAWvC0i42tbImKHkaZTNADlQY5yV0ecXs+Mb43pzWzrt8aanLpYqDQWRNzBbmZAvkz3Wd7rdupL1Bm6ev+wrJQKxmt6w3IokYNc+GjZ1KdsmFXk+9NJLxUnW6v5jCxrWjfNibTS9JG3ugLjmOLF1ZwUicv1rm3xOguvEL0mS6DF3whN8fJ8XaQqnsoH6uz0dp3r9nf7zBs0g5rbSfF6NsGEhgHyubVAfYlHHggrO9P1LHuwB5HzdUxQOwUOtgeZAXZFw33iqPjhiA7vFT+rOm6eQB03beq4eQJ13DSq4+ap1HGjV8eNXh1P2JHo9/JiL88blU7VJ8jgwkezqf3/+rXa/n+btf9zcu+rn7T+Fw==">
+        <PXTabItem Text="General Info" ParentId="phG_tab_Items#0" TypeFullName="PX.Web.UI.PXTabItem">
+            <Children Key="Template">
+                <AddItem>
+                    <PXDropDown TypeFullName="PX.Web.UI.PXDropDown">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edRegimen" />
+                        <Prop Key="DataField" Value="Regimen" />
+                    </PXDropDown>
+                </AddItem>
+                <PXFormView ID="PXFormViewLocation" OriginalIndex="6" />
+            </Children>
+        </PXTabItem>
+        <PXFormView ID="DefAddress" ParentId="phG_tab_Items#0_DefAddress" TypeFullName="PX.Web.UI.PXFormView">
+            <Children Key="Template">
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edStreet" />
+                        <Prop Key="DataField" Value="Street" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXLayoutRule3" />
+                        <Prop Key="Merge" Value="True" />
+                        <Prop Key="ControlSize" Value="XS" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edExtNumber" />
+                        <Prop Key="DataField" Value="ExtNumber" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edIntNumber" />
+                        <Prop Key="DataField" Value="IntNumber" />
+                        <Prop Key="LabelWidth" Value="94" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstLayoutRule2" />
+                    </PXLayoutRule>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edNeighborhood" />
+                        <Prop Key="DataField" Value="Neighborhood" />
+                    </PXTextEdit>
+                </AddItem>
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="edMunicipality" />
+                        <Prop Key="DataField" Value="Municipality" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXTextEdit DataField="City" OriginalIndex="4" />
+                <AddItem>
+                    <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                        <Prop Key="Virtual:ApplyStylesheetSkin" />
+                        <Prop Key="ID" Value="CstPXTextEdit4" />
+                        <Prop Key="DataField" Value="Reference" />
+                    </PXTextEdit>
+                </AddItem>
+                <PXTextEdit DataField="AddressLine1" OriginalIndex="2" Remove="True" />
+                <PXTextEdit DataField="AddressLine2" OriginalIndex="3" Remove="True" />
+            </Children>
+        </PXFormView>
+    </Page>
+    <Graph ClassName="Address" Source="#CDATA" IsNew="True" FileType="NewFile">
+        <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects;
+
+namespace AcumaticaMX
+{
+  using PX.Objects.CR;
+
+  [PXTable(typeof(Address.addressID), IsOptional = true)]
+  public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address>
+  {
+    #region Street
+    public abstract class street : IBqlField
+    {
+    }
+    [PXDBString(50, IsUnicode = true)]
+    [PXUIField(DisplayName = "Calle", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string Street { get; set; }
+    #endregion
+
+    #region ExtNumber
+    public abstract class extNumber : IBqlField
+    {
+    }
+    [PXDBString(10, IsUnicode = true)]
+    [PXUIField(DisplayName = "Número Exterior", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string ExtNumber { get; set; }
+    #endregion
+
+    #region IntNumber
+    public abstract class intNumber : IBqlField
+    {
+    }
+    [PXDBString(10, IsUnicode = true)]
+    [PXUIField(DisplayName = "Número Interior", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string IntNumber { get; set; }
+    #endregion
+
+    #region Neighborhood
+    public abstract class neighborhood : IBqlField
+    {
+    }
+    [PXDBString(50, IsUnicode = true)]
+    [PXUIField(DisplayName = "Colonia", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string Neighborhood { get; set; }
+    #endregion
+
+    #region Municipality
+    public abstract class municipality : IBqlField
+    {
+    }
+    [PXDBString(50, IsUnicode = true)]
+    [PXUIField(DisplayName = "Municipio/Delegación", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string Municipality { get; set; }
+    #endregion
+
+    #region Reference
+    public abstract class reference : IBqlField
+    {
+    }
+    [PXDBString(100, IsUnicode = true)]
+    [PXUIField(DisplayName = "Referencia", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string Reference { get; set; }
+    #endregion
+  }
+}]]></CDATA>
+    </Graph>
+    <Graph ClassName="ARRegister" Source="#CDATA" IsNew="True" FileType="NewFile">
+        <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects;
+using PX.Objects.AR;
+
+namespace AcumaticaMX
+{
+  [PXTable(typeof(ARRegister.docType), typeof(ARRegister.refNbr), IsOptional = true)]
+  public class MXARRegisterExtension : PXCacheExtension<PX.Objects.AR.ARRegister>
+  {    
+    // Campos persistentes (en BD)
+  
+    #region Series
+    public abstract class series : IBqlField { }
+
+    [PXDBString(25, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Serie")]
+    public virtual string Series { get; set; }
+    #endregion Series
+
+
+    #region Certificate
+    public abstract class certificate : IBqlField { }
+
+    [PXDBString(2500, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Certificado", Enabled = false)]
+    public virtual string Certificate { get; set; }
+    #endregion Certificate
+
+    #region PaymentForm
+    public abstract class paymentForm : IBqlField { }
+
+    [PXDBString(50, IsFixed = false, IsUnicode = true)]
+    [PXDefault(AcumaticaMX.Common.PayForm.One)]
+    [PXStringList(AcumaticaMX.Common.PayForm.Values)]
+    [PXUIField(DisplayName = "Forma de Pago")]
+    public virtual string PaymentForm { get; set; }
+    #endregion PaymentForm
+
+    #region PaymentMethod
+    public abstract class paymentMethod : IBqlField { }
+
+    [PXDBString(50, IsFixed = false, IsUnicode = true)]
+    [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+    [PXStringList(
+      new string[]
+      {
+                AcumaticaMX.Common.PayMethod.Cash, AcumaticaMX.Common.PayMethod.Cheque,
+        AcumaticaMX.Common.PayMethod.Transfer, AcumaticaMX.Common.PayMethod.CreditCard,
+        AcumaticaMX.Common.PayMethod.Wallet, AcumaticaMX.Common.PayMethod.Electronic,
+        AcumaticaMX.Common.PayMethod.Coupons, AcumaticaMX.Common.PayMethod.DebitCard,
+        AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.Other,
+      },
+      new string[]
+      {
+        AcumaticaMX.Common.PayMethod.CashLabel, AcumaticaMX.Common.PayMethod.ChequeLabel,
+        AcumaticaMX.Common.PayMethod.TransferLabel, AcumaticaMX.Common.PayMethod.CreditCardLabel,
+        AcumaticaMX.Common.PayMethod.WalletLabel, AcumaticaMX.Common.PayMethod.ElectronicLabel,
+        AcumaticaMX.Common.PayMethod.CouponsLabel, AcumaticaMX.Common.PayMethod.DebitCardLabel,
+        AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.OtherLabel,
+      }, MultiSelect = true)]
+    [PXUIField(DisplayName = "Metodo de Pago")]
+    public virtual string PaymentMethod { get; set; }
+    #endregion PaymentMethod
+
+    #region PaymentConditions
+    public abstract class paymentConditions : IBqlField { }
+
+    [PXDBString(100, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Condiciones de Pago")]
+    public virtual string PaymentConditions { get; set; }
+    #endregion PaymentConditions
+
+    #region OriginAccount
+    public abstract class originAccount : IBqlField { }
+
+    [PXDBString(4, IsFixed = true, IsUnicode = true)]
+    [PXUIField(DisplayName = "Cuenta de Pago", Enabled = false)]
+    public virtual string OriginAccount { get; set; }
+    #endregion OriginAccount
+    
+    
+    #region StampDate
+    public abstract class stampDate : IBqlField { }
+
+    [PXDBDate()]
+    [PXUIField(DisplayName = "Fecha de Timbrado", Enabled = false)]
+    public virtual DateTime? StampDate { get; set; }
+    #endregion StampDate
+
+    #region Uuid
+    public abstract class uuid : IBqlField { }
+
+    [PXDBGuid()]
+    [PXUIField(DisplayName = "UUID", Enabled = false)]
+    public virtual Guid? Uuid { get; set; }
+    #endregion Uuid
+
+    #region SatCertificateNum
+    public abstract class satCertificateNum : IBqlField { }
+
+    [PXDBString(20, IsFixed = true, IsUnicode = false)]
+    [PXUIField(DisplayName = "No. Certificado SAT", Enabled = false)]
+    public virtual string SatCertificateNum { get; set; }
+    #endregion SatCertificateNum
+
+    #region CfdStamp
+    public abstract class cfdStamp : IBqlField { }
+
+    [PXDBString(500, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Sello CFD", Enabled = false)]
+    public virtual string CfdStamp { get; set; }
+    #endregion CfdStamp
+
+    #region SatStamp
+    public abstract class satStamp : IBqlField { }
+
+    [PXDBString(500, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Sello SAT", Enabled = false)]
+    public virtual string SatStamp { get; set; }
+    #endregion SatStamp
+
+    #region QrCode
+    public abstract class qrCode : IBqlField { }
+
+    [PXDBString(100, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Codigo QR", Enabled = false)]
+    public virtual string QrCode { get; set; }
+    #endregion QrCode
+
+    #region TfdOriginalString
+    public abstract class tfdOriginalString : IBqlField { }
+
+    [PXDBString(1000, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Cadena Original TFD", Enabled = false)]
+    public virtual string TfdOriginalString { get; set; }
+    #endregion TfdOriginalString
+
+    // Campos no persistentes
+    #region OriginalString
+    public abstract class originalString : IBqlField { }
+
+    [PXString(4000, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Cadena Original", Enabled = false)]
+    public virtual string OriginalString { get; set; }
+    #endregion OriginalString
+
+    #region AmountInWords
+    public abstract class amountInWords : IBqlField { }
+
+    [PXString(500, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Monto en Letra", Enabled = false)]
+    public virtual string AmountInWords { get; set; }
+    #endregion AmountInWords  
+  }
+}]]></CDATA>
+    </Graph>
+    <Graph ClassName="BAccount" Source="#CDATA" IsNew="True" FileType="NewFile">
+        <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects;
+
+namespace AcumaticaMX
+{
+  using PX.Objects.CR;
+
+  [PXTable(typeof(BAccount.bAccountID), IsOptional = true)]
+  public class MXBAccountExtension : PXCacheExtension<PX.Objects.CR.BAccount>
+  {
+    #region Regimen
+    public abstract class regimen : IBqlField
+    {
+    }
+    [PXDBString(100, IsFixed = false, IsUnicode = true)]
+    [PXDefault(AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel)]
+    [PXStringList(
+      new string[]
+      {
+                AcumaticaMX.Common.RegimenTypes.NaturalSalaried, AcumaticaMX.Common.RegimenTypes.NaturalFee,
+                AcumaticaMX.Common.RegimenTypes.NaturalLessor, AcumaticaMX.Common.RegimenTypes.NaturalBusinessActivity,
+                AcumaticaMX.Common.RegimenTypes.NaturalTaxIncorporated,
+                AcumaticaMX.Common.RegimenTypes.JuridicalGeneral, AcumaticaMX.Common.RegimenTypes.JuridicalNonProfit
+      },
+      new string[]
+      {
+                AcumaticaMX.Common.RegimenTypes.NaturalSalariedLabel, AcumaticaMX.Common.RegimenTypes.NaturalFeeLabel,
+                AcumaticaMX.Common.RegimenTypes.NaturalLessorLabel, AcumaticaMX.Common.RegimenTypes.NaturalBusinessActivityLabel,
+                AcumaticaMX.Common.RegimenTypes.NaturalTaxIncorporatedLabel,
+                AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, AcumaticaMX.Common.RegimenTypes.JuridicalNonProfitLabel
+      })]
+    [PXUIField(DisplayName = "Regimen fiscal")]
+    public virtual string Regimen { get; set; }
+    #endregion
+    
+    #region DefaultOriginAccount
+    public abstract class defaultOriginAccount : IBqlField
+    {
+    }
+    [PXDBString(30, IsFixed = false, IsUnicode = true)]
+    [PXUIField(DisplayName = "Cuenta de origen default")]
+    public virtual string DefaultOriginAccount { get; set; }
+        #endregion
+
+        #region IsNaturalPerson
+        public abstract class isNaturalPerson : IBqlField
+        {
+        }
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Persona Física")]
+        public virtual bool? IsNaturalPerson { get; set; }
+        #endregion
+
+    }
+}]]></CDATA>
+    </Graph>
+    <Graph ClassName="BranchMaint" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
+        <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects;
+
+namespace AcumaticaMX
+{
+    using PX.Objects.CS;
+    using PX.Objects.CR;
+
+    public class MXBranchMaintExtension : PXGraphExtension<BranchMaint>
+    {
+        #region Event Handlers
+        protected virtual void LocationExtAddress_RowSelected(PXCache sender, PXRowSelectedEventArgs e, PXRowSelected InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            LocationExtAddress address = e.Row as LocationExtAddress;
+
+            if (address == null) return;
+
+            if (address.IsAddressSameAsMain != null)
+            {
+                bool enabled = !(address.IsAddressSameAsMain ?? false);
+
+                PXUIFieldAttribute.SetEnabled<MXAddressExtension.street>(sender, address, enabled);
+                PXUIFieldAttribute.SetEnabled<MXAddressExtension.extNumber>(sender, address, enabled);
+                PXUIFieldAttribute.SetEnabled<MXAddressExtension.intNumber>(sender, address, enabled);
+                PXUIFieldAttribute.SetEnabled<MXAddressExtension.neighborhood>(sender, address, enabled);
+                PXUIFieldAttribute.SetEnabled<MXAddressExtension.municipality>(sender, address, enabled);
+                PXUIFieldAttribute.SetEnabled<MXAddressExtension.reference>(sender, address, enabled);
+            }
+        }
+
+        protected virtual void Address_Street_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Address address = e.Row as Address;
+
+            if (address == null) return;
+
+            MXAddressExtension addressExt = address.GetExtension<MXAddressExtension>();
+
+            if (addressExt == null) return;
+
+            sender.SetValueExt<Address.addressLine1>(address, (addressExt.Street + " " + addressExt.ExtNumber).Trim());
+        }
+
+        protected virtual void Address_ExtNumber_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Address address = e.Row as Address;
+
+            if (address == null) return;
+
+            MXAddressExtension addressExt = address.GetExtension<MXAddressExtension>();
+
+            if (addressExt == null) return;
+
+            sender.SetValueExt<Address.addressLine1>(address, (addressExt.Street + " " + addressExt.ExtNumber).Trim());
+        }
+
+        protected virtual void Address_IntNumber_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Address address = e.Row as Address;
+
+            if (address == null) return;
+
+            MXAddressExtension addressExt = address.GetExtension<MXAddressExtension>();
+
+            if (addressExt == null) return;
+
+            sender.SetValueExt<Address.addressLine2>(address, addressExt.IntNumber);
+        }
+
+        protected virtual void Address_Municipality_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Address address = e.Row as Address;
+
+            if (address == null) return;
+
+            MXAddressExtension addressExt = address.GetExtension<MXAddressExtension>();
+
+            if (addressExt == null) return;
+
+            //sender.SetValueExt<Address.addressLine3>(address, addressExt.Municipality);
+        }
+
+        #endregion
+    }
+}]]></CDATA>
+    </Graph>
+    <Graph ClassName="Common" Source="#CDATA" IsNew="True" FileType="NewFile">
+        <CDATA name="Source"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AcumaticaMX
+{
+    /// <summary>
+    /// Esta clase contiene todos los catálogos de campos que tienen opciones predefinidas por el SAT
+    /// </summary>
+    public static class Common
+    {
+        /// <summary>
+        /// Catálogo de regimenes fiscales
+        /// </summary>
+        public static class RegimenTypes
+        {
+            // Valores
+            public const string NaturalSalaried = "Asalariados";
+            public const string NaturalFee = "Honorarios";
+            public const string NaturalLessor = "Arrendamiento de Inmuebles";
+            public const string NaturalBusinessActivity = "Actividades Empresariales";
+            public const string NaturalTaxIncorporated = "Incorporación Fiscal";
+
+            public const string JuridicalGeneral = "Personas Morales del Régimen General";
+            public const string JuridicalNonProfit = "Personas Morales con Fines no Lucrativos";
+
+            public static string Values
+            {
+                get
+                {
+                    return string.Join(",", typeof(PayMethod).GetFields().Where(x => !x.Name.Contains("Label")).Select(x => x.GetValue(null)));
+                }
+            }
+
+            /// Etiquetas
+            public const string NaturalSalariedLabel = "Persona Física - Asalariados";
+            public const string NaturalFeeLabel = "Persona Física - Honorarios";
+            public const string NaturalLessorLabel = "Persona Física - Arrendamiento de Inmuebles";
+            public const string NaturalBusinessActivityLabel = "Persona Física - Actividades Empresariales";
+            public const string NaturalTaxIncorporatedLabel = "Persona Física - Incorporación Fiscal";
+
+            public const string JuridicalGeneralLabel = "Personas Morales - Régimen General";
+            public const string JuridicalNonProfitLabel = "Personas Morales - Fines no Lucrativos";
+
+            public static string Labels
+            {
+                get
+                {
+                    return string.Join(",", typeof(PayMethod).GetFields().Where(x => x.Name.Contains("Label")).Select(x => x.GetValue(null)));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Catálogo de formas de pago
+        /// </summary>
+        public static class PayForm
+        {
+            public const string One = "Pago en una sola exhibición";
+            public const string Partial = "Pago en parcialidades";
+
+            public const string Values = "Pago en una sola exhibición, Pago en parcialidades";
+        }
+
+        /// <summary>
+        /// Catálogo de métodos de pago
+        /// </summary>
+        public static class PayMethod
+        {
+            public const string Cash = "01";
+            public const string Cheque = "02";
+            public const string Transfer = "03";
+            public const string CreditCard = "04";
+            public const string Wallet = "05";
+            public const string Electronic = "06";
+            public const string Coupons = "08";
+            public const string DebitCard = "28";
+            public const string ServiceCard = "29";
+            public const string Other = "99";
+
+            public static string Values
+            {
+                get
+                {
+                    return string.Join(",", typeof(PayMethod).GetFields().Where(x => !x.Name.Contains("Label")).Select(x => x.GetValue(null)));
+                }
+            }
+
+            public const string CashLabel = "Efectivo";
+            public const string ChequeLabel = "Cheque nominativo";
+            public const string TransferLabel = "Transferencia electrónica de fondos";
+            public const string CreditCardLabel = "Tarjetas de Crédito";
+            public const string WalletLabel = "Monedero Electrónico";
+            public const string ElectronicLabel = "Dinero electrónico";
+            public const string CouponsLabel = "Vales de despensa";
+            public const string DebitCardLabel = "Tarjeta de Débito";
+            public const string ServiceCardLabel = "Tarjeta de Servicio";
+            public const string OtherLabel = "Otros";
+
+            public static string Labels
+            {
+                get
+                {
+                    return string.Join(",", typeof(PayMethod).GetFields().Where(x => x.Name.Contains("Label")).Select(x => x.GetValue(null)));
+                }
+            }
+        }
+    }
+}]]></CDATA>
+    </Graph>
+    <Graph ClassName="Contact" Source="#CDATA" IsNew="True" FileType="NewFile">
+        <CDATA name="Source"><![CDATA[using PX.Data;
+using PX.Data.EP;
+using PX.Objects.AP;
+using PX.Objects.CR.MassProcess;
+using PX.Objects.CS;
+using System;
+using PX.TM;
+using PX.SM;
+using PX.Objects.EP;
+using System.Collections.Generic;
+using PX.Objects;
+using PX.Objects.CR;
+
+namespace AcumaticaMX
+{
+  [PXTable(typeof(Contact.contactID), IsOptional = true)]
+  public class MXContactExtension : PXCacheExtension<PX.Objects.CR.Contact>
+  {
+    #region SecondLastName
+    public abstract class secondLastName : IBqlField
+    {
+    }
+    [PXDBString(100, IsUnicode = true)]
+    [PXUIField(DisplayName = "Apellido Materno", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string SecondLastName { get; set; }
+    #endregion
+
+    #region PersonalID
+    public abstract class personalID : IBqlField
+    {
+    }
+    [PXDBString(100, IsUnicode = true)]
+    [PXUIField(DisplayName = "CURP", Visibility = PXUIVisibility.SelectorVisible)]
+    public virtual string PersonalID { get; set; }
+    #endregion
+  }
+}]]></CDATA>
+    </Graph>
+    <Graph ClassName="CustomerMaint" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
+        <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects;
+
+namespace AcumaticaMX
+{
+
+    using PX.Objects.CR;
+    using PX.Objects.AR;
+
+    public class MXCustomerMaintExtension : PXGraphExtension<CustomerMaint>
+    {
+        #region Event Handlers
+        protected virtual void Address_Street_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Address address = e.Row as Address;
+
+            if (address == null) return;
+
+            MXAddressExtension addressExt = address.GetExtension<MXAddressExtension>();
+
+            if (addressExt == null) return;
+
+            sender.SetValueExt<Address.addressLine1>(address, (addressExt.Street + " " + addressExt.ExtNumber).Trim());
+        }
+
+        protected virtual void Address_ExtNumber_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Address address = e.Row as Address;
+
+            if (address == null) return;
+
+            MXAddressExtension addressExt = address.GetExtension<MXAddressExtension>();
+
+            if (addressExt == null) return;
+
+            sender.SetValueExt<Address.addressLine1>(address, (addressExt.Street + " " + addressExt.ExtNumber).Trim());
+        }
+
+        protected virtual void Address_IntNumber_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Address address = e.Row as Address;
+
+            if (address == null) return;
+
+            MXAddressExtension addressExt = address.GetExtension<MXAddressExtension>();
+
+            if (addressExt == null) return;
+
+            sender.SetValueExt<Address.addressLine2>(address, addressExt.IntNumber);
+        }
+
+        protected virtual void Address_Municipality_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Address address = e.Row as Address;
+
+            if (address == null) return;
+
+            MXAddressExtension addressExt = address.GetExtension<MXAddressExtension>();
+
+            if (addressExt == null) return;
+
+            //sender.SetValueExt<Address.addressLine3>(address, addressExt.Municipality);
+        }
+        #endregion
+    }
+}]]></CDATA>
+    </Graph>
+    <Graph ClassName="Messages" Source="#CDATA" IsNew="True" FileType="NewFile">
+        <CDATA name="Source"><![CDATA[using System;
+using PX.Common;
+
+namespace AcumaticaMX
+{
+    /// <summary>
+    /// Librería de mensajes y etiquetas centralizada
+    /// </summary>
+    public static class Messages
+    {
+        // Textos y Etiquetas de campos
+        #region Nombres
+        //public const string Etiqueta = "Valor";
+        #endregion
+
+    }
+}]]></CDATA>
+    </Graph>
+    <Sql TableName="MXAddressExtension" TableSchemaXml="#CDATA">
+        <CDATA name="TableSchemaXml"><![CDATA[<table name="MXAddressExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="AddressID" type="Int" />
+  <col name="Street" type="NVarChar(50)" nullable="true" />
+  <col name="ExtNumber" type="NVarChar(10)" nullable="true" />
+  <col name="IntNumber" type="NVarChar(10)" nullable="true" />
+  <col name="Neighborhood" type="NVarChar(50)" nullable="true" />
+  <col name="Municipality" type="NVarChar(50)" nullable="true" />
+  <col name="Reference" type="NVarChar(100)" nullable="true" />
+  <index name="MXAddressExtension_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="AddressID" />
+  </index>
+</table>]]></CDATA>
+    </Sql>
+    <Sql TableName="MXARRegisterExtension" TableSchemaXml="#CDATA">
+        <CDATA name="TableSchemaXml"><![CDATA[<table name="MXARRegisterExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="DocType" type="Char(3)" />
+  <col name="RefNbr" type="Char(15)" />
+  <col name="Series" type="NVarChar(25)" nullable="true" />
+  <col name="Certificate" type="NVarChar(2500)" nullable="true" />
+  <col name="PaymentForm" type="NVarChar(50)" nullable="true" />
+  <col name="PaymentMethod" type="NVarChar(50)" nullable="true" />
+  <col name="OriginAccount" type="NChar(4)" nullable="true" />
+  <col name="PaymentConditions" type="NVarChar(100)" nullable="true" />
+  <col name="StampDate" type="SmallDateTime" nullable="true" />
+  <col name="Uuid" type="UniqueIdentifier" nullable="true" />
+  <col name="SatCertificateNum" type="NChar(20)" nullable="true" />
+  <col name="CfdStamp" type="NVarChar(500)" nullable="true" />
+  <col name="SatStamp" type="NVarChar(500)" nullable="true" />
+  <col name="QrCode" type="NVarChar(100)" nullable="true" />
+  <col name="TfdOriginalString" type="NVarChar(1000)" nullable="true" />
+  <index name="MXARRegisterExtension_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="DocType" />
+    <col name="RefNbr" />
+  </index>
+</table>]]></CDATA>
+    </Sql>
+    <Sql TableName="MXBAccountExtension" TableSchemaXml="#CDATA">
+        <CDATA name="TableSchemaXml"><![CDATA[<table name="MXBAccountExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="BAccountID" type="Int" />
+  <col name="Regimen" type="NVarChar(100)" nullable="true" />
+  <col name="DefaultOriginAccount" type="NVarChar(30)" nullable="true" />
+  <index name="MXBAccountExtension_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="BAccountID" />
+  </index>
+</table>]]></CDATA>
+    </Sql>
+    <Sql TableName="MXContactExtension" TableSchemaXml="#CDATA">
+        <CDATA name="TableSchemaXml"><![CDATA[<table name="MXContactExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ContactID" type="Int" />
+  <col name="SecondLastName" type="NVarChar(100)" nullable="true" />
+  <col name="PersonalID" type="NVarChar(100)" nullable="true" />
+  <index name="MXContactExtension_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ContactID" />
+  </index>
+</table>]]></CDATA>
+    </Sql>
+</Customization>
