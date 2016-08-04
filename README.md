@@ -8,18 +8,18 @@ Paquete de Acumatica para estandarización de datos en México
 | **Versión del Documento** | 1.0 | **Fecha** | 15 de julio 2016 |
 
 ## Contenido
-1. [Información del Documento](#informacion_del_documento)
+1. [Información del Documento](#información-del-documento)
 2. [Introducción](introduccion)
 3. [Alcance](alcance)
 4. [Referencias](referencias)
-5. [Información Fiscal General de Personas](informacion_fiscal_general_de_personas)
-6. [Registro Federal de Contribuyentes](registro_federal_de_contribuyentes)
-7. [Nombre de Persona Moral](nombre_de_persona_moral)
-8. [Nombre de Persona Física](nombre_de_persona_fisica)
-9. [Dirección Fiscal](direccion_fiscal)
-10. [Información de Documentos Fiscales](informacion_de_documentos_fiscales)
-11. [CFDI - CxC](cfdi_-_cxc)
-12. [CFDI - CxP](cfdi_-_cxp)
+5. [Información Fiscal General de Personas](información-fiscal-general-de-personas)
+6. [Registro Federal de Contribuyentes](registro-federal-de-contribuyentes)
+7. [Nombre de Persona Moral](nombre-de-persona-moral)
+8. [Nombre de Persona Física](nombre-de-persona-física)
+9. [Dirección Fiscal](direccion-fiscal)
+10. [Información de Documentos Fiscales](información-de-documentos-fiscales)
+11. [CFDI - CxC](cfdi---cxc)
+12. [CFDI - CxP](cfdi---cxp)
 
 ## Información del Documento
 **Versiones del Documento**
