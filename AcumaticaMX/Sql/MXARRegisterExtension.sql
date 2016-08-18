@@ -39,7 +39,7 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[Stamp]				[nvarchar](500) NULL,
 
 	-- Campos de addenda
-	[QrCode]			[nvarchar](150) NULL,
+	[QrCode]			[nvarchar](95) NULL,
 	[StampString]		[nvarchar](1000) NULL
 
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 

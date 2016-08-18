@@ -134,7 +134,7 @@ namespace AcumaticaMX
         //  -- Campos de addenda
         #region QrCode
         public abstract class qrCode : IBqlField { }
-        [PXDBString(150, IsFixed = false, IsUnicode = true)]
+        [PXDBString(95, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Codigo QR", Enabled = false)]
         public virtual string QrCode { get; set; }
         #endregion QrCode
