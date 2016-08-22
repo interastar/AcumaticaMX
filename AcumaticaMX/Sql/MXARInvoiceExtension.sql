@@ -1,15 +1,15 @@
-﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXARRegisterExtension]') And type in (N'U'))
-	Drop Table [MXARRegisterExtension]
+﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXARInvoiceExtension]') And type in (N'U'))
+	Drop Table [MXARInvoiceExtension]
 Go
 
-/****** Object:  Table [dbo].[MXARRegisterExtension] ******/
+/****** Object:  Table [dbo].[MXARInvoiceExtension] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MXARRegisterExtension](
+CREATE TABLE [dbo].[MXARInvoiceExtension](
 	-- Campo de soporte multiempresa
 	[CompanyID]			[int] NOT NULL DEFAULT ((0)),
 
@@ -39,10 +39,10 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[Stamp]				[nvarchar](500) NULL,
 
 	-- Campos de addenda
-	[QrCode]			[nvarchar](150) NULL,
+	[QrCode]			[nvarchar](95) NULL,
 	[StampString]		[nvarchar](1000) NULL
 
-	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [MXARInvoiceExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
 		[DocType] ASC,
