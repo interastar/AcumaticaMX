@@ -56,7 +56,7 @@
   <ItemGroup>
     <Compile Include="Messages.cs" />
     <Compile Include="MXAddressExtension.cs" />
-    <Compile Include="MXARRegisterExtension.cs" />
+    <Compile Include="MXARInvoiceExtension.cs" />
     <Compile Include="MXBAccountExtension.cs" />
     <Compile Include="MXBranchMaintExtension.cs" />
     <Compile Include="Common.cs" />
@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\MXAddressExtension.sql" />
-    <Content Include="Sql\MXARRegisterExtension.sql" />
+    <Content Include="Sql\MXARInvoiceExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
     <Content Include="Sql\MXContactExtension.sql" />
   </ItemGroup>
