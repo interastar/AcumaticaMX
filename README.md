@@ -117,7 +117,7 @@ Se refiere a datos utilizados en contabilidad y documentos del SAT relacionados 
 | **colonia**            | Opcional                                        | MXAddressExtension     | Neighborhood | 50       |                        |
 | **localidad**          | Opcional                                        | Address                | City         | 50       |                        |
 | **referencia**         | Opcional                                        | MXAddressExtension     | Reference    | 100      |                        |
-| **m**\*\* unicipio\*\* | Requerido para sucursal. Opcional para clientes | MXAddressExtension     | Municipality | 50       | Municipio o Delegación |
+| **municipio**          | Requerido para sucursal. Opcional para clientes | MXAddressExtension     | Municipality | 50       | Municipio o Delegación |
 | **estado**             | Requerido                                       | Address                | State        | 50       |                        |
 | **país**               | Requerido                                       | Address                | CountryID    | 2        |                        |
 | **codigoPostal**       | Requerido                                       | Address                | PostalCode   | 20       |                        |
