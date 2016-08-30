@@ -74,7 +74,7 @@ namespace AcumaticaMX
         #region noCertificado
         public abstract class certificateNum : IBqlField { }
         [PXDBString(20, IsFixed = true, IsUnicode = false)]
-        [PXUIField(DisplayName = "No. Certificado SAT", Enabled = false)]
+        [PXUIField(DisplayName = "Certificado del Emisor", Enabled = false)]
         public virtual string CertificateNum { get; set; }
         #endregion noCertificado
 
@@ -159,7 +159,7 @@ namespace AcumaticaMX
         [PXString(4000, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Monto en Letra", Enabled = false)]
         public virtual string AmountInWords { get; set; }
-        #endregion CantidadEnLetra  
+        #endregion CantidadEnLetra
     }
 }
 

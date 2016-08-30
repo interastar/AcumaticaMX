@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="MXAddressExtension.cs" />
     <Compile Include="MXARInvoiceExtension.cs" />
