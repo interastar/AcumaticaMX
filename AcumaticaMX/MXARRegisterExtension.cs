@@ -6,10 +6,10 @@ using PX.Objects.AR;
 namespace AcumaticaMX
 {
     /// <summary>
-    /// Extensión de ARInvoice para asociar información de CFDIs
+    /// Extensión de ARRegister para asociar información de CFDIs
     /// </summary>
-    [PXTable(typeof(ARInvoice.docType), typeof(ARInvoice.refNbr), IsOptional = true)]
-    public class MXARInvoiceExtension : PXCacheExtension<PX.Objects.AR.ARInvoice>
+    [PXTable(typeof(ARRegister.docType), typeof(ARRegister.refNbr), IsOptional = true)]
+    public class MXARRegisterExtension : PXCacheExtension<PX.Objects.AR.ARRegister>
     {
 
         // Campos persistentes (en BD) *************
