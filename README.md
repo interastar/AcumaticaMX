@@ -131,22 +131,22 @@ Se refiere a datos utilizados en documentos del SAT que deben asociarse a algún
 
 | **Atributo**                          | **Uso**   | **DAC (modelo/tabla)** | **Campo**      | **Long** | **Descripción**            |
 |---------------------------------------|-----------|------------------------|----------------|----------|----------------------------|
-| **Folio**                             | Requerido | ARInvoice              | RefNbr         | 50       |                            |
-| **Tipo de Documento**                 | Requerido | ARInvoice              | DocType        |          | Puede ser egreso o ingreso |
-| **Fecha**                             | Requerido | ARInvoice              | DocDate        |          |                            |
-| **Total**                             | Requerido | ARInvoice              | CuryOrigDocAmt |          |                            |
-| **Cuenta origen transferencia**       | Opcional  | MXARInvoiceExtension   | NumCtaPago     | 4        |                            |
-| **Método de Pago**                    | Requerido | MXARInvoiceExtension   | PaymentMethod  | 50       |                            |
-| **Forma de Pago**                     | Requerido | MXARInvoiceExtension   | PaymentForm    | 50       |                            |
-| **Sello CFD**                         | Requerido | MXARInvoiceExtension   | Seal           | 100      |                            |
-| **Número de certificado**             | Requerido | MXARInvoiceExtension   | CertificateNum | 20       |                            |
-| **Sello del SAT**                     | Requerido | MXARInvoiceExtension   | Stamp          | 500      |                            |
-| **UUID**                              | Requerido | MXARInvoiceExtension   | Uuid           |          |                            |
-| **Fecha timbrado**                    | Requerido | MXARInvoiceExtension   | StampDate      |          |                            |
-| **Cadena Original del timbre fiscal** | Requerido | MXARInvoiceExtension   | StampString    | 1000     |                            |
-| **Código QR**                         | Requerido | MXARInvoiceExtension   | QrCode         | 95       |                            |
-| **Cadena Original del CFD**           | Requerido | MXARInvoiceExtension   | DocumentString | 4000     | Campo virtual calculado    |
-| **Monto en letra**                    | Requerido | MXARInvoiceExtension   | AmountText     | 4000     | Campo virtual calculado    |
+| **Folio**                             | Requerido | ARRegister             | RefNbr         | 50       |                            |
+| **Tipo de Documento**                 | Requerido | ARRegister             | DocType        |          | Puede ser egreso o ingreso |
+| **Fecha**                             | Requerido | ARRegister             | DocDate        |          |                            |
+| **Total**                             | Requerido | ARRegister             | CuryOrigDocAmt |          |                            |
+| **Cuenta origen transferencia**       | Opcional  | MXARRegisterExtension  | NumCtaPago     | 4        |                            |
+| **Método de Pago**                    | Requerido | MXARRegisterExtension  | PaymentMethod  | 50       |                            |
+| **Forma de Pago**                     | Requerido | MXARRegisterExtension  | PaymentForm    | 50       |                            |
+| **Sello CFD**                         | Requerido | MXARRegisterExtension  | Seal           | 100      |                            |
+| **Número de certificado**             | Requerido | MXARRegisterExtension  | CertificateNum | 20       |                            |
+| **Sello del SAT**                     | Requerido | MXARRegisterExtension  | Stamp          | 500      |                            |
+| **UUID**                              | Requerido | MXARRegisterExtension  | Uuid           |          |                            |
+| **Fecha timbrado**                    | Requerido | MXARRegisterExtension  | StampDate      |          |                            |
+| **Cadena Original del timbre fiscal** | Requerido | MXARRegisterExtension  | StampString    | 1000     |                            |
+| **Código QR**                         | Requerido | MXARRegisterExtension  | QrCode         | 95       |                            |
+| **Cadena Original del CFD**           | Requerido | MXARRegisterExtension  | DocumentString | 4000     | Campo virtual calculado    |
+| **Monto en letra**                    | Requerido | MXARRegisterExtension  | AmountText     | 4000     | Campo virtual calculado    |
 
 ### CFDI - CxP (por definir)
 

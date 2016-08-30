@@ -52,5 +52,30 @@ namespace AcumaticaMX
 		[PXUIField(DisplayName = "Cuenta de origen default")]
 		public virtual string DefaultOriginAccount { get; set; }
         #endregion
+
+        #region MetodoDePago
+        public abstract class defaultPaymentMethod : IBqlField { }
+        [PXDBString(50, IsFixed = false, IsUnicode = true)]
+        [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+        [PXStringList(
+            new string[]
+            {
+                AcumaticaMX.Common.PayMethod.Cash, AcumaticaMX.Common.PayMethod.Cheque,
+                AcumaticaMX.Common.PayMethod.Transfer, AcumaticaMX.Common.PayMethod.CreditCard,
+                AcumaticaMX.Common.PayMethod.Wallet, AcumaticaMX.Common.PayMethod.Electronic,
+                AcumaticaMX.Common.PayMethod.Coupons, AcumaticaMX.Common.PayMethod.DebitCard,
+                AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.Other,
+            },
+            new string[]
+            {
+                AcumaticaMX.Common.PayMethod.CashLabel, AcumaticaMX.Common.PayMethod.ChequeLabel,
+                AcumaticaMX.Common.PayMethod.TransferLabel, AcumaticaMX.Common.PayMethod.CreditCardLabel,
+                AcumaticaMX.Common.PayMethod.WalletLabel, AcumaticaMX.Common.PayMethod.ElectronicLabel,
+                AcumaticaMX.Common.PayMethod.CouponsLabel, AcumaticaMX.Common.PayMethod.DebitCardLabel,
+                AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.OtherLabel,
+            }, MultiSelect = true)]
+        [PXUIField(DisplayName = "Metodo de Pago Preferido")]
+        public virtual string DefaultPaymentMethod { get; set; }
+        #endregion MetodoDePago
     }
 }
