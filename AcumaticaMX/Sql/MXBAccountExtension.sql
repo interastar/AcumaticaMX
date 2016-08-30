@@ -17,9 +17,10 @@ CREATE TABLE [dbo].[MXBAccountExtension](
 	[BAccountID]	[int] NOT NULL,
 
 	-- extension fields
-	[Regimen]		[nvarchar](100) NULL,
-	[IsNaturalPerson] [bit] NULL DEFAULT ((0)),
-	[DefaultOriginAccount] [nvarchar](30) NULL,
+	[Regimen]				[nvarchar](100) NULL,
+	[IsNaturalPerson]		[bit] NULL DEFAULT ((0)),
+	[DefaultOriginAccount]	[nvarchar](30) NULL,
+	[DefaultPaymentMethod]	[nvarchar](50) NULL,
 
 	CONSTRAINT [MXBAccountExtension_PK] PRIMARY KEY CLUSTERED 
 	(
