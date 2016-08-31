@@ -68,7 +68,6 @@
   <ItemGroup>
     <Content Include="Sql\MXAddressExtension.sql" />
     <Content Include="Sql\MXARRegisterExtension.sql" />
-    <Content Include="Sql\MXARInvoiceExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
     <Content Include="Sql\MXContactExtension.sql" />
   </ItemGroup>

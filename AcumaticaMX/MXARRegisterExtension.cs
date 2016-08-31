@@ -160,6 +160,13 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Monto en Letra", Enabled = false)]
         public virtual string AmountInWords { get; set; }
         #endregion CantidadEnLetra
+
+        #region FechaCancelacion
+        public abstract class cancelDate : IBqlField { }
+        [PXDBDate()]
+        [PXUIField(DisplayName = "Fecha de Cancelación", Enabled = false)]
+        public virtual DateTime? CancelDate { get; set; }
+        #endregion FechaCancelacion
     }
 }
 
