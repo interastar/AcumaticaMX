@@ -14,7 +14,7 @@ namespace AcumaticaMX
 		{
 		}
 		[PXDBString(100, IsFixed = false, IsUnicode = true)]
-		[PXDefault(AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel)]
+		[PXDefault(AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, PersistingCheck = PXPersistingCheck.Nothing)]
 		[PXStringList(
 			new string[]
 			{
