@@ -56,19 +56,24 @@
   <ItemGroup>
     <Compile Include="Attribute.cs" />
     <Compile Include="Messages.cs" />
+    <Compile Include="MXARAddressExtension.cs" />
     <Compile Include="MXAddressExtension.cs" />
     <Compile Include="MXARRegisterExtension.cs" />
     <Compile Include="MXBAccountExtension.cs" />
     <Compile Include="MXBranchMaintExtension.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="MXARContactExtension.cs" />
     <Compile Include="MXContactExtension.cs" />
+    <Compile Include="MXARInvoiceEntryExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MXCustomerMaintExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\MXARAddressExtension.sql" />
     <Content Include="Sql\MXAddressExtension.sql" />
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
+    <Content Include="Sql\MXARContactExtension.sql" />
     <Content Include="Sql\MXContactExtension.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

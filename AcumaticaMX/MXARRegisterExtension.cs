@@ -64,10 +64,10 @@ namespace AcumaticaMX
         #endregion NumCtaPago
 
         #region condicionesDePago
-        public abstract class paymentConditions : IBqlField { }
+        public abstract class paymentTerms : IBqlField { }
         [PXDBString(100, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Condiciones de Pago")]
-        public virtual string PaymentConditions { get; set; }
+        public virtual string PaymentTerms { get; set; }
         #endregion condicionesDePago
 
         //  -- Datos de sello del comprobante
@@ -105,7 +105,7 @@ namespace AcumaticaMX
         #region Uuid
         public abstract class uuid : IBqlField { }
         [PXDBGuid()]
-        [PXUIField(DisplayName = "UUID", Enabled = false)]
+        [PXUIField(DisplayName = "UUID", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual Guid? Uuid { get; set; }
         #endregion Uuid
 

@@ -56,7 +56,7 @@ namespace AcumaticaMX
         #region MetodoDePago
         public abstract class defaultPaymentMethod : IBqlField { }
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+        [PXDefault(AcumaticaMX.Common.PayMethod.Transfer, PersistingCheck = PXPersistingCheck.Nothing)]
         [PXStringList(
             new string[]
             {

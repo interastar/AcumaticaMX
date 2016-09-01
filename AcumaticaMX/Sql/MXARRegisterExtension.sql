@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[PaymentForm]		[nvarchar](50) NULL,
 	[PaymentMethod]		[nvarchar](50) NULL,
 	[OriginAccount]		[nchar](4) NULL,
-	[PaymentConditions]	[nvarchar](100) NULL,
+	[PaymentTerms]		[nvarchar](100) NULL,
 
 	-- Datos de sello del comprobante
 	[CertificateNum]	char(20) NULL,
