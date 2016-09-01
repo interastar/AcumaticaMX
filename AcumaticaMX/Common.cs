@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PX.Data;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -109,6 +111,183 @@ namespace AcumaticaMX
                     return string.Join(",", typeof(PayMethod).GetFields().Where(x => x.Name.Contains("Label")).Select(x => x.GetValue(null)));
                 }
             }
+        }
+    }
+
+    public class Convert
+    {
+        /// <summary>
+        /// Options for specifying the desired grammatical gender for the output words
+        /// </summary>
+        public enum GrammaticalGender
+        {
+            /// <summary>
+            /// Indicates masculine grammatical gender
+            /// </summary>
+            Masculine,
+            /// <summary>
+            /// Indicates feminine grammatical gender
+            /// </summary>
+            Feminine,
+            /// <summary>
+            /// Indicates neuter grammatical gender
+            /// </summary>
+            Neuter
+        }
+
+        private static readonly string[] UnitsMap = { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce",
+                                                        "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte", "veintiuno",
+                                                        "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve"};
+        private const string Feminine1 = "una";
+        private const string Feminine21 = "veintiuna";
+        private static readonly string[] TensMap = { "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
+        private static readonly string[] HundredsMap = { "cero", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos" };
+        private static readonly string[] FeminineHundredsMap = { "cero", "ciento", "doscientas", "trescientas", "cuatrocientas", "quinientas", "seiscientas", "setecientas", "ochocientas", "novecientas" };
+
+        private static readonly Dictionary<int, string> Ordinals = new Dictionary<int, string>
+        {
+            {1, "primero"},
+            {2, "segundo"},
+            {3, "tercero"},
+            {4, "cuarto"},
+            {5, "quinto"},
+            {6, "sexto"},
+            {7, "séptimo"},
+            {8, "octavo"},
+            {9, "noveno"},
+            {10, "décimo"}
+        };
+
+        public static string ToWords(decimal? amount, string curyID)
+        {
+            var graph = new PXGraph();
+
+            PX.Objects.CM.Currency cury = new PXSelectReadonly<PX.Objects.CM.Currency,
+                                Where<PX.Objects.CM.Currency.curyID, Equal<Required<PX.Objects.CM.Currency.curyID>>>>(graph).Select(curyID);
+
+            if (cury != null)
+            {
+                /// Todo: Actualizar
+                return CuryToWords(amount, cury.CuryID, cury.Description);
+            }
+
+            return "";
+        }
+
+        public static string CuryToWords(decimal? value, string currencyID, string currencyDescription)
+        {
+            if (value == null)
+                return "";
+
+            var parts = new List<string>();
+
+            var whole = (int)Math.Truncate((decimal)value);
+            var cents = ((decimal)value) - whole;
+
+            parts.Add(FirstLetterToUpper(NumberToWords(whole)));
+            parts.Add(currencyDescription.ToLower());
+            parts.Add(DecimalsToFraction(cents));
+            parts.Add(currencyID);
+
+            return string.Join(" ", parts.ToArray());
+        }
+
+        public static string DecimalsToFraction(decimal decimals)
+        {
+            var cents = Math.Truncate(decimals * 100);
+
+            return string.Format("{0:00}/100", cents);
+        }
+
+        public static string FirstLetterToUpper(string str)
+        {
+            if (str == null)
+                return null;
+
+            if (str.Length > 1)
+                return char.ToUpper(str[0]) + str.Substring(1);
+
+            return str.ToUpper();
+        }
+
+        public static string NumberToWords(int number, GrammaticalGender gender = GrammaticalGender.Masculine)
+        {
+            if (number == 0)
+                return "cero";
+
+            if (number < 0)
+                return string.Format("menos {0}", NumberToWords(Math.Abs(number)));
+
+            var parts = new List<string>();
+
+            if ((number / 1000000000) > 0)
+            {
+                parts.Add(number / 1000000000 == 1
+                    ? "mil millones"
+                    : string.Format("{0} mil millones", NumberToWords(number / 1000000000)));
+
+                number %= 1000000000;
+            }
+
+            if ((number / 1000000) > 0)
+            {
+                parts.Add(number / 1000000 == 1
+                    ? "un millón"
+                    : string.Format("{0} millones", NumberToWords(number / 1000000)));
+
+                number %= 1000000;
+            }
+
+            if ((number / 1000) > 0)
+            {
+                parts.Add(number / 1000 == 1
+                    ? "mil"
+                    : string.Format("{0} mil", NumberToWords(number / 1000, gender)));
+
+                number %= 1000;
+            }
+
+            if ((number / 100) > 0)
+            {
+                parts.Add(number == 100
+                    ? "cien"
+                    : gender == GrammaticalGender.Feminine
+                        ? FeminineHundredsMap[(number / 100)]
+                        : HundredsMap[(number / 100)]);
+                number %= 100;
+            }
+
+            if (number > 0)
+            {
+                if (number < 30)
+                {
+                    if (gender == GrammaticalGender.Feminine && (number == 1 || number == 21))
+                    {
+                        parts.Add(number == 1 ? Feminine1 : Feminine21);
+                    }
+                    else
+                    {
+                        parts.Add(UnitsMap[number]);
+                    }
+                }
+                else
+                {
+                    var lastPart = TensMap[number / 10];
+                    int units = number % 10;
+                    if (units == 1 && gender == GrammaticalGender.Feminine)
+                    {
+                        lastPart += " y una";
+                    }
+                    else if (units > 0)
+                    {
+                        lastPart += string.Format(" y {0}", UnitsMap[number % 10]);
+                    }
+
+                    parts.Add(lastPart);
+                }
+            }
+
+            return string.Join(" ", parts.ToArray());
         }
     }
 }

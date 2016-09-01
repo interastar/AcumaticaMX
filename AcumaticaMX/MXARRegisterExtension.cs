@@ -5,6 +5,7 @@ using PX.Objects.AR;
 
 namespace AcumaticaMX
 {
+
     /// <summary>
     /// Extensión de ARRegister para asociar información de CFDIs
     /// </summary>
@@ -123,6 +124,13 @@ namespace AcumaticaMX
         public virtual DateTime? StampDate { get; set; }
         #endregion FechaTimbrado
 
+        #region FechaCancelacion
+        public abstract class cancelDate : IBqlField { }
+        [PXDBDate()]
+        [PXUIField(DisplayName = "Fecha de Cancelación", Enabled = false)]
+        public virtual DateTime? CancelDate { get; set; }
+        #endregion FechaCancelacion
+
         // --- Sello del SAT
         #region selloSAT
         public abstract class stamp : IBqlField { }
@@ -158,15 +166,29 @@ namespace AcumaticaMX
         public abstract class amountInWords : IBqlField { }
         [PXString(4000, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Monto en Letra", Enabled = false)]
-        public virtual string AmountInWords { get; set; }
+        public virtual string AmountInWords
+        {
+            [PXDependsOnFields(typeof(ARRegister.curyOrigDocAmt), typeof(ARRegister.curyID))]
+            get
+            {
+                return Convert.ToWords(this.Base.CuryOrigDocAmt, this.Base.CuryID);
+            }
+            set
+            {
+            }
+        }
+
         #endregion CantidadEnLetra
 
-        #region FechaCancelacion
-        public abstract class cancelDate : IBqlField { }
-        [PXDBDate()]
-        [PXUIField(DisplayName = "Fecha de Cancelación", Enabled = false)]
-        public virtual DateTime? CancelDate { get; set; }
-        #endregion FechaCancelacion
+        #region Estado
+        public abstract class stampStatus : IBqlField { }
+        [PXString(1, IsFixed = true)]
+        [PXDefault(CfdiStatus.Clean)]
+        [PXUIField(DisplayName = "Estado", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
+        [CfdiStatus.List()]
+        [SetCfdiStatus()]
+        public virtual string StampStatus { get; set; }
+        #endregion Estado
     }
 }
 

@@ -13,5 +13,11 @@ namespace AcumaticaMX
         //public const string Etiqueta = "Valor";
         #endregion
 
+        public const string CleanCfdi = "Nuevo";
+        public const string StampedCfdi = "Timbrado";
+        public const string CanceledCfdi = "Cancelado";
+        public const string BlockedCfdi = "Bloqueado";
+
+
     }
 }
