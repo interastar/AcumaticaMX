@@ -87,10 +87,16 @@ namespace AcumaticaMX
                 }
             });
 
+            //sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
+            //sender.Graph.RowSelecting.AddHandler<ARRegister>(RowSelecting);
+            //sender.Graph.RowInserting.AddHandler<ARRegister>(RowInserting);
+            //sender.Graph.RowUpdating.AddHandler<ARRegister>(RowUpdating);
+
             sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
-            sender.Graph.RowSelecting.AddHandler<ARRegister>(RowSelecting);
-            sender.Graph.RowInserting.AddHandler<ARRegister>(RowInserting);
-            sender.Graph.RowUpdating.AddHandler<ARRegister>(RowUpdating);
+            //sender.Graph.RowSelecting.AddHandler<ARInvoice>(RowSelecting);
+            sender.Graph.RowInserting.AddHandler<ARInvoice>(RowInserting);
+            sender.Graph.RowUpdating.AddHandler<ARInvoice>(RowUpdating);
+            sender.Graph.RowSelected.AddHandler<ARInvoice>(RowSelected);
         }
 
         protected virtual void StatusSet(PXCache cache, MXARRegisterExtension cfdi)
@@ -136,6 +142,16 @@ namespace AcumaticaMX
         public virtual void RowUpdating(PXCache sender, PXRowUpdatingEventArgs e)
         {
             var item = (ARRegister)e.NewRow;
+            if (item != null)
+            {
+                var ext = item.GetExtension<MXARRegisterExtension>();
+                StatusSet(sender, ext);
+            }
+        }
+
+        public virtual void RowSelected(PXCache sender, PXRowSelectedEventArgs e)
+        {
+            var item = (ARRegister)e.Row;
             if (item != null)
             {
                 var ext = item.GetExtension<MXARRegisterExtension>();

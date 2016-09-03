@@ -184,7 +184,7 @@ namespace AcumaticaMX
         public abstract class stampStatus : IBqlField { }
         [PXString(1, IsFixed = true)]
         [PXDefault(CfdiStatus.Clean)]
-        [PXUIField(DisplayName = "Estado", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
+        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
         [CfdiStatus.List()]
         [SetCfdiStatus()]
         public virtual string StampStatus { get; set; }

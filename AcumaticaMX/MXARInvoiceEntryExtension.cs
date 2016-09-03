@@ -24,9 +24,9 @@ namespace AcumaticaMX
         protected void ARInvoice_RowSelected(PXCache sender, PXRowSelectedEventArgs e, PXRowSelected InvokeBaseHandler)
         {
             InvokeBaseHandler?.Invoke(sender, e);
-
+            ARRegister invoice =  (ARRegister) e.Row;
             var document = e.Row as ARInvoice;
-
+            PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.stampStatus>(sender,invoice, false);
             ARAddress_Update(this.Base.Billing_Address.Cache, document);
         }
 
