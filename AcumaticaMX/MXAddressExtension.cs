@@ -31,7 +31,7 @@ namespace AcumaticaMX
 		public abstract class intNumber : IBqlField
 		{
 		}
-		[PXDBString(10, IsUnicode = true)]
+		[PXDBString(30, IsUnicode = true)]
 		[PXUIField(DisplayName = "Número Interior", Visibility = PXUIVisibility.SelectorVisible)]
 		public virtual string IntNumber { get; set; }
 		#endregion

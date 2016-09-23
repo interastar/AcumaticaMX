@@ -21,7 +21,7 @@ namespace AcumaticaMX
 		public abstract class personalID : IBqlField
 		{
 		}
-		[PXDBString(100, IsUnicode = true)]
+		[PXDBString(18, IsUnicode = true)]
 		[PXUIField(DisplayName = "CURP", Visibility = PXUIVisibility.SelectorVisible)]
 		public virtual string PersonalID { get; set; }
 		#endregion

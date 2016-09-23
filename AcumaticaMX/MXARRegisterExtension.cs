@@ -59,7 +59,7 @@ namespace AcumaticaMX
 
         #region NumCtaPago
         public abstract class originAccount : IBqlField { }
-        [PXDBString(4, IsFixed = true, IsUnicode = true)]
+        [PXDBString(20, IsFixed = true, IsUnicode = true)]
         [PXUIField(DisplayName = "Cuenta de Pago", Enabled = false)]
         public virtual string OriginAccount { get; set; }
         #endregion NumCtaPago

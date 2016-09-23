@@ -8,8 +8,9 @@ namespace AcumaticaMX
 	[PXTable(typeof(ARContact.contactID), IsOptional = true)]
 	public class MXARContactExtension : PXCacheExtension<PX.Objects.AR.ARContact>
 	{
-		#region SecondLastName
-		public abstract class secondLastName : IBqlField
+
+        #region SecondLastName
+        public abstract class secondLastName : IBqlField
 		{
 		}
 		[PXDBString(100, IsUnicode = true)]
@@ -24,6 +25,7 @@ namespace AcumaticaMX
 		[PXDBString(100, IsUnicode = true)]
 		[PXUIField(DisplayName = "CURP", Visibility = PXUIVisibility.SelectorVisible)]
 		public virtual string PersonalID { get; set; }
-		#endregion
-	}
+        #endregion
+
+    }
 }
