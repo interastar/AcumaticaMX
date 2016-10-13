@@ -1,13 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using PX.SM;
 using PX.Data;
 using PX.Objects.AR;
 
 namespace AcumaticaMX
 {
-
     public class CfdiStatus
     {
         public static readonly string[] Values = { Clean, Stamped, Canceled, Blocked };
@@ -18,7 +13,6 @@ namespace AcumaticaMX
             public ListAttribute()
                 : base(Values, Labels)
             {
-
             }
         }
 
@@ -29,22 +23,34 @@ namespace AcumaticaMX
 
         public class clean : Constant<string>
         {
-            public clean() : base(Clean) {; }
+            public clean() : base(Clean)
+            {
+                ;
+            }
         }
 
         public class stamped : Constant<string>
         {
-            public stamped() : base(Stamped) {; }
+            public stamped() : base(Stamped)
+            {
+                ;
+            }
         }
 
         public class canceled : Constant<string>
         {
-            public canceled() : base(Canceled) {; }
+            public canceled() : base(Canceled)
+            {
+                ;
+            }
         }
 
         public class blocked : Constant<string>
         {
-            public blocked() : base(Blocked) {; }
+            public blocked() : base(Blocked)
+            {
+                ;
+            }
         }
     }
 
@@ -159,5 +165,4 @@ namespace AcumaticaMX
             }
         }
     }
-
 }
