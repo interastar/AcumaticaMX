@@ -44,7 +44,7 @@ namespace AcumaticaMX
             var addressExt = address.GetExtension<MXARAddressExtension>();
 
             // Si hay dirección pero los campos extendidos están en blanco
-            if (!string.IsNullOrEmpty(address.AddressLine1) && string.IsNullOrEmpty(addressExt.Street))
+            if (!string.IsNullOrEmpty(address.AddressLine1) && string.IsNullOrEmpty(addressExt.Street) && (address?.CustomerAddressID != null))
             {
                 //Address defaultAddress = PXSelectJoin<Address,
                 //                    InnerJoin<Customer,

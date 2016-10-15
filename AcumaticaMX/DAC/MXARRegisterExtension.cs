@@ -14,17 +14,17 @@ namespace AcumaticaMX
 
         // - Datos del comprobante fiscal
 
-        #region serie
+        #region Serie
 
         public abstract class series : IBqlField { }
 
         [PXDBString(25, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = "Serie")]
+        [PXUIField(DisplayName = "Serie", Enabled = false)]
         public virtual string Series { get; set; }
 
-        #endregion serie
+        #endregion Serie
 
-        #region formaDePago
+        #region FormaDePago
 
         public abstract class paymentForm : IBqlField { }
 
@@ -34,7 +34,7 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentForm { get; set; }
 
-        #endregion formaDePago
+        #endregion FormaDePago
 
         #region MetodoDePago
 
@@ -120,7 +120,7 @@ namespace AcumaticaMX
 
         // --- Sello del comprobante
 
-        #region sello
+        #region Sello
 
         public abstract class seal : IBqlField { }
 
@@ -128,7 +128,7 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Sello CFD", Enabled = false)]
         public virtual string Seal { get; set; }
 
-        #endregion sello
+        #endregion Sello
 
         // -- Datos del timbrado del comprobante
 
@@ -142,7 +142,7 @@ namespace AcumaticaMX
 
         #endregion Uuid
 
-        #region noCertificadoSAT
+        #region NoCertificadoSAT
 
         public abstract class satCertificateNum : IBqlField { }
 
@@ -150,7 +150,7 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "No. Certificado SAT", Enabled = false)]
         public virtual string SatCertificateNum { get; set; }
 
-        #endregion noCertificadoSAT
+        #endregion NoCertificadoSAT
 
         #region FechaTimbrado
 
@@ -174,7 +174,7 @@ namespace AcumaticaMX
 
         // --- Sello del SAT
 
-        #region selloSAT
+        #region SelloSAT
 
         public abstract class stamp : IBqlField { }
 
@@ -182,7 +182,7 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Sello SAT", Enabled = false)]
         public virtual string Stamp { get; set; }
 
-        #endregion selloSAT
+        #endregion SelloSAT
 
         //  -- Campos de addenda
 
@@ -196,7 +196,7 @@ namespace AcumaticaMX
 
         #endregion QrCode
 
-        #region cadenaOriginalTFD
+        #region CadenaOriginalTFD
 
         public abstract class stampString : IBqlField { }
 
@@ -204,11 +204,11 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Cadena Original TFD", Enabled = false)]
         public virtual string StampString { get; set; }
 
-        #endregion cadenaOriginalTFD
+        #endregion CadenaOriginalTFD
 
         // Campos no persistentes *************
 
-        #region cadenaOriginal
+        #region CadenaOriginal
 
         public abstract class documentString : IBqlField { }
 
@@ -216,7 +216,7 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Cadena Original", Enabled = false)]
         public virtual string DocumentString { get; set; }
 
-        #endregion cadenaOriginal
+        #endregion CadenaOriginal
 
         #region CantidadEnLetra
 

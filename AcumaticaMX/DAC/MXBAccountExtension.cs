@@ -59,7 +59,7 @@ namespace AcumaticaMX
 
         #endregion DefaultOriginAccount
 
-        #region MetodoDePago
+        #region DefaultPaymentMethod
 
         public abstract class defaultPaymentMethod : IBqlField { }
 
@@ -85,6 +85,6 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Metodo de Pago Preferido")]
         public virtual string DefaultPaymentMethod { get; set; }
 
-        #endregion MetodoDePago
+        #endregion DefaultPaymentMethod
     }
 }

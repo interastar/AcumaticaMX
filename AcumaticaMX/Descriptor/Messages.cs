@@ -17,5 +17,8 @@
         public const string StampedCfdi = "Timbrado";
         public const string CanceledCfdi = "Cancelado";
         public const string BlockedCfdi = "Bloqueado";
+
+        //*** SYFEPaymentMethodExtension
+        public const string PaymentMethod = "Clave Método de Pago en SAT";
     }
 }

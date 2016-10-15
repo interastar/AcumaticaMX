@@ -59,6 +59,7 @@
     <Compile Include="DAC\MXAPAddressExtension.cs" />
     <Compile Include="DAC\MXSOContactExtension.cs" />
     <Compile Include="DAC\MXPOContactExtension.cs" />
+    <Compile Include="DAC\MXPaymentMethodExtension.cs" />
     <Compile Include="Descriptor\Attribute.cs" />
     <Compile Include="Descriptor\Messages.cs" />
     <Compile Include="DAC\MXARAddressExtension.cs" />
