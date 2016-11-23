@@ -34,6 +34,8 @@ Contenido
 
 12. [CFDI - CxP](cfdi_-_cxp)
 
+13. [Licencia](licencia)
+
 Información del Documento
 -------------------------
 
@@ -44,7 +46,7 @@ Información del Documento
 | 1.0         | 15.07.2016 | Versión inicial |
 
 Introducción
-------------
+-----------------------------------------------------------------------------------------------------
 
 Este documento busca ser una referencia estándar para partners de Acumatica que deseen desarrollar módulos que cumplan con normas de contabilidad en México. El objetivo principal es evitar duplicidad de información, minimizar conflictos y garantizar la compatibilidad de módulos que sigan los lineamientos descritos en este documento.
 
@@ -109,18 +111,18 @@ Se refiere a datos utilizados en contabilidad y documentos del SAT relacionados 
 
 ### Domicilio Fiscal
 
-| **Atributo**           | **Uso**                                         | **DAC (modelo/tabla)** | **Campo**    | **Long** | **Descripción**        |
-|------------------------|-------------------------------------------------|------------------------|--------------|----------|------------------------|
-| **Calle**              | Requerido                                       | MXAddressExtension     | Street       | 50       |                        |
-| **noExterior**         | Opcional                                        | MXAddressExtension     | ExtNumber    | 10       |                        |
-| **noInterior**         | Opcional                                        | MXAddressExtension     | IntNumber    | 10       |                        |
-| **colonia**            | Opcional                                        | MXAddressExtension     | Neighborhood | 50       |                        |
-| **localidad**          | Opcional                                        | Address                | City         | 50       |                        |
-| **referencia**         | Opcional                                        | MXAddressExtension     | Reference    | 100      |                        |
-| **municipio**          | Requerido para sucursal. Opcional para clientes | MXAddressExtension     | Municipality | 50       | Municipio o Delegación |
-| **estado**             | Requerido                                       | Address                | State        | 50       |                        |
-| **país**               | Requerido                                       | Address                | CountryID    | 2        |                        |
-| **codigoPostal**       | Requerido                                       | Address                | PostalCode   | 20       |                        |
+| **Atributo**     | **Uso**                                         | **DAC (modelo/tabla)** | **Campo**    | **Long** | **Descripción**        |
+|------------------|-------------------------------------------------|------------------------|--------------|----------|------------------------|
+| **Calle**        | Requerido                                       | MXAddressExtension     | Street       | 50       |                        |
+| **noExterior**   | Opcional                                        | MXAddressExtension     | ExtNumber    | 10       |                        |
+| **noInterior**   | Opcional                                        | MXAddressExtension     | IntNumber    | 10       |                        |
+| **colonia**      | Opcional                                        | MXAddressExtension     | Neighborhood | 50       |                        |
+| **localidad**    | Opcional                                        | Address                | City         | 50       |                        |
+| **referencia**   | Opcional                                        | MXAddressExtension     | Reference    | 100      |                        |
+| **municipio**    | Requerido para sucursal. Opcional para clientes | MXAddressExtension     | Municipality | 50       | Municipio o Delegación |
+| **estado**       | Requerido                                       | Address                | State        | 50       |                        |
+| **país**         | Requerido                                       | Address                | CountryID    | 2        |                        |
+| **codigoPostal** | Requerido                                       | Address                | PostalCode   | 20       |                        |
 
 Información de Documentos Fiscales
 ----------------------------------
@@ -162,3 +164,14 @@ Se refiere a datos utilizados en documentos del SAT que deben asociarse a algún
 | **Número de certificado** | Requerido |                        | Certificate    | 100      |                            |
 | **Sello del SAT**         | Requerido |                        | SatStamp       | 1000     |                            |
 | **UUID**                  | Requerido |                        | Uuid           |          |                            |
+
+Licencia
+--------
+
+Copyright (C) 2016 YNCHRONIZE TECHNOLOGY GH CONSULTING & SOLUTIONS SA DE CV – Syntegh - contacto@syntegh.com
+
+Autor: Marco Villaseñor – marco@syntegh.com
+
+Este programa es software libre: puede redistribuirlo y/o modificarlo bajo los términos de la Licencia General Pública de GNU publicada por la Free Software Foundation, ya sea la versión 3 de la Licencia, o (a su elección) cualquier versión posterior.
+
+Este programa se distribuye con la esperanza de que sea útil pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de MERCANTIBILIDAD o CALIFICADA PARA UN PROPÓSITO EN PARTICULAR. Vea la Licencia General Pública de GNU para más detalles. Ésta se incluye en este código en el archivo LICENSE y una traducción en el archivo LICENCIA.

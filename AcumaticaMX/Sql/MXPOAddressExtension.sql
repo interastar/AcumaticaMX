@@ -1,15 +1,15 @@
-If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXAddressExtension]') And type in (N'U'))
-	Drop Table [MXAddressExtension]
+If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXPOAddressExtension]') And type in (N'U'))
+	Drop Table [MXPOAddressExtension]
 Go
 
-/****** Object:  Table [dbo].[MXAddressExtension] ******/
+/****** Object:  Table [dbo].[MXPOAddressExtension] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MXAddressExtension](
+CREATE TABLE [dbo].[MXPOAddressExtension](
 	-- multi-tenancy support
 	[CompanyID]		[int] NOT NULL DEFAULT ((0)),
 
@@ -24,7 +24,7 @@ CREATE TABLE [dbo].[MXAddressExtension](
 	[Municipality]	[nvarchar](50) NULL,
 	[Reference]		[nvarchar](100) NULL,
 
-	CONSTRAINT [MXAddressExtension_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [MXPOAddressExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
 		[AddressID] ASC
@@ -32,5 +32,3 @@ CREATE TABLE [dbo].[MXAddressExtension](
 ) ON [PRIMARY]
 
 GO
-
-

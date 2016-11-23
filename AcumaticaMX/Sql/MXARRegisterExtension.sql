@@ -21,8 +21,8 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[Series]			[nvarchar](25) NULL,
 	[PaymentForm]		[nvarchar](50) NULL,
 	[PaymentMethod]		[nvarchar](50) NULL,
-	[OriginAccount]		[nchar](4) NULL,
-	[PaymentConditions]	[nvarchar](100) NULL,
+	[OriginAccount]		[nvarchar](20) NULL,
+	[PaymentTerms]		[nvarchar](100) NULL,
 
 	-- Datos de sello del comprobante
 	[CertificateNum]	char(20) NULL,
@@ -40,7 +40,10 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 
 	-- Campos de addenda
 	[QrCode]			[nvarchar](95) NULL,
-	[StampString]		[nvarchar](1000) NULL
+	[StampString]		[nvarchar](1000) NULL,
+
+	-- Cancelación
+	[CancelDate]		[smalldatetime] NULL,
 
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(
