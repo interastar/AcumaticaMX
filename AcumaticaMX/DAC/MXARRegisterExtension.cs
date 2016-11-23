@@ -1,39 +1,45 @@
-using System;
 using PX.Data;
-using PX.Objects;
 using PX.Objects.AR;
+using System;
 
 namespace AcumaticaMX
 {
-
     /// <summary>
     /// Extensión de ARRegister para asociar información de CFDIs
     /// </summary>
     [PXTable(typeof(ARRegister.docType), typeof(ARRegister.refNbr), IsOptional = true)]
     public class MXARRegisterExtension : PXCacheExtension<PX.Objects.AR.ARRegister>
     {
-
         // Campos persistentes (en BD) *************
 
         // - Datos del comprobante fiscal
-        #region serie
-        public abstract class series : IBqlField { }
-        [PXDBString(25, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = "Serie")]
-        public virtual string Series { get; set; }
-        #endregion serie
 
-        #region formaDePago
+        #region Serie
+
+        public abstract class series : IBqlField { }
+
+        [PXDBString(25, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Serie", Enabled = false)]
+        public virtual string Series { get; set; }
+
+        #endregion Serie
+
+        #region FormaDePago
+
         public abstract class paymentForm : IBqlField { }
+
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
         [PXDefault(AcumaticaMX.Common.PayForm.One)]
         [PXStringList(AcumaticaMX.Common.PayForm.Values)]
         [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentForm { get; set; }
-        #endregion formaDePago
+
+        #endregion FormaDePago
 
         #region MetodoDePago
+
         public abstract class paymentMethod : IBqlField { }
+
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
         [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
         [PXStringList(
@@ -57,115 +63,165 @@ namespace AcumaticaMX
             }, MultiSelect = true)]
         [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentMethod { get; set; }
+
         #endregion MetodoDePago
 
         #region NumCtaPago
+
         public abstract class originAccount : IBqlField { }
-        [PXDBString(20, IsFixed = true, IsUnicode = true)]
+
+        [PXDBString(20, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Cuenta de Pago", Enabled = false)]
         public virtual string OriginAccount { get; set; }
+
         #endregion NumCtaPago
 
         #region condicionesDePago
+
         public abstract class paymentTerms : IBqlField { }
+
         [PXDBString(100, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Condiciones de Pago")]
         public virtual string PaymentTerms { get; set; }
+
         #endregion condicionesDePago
 
         //  -- Datos de sello del comprobante
+
         #region noCertificado
+
         public abstract class certificateNum : IBqlField { }
+
         [PXDBString(20, IsFixed = true, IsUnicode = false)]
         [PXUIField(DisplayName = "Certificado del Emisor", Enabled = false)]
         public virtual string CertificateNum { get; set; }
+
         #endregion noCertificado
 
         #region certificado
+
         public abstract class certificate : IBqlField { }
+
         [PXDBString(2500, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Certificado", Enabled = false)]
         public virtual string Certificate { get; set; }
+
         #endregion certificado
 
         #region SealDate
+
         public abstract class sealDate : IBqlField { }
+
         [PXDBDate()]
         [PXUIField(DisplayName = "Fecha de Emisión", Enabled = false)]
         public virtual DateTime? SealDate { get; set; }
+
         #endregion SealDate
 
         // --- Sello del comprobante
-        #region sello
+
+        #region Sello
+
         public abstract class seal : IBqlField { }
 
         [PXDBString(500, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Sello CFD", Enabled = false)]
         public virtual string Seal { get; set; }
-        #endregion sello
+
+        #endregion Sello
 
         // -- Datos del timbrado del comprobante
+
         #region Uuid
+
         public abstract class uuid : IBqlField { }
+
         [PXDBGuid()]
         [PXUIField(DisplayName = "UUID", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual Guid? Uuid { get; set; }
+
         #endregion Uuid
 
-        #region noCertificadoSAT
+        #region NoCertificadoSAT
+
         public abstract class satCertificateNum : IBqlField { }
+
         [PXDBString(20, IsFixed = true, IsUnicode = false)]
         [PXUIField(DisplayName = "No. Certificado SAT", Enabled = false)]
         public virtual string SatCertificateNum { get; set; }
-        #endregion noCertificadoSAT
+
+        #endregion NoCertificadoSAT
 
         #region FechaTimbrado
+
         public abstract class stampDate : IBqlField { }
+
         [PXDBDate()]
         [PXUIField(DisplayName = "Fecha de Timbrado", Enabled = false)]
         public virtual DateTime? StampDate { get; set; }
+
         #endregion FechaTimbrado
 
         #region FechaCancelacion
+
         public abstract class cancelDate : IBqlField { }
+
         [PXDBDate()]
         [PXUIField(DisplayName = "Fecha de Cancelación", Enabled = false)]
         public virtual DateTime? CancelDate { get; set; }
+
         #endregion FechaCancelacion
 
         // --- Sello del SAT
-        #region selloSAT
+
+        #region SelloSAT
+
         public abstract class stamp : IBqlField { }
+
         [PXDBString(500, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Sello SAT", Enabled = false)]
         public virtual string Stamp { get; set; }
-        #endregion selloSAT
+
+        #endregion SelloSAT
 
         //  -- Campos de addenda
+
         #region QrCode
+
         public abstract class qrCode : IBqlField { }
+
         [PXDBString(95, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Codigo QR", Enabled = false)]
         public virtual string QrCode { get; set; }
+
         #endregion QrCode
 
-        #region cadenaOriginalTFD
+        #region CadenaOriginalTFD
+
         public abstract class stampString : IBqlField { }
+
         [PXDBString(1000, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Cadena Original TFD", Enabled = false)]
         public virtual string StampString { get; set; }
-        #endregion cadenaOriginalTFD
+
+        #endregion CadenaOriginalTFD
 
         // Campos no persistentes *************
-        #region cadenaOriginal
+
+        #region CadenaOriginal
+
         public abstract class documentString : IBqlField { }
+
         [PXString(4000, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Cadena Original", Enabled = false)]
         public virtual string DocumentString { get; set; }
-        #endregion cadenaOriginal
+
+        #endregion CadenaOriginal
 
         #region CantidadEnLetra
+
         public abstract class amountInWords : IBqlField { }
+
         [PXString(4000, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Monto en Letra", Enabled = false)]
         public virtual string AmountInWords
@@ -182,15 +238,36 @@ namespace AcumaticaMX
 
         #endregion CantidadEnLetra
 
+        #region QrCodeImg
+
+        public abstract class qrCodeImg : PX.Data.IBqlField
+        {
+        }
+
+        /// <summary>
+        /// Propiedad disponible para calcular y mostrar la imagen del código QR.
+        /// </summary>
+        /// <value>
+        /// Debe regresar un Data URL con el contenido de la imagen del código.
+        /// </value>
+        [PXString(IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Código QR")]
+        public virtual string QrCodeImg { get; set; }
+
+        #endregion QrCodeImg
+
         #region Estado
+
         public abstract class stampStatus : IBqlField { }
+
         [PXString(1, IsFixed = true)]
         [PXDefault(CfdiStatus.Clean)]
+        [PXUnboundDefault(CfdiStatus.Clean)]
         [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
         [CfdiStatus.List()]
         [SetCfdiStatus()]
         public virtual string StampStatus { get; set; }
+
         #endregion Estado
     }
 }
-

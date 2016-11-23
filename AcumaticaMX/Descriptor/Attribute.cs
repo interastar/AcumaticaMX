@@ -1,13 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using PX.SM;
 using PX.Data;
 using PX.Objects.AR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AcumaticaMX
 {
-
     public class CfdiStatus
     {
         public static readonly string[] Values = { Clean, Stamped, Canceled, Blocked };
@@ -18,7 +16,6 @@ namespace AcumaticaMX
             public ListAttribute()
                 : base(Values, Labels)
             {
-
             }
         }
 
@@ -29,22 +26,34 @@ namespace AcumaticaMX
 
         public class clean : Constant<string>
         {
-            public clean() : base(Clean) {; }
+            public clean() : base(Clean)
+            {
+                ;
+            }
         }
 
         public class stamped : Constant<string>
         {
-            public stamped() : base(Stamped) {; }
+            public stamped() : base(Stamped)
+            {
+                ;
+            }
         }
 
         public class canceled : Constant<string>
         {
-            public canceled() : base(Canceled) {; }
+            public canceled() : base(Canceled)
+            {
+                ;
+            }
         }
 
         public class blocked : Constant<string>
         {
-            public blocked() : base(Blocked) {; }
+            public blocked() : base(Blocked)
+            {
+                ;
+            }
         }
     }
 
@@ -160,4 +169,60 @@ namespace AcumaticaMX
         }
     }
 
+    /// <summary>
+    /// This attribute is intended to update selected fields with concatenation of other fields<br/>
+    /// </summary>
+    public class CompositeFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    {
+        private string _TargetField;
+        private List<string> _SourceFields;
+
+        public CompositeFieldAttribute(Type TargetFieldType, params Type[] SourceFieldTypes)
+            : base()
+        {
+            _TargetField = TargetFieldType.Name;
+
+            if (SourceFieldTypes.Length > 0)
+            {
+                _SourceFields = new List<string>(SourceFieldTypes.Select(t => t.Name));
+            }
+            else
+            {
+                throw new PXArgumentException();
+            }
+        }
+
+        protected virtual void UpdateTargetField(PXCache sender, object row)
+        {
+            var value = string.Join(" ", _SourceFields.Select(
+                fieldName =>
+                sender.GetValue(row, fieldName)?.ToString())).Trim();
+
+            sender.SetValue(row, _TargetField, value);
+        }
+
+        public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
+        {
+            if (e.Row != null)
+            {
+                UpdateTargetField(sender, e.Row);
+            }
+        }
+
+        public virtual void RowUpdating(PXCache sender, PXRowUpdatingEventArgs e)
+        {
+            if (e.Row != null)
+            {
+                UpdateTargetField(sender, e.Row);
+            }
+        }
+
+        public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            if (e.Row != null)
+            {
+                UpdateTargetField(sender, e.Row);
+            }
+        }
+    }
 }

@@ -1,10 +1,7 @@
 ﻿using PX.Data;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AcumaticaMX
 {
@@ -20,6 +17,7 @@ namespace AcumaticaMX
         {
             // Valores
             public const string NaturalSalaried = "Asalariados";
+
             public const string NaturalFee = "Honorarios";
             public const string NaturalLessor = "Arrendamiento de Inmuebles";
             public const string NaturalBusinessActivity = "Actividades Empresariales";
@@ -38,6 +36,7 @@ namespace AcumaticaMX
 
             /// Etiquetas
             public const string NaturalSalariedLabel = "Persona Física - Asalariados";
+
             public const string NaturalFeeLabel = "Persona Física - Honorarios";
             public const string NaturalLessorLabel = "Persona Física - Arrendamiento de Inmuebles";
             public const string NaturalBusinessActivityLabel = "Persona Física - Actividades Empresariales";
@@ -85,6 +84,7 @@ namespace AcumaticaMX
             public const string ServiceCard = "29";
             public const string NA = "98";
             public const string Other = "99";
+
             public static string Values
             {
                 get
@@ -126,10 +126,12 @@ namespace AcumaticaMX
             /// Indicates masculine grammatical gender
             /// </summary>
             Masculine,
+
             /// <summary>
             /// Indicates feminine grammatical gender
             /// </summary>
             Feminine,
+
             /// <summary>
             /// Indicates neuter grammatical gender
             /// </summary>
@@ -139,6 +141,7 @@ namespace AcumaticaMX
         private static readonly string[] UnitsMap = { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce",
                                                         "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte", "veintiuno",
                                                         "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve"};
+
         private const string Feminine1 = "una";
         private const string Feminine21 = "veintiuna";
         private static readonly string[] TensMap = { "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };

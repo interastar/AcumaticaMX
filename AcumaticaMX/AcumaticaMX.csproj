@@ -54,28 +54,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attribute.cs" />
-    <Compile Include="Messages.cs" />
-    <Compile Include="MXARAddressExtension.cs" />
-    <Compile Include="MXAddressExtension.cs" />
-    <Compile Include="MXARRegisterExtension.cs" />
-    <Compile Include="MXBAccountExtension.cs" />
+    <Compile Include="DAC\MXPOAddressExtension.cs" />
+    <Compile Include="DAC\MXSOAddressExtension.cs" />
+    <Compile Include="DAC\MXAPAddressExtension.cs" />
+    <Compile Include="DAC\MXSOContactExtension.cs" />
+    <Compile Include="DAC\MXPOContactExtension.cs" />
+    <Compile Include="DAC\MXPaymentMethodExtension.cs" />
+    <Compile Include="Descriptor\Attribute.cs" />
+    <Compile Include="Descriptor\Messages.cs" />
+    <Compile Include="DAC\MXARAddressExtension.cs" />
+    <Compile Include="DAC\MXAddressExtension.cs" />
+    <Compile Include="DAC\MXARRegisterExtension.cs" />
+    <Compile Include="DAC\MXBAccountExtension.cs" />
     <Compile Include="MXBranchMaintExtension.cs" />
-    <Compile Include="Common.cs" />
-    <Compile Include="MXARContactExtension.cs" />
-    <Compile Include="MXContactExtension.cs" />
+    <Compile Include="Descriptor\Common.cs" />
+    <Compile Include="DAC\MXAPContactExtension.cs" />
+    <Compile Include="DAC\MXContactExtension.cs" />
     <Compile Include="MXARInvoiceEntryExtension.cs" />
+    <Compile Include="MXSOOrderEntryExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MXCustomerMaintExtension.cs" />
+    <Compile Include="DAC\MXARContactExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\MXAPAddressExtension.sql" />
+    <Content Include="Sql\MXSOAddressExtension.sql" />
+    <Content Include="Sql\MXPOAddressExtension.sql" />
+    <Content Include="Sql\MXSOContactExtension.sql" />
+    <Content Include="Sql\MXPOContactExtension.sql" />
+    <Content Include="Sql\MXAPContactExtension.sql" />
     <Content Include="Sql\MXARAddressExtension.sql" />
     <Content Include="Sql\MXAddressExtension.sql" />
+    <Content Include="Sql\MXARContactExtension.sql" />
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
-    <Content Include="Sql\MXARContactExtension.sql" />
     <Content Include="Sql\MXContactExtension.sql" />
+    <Content Include="Sql\MXPaymentMethodExtension.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
