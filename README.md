@@ -1,11 +1,11 @@
 AcumaticaMX
 ===========
 
-v1.0 Homologación de campos contables para México Paquete de Acumatica para estandarización de datos en México
+v1.4 Homologación de campos contables para México Paquete de Acumatica para estandarización de datos en México
 
 | **Versión de Acumatica**  | +5.3 | **Autor** | Marco Villaseñor |
 |---------------------------|------|-----------|------------------|
-| **Versión del Documento** | 1.0  | **Fecha** | 15 de julio 2016 |
+| **Versión del Documento** | 1.4  | **Fecha** |  noviembre 2016  |
 
 Contenido
 ---------
