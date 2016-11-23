@@ -1,5 +1,8 @@
 using PX.Data;
 using PX.Objects.AR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AcumaticaMX
 {
@@ -162,6 +165,63 @@ namespace AcumaticaMX
             {
                 var ext = item.GetExtension<MXARRegisterExtension>();
                 StatusSet(sender, ext);
+            }
+        }
+    }
+
+    /// <summary>
+    /// This attribute is intended to update selected fields with concatenation of other fields<br/>
+    /// </summary>
+    public class CompositeFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    {
+        private string _TargetField;
+        private List<string> _SourceFields;
+
+        public CompositeFieldAttribute(Type TargetFieldType, params Type[] SourceFieldTypes)
+            : base()
+        {
+            _TargetField = TargetFieldType.Name;
+
+            if (SourceFieldTypes.Length > 0)
+            {
+                _SourceFields = new List<string>(SourceFieldTypes.Select(t => t.Name));
+            }
+            else
+            {
+                throw new PXArgumentException();
+            }
+        }
+
+        protected virtual void UpdateTargetField(PXCache sender, object row)
+        {
+            var value = string.Join(" ", _SourceFields.Select(
+                fieldName =>
+                sender.GetValue(row, fieldName)?.ToString())).Trim();
+
+            sender.SetValue(row, _TargetField, value);
+        }
+
+        public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
+        {
+            if (e.Row != null)
+            {
+                UpdateTargetField(sender, e.Row);
+            }
+        }
+
+        public virtual void RowUpdating(PXCache sender, PXRowUpdatingEventArgs e)
+        {
+            if (e.Row != null)
+            {
+                UpdateTargetField(sender, e.Row);
+            }
+        }
+
+        public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            if (e.Row != null)
+            {
+                UpdateTargetField(sender, e.Row);
             }
         }
     }

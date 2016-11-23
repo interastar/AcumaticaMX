@@ -70,7 +70,7 @@ namespace AcumaticaMX
 
         public abstract class originAccount : IBqlField { }
 
-        [PXDBString(20, IsFixed = true, IsUnicode = true)]
+        [PXDBString(20, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Cuenta de Pago", Enabled = false)]
         public virtual string OriginAccount { get; set; }
 
@@ -238,12 +238,31 @@ namespace AcumaticaMX
 
         #endregion CantidadEnLetra
 
+        #region QrCodeImg
+
+        public abstract class qrCodeImg : PX.Data.IBqlField
+        {
+        }
+
+        /// <summary>
+        /// Propiedad disponible para calcular y mostrar la imagen del código QR.
+        /// </summary>
+        /// <value>
+        /// Debe regresar un Data URL con el contenido de la imagen del código.
+        /// </value>
+        [PXString(IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Código QR")]
+        public virtual string QrCodeImg { get; set; }
+
+        #endregion QrCodeImg
+
         #region Estado
 
         public abstract class stampStatus : IBqlField { }
 
         [PXString(1, IsFixed = true)]
         [PXDefault(CfdiStatus.Clean)]
+        [PXUnboundDefault(CfdiStatus.Clean)]
         [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
         [CfdiStatus.List()]
         [SetCfdiStatus()]

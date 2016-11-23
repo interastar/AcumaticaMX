@@ -18,8 +18,8 @@ CREATE TABLE [dbo].[MXAPAddressExtension](
 
 	-- extension fields
 	[Street]		[nvarchar](50) NULL,
-	[ExtNumber]		[nvarchar](10) NULL,
-	[IntNumber]		[nvarchar](10) NULL,
+	[ExtNumber]		[nvarchar](50) NULL,
+	[IntNumber]		[nvarchar](50) NULL,
 	[Neighborhood]	[nvarchar](50) NULL,
 	[Municipality]	[nvarchar](50) NULL,
 	[Reference]		[nvarchar](100) NULL,

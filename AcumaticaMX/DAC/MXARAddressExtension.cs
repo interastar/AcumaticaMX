@@ -13,6 +13,7 @@ namespace AcumaticaMX
         }
 
         [PXDBString(50, IsUnicode = true)]
+        [CompositeField(typeof(ARAddress.addressLine1), typeof(street), typeof(extNumber))]
         [PXUIField(DisplayName = "Calle", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string Street { get; set; }
 
@@ -24,7 +25,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(10, IsUnicode = true)]
+        [PXDBString(50, IsUnicode = true)]
+        [CompositeField(typeof(ARAddress.addressLine1), typeof(street), typeof(extNumber))]
         [PXUIField(DisplayName = "Número Exterior", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string ExtNumber { get; set; }
 
@@ -36,7 +38,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(10, IsUnicode = true)]
+        [PXDBString(50, IsUnicode = true)]
+        [CompositeField(typeof(ARAddress.addressLine2), typeof(intNumber))]
         [PXUIField(DisplayName = "Número Interior", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string IntNumber { get; set; }
 
@@ -61,6 +64,7 @@ namespace AcumaticaMX
         }
 
         [PXDBString(50, IsUnicode = true)]
+        [CompositeField(typeof(ARAddress.addressLine3), typeof(municipality))]
         [PXUIField(DisplayName = "Municipio/Delegación", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string Municipality { get; set; }
 
