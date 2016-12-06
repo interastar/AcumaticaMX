@@ -3,8 +3,8 @@ using PX.Objects.SO;
 
 namespace AcumaticaMX
 {
-    [PXTable(typeof(SOAddress.addressID), IsOptional = true)]
-    public class MXSOAddressExtension : PXCacheExtension<PX.Objects.SO.SOAddress>
+    [PXTable(typeof(SOBillingAddress.addressID), IsOptional = true)]
+    public class MXSOAddressExtension : PXCacheExtension<PX.Objects.SO.SOBillingAddress>, IMXAddressExtension
     {
         #region Street
 

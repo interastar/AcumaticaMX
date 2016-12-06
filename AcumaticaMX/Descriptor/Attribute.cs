@@ -169,6 +169,87 @@ namespace AcumaticaMX
         }
     }
 
+    public interface IMXAddressExtension
+    {
+        string Street { get; set; }
+        string ExtNumber { get; set; }
+        string IntNumber { get; set; }
+        string Municipality { get; set; }
+        string Neighborhood { get; set; }
+        string Reference { get; set; }
+    }
+
+    public class MXAddressExtensionTools
+    {
+        private static bool Copy(IMXAddressExtension target, IMXAddressExtension source)
+        {
+            target.Street = source.Street;
+            target.ExtNumber = source.ExtNumber;
+            target.IntNumber = source.IntNumber;
+            target.Municipality = source.Municipality;
+            target.Neighborhood = source.Neighborhood;
+            target.Reference = source.Reference;
+
+            return (target.Street != null ||
+                target.ExtNumber != null ||
+                target.IntNumber != null ||
+                target.Municipality != null ||
+                target.Neighborhood != null ||
+                target.Reference != null
+                );
+        }
+
+        private static bool Copy(PXCache cache, object target, IMXAddressExtension source)
+        {
+            cache.SetValueExt(target, "Street", source.Street);
+            cache.SetValueExt(target, "ExtNumber", source.ExtNumber);
+            cache.SetValueExt(target, "IntNumber", source.IntNumber);
+            cache.SetValueExt(target, "Municipality", source.Municipality);
+            cache.SetValueExt(target, "Neighborhood", source.Neighborhood);
+            cache.SetValueExt(target, "Reference", source.Reference);
+
+            return (source.Street != null ||
+                source.ExtNumber != null ||
+                source.IntNumber != null ||
+                source.Municipality != null ||
+                source.Neighborhood != null ||
+                source.Reference != null
+                );
+        }
+
+        public static object CopyExtendedFields<TTargetAddress, TSourceAddress, TSourceAddressField, TTargetAddressExtension, TSourceAddressExtension>(PXCache sender, TTargetAddress address, int? baseAddressID)
+                where TTargetAddress : class, IBqlTable, new()
+                where TSourceAddress : class, IBqlTable, new()
+                where TSourceAddressField : IBqlField
+                where TTargetAddressExtension : PXCacheExtension, IMXAddressExtension, new()
+                where TSourceAddressExtension : PXCacheExtension, IMXAddressExtension, new()
+        {
+            var addressCache = sender.Graph.Caches[address.GetType()];
+
+            if (baseAddressID == null) return address;
+
+            var targetAddressExt = address.GetExtension<TTargetAddressExtension>();
+            if (targetAddressExt == null) return address;
+
+            TSourceAddress sourceAddress = PXSelect<TSourceAddress,
+                Where<TSourceAddressField, Equal<Required<TSourceAddressField>>>>.Select(sender.Graph, baseAddressID);
+
+            if (sourceAddress == null) return address;
+            var sourceAddressExt = sourceAddress.GetExtension<TSourceAddressExtension>();
+            if (sourceAddressExt == null) return address;
+
+            if (Copy(targetAddressExt, sourceAddressExt))
+            {
+                if (addressCache.GetStatus(address) == PXEntryStatus.Notchanged)
+                {
+                    addressCache.SetStatus(address, PXEntryStatus.Updated);
+                }
+            }
+
+            return address;
+        }
+    }
+
     /// <summary>
     /// This attribute is intended to update selected fields with concatenation of other fields<br/>
     /// </summary>

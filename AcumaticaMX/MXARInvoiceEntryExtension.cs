@@ -1,6 +1,7 @@
 ﻿using PX.Data;
 using PX.Objects;
 using PX.Objects.AR;
+using PX.Objects.SO;
 using System;
 
 namespace AcumaticaMX
@@ -9,57 +10,30 @@ namespace AcumaticaMX
     {
         #region Event Handlers
 
-        protected bool _UpdatingAddress = false;
-
         protected void ARInvoice_CustomerID_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
         {
-            if (InvokeBaseHandler != null)
-                InvokeBaseHandler(sender, e);
+            InvokeBaseHandler?.Invoke(sender, e);
+
+            var invoice = e.Row as ARInvoice;
+
+            //var address = new ARAddress();
+            //address.AddressID = invoice?.BillAddressID;
+            //address = this.Base.Billing_Address.Locate(address);
 
             var address = this.Base.Billing_Address.Current ?? this.Base.Billing_Address.Select();
-            CheckExtendedFields(sender, address);
+
+            //PXTrace.WriteInformation("ARInvoice_CustomerID_FieldUpdated. address.CustomerAddressID:" + address?.CustomerAddressID + " address.IsDefaultBillAddress:" + address?.IsDefaultBillAddress + " address.IsDefaultAddress:" + address?.IsDefaultAddress);
+
+            if (address != null)
+            {
+                MXAddressExtensionTools.CopyExtendedFields<ARAddress, PX.Objects.CR.Address, PX.Objects.CR.Address.addressID, MXARAddressExtension, MXAddressExtension>(sender, address, address.CustomerAddressID);
+            }
         }
 
-        protected void ARAddress_OverrideAddress_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        [System.Diagnostics.Conditional("DEBUG")]
+        public static void Log(string message)
         {
-            if (InvokeBaseHandler != null)
-                InvokeBaseHandler(sender, e);
-
-            var address = e.Row as ARAddress;
-            CheckExtendedFields(sender, address);
-        }
-
-        protected void CheckExtendedFields(PXCache sender, ARAddress address)
-        {
-            if (_UpdatingAddress) return;
-            _UpdatingAddress = true;
-
-            try
-            {
-                // Si el id de dirección es default, parece que no se copian bien los campos extendidos.
-                // así que lo hacemos manualmente
-                //if (this.Base.customer.Current.DefAddressID == this.Base.customer.Current.DefBillAddressID)
-                if (address == null || address?.CustomerAddressID == null) return;
-
-                var addressExtension = address.GetExtension<MXARAddressExtension>();
-                if (addressExtension == null || (
-                    addressExtension?.Street == null &&
-                    addressExtension?.ExtNumber == null &&
-                    addressExtension?.IntNumber == null &&
-                    addressExtension?.Neighborhood == null &&
-                    addressExtension?.Municipality == null &&
-                    addressExtension?.Reference == null
-                    )) MXAddressExtension.CopyExtendedFields(sender, address, address.CustomerAddressID);
-            }
-            catch (PXFieldValueProcessingException ex)
-            {
-                ex.ErrorValue = address?.CustomerAddressID;
-                throw;
-            }
-            finally
-            {
-                _UpdatingAddress = false;
-            }
+            PXTrace.WriteInformation(message);
         }
 
         protected void ARInvoice_RowSelected(PXCache sender, PXRowSelectedEventArgs e, PXRowSelected InvokeBaseHandler)

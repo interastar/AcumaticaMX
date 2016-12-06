@@ -4,7 +4,7 @@ using PX.Objects.AP;
 namespace AcumaticaMX
 {
     [PXTable(typeof(APAddress.addressID), IsOptional = true)]
-    public class MXAPAddressExtension : PXCacheExtension<PX.Objects.AP.APAddress>
+    public class MXAPAddressExtension : PXCacheExtension<PX.Objects.AP.APAddress>, IMXAddressExtension
     {
         #region Street
 

@@ -4,7 +4,7 @@ using PX.Objects.AR;
 namespace AcumaticaMX
 {
     [PXTable(typeof(ARAddress.addressID), IsOptional = true)]
-    public class MXARAddressExtension : PXCacheExtension<PX.Objects.AR.ARAddress>
+    public class MXARAddressExtension : PXCacheExtension<PX.Objects.AR.ARAddress>, IMXAddressExtension
     {
         #region Street
 

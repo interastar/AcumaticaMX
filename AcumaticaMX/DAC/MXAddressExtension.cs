@@ -4,68 +4,16 @@ using PX.Objects.CR;
 namespace AcumaticaMX
 {
     [PXTable(typeof(Address.addressID), IsOptional = true)]
-    public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address>
+    public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address>, IMXAddressExtension
     {
-        public static object CopyExtendedFields(PXCache sender, object address, int? baseAddressID)
-        {
-            var addressCache = sender.Graph.Caches[address.GetType()];
+        // Todo Cambiar campos por virtuales (calculados)
+        // Extender tamaño de AddressLine
+        // Crear atributo que expanda AddressLine1,2 y 3 en estos campos y que
+        // los combine en ellos de nuevo:
 
-            if (baseAddressID == null) return address;
-
-            Address defaultAddress = PXSelect<Address,
-                Where<Address.addressID, Equal<Required<Address.addressID>>>>.Select(sender.Graph, baseAddressID);
-
-            if (defaultAddress == null) return address;
-            var defaultAddressExt = defaultAddress.GetExtension<MXAddressExtension>();
-            if (defaultAddressExt == null) return address;
-
-            var updated = false;
-
-            if (!string.IsNullOrEmpty(defaultAddressExt.Street))
-            {
-                addressCache.SetValueExt(address, "Street", defaultAddressExt.Street);
-                updated = true;
-            }
-
-            if (!string.IsNullOrEmpty(defaultAddressExt.ExtNumber))
-            {
-                addressCache.SetValueExt(address, "ExtNumber", defaultAddressExt.ExtNumber);
-                updated = true;
-            }
-
-            if (!string.IsNullOrEmpty(defaultAddressExt.IntNumber))
-            {
-                addressCache.SetValueExt(address, "IntNumber", defaultAddressExt.IntNumber);
-                updated = true;
-            }
-
-            if (!string.IsNullOrEmpty(defaultAddressExt.Municipality))
-            {
-                addressCache.SetValueExt(address, "Municipality", defaultAddressExt.Municipality);
-                updated = true;
-            }
-
-            if (!string.IsNullOrEmpty(defaultAddressExt.Neighborhood))
-            {
-                addressCache.SetValueExt(address, "Neighborhood", defaultAddressExt.Neighborhood);
-                updated = true;
-            }
-
-            if (!string.IsNullOrEmpty(defaultAddressExt.Reference))
-            {
-                addressCache.SetValueExt(address, "Reference", defaultAddressExt.Reference);
-                updated = true;
-            }
-
-            if (updated)
-            {
-                addressCache.Update(address);
-                addressCache.SetStatus(address, PXEntryStatus.Updated);
-                addressCache.IsDirty = true;
-            }
-
-            return address;
-        }
+        // AddressLine1 = Street + ExtNumber + IntNumber
+        // AddressLine2 = Neighborhood + Municipality
+        // AddressLine3 = Reference
 
         #region Street
 
