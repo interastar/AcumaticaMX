@@ -71,8 +71,6 @@
     <Compile Include="DAC\MXAPContactExtension.cs" />
     <Compile Include="DAC\MXContactExtension.cs" />
     <Compile Include="MXARInvoiceEntryExtension.cs" />
-    <Compile Include="MXSOInvoiceEntryExtension.cs" />
-    <Compile Include="MXSOOrderEntryExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MXCustomerMaintExtension.cs" />
     <Compile Include="DAC\MXARContactExtension.cs" />

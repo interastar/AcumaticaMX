@@ -10,26 +10,6 @@ namespace AcumaticaMX
     {
         #region Event Handlers
 
-        protected void ARInvoice_CustomerID_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
-        {
-            InvokeBaseHandler?.Invoke(sender, e);
-
-            var invoice = e.Row as ARInvoice;
-
-            //var address = new ARAddress();
-            //address.AddressID = invoice?.BillAddressID;
-            //address = this.Base.Billing_Address.Locate(address);
-
-            var address = this.Base.Billing_Address.Current ?? this.Base.Billing_Address.Select();
-
-            //PXTrace.WriteInformation("ARInvoice_CustomerID_FieldUpdated. address.CustomerAddressID:" + address?.CustomerAddressID + " address.IsDefaultBillAddress:" + address?.IsDefaultBillAddress + " address.IsDefaultAddress:" + address?.IsDefaultAddress);
-
-            if (address != null)
-            {
-                MXAddressExtensionTools.CopyExtendedFields<ARAddress, PX.Objects.CR.Address, PX.Objects.CR.Address.addressID, MXARAddressExtension, MXAddressExtension>(sender, address, address.CustomerAddressID);
-            }
-        }
-
         [System.Diagnostics.Conditional("DEBUG")]
         public static void Log(string message)
         {
@@ -45,7 +25,7 @@ namespace AcumaticaMX
 
             PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.stampStatus>(sender, document, false);
 
-            this.Base.Billing_Address.Cache.AllowUpdate = !(document.Printed == true || document.Emailed == true || documentExt.StampStatus != CfdiStatus.Clean);
+            this.Base.Billing_Address.Cache.AllowUpdate = (documentExt.StampStatus == CfdiStatus.Clean);
         }
 
         #endregion Event Handlers

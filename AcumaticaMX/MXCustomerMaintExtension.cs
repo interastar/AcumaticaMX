@@ -6,6 +6,7 @@ namespace AcumaticaMX
 {
     using PX.Objects.AR;
     using PX.Objects.CR;
+    using System.Text.RegularExpressions;
 
     public class MXCustomerMaintExtension : PXGraphExtension<CustomerMaint>
     {
@@ -20,6 +21,32 @@ namespace AcumaticaMX
             if (customer == null) return;
 
             UpdateContactFields(customer);
+        }
+
+        protected virtual void Customer_TaxRegistrationID_FieldVerifying(PXCache sender, PXFieldVerifyingEventArgs e, PXFieldVerifying InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            Customer customer = e.Row as Customer;
+            if (customer == null) return;
+
+            var value = e.NewValue as string;
+
+            if (this.Base.BillAddress.Current?.CountryID == "MX")
+            {
+                Regex regex = new Regex(@"[A-Z,Ñ,&amp;]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?");
+                Match match = regex.Match(value);
+                if (match.Length < 12 || match.Length > 13 || !match.Success)
+                {
+                    e.Cancel = true;
+                    sender.RaiseExceptionHandling<Customer.taxRegistrationID>(
+                        e.Row, e.NewValue, new PXSetPropertyException(Messages.TaxRegistrationIDInvalid, PXErrorLevel.RowError));
+                }
+
+                if (!string.IsNullOrEmpty(value) && value != value.ToUpper())
+                    e.NewValue = value.ToUpper();
+            }
         }
 
         protected virtual void Customer_IsBillContSameAsMain_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)

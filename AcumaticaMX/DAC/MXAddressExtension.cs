@@ -1,9 +1,9 @@
 using PX.Data;
 using PX.Objects.CR;
+using PX.Objects.CR.MassProcess;
 
 namespace AcumaticaMX
 {
-    [PXTable(typeof(Address.addressID), IsOptional = true)]
     public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address>, IMXAddressExtension
     {
         // Todo Cambiar campos por virtuales (calculados)
@@ -21,8 +21,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [CompositeField(typeof(Address.addressLine1), typeof(street), typeof(extNumber))]
+        [PXString(50, IsUnicode = true)]
+        [AddressPart(typeof(Address.addressLine1), 1, typeof(street), typeof(extNumber), typeof(intNumber))]
         [PXUIField(DisplayName = "Calle", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string Street { get; set; }
 
@@ -34,8 +34,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [CompositeField(typeof(Address.addressLine1), typeof(street), typeof(extNumber))]
+        [PXString(50, IsUnicode = true)]
+        [AddressPart(typeof(Address.addressLine1), 2, typeof(street), typeof(extNumber), typeof(intNumber))]
         [PXUIField(DisplayName = "Número Exterior", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string ExtNumber { get; set; }
 
@@ -47,8 +47,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [CompositeField(typeof(Address.addressLine2), typeof(intNumber))]
+        [PXString(50, IsUnicode = true)]
+        [AddressPart(typeof(Address.addressLine1), 3, typeof(street), typeof(extNumber), typeof(intNumber))]
         [PXUIField(DisplayName = "Número Interior", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string IntNumber { get; set; }
 
@@ -60,7 +60,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
+        [PXString(50, IsUnicode = true)]
+        [AddressPart(typeof(Address.addressLine2), 1, typeof(neighborhood), typeof(municipality), Separator = ",")]
         [PXUIField(DisplayName = "Colonia", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string Neighborhood { get; set; }
 
@@ -72,8 +73,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [CompositeField(typeof(Address.addressLine3), typeof(municipality))]
+        [PXString(50, IsUnicode = true)]
+        [AddressPart(typeof(Address.addressLine2), 2, typeof(neighborhood), typeof(municipality), Separator = ",")]
         [PXUIField(DisplayName = "Municipio/Delegación", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string Municipality { get; set; }
 
@@ -85,7 +86,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(100, IsUnicode = true)]
+        [PXString(100, IsUnicode = true)]
+        [AddressPart(typeof(Address.addressLine3), 1, typeof(reference))]
         [PXUIField(DisplayName = "Referencia", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string Reference { get; set; }
 

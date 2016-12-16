@@ -20,5 +20,8 @@
 
         //*** SYFEPaymentMethodExtension
         public const string PaymentMethod = "Clave Método de Pago en SAT";
+
+        //*** BAccount
+        public const string TaxRegistrationIDInvalid = "La clave del RFC (México) debe tener entre 12 y 13 caracteres y seguir la forma XXXXaammddHHH con números y mayúsculas.";
     }
 }

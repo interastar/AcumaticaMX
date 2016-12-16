@@ -251,17 +251,37 @@ namespace AcumaticaMX
     }
 
     /// <summary>
-    /// This attribute is intended to update selected fields with concatenation of other fields<br/>
+    /// Este atributo permite marcar campos para que actualicen el valor de otro principal.
     /// </summary>
-    public class CompositeFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    public class AddressPartAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXFieldSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
     {
+        // Separador de campos es un "espacio sin corte" en Unicode
+        // Básicamente un espacio
+        private static string DefaultSeparator = "\u00A0";
+
         private string _TargetField;
         private List<string> _SourceFields;
 
-        public CompositeFieldAttribute(Type TargetFieldType, params Type[] SourceFieldTypes)
+        private int _Position;
+
+        private string _Separator = DefaultSeparator;
+
+        public string Separator { get { return _Separator; } set { _Separator = value + DefaultSeparator; } }
+
+        public AddressPartAttribute(Type TargetFieldType, int FieldPosition, params Type[] SourceFieldTypes)
             : base()
         {
             _TargetField = TargetFieldType.Name;
+            _Position = FieldPosition;
+
+            if (FieldPosition > 0)
+            {
+                _Position = FieldPosition;
+            }
+            else
+            {
+                throw new PXArgumentException();
+            }
 
             if (SourceFieldTypes.Length > 0)
             {
@@ -275,7 +295,7 @@ namespace AcumaticaMX
 
         protected virtual void UpdateTargetField(PXCache sender, object row)
         {
-            var value = string.Join(" ", _SourceFields.Select(
+            var value = string.Join(Separator, _SourceFields.Select(
                 fieldName =>
                 sender.GetValue(row, fieldName)?.ToString())).Trim();
 
@@ -298,12 +318,77 @@ namespace AcumaticaMX
             }
         }
 
+        public void FieldSelecting(PXCache sender, PXFieldSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, _TargetField);
+            if (value != null)
+            {
+                var stringValue = (string)value;
+                if (string.IsNullOrEmpty(stringValue)) return;
+
+                // Buscamos que exista la parte en el bloque dividido por el separador (1 es inicio de cadena)
+                var position = FindNPosition(stringValue, Separator, _Position);
+
+                // Si es positivo encontramos un valor
+                if (position > -1)
+                {
+                    // asignamos el valor de donde se encontró el primer bloque hasta el segundo separador
+                    e.ReturnValue = CutToSeparator(stringValue.Substring(position), Separator);
+                    e.Cancel = true;
+                }
+            }
+        }
+
         public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
         {
             if (e.Row != null)
             {
                 UpdateTargetField(sender, e.Row);
             }
+        }
+
+        private static string CutToSeparator(string searched, string separator)
+        {
+            int startIndex = -1;
+
+            startIndex = searched.IndexOf(separator);
+
+            if (startIndex < 0)
+                return searched;
+
+            return searched.Substring(0, startIndex).Trim();
+        }
+
+        private static int FindNPosition(string searched, string separator, int position)
+        {
+            int startIndex = 0;
+            int hitCount = 1;
+
+            if (position < 1) return 0;
+
+            // Search for n occurrences of the target.
+            while (hitCount < position)
+            {
+                startIndex = searched.IndexOf(
+                    separator, startIndex);
+
+                // Exit the loop if the target is not found.
+                if (startIndex < 0)
+                {
+                    return position == 1 ? 0 : -1;
+                }
+
+                startIndex += separator.Length;
+
+                if (startIndex >= searched.Length)
+                    return -1;
+
+                hitCount++;
+            }
+
+            return startIndex;
         }
     }
 }
