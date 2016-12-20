@@ -4,7 +4,7 @@ using PX.Objects.CR.MassProcess;
 
 namespace AcumaticaMX
 {
-    public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address>, IMXAddressExtension
+    public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address> //, IMXAddressExtension
     {
         // Todo Cambiar campos por virtuales (calculados)
         // Extender tamaño de AddressLine
