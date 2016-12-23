@@ -253,7 +253,7 @@ namespace AcumaticaMX
     /// <summary>
     /// Este atributo permite marcar campos para que actualicen el valor de otro principal.
     /// </summary>
-    public class AddressPartAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXFieldSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    public class MultipartFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXFieldSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
     {
         // Separador de campos es un "espacio sin corte" en Unicode
         // Básicamente un espacio
@@ -268,7 +268,7 @@ namespace AcumaticaMX
 
         public string Separator { get { return _Separator; } set { _Separator = value + DefaultSeparator; } }
 
-        public AddressPartAttribute(Type TargetFieldType, int FieldPosition, params Type[] SourceFieldTypes)
+        public MultipartFieldAttribute(Type TargetFieldType, int FieldPosition, params Type[] SourceFieldTypes)
             : base()
         {
             _TargetField = TargetFieldType.Name;
