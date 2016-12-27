@@ -5,6 +5,31 @@ namespace AcumaticaMX
 {
     public class MXPOAddressExtension : PXCacheExtension<PX.Objects.PO.POAddress>, IMXAddressExtension
     {
+
+        #region AddressLine1
+
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDBString(250, IsUnicode = true)]
+        public string AddressLine1 { get; set; }
+
+        #endregion AddressLine1
+
+        #region AddressLine2
+
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDBString(250, IsUnicode = true)]
+        public string AddressLine2 { get; set; }
+
+        #endregion AddressLine2
+
+        #region AddressLine3
+
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDBString(250, IsUnicode = true)]
+        public string AddressLine3 { get; set; }
+
+        #endregion AddressLine3
+
         #region Street
 
         public abstract class street : IBqlField

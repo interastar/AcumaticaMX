@@ -6,6 +6,15 @@ namespace AcumaticaMX
     [PXTable(typeof(BAccount.bAccountID), IsOptional = true)]
     public class MXBAccountExtension : PXCacheExtension<PX.Objects.CR.BAccount>
     {
+        #region RFC
+
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDBString(13, IsUnicode = true)]
+        [PXUIField(DisplayName = "RFC")]
+        public string TaxRegistrationID { get; set; }
+
+        #endregion RFC
+
         #region Regimen
 
         public abstract class regimen : IBqlField
