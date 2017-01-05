@@ -298,8 +298,11 @@ namespace AcumaticaMX
             var value = string.Join(Separator, _SourceFields.Select(
                 fieldName =>
                 sender.GetValue(row, fieldName)?.ToString())).Trim();
-
-            sender.SetValue(row, _TargetField, value);
+            if (!( (value.Trim().Length < 2 || value.Trim() == Separator)  || string.IsNullOrEmpty(value.Trim())))
+            {
+                sender.SetValue(row, _TargetField, value);
+            }
+            
         }
 
         public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
