@@ -169,18 +169,119 @@ namespace AcumaticaMX
         }
     }
 
-    /// <summary>
-    /// This attribute is intended to update selected fields with concatenation of other fields<br/>
-    /// </summary>
-    public class CompositeFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    public interface IMXAddressExtension
     {
+        string Street { get; set; }
+        string ExtNumber { get; set; }
+        string IntNumber { get; set; }
+        string Municipality { get; set; }
+        string Neighborhood { get; set; }
+        string Reference { get; set; }
+    }
+
+    public class MXAddressExtensionTools
+    {
+        private static bool Copy(IMXAddressExtension target, IMXAddressExtension source)
+        {
+            target.Street = source.Street;
+            target.ExtNumber = source.ExtNumber;
+            target.IntNumber = source.IntNumber;
+            target.Municipality = source.Municipality;
+            target.Neighborhood = source.Neighborhood;
+            target.Reference = source.Reference;
+
+            return (target.Street != null ||
+                target.ExtNumber != null ||
+                target.IntNumber != null ||
+                target.Municipality != null ||
+                target.Neighborhood != null ||
+                target.Reference != null
+                );
+        }
+
+        private static bool Copy(PXCache cache, object target, IMXAddressExtension source)
+        {
+            cache.SetValueExt(target, "Street", source.Street);
+            cache.SetValueExt(target, "ExtNumber", source.ExtNumber);
+            cache.SetValueExt(target, "IntNumber", source.IntNumber);
+            cache.SetValueExt(target, "Municipality", source.Municipality);
+            cache.SetValueExt(target, "Neighborhood", source.Neighborhood);
+            cache.SetValueExt(target, "Reference", source.Reference);
+
+            return (source.Street != null ||
+                source.ExtNumber != null ||
+                source.IntNumber != null ||
+                source.Municipality != null ||
+                source.Neighborhood != null ||
+                source.Reference != null
+                );
+        }
+
+        public static object CopyExtendedFields<TTargetAddress, TSourceAddress, TSourceAddressField, TTargetAddressExtension, TSourceAddressExtension>(PXCache sender, TTargetAddress address, int? baseAddressID)
+                where TTargetAddress : class, IBqlTable, new()
+                where TSourceAddress : class, IBqlTable, new()
+                where TSourceAddressField : IBqlField
+                where TTargetAddressExtension : PXCacheExtension, IMXAddressExtension, new()
+                where TSourceAddressExtension : PXCacheExtension, IMXAddressExtension, new()
+        {
+            var addressCache = sender.Graph.Caches[address.GetType()];
+
+            if (baseAddressID == null) return address;
+
+            var targetAddressExt = address.GetExtension<TTargetAddressExtension>();
+            if (targetAddressExt == null) return address;
+
+            TSourceAddress sourceAddress = PXSelect<TSourceAddress,
+                Where<TSourceAddressField, Equal<Required<TSourceAddressField>>>>.Select(sender.Graph, baseAddressID);
+
+            if (sourceAddress == null) return address;
+            var sourceAddressExt = sourceAddress.GetExtension<TSourceAddressExtension>();
+            if (sourceAddressExt == null) return address;
+
+            if (Copy(targetAddressExt, sourceAddressExt))
+            {
+                if (addressCache.GetStatus(address) == PXEntryStatus.Notchanged)
+                {
+                    addressCache.SetStatus(address, PXEntryStatus.Updated);
+                }
+            }
+
+            return address;
+        }
+    }
+
+    /// <summary>
+    /// Este atributo permite marcar campos para que actualicen el valor de otro principal.
+    /// </summary>
+    public class MultipartFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXFieldSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    {
+        // Separador de campos es un "espacio sin corte" en Unicode
+        // Básicamente un espacio
+        private static string DefaultSeparator = "\u00A0";
+
         private string _TargetField;
         private List<string> _SourceFields;
 
-        public CompositeFieldAttribute(Type TargetFieldType, params Type[] SourceFieldTypes)
+        private int _Position;
+
+        private string _Separator = DefaultSeparator;
+
+        public string Separator { get { return _Separator; } set { _Separator = value + DefaultSeparator; } }
+
+        public MultipartFieldAttribute(Type TargetFieldType, int FieldPosition, params Type[] SourceFieldTypes)
             : base()
         {
             _TargetField = TargetFieldType.Name;
+            _Position = FieldPosition;
+
+            if (FieldPosition > 0)
+            {
+                _Position = FieldPosition;
+            }
+            else
+            {
+                throw new PXArgumentException();
+            }
 
             if (SourceFieldTypes.Length > 0)
             {
@@ -194,11 +295,14 @@ namespace AcumaticaMX
 
         protected virtual void UpdateTargetField(PXCache sender, object row)
         {
-            var value = string.Join(" ", _SourceFields.Select(
+            var value = string.Join(Separator, _SourceFields.Select(
                 fieldName =>
                 sender.GetValue(row, fieldName)?.ToString())).Trim();
-
-            sender.SetValue(row, _TargetField, value);
+            if (!( (value.Trim().Length < 2 || value.Trim() == Separator)  || string.IsNullOrEmpty(value.Trim())))
+            {
+                sender.SetValue(row, _TargetField, value);
+            }
+            
         }
 
         public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
@@ -217,12 +321,77 @@ namespace AcumaticaMX
             }
         }
 
+        public void FieldSelecting(PXCache sender, PXFieldSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, _TargetField);
+            if (value != null)
+            {
+                var stringValue = (string)value;
+                if (string.IsNullOrEmpty(stringValue)) return;
+
+                // Buscamos que exista la parte en el bloque dividido por el separador (1 es inicio de cadena)
+                var position = FindNPosition(stringValue, Separator, _Position);
+
+                // Si es positivo encontramos un valor
+                if (position > -1)
+                {
+                    // asignamos el valor de donde se encontró el primer bloque hasta el segundo separador
+                    e.ReturnValue = CutToSeparator(stringValue.Substring(position), Separator);
+                    e.Cancel = true;
+                }
+            }
+        }
+
         public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
         {
             if (e.Row != null)
             {
                 UpdateTargetField(sender, e.Row);
             }
+        }
+
+        private static string CutToSeparator(string searched, string separator)
+        {
+            int startIndex = -1;
+
+            startIndex = searched.IndexOf(separator);
+
+            if (startIndex < 0)
+                return searched;
+
+            return searched.Substring(0, startIndex).Trim();
+        }
+
+        private static int FindNPosition(string searched, string separator, int position)
+        {
+            int startIndex = 0;
+            int hitCount = 1;
+
+            if (position < 1) return 0;
+
+            // Search for n occurrences of the target.
+            while (hitCount < position)
+            {
+                startIndex = searched.IndexOf(
+                    separator, startIndex);
+
+                // Exit the loop if the target is not found.
+                if (startIndex < 0)
+                {
+                    return position == 1 ? 0 : -1;
+                }
+
+                startIndex += separator.Length;
+
+                if (startIndex >= searched.Length)
+                    return -1;
+
+                hitCount++;
+            }
+
+            return startIndex;
         }
     }
 }
