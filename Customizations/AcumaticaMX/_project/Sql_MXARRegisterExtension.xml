@@ -1,0 +1,28 @@
+﻿<Sql TableName="MXARRegisterExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXARRegisterExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="DocType" type="Char(3)" />
+  <col name="RefNbr" type="Char(15)" />
+  <col name="Series" type="NVarChar(25)" nullable="true" />
+  <col name="PaymentForm" type="NVarChar(50)" nullable="true" />
+  <col name="PaymentMethod" type="NVarChar(50)" nullable="true" />
+  <col name="OriginAccount" type="NVarChar(20)" nullable="true" />
+  <col name="PaymentTerms" type="NVarChar(100)" nullable="true" />
+  <col name="CertificateNum" type="Char(20)" nullable="true" />
+  <col name="Certificate" type="NVarChar(2500)" nullable="true" />
+  <col name="SealDate" type="SmallDateTime" nullable="true" />
+  <col name="Seal" type="NVarChar(500)" nullable="true" />
+  <col name="Uuid" type="UniqueIdentifier" nullable="true" />
+  <col name="SatCertificateNum" type="Char(20)" nullable="true" />
+  <col name="StampDate" type="SmallDateTime" nullable="true" />
+  <col name="Stamp" type="NVarChar(500)" nullable="true" />
+  <col name="QrCode" type="NVarChar(95)" nullable="true" />
+  <col name="StampString" type="NVarChar(1000)" nullable="true" />
+  <col name="CancelDate" type="SmallDateTime" nullable="true" />
+  <index name="MXARRegisterExtension_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="DocType" />
+    <col name="RefNbr" />
+  </index>
+</table>]]></CDATA>
+</Sql>

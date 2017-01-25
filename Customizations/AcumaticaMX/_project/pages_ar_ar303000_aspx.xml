@@ -1,0 +1,270 @@
+﻿<Page path="~/pages/ar/ar303000.aspx" ControlId="37" pageSource="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">
+    <PXFormView ID="DefContact" ParentId="phG_tab_Items#0_DefContact" TypeFullName="PX.Web.UI.PXFormView">
+        <Children Key="Template">
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstPXLayoutRule6" />
+                    <Prop Key="Merge" Value="True" />
+                    <Prop Key="ControlSize" Value="XS" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edFirstName" />
+                    <Prop Key="DataField" Value="FirstName" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edMidName" />
+                    <Prop Key="DataField" Value="MidName" />
+                    <Prop Key="LabelWidth" Value="94" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstLayoutRule5" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edFirstLastName" />
+                    <Prop Key="DataField" Value="FirstLastName" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edSecondLastName" />
+                    <Prop Key="DataField" Value="SecondLastName" />
+                </PXTextEdit>
+            </AddItem>
+            <PXMailEdit DataField="EMail" OriginalIndex="3" />
+        </Children>
+    </PXFormView>
+    <PXFormView ID="DefAddress" ParentId="phG_tab_Items#0_DefAddress" TypeFullName="PX.Web.UI.PXFormView">
+        <Children Key="Template">
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edStreet" />
+                    <Prop Key="DataField" Value="Street" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstPXLayoutRule13" />
+                    <Prop Key="Merge" Value="True" />
+                    <Prop Key="ControlSize" Value="XS" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edExtNumber" />
+                    <Prop Key="DataField" Value="ExtNumber" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edIntNumber" />
+                    <Prop Key="DataField" Value="IntNumber" />
+                    <Prop Key="LabelWidth" Value="94" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstLayoutRule12" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edNeighborhood" />
+                    <Prop Key="DataField" Value="Neighborhood" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edMunicipality" />
+                    <Prop Key="DataField" Value="Municipality" />
+                </PXTextEdit>
+            </AddItem>
+            <PXTextEdit DataField="City" OriginalIndex="4" />
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edReference" />
+                    <Prop Key="DataField" Value="Reference" />
+                </PXTextEdit>
+            </AddItem>
+            <PXTextEdit DataField="AddressLine1" OriginalIndex="2" Remove="True" />
+            <PXTextEdit DataField="AddressLine2" OriginalIndex="3" Remove="True" />
+        </Children>
+    </PXFormView>
+    <PXTabItem Text="General Info" ParentId="phG_tab_Items#0" TypeFullName="PX.Web.UI.PXTabItem">
+        <Children Key="Template">
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstPXLayoutRule14" />
+                    <Prop Key="StartGroup" Value="True" />
+                    <Prop Key="GroupCaption" Value="Facturacion" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edTaxRegistrationID" />
+                    <Prop Key="DataField" Value="TaxRegistrationID" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXCheckBox TypeFullName="PX.Web.UI.PXCheckBox">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edIsNaturalPerson" />
+                    <Prop Key="DataField" Value="IsNaturalPerson" />
+                    <Prop Key="CommitChanges" Value="True" />
+                </PXCheckBox>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edPersonalID" />
+                    <Prop Key="DataField" Value="DefContact.PersonalID" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstLayoutRule33" />
+                </PXLayoutRule>
+            </AddItem>
+            <PXLayoutRule OriginalIndex="5" />
+        </Children>
+    </PXTabItem>
+    <PXFormView ID="BillContact" ParentId="phG_tab_Items#1_BillContact" TypeFullName="PX.Web.UI.PXFormView">
+        <Children Key="Template">
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstPXLayoutRule23" />
+                    <Prop Key="Merge" Value="True" />
+                    <Prop Key="ControlSize" Value="XS" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edFirstName" />
+                    <Prop Key="DataField" Value="FirstName" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edMidName" />
+                    <Prop Key="DataField" Value="MidName" />
+                    <Prop Key="LabelWidth" Value="94" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstLayoutRule22" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edFirstLastName" />
+                    <Prop Key="DataField" Value="FirstLastName" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edSecondLastName" />
+                    <Prop Key="DataField" Value="SecondLastName" />
+                </PXTextEdit>
+            </AddItem>
+            <PXMaskEdit DataField="Phone1" OriginalIndex="3" />
+        </Children>
+    </PXFormView>
+    <PXFormView ID="BillAddress" ParentId="phG_tab_Items#1_BillAddress" TypeFullName="PX.Web.UI.PXFormView">
+        <Children Key="Template">
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edStreet" />
+                    <Prop Key="DataField" Value="Street" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstPXLayoutRule30" />
+                    <Prop Key="Merge" Value="True" />
+                    <Prop Key="ControlSize" Value="XS" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edExtNumber" />
+                    <Prop Key="DataField" Value="ExtNumber" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edIntNumber" />
+                    <Prop Key="DataField" Value="IntNumber" />
+                    <Prop Key="LabelWidth" Value="94" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXLayoutRule TypeFullName="PX.Web.UI.PXLayoutRule">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstLayoutRule29" />
+                </PXLayoutRule>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edNeighborhood" />
+                    <Prop Key="DataField" Value="Neighborhood" />
+                </PXTextEdit>
+            </AddItem>
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="edMunicipality" />
+                    <Prop Key="DataField" Value="Municipality" />
+                </PXTextEdit>
+            </AddItem>
+            <PXTextEdit DataField="City" OriginalIndex="4" />
+            <AddItem>
+                <PXTextEdit TypeFullName="PX.Web.UI.PXTextEdit">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="CstPXTextEdit35" />
+                    <Prop Key="DataField" Value="Reference" />
+                </PXTextEdit>
+            </AddItem>
+            <PXTextEdit DataField="AddressLine1" OriginalIndex="2" Remove="True" />
+            <PXTextEdit DataField="AddressLine2" OriginalIndex="3" Remove="True" />
+        </Children>
+    </PXFormView>
+    <PXTabItem Text="Billing Settings" ParentId="phG_tab_Items#1" TypeFullName="PX.Web.UI.PXTabItem">
+        <Children Key="Template" />
+    </PXTabItem>
+</Page>
