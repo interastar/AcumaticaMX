@@ -39,6 +39,22 @@ namespace AcumaticaMX
 
         #endregion AddressLine3
 
+        #region Mandatory fields
+
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        public string City { get; set; }
+
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        public string CountryID { get; set; }
+
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        public string State { get; set; }
+
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        public string PostalCode { get; set; }
+
+        #endregion Mandatory fields
+
         #region Street
 
         public abstract class street : IBqlField
@@ -47,7 +63,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine1), 1, typeof(street), typeof(extNumber), typeof(intNumber))]
-        [PXUIField(DisplayName = "Calle", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Calle", Required = true)]
         public virtual string Street { get; set; }
 
         #endregion Street
@@ -60,7 +76,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine1), 2, typeof(street), typeof(extNumber), typeof(intNumber))]
-        [PXUIField(DisplayName = "Número Exterior", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Número Exterior", Required = true)]
         public virtual string ExtNumber { get; set; }
 
         #endregion ExtNumber
@@ -73,7 +89,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine1), 3, typeof(street), typeof(extNumber), typeof(intNumber))]
-        [PXUIField(DisplayName = "Número Interior", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Número Interior")]
         public virtual string IntNumber { get; set; }
 
         #endregion IntNumber
@@ -86,7 +102,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine2), 1, typeof(neighborhood), typeof(municipality), Separator = ",")]
-        [PXUIField(DisplayName = "Colonia", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Colonia", Required = true)]
         public virtual string Neighborhood { get; set; }
 
         #endregion Neighborhood
@@ -99,7 +115,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine2), 2, typeof(neighborhood), typeof(municipality), Separator = ",")]
-        [PXUIField(DisplayName = "Municipio/Delegación", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = Messages.Municipality, Required = true)]
         public virtual string Municipality { get; set; }
 
         #endregion Municipality
@@ -112,7 +128,7 @@ namespace AcumaticaMX
 
         [PXString(100, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine3), 1, typeof(reference))]
-        [PXUIField(DisplayName = "Referencia", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Referencia")]
         public virtual string Reference { get; set; }
 
         #endregion Reference

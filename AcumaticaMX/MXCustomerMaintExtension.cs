@@ -23,6 +23,8 @@ namespace AcumaticaMX
             UpdateContactFields(customer);
         }
 
+        //Todo: Agregar Customer_RowPersisting para validar campos obligatorios
+
         protected virtual void Customer_TaxRegistrationID_FieldVerifying(PXCache sender, PXFieldVerifyingEventArgs e, PXFieldVerifying InvokeBaseHandler)
         {
             if (InvokeBaseHandler != null)
@@ -71,15 +73,59 @@ namespace AcumaticaMX
             UpdateContactFields(customer);
         }
 
+        protected virtual void Contact_FirstName_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            UpdateContactFields(sender, e.Row as Contact);
+        }
+
+        protected virtual void Contact_MidName_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            UpdateContactFields(sender, e.Row as Contact);
+        }
+
+        protected virtual void Contact_LastName_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            UpdateContactFields(sender, e.Row as Contact);
+        }
+
+        protected virtual void UpdateContactFields(PXCache contactCache, Contact contact)
+        {
+            if (contact == null) return;
+
+            var customer = Base.CurrentCustomer.Current;
+            if (customer == null) return;
+            MXBAccountExtension customerExt = customer.GetExtension<MXBAccountExtension>();
+
+            if (customerExt?.IsNaturalPerson == true)
+            {
+                var fullName = contact.FirstName + " " + contact.MidName + " " + contact.LastName;
+                contactCache.SetValueExt<Contact.fullName>(contact, fullName);
+            }
+        }
+
         protected virtual void UpdateContactFields(Customer customer)
         {
             MXBAccountExtension customerExt = customer.GetExtension<MXBAccountExtension>();
 
-            bool same = (customer?.IsBillContSameAsMain ?? true);
-            bool enabled = ((customerExt != null) ? customerExt?.IsNaturalPerson ?? false : false);
+            bool same = (customer?.IsBillContSameAsMain == true);
+            bool enabled = (customerExt?.IsNaturalPerson == true);
 
-            //PXTrace.WriteInformation(String.Format("enabled:{0} same:{1} enabled&&same:{2} enabled&&!same:{3}", enabled, same, (enabled && same), (enabled && !same)));
+            // Campos obligatorios: En caso de persona física: primer nombre, apellido paterno y apellido materno.
+            PXUIFieldAttribute.SetRequired<Contact.fullName>(Base.DefContact.Cache, !enabled);
+            PXUIFieldAttribute.SetRequired<Contact.firstName>(Base.DefContact.Cache, enabled);
+            PXUIFieldAttribute.SetRequired<Contact.lastName>(Base.DefContact.Cache, enabled);
 
+            PXUIFieldAttribute.SetVisible<Contact.fullName>(Base.DefContact.Cache, null, !enabled);
+            PXUIFieldAttribute.SetVisible<Contact.salutation>(Base.DefContact.Cache, null, enabled);
             PXUIFieldAttribute.SetVisible<Contact.firstName>(Base.DefContact.Cache, null, enabled);
             PXUIFieldAttribute.SetVisible<Contact.midName>(Base.DefContact.Cache, null, enabled);
             PXUIFieldAttribute.SetVisible<Contact.lastName>(Base.DefContact.Cache, null, enabled);
@@ -87,6 +133,13 @@ namespace AcumaticaMX
             PXUIFieldAttribute.SetVisible<MXContactExtension.secondLastName>(Base.DefContact.Cache, null, enabled);
             PXUIFieldAttribute.SetVisible<MXContactExtension.personalID>(Base.DefContact.Cache, null, enabled);
 
+            // Campos obligatorios: En caso de persona física: primer nombre, apellido paterno y apellido materno.
+            PXUIFieldAttribute.SetRequired<Contact.fullName>(Base.BillContact.Cache, !enabled);
+            PXUIFieldAttribute.SetRequired<Contact.firstName>(Base.BillContact.Cache, enabled);
+            PXUIFieldAttribute.SetRequired<Contact.lastName>(Base.BillContact.Cache, enabled);
+
+            PXUIFieldAttribute.SetVisible<Contact.fullName>(Base.BillContact.Cache, null, !enabled);
+            PXUIFieldAttribute.SetVisible<Contact.salutation>(Base.BillContact.Cache, null, enabled);
             PXUIFieldAttribute.SetVisible<Contact.firstName>(Base.BillContact.Cache, null, enabled);
             PXUIFieldAttribute.SetVisible<Contact.midName>(Base.BillContact.Cache, null, enabled);
             PXUIFieldAttribute.SetVisible<Contact.lastName>(Base.BillContact.Cache, null, enabled);

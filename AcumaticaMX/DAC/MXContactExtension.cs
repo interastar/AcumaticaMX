@@ -21,7 +21,7 @@ namespace AcumaticaMX
 
         [PXString(100, IsUnicode = true)]
         [MultipartField(typeof(Contact.lastName), 1, typeof(firstLastName), typeof(secondLastName))]
-        [PXUIField(DisplayName = "Apellido Paterno", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Apellido Paterno")]
         public virtual string FirstLastName { get; set; }
 
         #endregion FirstLastName
@@ -34,7 +34,7 @@ namespace AcumaticaMX
 
         [PXString(100, IsUnicode = true)]
         [MultipartField(typeof(Contact.lastName), 2, typeof(firstLastName), typeof(secondLastName))]
-        [PXUIField(DisplayName = "Apellido Materno", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Apellido Materno")]
         public virtual string SecondLastName { get; set; }
 
         #endregion SecondLastName

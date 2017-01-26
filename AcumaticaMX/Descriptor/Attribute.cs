@@ -297,12 +297,15 @@ namespace AcumaticaMX
         {
             var value = string.Join(Separator, _SourceFields.Select(
                 fieldName =>
-                sender.GetValue(row, fieldName)?.ToString())).Trim();
-            if (!( (value.Trim().Length < 2 || value.Trim() == Separator)  || string.IsNullOrEmpty(value.Trim())))
+                (sender.GetValue(row, fieldName))?.ToString()));
+
+            // Si temrina con separador, mejor lo quitamos
+            if ((value.EndsWith(Separator) || value == Separator))
             {
-                sender.SetValue(row, _TargetField, value);
+                value = value.Substring(0, value.LastIndexOf(Separator));
             }
-            
+
+            sender.SetValueExt(row, _TargetField, value);
         }
 
         public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
@@ -325,10 +328,10 @@ namespace AcumaticaMX
         {
             if (e.Row == null) return;
 
-            var value = sender.GetValue(e.Row, _TargetField);
-            if (value != null)
+            var sourceValue = sender.GetValue(e.Row, _TargetField);
+            if (sourceValue != null)
             {
-                var stringValue = (string)value;
+                var stringValue = (string)sourceValue;
                 if (string.IsNullOrEmpty(stringValue)) return;
 
                 // Buscamos que exista la parte en el bloque dividido por el separador (1 es inicio de cadena)
@@ -338,7 +341,10 @@ namespace AcumaticaMX
                 if (position > -1)
                 {
                     // asignamos el valor de donde se encontró el primer bloque hasta el segundo separador
-                    e.ReturnValue = CutToSeparator(stringValue.Substring(position), Separator);
+                    var value = CutToSeparator(stringValue.Substring(position), Separator);
+
+                    sender.SetValue(e.Row, this._FieldName, value);
+                    e.ReturnValue = value;
                     e.Cancel = true;
                 }
             }
@@ -361,7 +367,10 @@ namespace AcumaticaMX
             if (startIndex < 0)
                 return searched;
 
-            return searched.Substring(0, startIndex).Trim();
+            var value = searched.Substring(0, startIndex).Trim();
+
+            // Si es blanco reresamos null para disparar validaciones
+            return string.IsNullOrEmpty(value) ? null : value;
         }
 
         private static int FindNPosition(string searched, string separator, int position)

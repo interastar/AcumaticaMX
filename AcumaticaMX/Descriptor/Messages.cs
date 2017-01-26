@@ -1,8 +1,11 @@
-﻿namespace AcumaticaMX
+﻿using PX.Common;
+
+namespace AcumaticaMX
 {
     /// <summary>
     /// Librería de mensajes y etiquetas centralizada
     /// </summary>
+    [PXLocalizable()]
     public static class Messages
     {
         // Textos y Etiquetas de campos
@@ -10,6 +13,9 @@
         #region Nombres
 
         //public const string Etiqueta = "Valor";
+        //public const string Etiqueta = "Valor";
+        //public const string Etiqueta = "Valor";
+        public const string Municipality = "Municipio / Delegación";
 
         #endregion Nombres
 
