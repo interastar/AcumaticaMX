@@ -8,6 +8,7 @@ namespace AcumaticaMX
         #region AddressLine1
 
         [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
         [PXDBString(250, IsUnicode = true)]
         public string AddressLine1 { get; set; }
 
@@ -16,6 +17,7 @@ namespace AcumaticaMX
         #region AddressLine2
 
         [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
         [PXDBString(250, IsUnicode = true)]
         public string AddressLine2 { get; set; }
 
@@ -32,15 +34,23 @@ namespace AcumaticaMX
         #region Mandatory fields
 
         [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
         public string City { get; set; }
 
         [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
         public string CountryID { get; set; }
 
         [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
         public string State { get; set; }
 
         [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
         public string PostalCode { get; set; }
 
         #endregion Mandatory fields
