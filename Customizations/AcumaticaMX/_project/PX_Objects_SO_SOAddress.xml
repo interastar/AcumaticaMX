@@ -1,0 +1,14 @@
+﻿<DAC type="PX.Objects.SO.SOAddress">
+    <Field FieldName="AddressLine1" TypeName="string" TextAttributes="#CDATA" OverrideGeneratedAttributes="True" OverrideClassName="PX.Objects.SO.SOAddress" StorageName="ExistingColumn">
+        <CDATA name="TextAttributes"><![CDATA[[PXDBString(250, IsUnicode = true)]
+[PXUIField(DisplayName = "Address Line 1", Visibility = PXUIVisibility.SelectorVisible)]]]></CDATA>
+    </Field>
+    <Field FieldName="AddressLine2" TypeName="string" TextAttributes="#CDATA" OverrideGeneratedAttributes="True" OverrideClassName="PX.Objects.SO.SOAddress" StorageName="ExistingColumn">
+        <CDATA name="TextAttributes"><![CDATA[[PXDBString(250, IsUnicode = true)]
+[PXUIField(DisplayName = "Address Line 2")]]]></CDATA>
+    </Field>
+    <Field FieldName="AddressLine3" TypeName="string" TextAttributes="#CDATA" OverrideGeneratedAttributes="True" OverrideClassName="PX.Objects.SO.SOAddress" StorageName="ExistingColumn">
+        <CDATA name="TextAttributes"><![CDATA[[PXDBString(250, IsUnicode = true)]
+[PXUIField(DisplayName = "Address Line 3")]]]></CDATA>
+    </Field>
+</DAC>

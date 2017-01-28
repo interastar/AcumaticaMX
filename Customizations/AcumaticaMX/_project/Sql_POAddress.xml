@@ -1,0 +1,36 @@
+﻿<Sql TableName="POAddress" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="POAddress">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="AddressID" type="Int" identity="true" />
+  <col name="BAccountID" type="Int" />
+  <col name="RevisionID" type="Int" />
+  <col name="IsDefaultAddress" type="Bit" />
+  <col name="AddressLine1" type="NVarChar(250)" nullable="true" />
+  <col name="AddressLine2" type="NVarChar(250)" nullable="true" />
+  <col name="AddressLine3" type="NVarChar(250)" nullable="true" />
+  <col name="City" type="NVarChar(50)" nullable="true" />
+  <col name="CountryID" type="NVarChar(2)" nullable="true" />
+  <col name="State" type="NVarChar(50)" nullable="true" />
+  <col name="PostalCode" type="VarChar(20)" nullable="true" />
+  <col name="IsValidated" type="Bit" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="DateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="BAccountAddressID" type="Int" nullable="true" />
+  <index name="POAddress_BAccountID_BAccountAddressID">
+    <col name="CompanyID" />
+    <col name="BAccountID" />
+    <col name="BAccountAddressID" />
+    <col name="IsDefaultAddress" />
+    <col name="RevisionID" />
+  </index>
+  <index name="POAddress_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="AddressID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

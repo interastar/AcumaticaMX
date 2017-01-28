@@ -23,6 +23,170 @@ namespace AcumaticaMX
             UpdateContactFields(customer);
         }
 
+        protected virtual void Customer_RowPersisting(PXCache sender, PXRowPersistingEventArgs e, PXRowPersisting InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            if (e.Operation == PXDBOperation.Update || e.Operation == PXDBOperation.Insert)
+            {
+                Customer customer = e.Row as Customer;
+                if (customer == null) return;
+
+                MXBAccountExtension customerExt = customer.GetExtension<MXBAccountExtension>();
+
+                if (string.IsNullOrEmpty(customer?.TaxRegistrationID))
+                {
+                    e.Cancel = true;
+
+                    sender.RaiseExceptionHandling<Customer.taxRegistrationID>(
+                        customer, customer.TaxRegistrationID, new PXSetPropertyException(Messages.TaxRegistrationIDRequired, PXErrorLevel.RowError));
+                }
+
+                bool sameAddress = (customer?.IsBillSameAsMain == true);
+                bool sameContact = (customer?.IsBillContSameAsMain == true);
+                bool natural = (customerExt?.IsNaturalPerson == true);
+                PXCache cache;
+
+                // Validación de contactos
+                Contact contact;
+
+                if (sameContact)
+                {
+                    contact = this.Base.DefContact.Current;
+                    cache = this.Base.DefContact.Cache;
+                }
+                else
+                {
+                    contact = this.Base.BillContact.Current;
+                    cache = this.Base.BillContact.Cache;
+                }
+
+                if (natural)
+                {
+                    // Para personas físicas, los nombres son obligatorios
+
+                    var contactExt = contact?.GetExtension<MXContactExtension>();
+
+                    if (string.IsNullOrEmpty(contact?.FirstName))
+                    {
+                        e.Cancel = true;
+
+                        cache.RaiseExceptionHandling<Contact.firstName>(
+                            contact, contact?.FirstName, new PXSetPropertyException(Messages.NaturalContactInfoRequired, PXErrorLevel.RowError));
+                    }
+
+                    if (string.IsNullOrEmpty(contactExt?.FirstLastName))
+                    {
+                        e.Cancel = true;
+
+                        cache.RaiseExceptionHandling<MXContactExtension.firstLastName>(
+                            contact, contactExt?.FirstLastName, new PXSetPropertyException(Messages.NaturalContactInfoRequired, PXErrorLevel.RowError));
+                    }
+
+                    if (string.IsNullOrEmpty(contactExt?.SecondLastName))
+                    {
+                        e.Cancel = true;
+
+                        cache.RaiseExceptionHandling<MXContactExtension.secondLastName>(
+                            contact, contactExt?.SecondLastName, new PXSetPropertyException(Messages.NaturalContactInfoRequired, PXErrorLevel.RowError));
+                    }
+                }
+                else
+                {
+                    // Para personas morales, el nombre es obligatorio
+
+                    if (string.IsNullOrEmpty(contact?.FullName))
+                    {
+                        e.Cancel = true;
+
+                        cache.RaiseExceptionHandling<Contact.fullName>(
+                            contact, contact?.FullName, new PXSetPropertyException(Messages.LegalContactInfoRequired, PXErrorLevel.RowError));
+                    }
+                }
+
+                // Validación de dirección
+                Address address;
+
+                if (sameAddress)
+                {
+                    address = this.Base.DefAddress.Current;
+                    cache = this.Base.DefAddress.Cache;
+                }
+                else
+                {
+                    address = this.Base.BillAddress.Current;
+                    cache = this.Base.BillContact.Cache;
+                }
+
+                if (string.IsNullOrEmpty(address?.City))
+                {
+                    e.Cancel = true;
+
+                    cache.RaiseExceptionHandling<Address.city>(
+                        address, address?.City, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                }
+
+                if (string.IsNullOrEmpty(address?.State))
+                {
+                    e.Cancel = true;
+
+                    cache.RaiseExceptionHandling<Address.state>(
+                        address, address?.State, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                }
+
+                if (string.IsNullOrEmpty(address?.CountryID))
+                {
+                    e.Cancel = true;
+
+                    cache.RaiseExceptionHandling<Address.countryID>(
+                        address, address?.CountryID, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                }
+
+                if (string.IsNullOrEmpty(address?.PostalCode))
+                {
+                    e.Cancel = true;
+
+                    cache.RaiseExceptionHandling<Address.postalCode>(
+                        address, address?.PostalCode, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                }
+
+                var addressExt = address?.GetExtension<MXAddressExtension>();
+
+                if (string.IsNullOrEmpty(addressExt?.Street))
+                {
+                    e.Cancel = true;
+
+                    cache.RaiseExceptionHandling<MXAddressExtension.street>(
+                        address, addressExt?.Street, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                }
+
+                if (string.IsNullOrEmpty(addressExt?.ExtNumber))
+                {
+                    e.Cancel = true;
+
+                    cache.RaiseExceptionHandling<MXAddressExtension.extNumber>(
+                        address, addressExt?.ExtNumber, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                }
+
+                if (string.IsNullOrEmpty(addressExt?.Neighborhood))
+                {
+                    e.Cancel = true;
+
+                    cache.RaiseExceptionHandling<MXAddressExtension.neighborhood>(
+                        address, addressExt?.Neighborhood, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                }
+
+                if (string.IsNullOrEmpty(addressExt?.Municipality))
+                {
+                    e.Cancel = true;
+
+                    cache.RaiseExceptionHandling<MXAddressExtension.municipality>(
+                        address, addressExt?.Municipality, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                }
+            }
+        }
+
         protected virtual void Customer_TaxRegistrationID_FieldVerifying(PXCache sender, PXFieldVerifyingEventArgs e, PXFieldVerifying InvokeBaseHandler)
         {
             if (InvokeBaseHandler != null)
@@ -71,28 +235,73 @@ namespace AcumaticaMX
             UpdateContactFields(customer);
         }
 
+        protected virtual void Contact_FirstName_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            UpdateContactFields(sender, e.Row as Contact);
+        }
+
+        protected virtual void Contact_MidName_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            UpdateContactFields(sender, e.Row as Contact);
+        }
+
+        protected virtual void Contact_LastName_FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e, PXFieldUpdated InvokeBaseHandler)
+        {
+            if (InvokeBaseHandler != null)
+                InvokeBaseHandler(sender, e);
+
+            UpdateContactFields(sender, e.Row as Contact);
+        }
+
+        protected virtual void UpdateContactFields(PXCache contactCache, Contact contact)
+        {
+            if (contact == null) return;
+
+            var customer = Base.CurrentCustomer.Current;
+            if (customer == null) return;
+            MXBAccountExtension customerExt = customer.GetExtension<MXBAccountExtension>();
+
+            if (customerExt?.IsNaturalPerson == true)
+            {
+                var fullName = contact.FirstName + " " + contact.MidName + " " + contact.LastName;
+                contactCache.SetValueExt<Contact.fullName>(contact, fullName);
+            }
+        }
+
         protected virtual void UpdateContactFields(Customer customer)
         {
             MXBAccountExtension customerExt = customer.GetExtension<MXBAccountExtension>();
 
-            bool same = (customer?.IsBillContSameAsMain ?? true);
-            bool enabled = ((customerExt != null) ? customerExt?.IsNaturalPerson ?? false : false);
+            bool same = (customer?.IsBillContSameAsMain == true);
+            bool natural = (customerExt?.IsNaturalPerson == true);
 
-            //PXTrace.WriteInformation(String.Format("enabled:{0} same:{1} enabled&&same:{2} enabled&&!same:{3}", enabled, same, (enabled && same), (enabled && !same)));
+            // Campos obligatorios: En caso de persona física: primer nombre, apellido paterno y apellido materno.
+            PXUIFieldAttribute.SetRequired<Contact.fullName>(Base.DefContact.Cache, !natural);
+            PXUIFieldAttribute.SetRequired<Contact.firstName>(Base.DefContact.Cache, natural);
+            PXUIFieldAttribute.SetRequired<Contact.lastName>(Base.DefContact.Cache, natural);
 
-            PXUIFieldAttribute.SetVisible<Contact.firstName>(Base.DefContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<Contact.midName>(Base.DefContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<Contact.lastName>(Base.DefContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<MXContactExtension.firstLastName>(Base.DefContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<MXContactExtension.secondLastName>(Base.DefContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<MXContactExtension.personalID>(Base.DefContact.Cache, null, enabled);
+            PXUIFieldAttribute.SetVisible<Contact.fullName>(Base.DefContact.Cache, null, !natural);
+            PXUIFieldAttribute.SetVisible<Contact.lastName>(Base.DefContact.Cache, null, !natural);
+            PXUIFieldAttribute.SetVisible<MXContactExtension.firstLastName>(Base.DefContact.Cache, null, natural);
+            PXUIFieldAttribute.SetVisible<MXContactExtension.secondLastName>(Base.DefContact.Cache, null, natural);
+            PXUIFieldAttribute.SetVisible<MXContactExtension.personalID>(Base.DefContact.Cache, null, natural);
 
-            PXUIFieldAttribute.SetVisible<Contact.firstName>(Base.BillContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<Contact.midName>(Base.BillContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<Contact.lastName>(Base.BillContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<MXContactExtension.firstLastName>(Base.BillContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<MXContactExtension.secondLastName>(Base.BillContact.Cache, null, enabled);
-            PXUIFieldAttribute.SetVisible<MXContactExtension.personalID>(Base.BillContact.Cache, null, enabled);
+            // Campos obligatorios: En caso de persona física: primer nombre, apellido paterno y apellido materno.
+            PXUIFieldAttribute.SetRequired<Contact.fullName>(Base.BillContact.Cache, !natural);
+            PXUIFieldAttribute.SetRequired<Contact.firstName>(Base.BillContact.Cache, natural);
+            PXUIFieldAttribute.SetRequired<Contact.lastName>(Base.BillContact.Cache, natural);
+
+            PXUIFieldAttribute.SetVisible<Contact.fullName>(Base.BillContact.Cache, null, !natural);
+            PXUIFieldAttribute.SetVisible<Contact.lastName>(Base.BillContact.Cache, null, !natural);
+            PXUIFieldAttribute.SetVisible<MXContactExtension.firstLastName>(Base.BillContact.Cache, null, natural);
+            PXUIFieldAttribute.SetVisible<MXContactExtension.secondLastName>(Base.BillContact.Cache, null, natural);
+            PXUIFieldAttribute.SetVisible<MXContactExtension.personalID>(Base.BillContact.Cache, null, natural);
         }
 
         #endregion Event Handlers
