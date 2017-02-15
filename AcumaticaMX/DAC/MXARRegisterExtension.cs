@@ -269,5 +269,16 @@ namespace AcumaticaMX
         public virtual string StampStatus { get; set; }
 
         #endregion Estado
+
+        #region Timbrable
+
+        public abstract class stampable : IBqlField { }
+
+        [PXBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Timbrable")]
+        public virtual bool? Stampable { get; set; }
+
+        #endregion Timbrable
     }
 }
