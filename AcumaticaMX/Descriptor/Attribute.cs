@@ -297,7 +297,7 @@ namespace AcumaticaMX
         {
             var value = string.Join(Separator, _SourceFields.Select(
                 fieldName =>
-                (sender.GetValue(row, fieldName))?.ToString()));
+                (sender.GetValueExt(row, fieldName))?.ToString()));
 
             // Si temrina con separador, mejor lo quitamos
             if ((value.EndsWith(Separator) || value == Separator))

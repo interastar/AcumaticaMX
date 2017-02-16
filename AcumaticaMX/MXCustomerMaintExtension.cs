@@ -53,12 +53,12 @@ namespace AcumaticaMX
 
                 if (sameContact)
                 {
-                    contact = this.Base.DefContact.Current;
+                    contact = this.Base.DefContact.Current ?? this.Base.DefContact.Select();
                     cache = this.Base.DefContact.Cache;
                 }
                 else
                 {
-                    contact = this.Base.BillContact.Current;
+                    contact = this.Base.BillContact.Current ?? this.Base.BillContact.Select();
                     cache = this.Base.BillContact.Cache;
                 }
 
@@ -110,7 +110,7 @@ namespace AcumaticaMX
 
                 if (sameAddress)
                 {
-                    address = this.Base.DefAddress.Current;
+                    address = this.Base.DefAddress.Current ?? this.Base.DefAddress.Select();
                     cache = this.Base.DefAddress.Cache;
                 }
                 else
