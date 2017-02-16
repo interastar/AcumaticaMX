@@ -115,7 +115,7 @@ namespace AcumaticaMX
                 }
                 else
                 {
-                    address = this.Base.BillAddress.Current;
+                    address = this.Base.BillAddress.Current ?? this.Base.BillAddress.Select();
                     cache = this.Base.BillContact.Cache;
                 }
 
