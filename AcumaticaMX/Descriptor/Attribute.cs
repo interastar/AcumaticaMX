@@ -403,6 +403,7 @@ namespace AcumaticaMX
             return startIndex;
         }
     }
+
     public class StampableStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber, IPXRowSelectedSubscriber
     {
         public override void CacheAttached(PXCache sender)
@@ -509,7 +510,7 @@ namespace AcumaticaMX
                     return;
                 }
 
-                if (((bool?)e.OldValue != true) && ext.NotStampable != true && ext.Uuid == Guid.Empty)
+                if (((bool?)e.OldValue == true) && ext.NotStampable != true && ext.Uuid == Guid.Empty)
                 {
                     ext.Uuid = null;
                     sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
