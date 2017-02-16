@@ -26,6 +26,20 @@ namespace AcumaticaMX
             PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.stampStatus>(sender, document, false);
 
             this.Base.Billing_Address.Cache.AllowUpdate = (documentExt.StampStatus == CfdiStatus.Clean);
+
+
+            var isNotStampableEnable = false;
+            try
+            {
+                isNotStampableEnable = ((documentExt.StampStatus == CfdiStatus.Clean || documentExt.StampStatus == CfdiStatus.Blocked)
+                    && (this.Base.Accessinfo.BusinessDate.Value - document.DocDate.Value).TotalHours < 72);
+            } catch (Exception)
+            {
+
+            }
+
+            PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.notStampable>(sender, document, isNotStampableEnable);
+
         }
 
         #endregion Event Handlers

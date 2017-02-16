@@ -272,12 +272,13 @@ namespace AcumaticaMX
 
         #region Timbrable
 
-        public abstract class stampable : IBqlField { }
+        public abstract class notStampable : IBqlField { }
 
         [PXBool()]
         [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXUIField(DisplayName = "Timbrable")]
-        public virtual bool? Stampable { get; set; }
+        [PXUIField(DisplayName = "No Timbrar", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
+        [StampableStatus()]
+        public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
     }

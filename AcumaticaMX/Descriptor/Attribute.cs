@@ -403,4 +403,119 @@ namespace AcumaticaMX
             return startIndex;
         }
     }
+    public class StampableStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber, IPXRowSelectedSubscriber
+    {
+        public override void CacheAttached(PXCache sender)
+        {
+            base.CacheAttached(sender);
+
+            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.cancelDate>((cache, e) =>
+            {
+                var item = e.Row as MXARRegisterExtension;
+                if (item != null)
+                {
+                    StatusSet(cache, item);
+                }
+            });
+
+            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.uuid>((cache, e) =>
+            {
+                var item = e.Row as MXARRegisterExtension;
+                if (item != null)
+                {
+                    StatusSet(cache, item);
+                }
+            });
+
+            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.stampDate>((cache, e) =>
+            {
+                var item = e.Row as MXARRegisterExtension;
+                if (item != null)
+                {
+                    StatusSet(cache, item);
+                }
+            });
+
+            sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
+            //sender.Graph.RowInserting.AddHandler<ARInvoice>(RowInserting);
+            //sender.Graph.RowUpdating.AddHandler<ARInvoice>(RowUpdating);
+            //sender.Graph.RowSelected.AddHandler<ARInvoice>(RowSelected);
+        }
+
+        protected virtual void StatusSet(PXCache cache, MXARRegisterExtension cfdi)
+        {
+            if (cfdi.CancelDate.HasValue || cfdi.StampDate.HasValue)
+            {
+                cfdi.NotStampable = false;
+            }
+            else if (cfdi.Uuid.HasValue)
+            {
+                cfdi.NotStampable = (cfdi.Uuid == Guid.Empty);
+            }
+        }
+
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            var item = (ARRegister)e.Row;
+            if (item != null)
+            {
+                var ext = item.GetExtension<MXARRegisterExtension>();
+                StatusSet(sender, ext);
+            }
+        }
+
+        public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
+        {
+            var item = (ARRegister)e.Row;
+            if (item != null)
+            {
+                var ext = item.GetExtension<MXARRegisterExtension>();
+                StatusSet(sender, ext);
+            }
+        }
+
+        public virtual void RowUpdating(PXCache sender, PXRowUpdatingEventArgs e)
+        {
+            var item = (ARRegister)e.NewRow;
+            if (item != null)
+            {
+                var ext = item.GetExtension<MXARRegisterExtension>();
+                StatusSet(sender, ext);
+            }
+        }
+
+        public virtual void RowSelected(PXCache sender, PXRowSelectedEventArgs e)
+        {
+            var item = (ARRegister)e.Row;
+            if (item != null)
+            {
+                var ext = item.GetExtension<MXARRegisterExtension>();
+                StatusSet(sender, ext);
+            }
+        }
+
+        public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            var item = (ARRegister)e.Row;
+            if (item != null)
+            {
+                var ext = item.GetExtension<MXARRegisterExtension>();
+                if (ext == null) return;
+
+                if (((bool?)e.OldValue != true) && ext.NotStampable == true && ext.Uuid == null)
+                {
+                    ext.Uuid = Guid.Empty;
+                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, Guid.Empty);
+                    return;
+                }
+
+                if (((bool?)e.OldValue != true) && ext.NotStampable != true && ext.Uuid == Guid.Empty)
+                {
+                    ext.Uuid = null;
+                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
+                    return;
+                }
+            }
+        }
+    }
 }
