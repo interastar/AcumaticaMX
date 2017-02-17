@@ -64,15 +64,6 @@
         </Children>
     </PXFormView>
     <PXFormView ID="form" ParentId="phF_form" TypeFullName="PX.Web.UI.PXFormView">
-        <Children Key="Template">
-            <AddItem>
-                <PXCheckBox TypeFullName="PX.Web.UI.PXCheckBox">
-                    <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="CstPXCheckBox11" />
-                    <Prop Key="DataField" Value="NotStampable" />
-                </PXCheckBox>
-            </AddItem>
-            <PXSegmentMask DataField="ProjectID" OriginalIndex="17" />
-        </Children>
+        <Children Key="Template" />
     </PXFormView>
 </Page>
