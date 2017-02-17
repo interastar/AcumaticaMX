@@ -456,10 +456,12 @@ namespace AcumaticaMX
                 cfdi.NotStampable = false;
             }
             // Si tiene valor en ceros o se pasó el tiempo la consideramos no timbrable
-            else if ((cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty) ||
-                ((sender.Graph.Accessinfo.BusinessDate.Value - doc.DocDate.Value).TotalHours >= 72))
+            else if (cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty && doc.DocDate.HasValue)
             {
-                cfdi.NotStampable = true;
+                if((sender.Graph.Accessinfo.BusinessDate.Value - doc.DocDate.Value).TotalHours >= 72)
+                {
+                    cfdi.NotStampable = true;
+                }
             }
         }
 
