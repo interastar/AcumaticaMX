@@ -63,7 +63,7 @@ namespace AcumaticaMX
     /// upon it has been signed, canceled or blocked<br/>
     /// [SetStatus()]
     /// </summary>
-    public class SetCfdiStatusAttribute : PXEventSubscriberAttribute, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    public class SetCfdiStatusAttribute : PXEventSubscriberAttribute, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber, IPXRowSelectedSubscriber
     {
         public override void CacheAttached(PXCache sender)
         {
@@ -96,16 +96,11 @@ namespace AcumaticaMX
                 }
             });
 
-            //sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
-            //sender.Graph.RowSelecting.AddHandler<ARRegister>(RowSelecting);
-            //sender.Graph.RowInserting.AddHandler<ARRegister>(RowInserting);
-            //sender.Graph.RowUpdating.AddHandler<ARRegister>(RowUpdating);
-
             sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
             //sender.Graph.RowSelecting.AddHandler<ARInvoice>(RowSelecting);
-            sender.Graph.RowInserting.AddHandler<ARInvoice>(RowInserting);
-            sender.Graph.RowUpdating.AddHandler<ARInvoice>(RowUpdating);
-            sender.Graph.RowSelected.AddHandler<ARInvoice>(RowSelected);
+            //sender.Graph.RowInserting.AddHandler<ARInvoice>(RowInserting);
+            //sender.Graph.RowUpdating.AddHandler<ARInvoice>(RowUpdating);
+            //sender.Graph.RowSelected.AddHandler<ARInvoice>(RowSelected);
         }
 
         protected virtual void StatusSet(PXCache cache, MXARRegisterExtension cfdi)
@@ -410,88 +405,97 @@ namespace AcumaticaMX
         {
             base.CacheAttached(sender);
 
-            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.cancelDate>((cache, e) =>
+            sender.Graph.FieldUpdated.AddHandler<MXARRegisterExtension.cancelDate>((localSender, e) =>
             {
-                var item = e.Row as MXARRegisterExtension;
-                if (item != null)
+                var doc = e.Row as ARRegister;
+                if (doc != null)
                 {
-                    StatusSet(cache, item);
+                    StatusSet(localSender, doc);
                 }
             });
 
-            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.uuid>((cache, e) =>
+            sender.Graph.FieldUpdated.AddHandler<MXARRegisterExtension.uuid>((localSender, e) =>
             {
-                var item = e.Row as MXARRegisterExtension;
-                if (item != null)
+                var doc = e.Row as ARRegister;
+                if (doc != null)
                 {
-                    StatusSet(cache, item);
+                    StatusSet(localSender, doc);
                 }
             });
 
-            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.stampDate>((cache, e) =>
+            sender.Graph.FieldUpdated.AddHandler<MXARRegisterExtension.stampDate>((localSender, e) =>
             {
-                var item = e.Row as MXARRegisterExtension;
-                if (item != null)
+                var doc = e.Row as ARRegister;
+                if (doc != null)
                 {
-                    StatusSet(cache, item);
+                    StatusSet(localSender, doc);
+                }
+            });
+
+            sender.Graph.FieldUpdated.AddHandler<ARRegister.docDate>((localSender, e) =>
+            {
+                var doc = e.Row as ARRegister;
+                if (doc != null)
+                {
+                    StatusSet(localSender, doc);
                 }
             });
 
             sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
-            //sender.Graph.RowInserting.AddHandler<ARInvoice>(RowInserting);
-            //sender.Graph.RowUpdating.AddHandler<ARInvoice>(RowUpdating);
-            //sender.Graph.RowSelected.AddHandler<ARInvoice>(RowSelected);
         }
 
-        protected virtual void StatusSet(PXCache cache, MXARRegisterExtension cfdi)
+        protected virtual void StatusSet(PXCache sender, ARRegister doc)
         {
-            if (cfdi.CancelDate.HasValue || cfdi.StampDate.HasValue)
+            // Solo seguimos si tenemos el registro
+            var cfdi = doc.GetExtension<MXARRegisterExtension>();
+            if (cfdi == null) return;
+
+            // Si el documento está timbrado o cancelado limpiamos la bandera
+            if (cfdi.StampStatus == CfdiStatus.Stamped || cfdi.StampStatus == CfdiStatus.Canceled)
             {
                 cfdi.NotStampable = false;
             }
-            else if (cfdi.Uuid.HasValue)
+            // Si tiene valor en ceros o se pasó el tiempo la consideramos no timbrable
+            else if ((cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty) ||
+                ((sender.Graph.Accessinfo.BusinessDate.Value - doc.DocDate.Value).TotalHours >= 72))
             {
-                cfdi.NotStampable = (cfdi.Uuid == Guid.Empty);
+                cfdi.NotStampable = true;
             }
         }
 
         public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
         {
-            var item = (ARRegister)e.Row;
-            if (item != null)
+            var doc = e.Row as ARRegister;
+            if (doc != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                StatusSet(sender, ext);
+                StatusSet(sender, doc);
             }
         }
 
         public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
         {
-            var item = (ARRegister)e.Row;
-            if (item != null)
+            var doc = e.Row as ARRegister;
+            if (doc != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                StatusSet(sender, ext);
+                StatusSet(sender, doc);
             }
         }
 
         public virtual void RowUpdating(PXCache sender, PXRowUpdatingEventArgs e)
         {
-            var item = (ARRegister)e.NewRow;
-            if (item != null)
+            var doc = e.Row as ARRegister;
+            if (doc != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                StatusSet(sender, ext);
+                StatusSet(sender, doc);
             }
         }
 
         public virtual void RowSelected(PXCache sender, PXRowSelectedEventArgs e)
         {
-            var item = (ARRegister)e.Row;
-            if (item != null)
+            var doc = e.Row as ARRegister;
+            if (doc != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                StatusSet(sender, ext);
+                StatusSet(sender, doc);
             }
         }
 
