@@ -248,7 +248,7 @@ namespace AcumaticaMX
     /// <summary>
     /// Este atributo permite marcar campos para que actualicen el valor de otro principal.
     /// </summary>
-    public class MultipartFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXFieldSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    public class MultipartFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
     {
         // Separador de campos es un "espacio sin corte" en Unicode
         // Básicamente un espacio
@@ -292,7 +292,7 @@ namespace AcumaticaMX
         {
             var value = string.Join(Separator, _SourceFields.Select(
                 fieldName =>
-                (sender.GetValueExt(row, fieldName))?.ToString()));
+                (sender.GetValue(row, fieldName))?.ToString()));
 
             // Si temrina con separador, mejor lo quitamos
             if ((value.EndsWith(Separator) || value == Separator))
@@ -300,10 +300,10 @@ namespace AcumaticaMX
                 value = value.Substring(0, value.LastIndexOf(Separator));
             }
 
-            sender.SetValueExt(row, _TargetField, value);
+            sender.SetValue(row, _TargetField, value);
         }
 
-        public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
+       /* public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
         {
             if (e.Row != null)
             {
@@ -317,9 +317,9 @@ namespace AcumaticaMX
             {
                 UpdateTargetField(sender, e.Row);
             }
-        }
+        }*/
 
-        public void FieldSelecting(PXCache sender, PXFieldSelectingEventArgs e)
+        public void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
         {
             if (e.Row == null) return;
 
@@ -339,8 +339,8 @@ namespace AcumaticaMX
                     var value = CutToSeparator(stringValue.Substring(position), Separator);
 
                     sender.SetValue(e.Row, this._FieldName, value);
-                    e.ReturnValue = value;
-                    e.Cancel = true;
+                    //e.ReturnValue = value;
+                    //e.Cancel = true;
                 }
             }
         }
@@ -449,20 +449,22 @@ namespace AcumaticaMX
             // Solo seguimos si tenemos el registro
             var cfdi = doc.GetExtension<MXARRegisterExtension>();
             if (cfdi == null) return;
-
+            var check = false;
             // Si el documento está timbrado o cancelado limpiamos la bandera
             if (cfdi.StampStatus == CfdiStatus.Stamped || cfdi.StampStatus == CfdiStatus.Canceled)
             {
-                cfdi.NotStampable = false;
+                check = false;
             }
             // Si tiene valor en ceros o se pasó el tiempo la consideramos no timbrable
             else if (cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty && doc.DocDate.HasValue)
             {
                 if((sender.Graph.Accessinfo.BusinessDate.Value - doc.DocDate.Value).TotalHours >= 72)
                 {
-                    cfdi.NotStampable = true;
+                    check = true;
                 }
             }
+
+            cfdi.NotStampable = check;
         }
 
         public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
