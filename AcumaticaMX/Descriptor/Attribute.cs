@@ -399,40 +399,13 @@ namespace AcumaticaMX
         }
     }
 
-    public class StampableStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber, IPXRowSelectedSubscriber
+    public class StampableStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
     {
         public override void CacheAttached(PXCache sender)
         {
             base.CacheAttached(sender);
 
-            sender.Graph.FieldUpdated.AddHandler<MXARRegisterExtension.cancelDate>((localSender, e) =>
-            {
-                var doc = e.Row as ARRegister;
-                if (doc != null)
-                {
-                    StatusSet(localSender, doc);
-                }
-            });
-
             sender.Graph.FieldUpdated.AddHandler<MXARRegisterExtension.uuid>((localSender, e) =>
-            {
-                var doc = e.Row as ARRegister;
-                if (doc != null)
-                {
-                    StatusSet(localSender, doc);
-                }
-            });
-
-            sender.Graph.FieldUpdated.AddHandler<MXARRegisterExtension.stampDate>((localSender, e) =>
-            {
-                var doc = e.Row as ARRegister;
-                if (doc != null)
-                {
-                    StatusSet(localSender, doc);
-                }
-            });
-
-            sender.Graph.FieldUpdated.AddHandler<ARRegister.docDate>((localSender, e) =>
             {
                 var doc = e.Row as ARRegister;
                 if (doc != null)
@@ -456,45 +429,15 @@ namespace AcumaticaMX
                 check = false;
             }
             // Si tiene valor en ceros o se pasó el tiempo la consideramos no timbrable
-            else if (cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty && doc.DocDate.HasValue)
+            else if (cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty)
             {
-                if((sender.Graph.Accessinfo.BusinessDate.Value - doc.DocDate.Value).TotalHours >= 72)
-                {
-                    check = true;
-                }
+                check = true;
             }
 
             cfdi.NotStampable = check;
         }
 
         public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
-        {
-            var doc = e.Row as ARRegister;
-            if (doc != null)
-            {
-                StatusSet(sender, doc);
-            }
-        }
-
-        public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
-        {
-            var doc = e.Row as ARRegister;
-            if (doc != null)
-            {
-                StatusSet(sender, doc);
-            }
-        }
-
-        public virtual void RowUpdating(PXCache sender, PXRowUpdatingEventArgs e)
-        {
-            var doc = e.Row as ARRegister;
-            if (doc != null)
-            {
-                StatusSet(sender, doc);
-            }
-        }
-
-        public virtual void RowSelected(PXCache sender, PXRowSelectedEventArgs e)
         {
             var doc = e.Row as ARRegister;
             if (doc != null)
