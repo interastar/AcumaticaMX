@@ -29,6 +29,10 @@ namespace AcumaticaMX
 
 
             var isNotStampableEnable = false;
+            if (!documentExt.Uuid.HasValue || documentExt.Uuid == Guid.Empty)
+            {
+                isNotStampableEnable = true;
+            }
             try
             {
                 isNotStampableEnable = ((documentExt.StampStatus == CfdiStatus.Clean || documentExt.StampStatus == CfdiStatus.Blocked)
