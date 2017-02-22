@@ -33,14 +33,6 @@ namespace AcumaticaMX
             {
                 isNotStampableEnable = true;
             }
-            try
-            {
-                isNotStampableEnable = ((documentExt.StampStatus == CfdiStatus.Clean || documentExt.StampStatus == CfdiStatus.Blocked)
-                    && (this.Base.Accessinfo.BusinessDate.Value - document.DocDate.Value).TotalHours < 72);
-            } catch (Exception)
-            {
-
-            }
 
             PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.notStampable>(sender, document, isNotStampableEnable);
 
