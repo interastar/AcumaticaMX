@@ -10,33 +10,22 @@ namespace AcumaticaMX
     {
         #region Event Handlers
 
-        [System.Diagnostics.Conditional("DEBUG")]
-        public static void Log(string message)
-        {
-            PXTrace.WriteInformation(message);
-        }
+        //protected void ARInvoice_RowSelected(PXCache sender, PXRowSelectedEventArgs e, PXRowSelected InvokeBaseHandler)
+        //{
+        //    InvokeBaseHandler?.Invoke(sender, e);
 
-        protected void ARInvoice_RowSelected(PXCache sender, PXRowSelectedEventArgs e, PXRowSelected InvokeBaseHandler)
-        {
-            InvokeBaseHandler?.Invoke(sender, e);
+        //    var document = e.Row as ARInvoice;
+        //    var documentExt = document?.GetExtension<MXARRegisterExtension>();
 
-            var document = e.Row as ARInvoice;
-            var documentExt = document.GetExtension<MXARRegisterExtension>();
+        //    if (documentExt == null) return;
 
-            PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.stampStatus>(sender, document, false);
+        //    //PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.stampStatus>(sender, document, false);
 
-            this.Base.Billing_Address.Cache.AllowUpdate = (documentExt.StampStatus == CfdiStatus.Clean);
-
-
-            var isNotStampableEnable = false;
-            if (!documentExt.Uuid.HasValue || documentExt.Uuid == Guid.Empty)
-            {
-                isNotStampableEnable = true;
-            }
-
-            PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.notStampable>(sender, document, isNotStampableEnable);
-
-        }
+        //    if (documentExt.Uuid.HasValue && documentExt.Uuid != Guid.Empty)
+        //    {
+        //        PXUIFieldAttribute.SetEnabled<MXARRegisterExtension.notStampable>(sender, document, false);
+        //    }
+        //}
 
         #endregion Event Handlers
     }

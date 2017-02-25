@@ -9,7 +9,7 @@ namespace AcumaticaMX
         #region RFC
 
         [PXMergeAttributes(Method = MergeMethod.Merge)]
-        [PXDBString(13, IsUnicode = true)]
+        //[PXDBString(13, IsUnicode = true)]
         [PXUIField(DisplayName = "RFC", Required = true)]
         public string TaxRegistrationID { get; set; }
 
