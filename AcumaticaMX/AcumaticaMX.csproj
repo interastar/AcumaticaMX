@@ -67,7 +67,6 @@
     <Compile Include="MXBranchMaintExtension.cs" />
     <Compile Include="Descriptor\Common.cs" />
     <Compile Include="DAC\MXContactExtension.cs" />
-    <Compile Include="MXARInvoiceEntryExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MXCustomerMaintExtension.cs" />
   </ItemGroup>

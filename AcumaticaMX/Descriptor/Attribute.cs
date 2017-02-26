@@ -66,40 +66,6 @@ namespace AcumaticaMX
     /// </summary>
     public class SetCfdiStatusAttribute : PXEventSubscriberAttribute, IPXFieldVerifyingSubscriber, IPXRowSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber//, IPXRowSelectedSubscriber
     {
-        //public override void CacheAttached(PXCache sender)
-        //{
-        //    base.CacheAttached(sender);
-
-        //    sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.cancelDate>((cache, e) =>
-        //    {
-        //        var item = e.Row as ARRegister;
-        //        if (item != null)
-        //        {
-        //            StatusSet(sender, item);
-        //        }
-        //    });
-
-        //    sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.uuid>((cache, e) =>
-        //    {
-        //        var item = e.Row as ARRegister;
-        //        if (item != null)
-        //        {
-        //            StatusSet(sender, item);
-        //        }
-        //    });
-
-        //    sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.stampDate>((cache, e) =>
-        //    {
-        //        var item = e.Row as ARRegister;
-        //        if (item != null)
-        //        {
-        //            StatusSet(sender, item);
-        //        }
-        //    });
-
-        //    sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
-        //}
-
         protected virtual void StatusSet(PXCache sender, ARRegister doc)
         {
             var docExt = doc.GetExtension<MXARRegisterExtension>();
@@ -153,15 +119,6 @@ namespace AcumaticaMX
                 StatusSet(sender, item);
             }
         }
-
-        //public virtual void RowSelected(PXCache sender, PXRowSelectedEventArgs e)
-        //{
-        //    var item = e.Row as ARRegister;
-        //    if (item != null)
-        //    {
-        //        StatusSet(sender, item);
-        //    }
-        //}
 
         public void FieldVerifying(PXCache sender, PXFieldVerifyingEventArgs e)
         {
@@ -223,21 +180,6 @@ namespace AcumaticaMX
             }
         }
 
-        //public override void CacheAttached(PXCache sender)
-        //{
-        //    base.CacheAttached(sender);
-
-        //    // Nos colgamos al evento de actualización del padre para cargar el valor del hijo
-        //    sender.Graph.FieldSelecting.AddHandler(_BqlTable, _TargetField, (localSender, e) =>
-        //      {
-        //          if (e.Row == null) return;
-
-        //          var value = ReadFieldValue((string)sender.GetValue(e.Row, _TargetField), _Position);
-
-        //          sender.SetValue(e.Row, _FieldName, value);
-        //      });
-        //}
-
         public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
         {
             if (e.Row != null)
@@ -272,9 +214,6 @@ namespace AcumaticaMX
 
             if (!string.IsNullOrEmpty(parentValue))
             {
-                //var currentValue = (string)sender.GetValue(row, _FieldName);
-                //if (string.IsNullOrEmpty(currentValue)) raiseEvents = true;
-
                 // Buscamos que exista la parte en el bloque dividido por el separador (1 es inicio de cadena)
                 var start = FindNPosition(parentValue, Separator, _Position);
 
@@ -283,14 +222,6 @@ namespace AcumaticaMX
                 {
                     // asignamos el valor de donde se encontró el primer bloque hasta el segundo separador
                     value = CutToSeparator(parentValue.Substring(start), Separator);
-
-                    //if (raiseEvents)
-                    //{
-                    //sender.SetValueExt(row, this._FieldName, value);
-                    //}
-                    //else
-                    //{
-                    //}
                 }
             }
 
@@ -299,13 +230,8 @@ namespace AcumaticaMX
 
         protected virtual string UpdateFieldInPosition(string target, string newValue, int position)
         {
-            //var value = string.Join(Separator, _SourceFields.Select(
-            //    fieldName =>
-            //    (sender.GetValue(row, fieldName))?.ToString()));
-
             string value = null;
 
-            //var target = (string)sender.GetValue(row, _TargetField);
             if (!string.IsNullOrEmpty(target) && position >= 0)
             {
                 var parts = target.Split(new string[1] { Separator }, StringSplitOptions.None);
@@ -329,8 +255,6 @@ namespace AcumaticaMX
                 {
                     value = value.Substring(0, value.LastIndexOf(Separator));
                 }
-
-                //sender.SetValueExt(row, _TargetField, value);
             }
 
             // Regresamos el valor
@@ -397,8 +321,6 @@ namespace AcumaticaMX
                     StatusSet(localSender, doc);
                 }
             });
-
-            //sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
         }
 
         protected virtual void StatusSet(PXCache sender, ARRegister doc)
