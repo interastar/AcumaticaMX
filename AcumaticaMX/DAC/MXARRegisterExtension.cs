@@ -223,7 +223,7 @@ namespace AcumaticaMX
         public abstract class amountInWords : IBqlField { }
 
         [PXString(4000, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = "Monto en Letra", Enabled = false)]
+        [PXUIField(DisplayName = "Monto en Letra", IsReadOnly = true, Enabled = false)]
         public virtual string AmountInWords
         {
             [PXDependsOnFields(typeof(ARRegister.curyOrigDocAmt), typeof(ARRegister.curyID))]
@@ -251,7 +251,7 @@ namespace AcumaticaMX
         /// Debe regresar un Data URL con el contenido de la imagen del código.
         /// </value>
         [PXString(IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = "Código QR")]
+        [PXUIField(DisplayName = "Código QR", IsReadOnly = true)]
         public virtual string QrCodeImg { get; set; }
 
         #endregion QrCodeImg
@@ -263,7 +263,7 @@ namespace AcumaticaMX
         [PXString(1, IsFixed = true)]
         [PXDefault(CfdiStatus.Clean)]
         [PXUnboundDefault(CfdiStatus.Clean)]
-        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
+        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
         [CfdiStatus.List()]
         [SetCfdiStatus()]
         public virtual string StampStatus { get; set; }
@@ -276,7 +276,7 @@ namespace AcumaticaMX
 
         [PXBool()]
         [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXUIField(DisplayName = "No Timbrar", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
+        [PXUIField(DisplayName = "No Timbrar", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
         [StampableStatus()]
         public virtual bool? NotStampable { get; set; }
 
