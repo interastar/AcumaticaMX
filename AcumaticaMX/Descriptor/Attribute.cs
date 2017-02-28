@@ -232,7 +232,9 @@ namespace AcumaticaMX
         {
             string value = null;
 
-            if (!string.IsNullOrEmpty(target) && position >= 0)
+            target = target ?? string.Empty;
+
+            if (position >= 0)
             {
                 var parts = target.Split(new string[1] { Separator }, StringSplitOptions.None);
 
