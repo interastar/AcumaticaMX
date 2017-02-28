@@ -1,71 +1,67 @@
 using PX.Data;
 using PX.Objects.CR;
+using PX.Objects.CR.MassProcess;
 
 namespace AcumaticaMX
 {
-    [PXTable(typeof(Address.addressID), IsOptional = true)]
-    public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address>
+    public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address>, IMXAddressExtension
     {
-        public static object CopyExtendedFields(PXCache sender, object address, int? baseAddressID)
-        {
-            var addressCache = sender.Graph.Caches[address.GetType()];
+        // Todo Cambiar campos por virtuales (calculados)
+        // Extender tamaño de AddressLine
+        // Crear atributo que expanda AddressLine1,2 y 3 en estos campos y que
+        // los combine en ellos de nuevo:
 
-            if (baseAddressID == null) return address;
+        // AddressLine1 = Street + ExtNumber + IntNumber
+        // AddressLine2 = Neighborhood + Municipality
+        // AddressLine3 = Reference
 
-            Address defaultAddress = PXSelect<Address,
-                Where<Address.addressID, Equal<Required<Address.addressID>>>>.Select(sender.Graph, baseAddressID);
+        #region AddressLine1
 
-            if (defaultAddress == null) return address;
-            var defaultAddressExt = defaultAddress.GetExtension<MXAddressExtension>();
-            if (defaultAddressExt == null) return address;
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDBString(250, IsUnicode = true)]
+        public string AddressLine1 { get; set; }
 
-            var updated = false;
+        #endregion AddressLine1
 
-            if (!string.IsNullOrEmpty(defaultAddressExt.Street))
-            {
-                addressCache.SetValueExt(address, "Street", defaultAddressExt.Street);
-                updated = true;
-            }
+        #region AddressLine2
 
-            if (!string.IsNullOrEmpty(defaultAddressExt.ExtNumber))
-            {
-                addressCache.SetValueExt(address, "ExtNumber", defaultAddressExt.ExtNumber);
-                updated = true;
-            }
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDBString(250, IsUnicode = true)]
+        public string AddressLine2 { get; set; }
 
-            if (!string.IsNullOrEmpty(defaultAddressExt.IntNumber))
-            {
-                addressCache.SetValueExt(address, "IntNumber", defaultAddressExt.IntNumber);
-                updated = true;
-            }
+        #endregion AddressLine2
 
-            if (!string.IsNullOrEmpty(defaultAddressExt.Municipality))
-            {
-                addressCache.SetValueExt(address, "Municipality", defaultAddressExt.Municipality);
-                updated = true;
-            }
+        #region AddressLine3
 
-            if (!string.IsNullOrEmpty(defaultAddressExt.Neighborhood))
-            {
-                addressCache.SetValueExt(address, "Neighborhood", defaultAddressExt.Neighborhood);
-                updated = true;
-            }
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDBString(250, IsUnicode = true)]
+        public string AddressLine3 { get; set; }
 
-            if (!string.IsNullOrEmpty(defaultAddressExt.Reference))
-            {
-                addressCache.SetValueExt(address, "Reference", defaultAddressExt.Reference);
-                updated = true;
-            }
+        #endregion AddressLine3
 
-            if (updated)
-            {
-                addressCache.Update(address);
-                addressCache.SetStatus(address, PXEntryStatus.Updated);
-                addressCache.IsDirty = true;
-            }
+        #region Mandatory fields
 
-            return address;
-        }
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
+        public string City { get; set; }
+
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
+        public string CountryID { get; set; }
+
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
+        public string State { get; set; }
+
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault()]
+        public string PostalCode { get; set; }
+
+        #endregion Mandatory fields
 
         #region Street
 
@@ -73,9 +69,9 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [CompositeField(typeof(Address.addressLine1), typeof(street), typeof(extNumber))]
-        [PXUIField(DisplayName = "Calle", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXString(50, IsUnicode = true)]
+        [MultipartField(typeof(Address.addressLine1), 1, typeof(street), typeof(extNumber), typeof(intNumber))]
+        [PXUIField(DisplayName = "Calle", Required = true)]
         public virtual string Street { get; set; }
 
         #endregion Street
@@ -86,9 +82,9 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [CompositeField(typeof(Address.addressLine1), typeof(street), typeof(extNumber))]
-        [PXUIField(DisplayName = "Número Exterior", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXString(50, IsUnicode = true)]
+        [MultipartField(typeof(Address.addressLine1), 2, typeof(street), typeof(extNumber), typeof(intNumber))]
+        [PXUIField(DisplayName = "Número Exterior", Required = true)]
         public virtual string ExtNumber { get; set; }
 
         #endregion ExtNumber
@@ -99,9 +95,9 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [CompositeField(typeof(Address.addressLine2), typeof(intNumber))]
-        [PXUIField(DisplayName = "Número Interior", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXString(50, IsUnicode = true)]
+        [MultipartField(typeof(Address.addressLine1), 3, typeof(street), typeof(extNumber), typeof(intNumber))]
+        [PXUIField(DisplayName = "Número Interior")]
         public virtual string IntNumber { get; set; }
 
         #endregion IntNumber
@@ -112,8 +108,9 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [PXUIField(DisplayName = "Colonia", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXString(50, IsUnicode = true)]
+        [MultipartField(typeof(Address.addressLine2), 1, typeof(neighborhood), typeof(municipality), Separator = ",")]
+        [PXUIField(DisplayName = "Colonia", Required = true)]
         public virtual string Neighborhood { get; set; }
 
         #endregion Neighborhood
@@ -124,9 +121,9 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(50, IsUnicode = true)]
-        [CompositeField(typeof(Address.addressLine3), typeof(municipality))]
-        [PXUIField(DisplayName = "Municipio/Delegación", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXString(50, IsUnicode = true)]
+        [MultipartField(typeof(Address.addressLine2), 2, typeof(neighborhood), typeof(municipality), Separator = ",")]
+        [PXUIField(DisplayName = Messages.Municipality, Required = true)]
         public virtual string Municipality { get; set; }
 
         #endregion Municipality
@@ -137,8 +134,9 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(100, IsUnicode = true)]
-        [PXUIField(DisplayName = "Referencia", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXString(100, IsUnicode = true)]
+        [MultipartField(typeof(Address.addressLine3), 1, typeof(reference))]
+        [PXUIField(DisplayName = "Referencia")]
         public virtual string Reference { get; set; }
 
         #endregion Reference

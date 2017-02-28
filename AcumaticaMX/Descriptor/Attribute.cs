@@ -1,3 +1,4 @@
+using PX.Common;
 using PX.Data;
 using PX.Objects.AR;
 using System;
@@ -63,124 +64,111 @@ namespace AcumaticaMX
     /// upon it has been signed, canceled or blocked<br/>
     /// [SetStatus()]
     /// </summary>
-    public class SetCfdiStatusAttribute : PXEventSubscriberAttribute, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    public class SetCfdiStatusAttribute : PXEventSubscriberAttribute, IPXFieldVerifyingSubscriber, IPXRowSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber//, IPXRowSelectedSubscriber
     {
-        public override void CacheAttached(PXCache sender)
+        protected virtual void StatusSet(PXCache sender, ARRegister doc)
         {
-            base.CacheAttached(sender);
+            var docExt = doc.GetExtension<MXARRegisterExtension>();
+            if (docExt == null) return;
 
-            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.cancelDate>((cache, e) =>
+            var status = CfdiStatus.Clean;
+
+            if (docExt.CancelDate.HasValue)
             {
-                var item = e.Row as MXARRegisterExtension;
-                if (item != null)
-                {
-                    StatusSet(cache, item);
-                }
-            });
-
-            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.uuid>((cache, e) =>
-            {
-                var item = e.Row as MXARRegisterExtension;
-                if (item != null)
-                {
-                    StatusSet(cache, item);
-                }
-            });
-
-            sender.Graph.FieldUpdating.AddHandler<MXARRegisterExtension.stampDate>((cache, e) =>
-            {
-                var item = e.Row as MXARRegisterExtension;
-                if (item != null)
-                {
-                    StatusSet(cache, item);
-                }
-            });
-
-            //sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
-            //sender.Graph.RowSelecting.AddHandler<ARRegister>(RowSelecting);
-            //sender.Graph.RowInserting.AddHandler<ARRegister>(RowInserting);
-            //sender.Graph.RowUpdating.AddHandler<ARRegister>(RowUpdating);
-
-            sender.Graph.FieldVerifying.AddHandler<MXARRegisterExtension.stampStatus>((cache, e) => { e.NewValue = cache.GetValue<MXARRegisterExtension.stampStatus>(e.Row); });
-            //sender.Graph.RowSelecting.AddHandler<ARInvoice>(RowSelecting);
-            sender.Graph.RowInserting.AddHandler<ARInvoice>(RowInserting);
-            sender.Graph.RowUpdating.AddHandler<ARInvoice>(RowUpdating);
-            sender.Graph.RowSelected.AddHandler<ARInvoice>(RowSelected);
-        }
-
-        protected virtual void StatusSet(PXCache cache, MXARRegisterExtension cfdi)
-        {
-            if (cfdi.CancelDate.HasValue)
-            {
-                cfdi.StampStatus = CfdiStatus.Canceled;
+                status = CfdiStatus.Canceled;
             }
-            else if (cfdi.StampDate.HasValue)
+            else if (docExt.StampDate.HasValue)
             {
-                cfdi.StampStatus = CfdiStatus.Stamped;
+                status = CfdiStatus.Stamped;
             }
-            else if (cfdi.Uuid.HasValue)
+            else if (docExt.Uuid.HasValue)
             {
-                cfdi.StampStatus = CfdiStatus.Blocked;
+                status = CfdiStatus.Blocked;
             }
             else
             {
-                cfdi.StampStatus = CfdiStatus.Clean;
+                status = CfdiStatus.Clean;
             }
+
+            sender.SetValue<MXARRegisterExtension.stampStatus>(doc, status);
         }
 
         public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
         {
-            var item = (ARRegister)e.Row;
+            var item = e.Row as ARRegister;
             if (item != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                StatusSet(sender, ext);
+                StatusSet(sender, item);
             }
         }
 
         public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
         {
-            var item = (ARRegister)e.Row;
+            var item = e.Row as ARRegister;
             if (item != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                StatusSet(sender, ext);
+                StatusSet(sender, item);
             }
         }
 
         public virtual void RowUpdating(PXCache sender, PXRowUpdatingEventArgs e)
         {
-            var item = (ARRegister)e.NewRow;
+            var item = e.Row as ARRegister;
             if (item != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                StatusSet(sender, ext);
+                StatusSet(sender, item);
             }
         }
 
-        public virtual void RowSelected(PXCache sender, PXRowSelectedEventArgs e)
+        public void FieldVerifying(PXCache sender, PXFieldVerifyingEventArgs e)
         {
-            var item = (ARRegister)e.Row;
-            if (item != null)
-            {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                StatusSet(sender, ext);
-            }
+            e.NewValue = sender.GetValue<MXARRegisterExtension.stampStatus>(e.Row);
         }
     }
 
-    /// <summary>
-    /// This attribute is intended to update selected fields with concatenation of other fields<br/>
-    /// </summary>
-    public class CompositeFieldAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber
+    public interface IMXAddressExtension
     {
+        string Street { get; set; }
+        string ExtNumber { get; set; }
+        string IntNumber { get; set; }
+        string Municipality { get; set; }
+        string Neighborhood { get; set; }
+        string Reference { get; set; }
+    }
+
+    /// <summary>
+    /// Este atributo permite marcar campos "virtuales" en PXCache que son parte de otro campo principal.
+    /// Efectivamente separa el campo padre en cada padre hijo y concatena los hijos para actualizar el padre en la BD.
+    /// </summary>
+    public class MultipartFieldAttribute : PXEventSubscriberAttribute, IPXFieldSelectingSubscriber, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
+    {
+        // Separador de campos es un "espacio sin corte" en Unicode
+        // Básicamente un espacio
+        private static string DefaultSeparator = "\u00A0";
+
         private string _TargetField;
         private List<string> _SourceFields;
 
-        public CompositeFieldAttribute(Type TargetFieldType, params Type[] SourceFieldTypes)
+        private int _Position;
+
+        private string _Separator = DefaultSeparator;
+
+        public string Separator { get { return _Separator; } set { _Separator = value + DefaultSeparator; } }
+
+        public MultipartFieldAttribute(Type TargetFieldType, int FieldPosition, params Type[] SourceFieldTypes)
             : base()
         {
             _TargetField = TargetFieldType.Name;
+            _Position = FieldPosition;
+
+            if (FieldPosition > 0)
+            {
+                _Position = FieldPosition;
+            }
+            else
+            {
+                throw new PXArgumentException();
+            }
 
             if (SourceFieldTypes.Length > 0)
             {
@@ -192,36 +180,204 @@ namespace AcumaticaMX
             }
         }
 
-        protected virtual void UpdateTargetField(PXCache sender, object row)
-        {
-            var value = string.Join(" ", _SourceFields.Select(
-                fieldName =>
-                sender.GetValue(row, fieldName)?.ToString())).Trim();
-
-            sender.SetValue(row, _TargetField, value);
-        }
-
-        public virtual void RowInserting(PXCache sender, PXRowInsertingEventArgs e)
+        public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
         {
             if (e.Row != null)
             {
-                UpdateTargetField(sender, e.Row);
+                var newValue = UpdateFieldInPosition((string)sender.GetValue(e.Row, _TargetField), (string)sender.GetValue(e.Row, _FieldName), _Position);
+
+                sender.SetValueExt(e.Row, _TargetField, newValue);
             }
         }
 
-        public virtual void RowUpdating(PXCache sender, PXRowUpdatingEventArgs e)
+        public void FieldSelecting(PXCache sender, PXFieldSelectingEventArgs e)
         {
-            if (e.Row != null)
+            if (e.Row == null) return;
+
+            var value = ReadFieldValue((string)sender.GetValue(e.Row, _TargetField), _Position);
+
+            e.ReturnValue = value;
+        }
+
+        public void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = ReadFieldValue((string)sender.GetValue(e.Row, _TargetField), _Position);
+
+            sender.SetValue(e.Row, _FieldName, value);
+        }
+
+        protected virtual string ReadFieldValue(string parentValue, int position)
+        {
+            string value = null;
+
+            if (!string.IsNullOrEmpty(parentValue))
             {
-                UpdateTargetField(sender, e.Row);
+                // Buscamos que exista la parte en el bloque dividido por el separador (1 es inicio de cadena)
+                var start = FindNPosition(parentValue, Separator, _Position);
+
+                // Si es positivo encontramos un valor
+                if (start > -1)
+                {
+                    // asignamos el valor de donde se encontró el primer bloque hasta el segundo separador
+                    value = CutToSeparator(parentValue.Substring(start), Separator);
+                }
+            }
+
+            return value;
+        }
+
+        protected virtual string UpdateFieldInPosition(string target, string newValue, int position)
+        {
+            string value = null;
+
+            target = target ?? string.Empty;
+
+            if (position >= 0)
+            {
+                var parts = target.Split(new string[1] { Separator }, StringSplitOptions.None);
+
+                // Agregamos las partes que hagan falta (si no hacen falta no se agrega ni una
+                if (position > parts.Length)
+                {
+                    string[] biggerParts = new string[position];
+                    parts.CopyTo(biggerParts, 0);
+                    parts = biggerParts;
+                }
+
+                // Actualizamos el valor en la posición que corresponde
+                parts[position - 1] = newValue;
+
+                // Volvemos a concatenar las partes para formar la cadena completa
+                value = string.Join(Separator, parts);
+
+                // Si termina con separador, lo quitamos (puede ser varias veces)
+                while ((value.EndsWith(Separator) || value == Separator))
+                {
+                    value = value.Substring(0, value.LastIndexOf(Separator));
+                }
+            }
+
+            // Regresamos el valor
+            return value;
+        }
+
+        private static string CutToSeparator(string searched, string separator)
+        {
+            int startIndex = -1;
+
+            startIndex = searched.IndexOf(separator);
+
+            if (startIndex < 0)
+                return searched;
+
+            var value = searched.Substring(0, startIndex).Trim();
+
+            // Si es blanco reresamos null para disparar validaciones
+            return string.IsNullOrEmpty(value) ? null : value;
+        }
+
+        private static int FindNPosition(string searched, string separator, int position)
+        {
+            int startIndex = 0;
+            int hitCount = 1;
+
+            if (position < 1) return 0;
+
+            // Search for n occurrences of the target.
+            while (hitCount < position)
+            {
+                startIndex = searched.IndexOf(
+                    separator, startIndex);
+
+                // Exit the loop if the target is not found.
+                if (startIndex < 0)
+                {
+                    return position == 1 ? 0 : -1;
+                }
+
+                startIndex += separator.Length;
+
+                if (startIndex >= searched.Length)
+                    return -1;
+
+                hitCount++;
+            }
+
+            return startIndex;
+        }
+    }
+
+    public class StampableStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
+    {
+        public override void CacheAttached(PXCache sender)
+        {
+            base.CacheAttached(sender);
+
+            sender.Graph.FieldUpdated.AddHandler<MXARRegisterExtension.uuid>((localSender, e) =>
+            {
+                var doc = e.Row as ARRegister;
+                if (doc != null)
+                {
+                    StatusSet(localSender, doc);
+                }
+            });
+        }
+
+        protected virtual void StatusSet(PXCache sender, ARRegister doc)
+        {
+            // Solo seguimos si tenemos el registro
+            var cfdi = doc.GetExtension<MXARRegisterExtension>();
+
+            if (cfdi == null) return;
+            var check = false;
+
+            // Si el documento está timbrado o cancelado limpiamos la bandera
+            if (cfdi.StampStatus == CfdiStatus.Stamped || cfdi.StampStatus == CfdiStatus.Canceled)
+            {
+                check = false;
+            }
+            // Si tiene valor en ceros
+            else if (cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty)
+            {
+                check = true;
+            }
+
+            sender.SetValue<MXARRegisterExtension.notStampable>(doc, check);
+        }
+
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            var doc = e.Row as ARRegister;
+            if (doc != null)
+            {
+                StatusSet(sender, doc);
             }
         }
 
         public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
         {
-            if (e.Row != null)
+            var item = (ARRegister)e.Row;
+
+            if (item != null)
             {
-                UpdateTargetField(sender, e.Row);
+                var ext = item.GetExtension<MXARRegisterExtension>();
+                if (ext == null) return;
+
+                if (((bool?)e.OldValue != true) && ext.NotStampable == true && ext.Uuid == null)
+                {
+                    //ext.Uuid = Guid.Empty;
+                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, Guid.Empty);
+                    return;
+                }
+
+                if (((bool?)e.OldValue == true) && ext.NotStampable != true && ext.Uuid == Guid.Empty)
+                {
+                    //ext.Uuid = null;
+                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
+                    return;
+                }
             }
         }
     }

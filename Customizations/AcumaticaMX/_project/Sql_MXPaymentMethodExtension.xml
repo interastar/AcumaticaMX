@@ -1,0 +1,11 @@
+﻿<Sql TableName="MXPaymentMethodExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXPaymentMethodExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="PaymentMethodID" type="NVarChar(10)" />
+  <col name="SatPaymentMethod" type="NVarChar(2)" />
+  <index name="MXPaymentMethodExtension_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="PaymentMethodID" />
+  </index>
+</table>]]></CDATA>
+</Sql>
