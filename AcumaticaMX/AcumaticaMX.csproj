@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAC\MXCESatAccountList.cs" />
     <Compile Include="DAC\MXPOAddressExtension.cs" />
     <Compile Include="DAC\MXSOAddressExtension.cs" />
     <Compile Include="DAC\MXAPAddressExtension.cs" />
@@ -73,6 +74,7 @@
   <ItemGroup>
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
+    <Content Include="Sql\MXCESatAccountList.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
   </ItemGroup>
   <ItemGroup />

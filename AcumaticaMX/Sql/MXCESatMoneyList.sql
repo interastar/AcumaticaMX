@@ -1,18 +1,14 @@
-﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[MXCESatAccountList]') And type in (N'U'))
-	Drop Table [dbo].[MXCESatAccountList]
+﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[MXCESatMoneyList]') And type in (N'U'))
+	Drop Table [dbo].[MXCESatMoneyList]
 Go
-Create Table [dbo].[MXCESatAccountList]
+Create Table [dbo].[MXCESatMoneyList]
 (
 	-- multi-tenancy support
 	[CompanyID]			int NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[GroupingCodeCD]	nvarchar(6) NOT NULL,
-	[GroupingCodeID]	int NOT NULL,
-	
-	[Level]				int NOT NULL,
-	[Description]		nvarchar(255) NOT NULL,
-	[ParentCD]			nvarchar(6) NULL,
+	[MoneyCodeCD]		nvarchar(4) NOT NULL,
+	[MoneyName]			nvarchar(255) NOT NULL,
 
 	-- handle concurrency
 	[tstamp]			timestamp NOT NULL,
@@ -25,9 +21,9 @@ Create Table [dbo].[MXCESatAccountList]
 	[LastModifiedByScreenID]	char(8) NOT NULL,
 	[LastModifiedDateTime]		smalldatetime NOT NULL,
 
-	CONSTRAINT SYCESatAccountList_PK PRIMARY KEY
+	CONSTRAINT MXCESatMoneyList_PK PRIMARY KEY
 	(
 		[CompanyID] ASC,
-		[GroupingCodeCD] ASC
+		[MoneyCodeCD] ASC
 	)
 )

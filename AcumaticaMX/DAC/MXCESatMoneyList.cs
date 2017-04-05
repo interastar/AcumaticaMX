@@ -1,69 +1,35 @@
 ﻿using System;
 using PX.Data;
 
-namespace AcumaticaMX
+namespace AcumaticaMX.DAC
 {
-    public class MXCESatAccountList : IBqlTable
+    public class MXCESatMoneyList : IBqlTable
     {
+        #region MoneyCodeCD
 
-        #region GroupingCodeCD
-
-        public abstract class groupingCodeCD : PX.Data.IBqlField
+        public abstract class moneyCodeCD : PX.Data.IBqlField
         {
         }
 
-        [PXDBString(6, IsKey = true, IsUnicode = true, InputMask = ">CCCCCC")]
+        [PXDBString(4, IsKey = true, IsUnicode = true)]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.GroupingCodeLabel)]
-        public virtual string GroupingCodeCD { get; set; }
+        [PXUIField(DisplayName = Messages.MoneyCodeLabel)]
+        public virtual string MoneyCodeCD { get; set; }
 
-        #endregion GroupingCodeCD
+        #endregion MoneyCodeCD
 
-        #region GroupingCodeID
+        #region MoneyName
 
-        public abstract class groupingCodeID : PX.Data.IBqlField
+        public abstract class moneyName : PX.Data.IBqlField
         {
         }
 
-        [PXDBInt]
-        public virtual int? GroupingCodeID { get; set; }
+        [PXDBString]
+        [PXDefault]
+        [PXUIField(DisplayName = Messages.MoneyNameLabel)]
+        public virtual string MoneyName { get; set; }
 
-        #endregion GroupingCodeID
-
-        #region Level
-
-        public abstract class level : PX.Data.IBqlField
-        {
-        }
-
-        [PXDBInt]
-        [PXUIField(DisplayName = Messages.LevelLabel)]
-        public virtual int? Level { get; set; }
-
-        #endregion Level
-
-        #region Description
-
-        public abstract class description : PX.Data.IBqlField
-        {
-        }
-
-        [PXDBString(250, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.DescriptionLabel)]
-        public virtual string Description { get; set; }
-
-        #endregion Description
-
-        #region ParentCD
-
-        public abstract class parentCD : PX.Data.IBqlField
-        {
-        }
-
-        [PXDBString(6, IsUnicode = true)]
-        public virtual string ParentCD { get; set; }
-
-        #endregion ParentCD
+        #endregion MoneyName
 
         #region tstamp
 

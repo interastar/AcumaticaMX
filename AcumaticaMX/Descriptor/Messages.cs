@@ -45,5 +45,22 @@ namespace AcumaticaMX
 
         //*** SYFEPaymentMethodExtension
         public const string PaymentMethod = "Clave Método de Pago en SAT";
+
+        #region Catalogo de Cuentas
+
+        //*** MXCESatAccountList
+        public const string GroupingCodeLabel = "Código Agrupador";
+        public const string LevelLabel = "Nivel";
+        public const string DescriptionLabel = "Descripción";
+        public const string ParentIDLabel = "Padre";
+
+        #endregion Catalogo de Cuentas
+
+        #region Catalogo de Monedas
+
+        //*** MXCESatMoneyList
+        public const string MoneyCodeLabel = "Código de Monedas";
+        public const string MoneyNameLabel = "Nombre de la moneda";
+        #endregion Catalogo de Monedas
     }
 }
