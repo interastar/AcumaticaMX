@@ -281,5 +281,17 @@ namespace AcumaticaMX
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
+
+        #region ComercioExterior
+
+        public abstract class externalTrade : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Aplicar Comercio Exterior", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
+        [ExternalTradeStatus()]
+        public virtual bool? ExternalTrade { get; set; }
+
+        #endregion ComercioExterior
     }
 }

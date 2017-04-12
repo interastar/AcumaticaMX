@@ -45,6 +45,9 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	-- Cancelación
 	[CancelDate]		[smalldatetime] NULL,
 
+	-- Comercio Exterior
+	[ExternalTrade]		bit NOT NULL DEFAULT ((0)),
+
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
