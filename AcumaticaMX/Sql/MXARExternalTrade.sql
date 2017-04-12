@@ -20,7 +20,7 @@ CREATE TABLE [dbo].MXARExternalTrade(
 
 	--Datos Generales de comercio exterior
 	[TransferReason]			[nvarchar](3) NULL,
-	[OperationType]				[int] NOT NULL DEFAULT ((2)),
+	[OperationType]				[int] NULL DEFAULT ((2)),
 	[RequestKey]				[nvarchar](3) NULL,
 	[OriginCertified]			bit DEFAULT ((0)),
 	[OriginCertifiedNumber]		[nvarchar](40) NULL,
