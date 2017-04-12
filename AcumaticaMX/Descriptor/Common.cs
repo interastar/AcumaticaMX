@@ -113,6 +113,74 @@ namespace AcumaticaMX
                 }
             }
         }
+        
+        /// <summary>
+        /// Catálogo de Unidades
+        /// </summary>
+        public static class SatUnits
+        {
+            public const string Kilo = "01";
+            public const string Gram = "02";
+            public const string LinealMeter = "03";
+            public const string SquareMeter = "04";
+            public const string CubicMeter = "05";
+            public const string Piece = "06";
+            public const string Head = "07";
+            public const string Liter = "08";
+            public const string Pair = "09";
+            public const string KiloWatt = "10";
+            public const string Thousand = "11";
+            public const string Set = "12";
+            public const string KiloWatt_Hour = "13";
+            public const string Ton = "14";
+            public const string Berrel = "15";
+            public const string GramNet = "16";
+            public const string Ten = "17";
+            public const string Hundred = "18";
+            public const string Dozen = "19";
+            public const string Box = "20";
+            public const string Bottle = "21";
+            public const string Service = "99";
+
+            public static string Values
+            {
+                get
+                {
+                    return string.Join(",", typeof(SatUnits).GetFields().Where(x => !x.Name.Contains("Label")).Select(x => x.GetValue(null)));
+                }
+            }
+
+            public const string KiloLabel = "Kilo";
+            public const string GramLabel = "Gramo";
+            public const string LinealMeterLabel = "Metro Lineal";
+            public const string SquareMeterLabel = "Metro Cuadrado";
+            public const string CubicMeterLabel = "Metro Cubico";
+            public const string PieceLabel = "Pieza";
+            public const string HeadLabel = "Cabeza";
+            public const string LiterLabel = "Litro";
+            public const string PairLabel = "Par";
+            public const string KiloWattLabel = "KiloWatt";
+            public const string ThousandLabel = "Millar";
+            public const string SetLabel = "Juego";
+            public const string KiloWatt_HourLabel = "KiloWatt/Hora";
+            public const string TonLabel = "Tonelada";
+            public const string BerrelLabel = "Barril";
+            public const string GramNetLabel = "Gramo Neto";
+            public const string TenLabel = "Decena";
+            public const string HundredLabel = "Cientos";
+            public const string DozenLabel = "Docena";
+            public const string BoxLabel = "Caja";
+            public const string BottleLabel = "Botella";
+            public const string ServiceLabel = "Servicio";
+
+            public static string Labels
+            {
+                get
+                {
+                    return string.Join(",", typeof(SatUnits).GetFields().Where(x => x.Name.Contains("Label")).Select(x => x.GetValue(null)));
+                }
+            }
+        }
     }
 
     public class Convert
