@@ -381,4 +381,27 @@ namespace AcumaticaMX
             }
         }
     }
+
+    public class ExternalTradeStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
+    {
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            var doc = e.Row as ARRegister;
+            if (doc != null)
+            {
+                //StatusSet(sender, doc);
+            }
+        }
+
+        protected virtual void SetStatus(PXCache sender, ARRegister doc)
+        {
+
+        }
+
+        public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            var item = (ARRegister)e.Row;
+            
+        }
+    }
 }
