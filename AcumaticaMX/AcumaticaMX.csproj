@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAC\MXPOAddressExtension.cs" />
+    <Compile Include="DAC\MXPOReceipLineExt.cs" />
     <Compile Include="DAC\MXSOAddressExtension.cs" />
     <Compile Include="DAC\MXAPAddressExtension.cs" />
     <Compile Include="DAC\MXPaymentMethodExtension.cs" />
@@ -74,6 +75,7 @@
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
+    <Content Include="Sql\MXPOReceipLineExt.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

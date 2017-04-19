@@ -45,5 +45,10 @@ namespace AcumaticaMX
 
         //*** SYFEPaymentMethodExtension
         public const string PaymentMethod = "Clave Método de Pago en SAT";
+
+        //*** MXPOReceipLineExt
+        public const string Customs = "Aduana";
+        public const string ImportDate = "Fecha de importación";
+        public const string RequestNumber = "Numero de Pedimento";
     }
 }
