@@ -19,6 +19,7 @@
   <col name="QrCode" type="NVarChar(95)" nullable="true" />
   <col name="StampString" type="NVarChar(1000)" nullable="true" />
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
+  <col name="ExternalTrade" type="Bit" default="Zero" />
   <index name="MXARRegisterExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DocType" />
