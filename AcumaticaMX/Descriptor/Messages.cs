@@ -50,5 +50,7 @@ namespace AcumaticaMX
         public const string Customs = "Aduana";
         public const string ImportDate = "Fecha de importación";
         public const string RequestNumber = "Numero de Pedimento";
+        public const string ErrorCustoms = "Si ingresa Número de pedimento, debe ingresar nombre de aduana y la fecha de importación.";
+        public const string ErrorImportDate = "El campo Fecha de Importacion no puede estar vacio";
     }
 }

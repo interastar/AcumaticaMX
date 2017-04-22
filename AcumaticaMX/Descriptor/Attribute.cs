@@ -1,6 +1,7 @@
 using PX.Common;
 using PX.Data;
 using PX.Objects.AR;
+using PX.Objects.IN;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -377,6 +378,60 @@ namespace AcumaticaMX
                     //ext.Uuid = null;
                     sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
                     return;
+                }
+            }
+        }
+    }
+
+    public class ValidateFieldsAttribute : PXEventSubscriberAttribute, IPXRowPersistingSubscriber
+    {
+        private List<string> _SourceFields;
+        private string _ErrorMsg;
+
+        public ValidateFieldsAttribute(string ErrorMsg,params Type[] SourceFieldTypes)
+            : base()
+        {
+            _ErrorMsg = ErrorMsg;
+
+            if (SourceFieldTypes.Length > 0)
+            {
+                _SourceFields = new List<string>(SourceFieldTypes.Select(t => t.Name));
+            }
+            else
+            {
+                throw new PXArgumentException();
+            }
+        }
+
+        public virtual void RowPersisting(PXCache sender, PXRowPersistingEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, this._FieldName);
+
+            if (value != null ||
+                ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
+            {
+                foreach(var field in _SourceFields)
+                {
+                    var fieldValue = sender.GetValue(e.Row, field);
+
+                    // Si es nulo o
+                    //  es una cadena vacía...
+                    if (fieldValue == null)
+                    {
+                        // Lanza la excepción
+                        sender.RaiseExceptionHandling(field,
+                                e.Row, null, new PXSetPropertyException(_ErrorMsg, PXErrorLevel.RowError));
+                    }
+                    else if ((fieldValue.GetType() == typeof(string)))
+                    {
+                        if(string.IsNullOrEmpty((string)fieldValue))
+                        {
+                            sender.RaiseExceptionHandling(field,
+                               e.Row, null, new PXSetPropertyException(_ErrorMsg, PXErrorLevel.RowError));
+                        }
+                    }
                 }
             }
         }
