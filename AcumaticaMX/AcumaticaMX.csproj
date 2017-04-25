@@ -54,9 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAC\MXINTranExt.cs" />
+    <Compile Include="DAC\MXARTranExtension.cs" />
+    <Compile Include="DAC\MXINTranExtension.cs" />
     <Compile Include="DAC\MXPOAddressExtension.cs" />
-    <Compile Include="DAC\MXPOReceiptLineExt.cs" />
+    <Compile Include="DAC\MXPOReceiptLineExtension.cs" />
     <Compile Include="DAC\MXSOAddressExtension.cs" />
     <Compile Include="DAC\MXAPAddressExtension.cs" />
     <Compile Include="DAC\MXPaymentMethodExtension.cs" />
@@ -74,8 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\MXARRegisterExtension.sql" />
+    <Content Include="Sql\MXARTranExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
-    <Content Include="Sql\MXINTranExt.sql" />
+    <Content Include="Sql\MXINTranExtension.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
     <Content Include="Sql\MXPOReceiptLineExt.sql" />
   </ItemGroup>

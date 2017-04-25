@@ -1,15 +1,15 @@
-﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXINTranExt]') And type in (N'U'))
-	Drop Table [MXINTranExt]
+﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXINTranExtension]') And type in (N'U'))
+	Drop Table [MXINTranExtension]
 Go
 
-/****** Object:  Table [dbo].[MXINTranExt] ******/
+/****** Object:  Table [dbo].[MXINTranExtension] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MXINTranExt](
+CREATE TABLE [dbo].[MXINTranExtension](
 	-- Campo de soporte multiempresa
 	[CompanyID]			[int] NOT NULL DEFAULT ((0)),
 
@@ -23,7 +23,7 @@ CREATE TABLE [dbo].[MXINTranExt](
 	[ImportDate]		[smalldatetime] NULL,
 	[RequestNbr]		[nvarchar](50) NULL,
 
-	CONSTRAINT [MXINTranExt_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [MXINTranExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
 		[DocType] ASC,

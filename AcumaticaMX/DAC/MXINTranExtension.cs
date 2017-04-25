@@ -6,7 +6,7 @@ using PX.Objects.IN;
 namespace AcumaticaMX
 {
     [PXTable(typeof(INTran.refNbr), typeof(INTran.docType), typeof(INTran.lineNbr),  IsOptional = true)]
-    public class MXINTranExt : PXCacheExtension<INTran>
+    public class MXINTranExtension : PXCacheExtension<INTran>
     {
         #region Customs
 

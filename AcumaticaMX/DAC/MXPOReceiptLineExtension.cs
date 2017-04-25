@@ -6,7 +6,7 @@ using PX.Objects.PO;
 namespace AcumaticaMX
 {
     [PXTable(typeof(POReceiptLine.receiptNbr), typeof(POReceiptLine.lineNbr), IsOptional = true)]
-    public class MXPOReceiptLineExt : PXCacheExtension<POReceiptLine>
+    public class MXPOReceiptLineExtension : PXCacheExtension<POReceiptLine>
     {
         #region Customs
 

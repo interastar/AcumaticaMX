@@ -1,15 +1,15 @@
-﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXPOReceiptLineExt]') And type in (N'U'))
-	Drop Table [MXPOReceiptLineExt]
+﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXPOReceiptLineExtension]') And type in (N'U'))
+	Drop Table [MXPOReceiptLineExtension]
 Go
 
-/****** Object:  Table [dbo].[MXPOReceiptLineExt] ******/
+/****** Object:  Table [dbo].[MXPOReceiptLineExtension] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MXPOReceiptLineExt](
+CREATE TABLE [dbo].[MXPOReceiptLineExtension](
 	-- Campo de soporte multiempresa
 	[CompanyID]			[int] NOT NULL DEFAULT ((0)),
 
@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[MXPOReceiptLineExt](
 	[ImportDate]		[smalldatetime] NULL,
 	[RequestNbr]		[nvarchar](50) NULL,
 
-	CONSTRAINT [MXPOReceiptLineExt_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [MXPOReceiptLineExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
 		[ReceiptNbr] ASC,
