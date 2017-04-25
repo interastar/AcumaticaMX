@@ -79,7 +79,7 @@
     <Content Include="Sql\MXBAccountExtension.sql" />
     <Content Include="Sql\MXINTranExtension.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
-    <Content Include="Sql\MXPOReceiptLineExt.sql" />
+    <Content Include="Sql\MXPOReceiptLineExtension.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
