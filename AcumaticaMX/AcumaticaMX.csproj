@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAC\MXARCustomsInformation.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
     <Compile Include="DAC\MXINTranExtension.cs" />
     <Compile Include="DAC\MXPOAddressExtension.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="MXCustomerMaintExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\MXARCustomsInformation.sql" />
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXARTranExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
