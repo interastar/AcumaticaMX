@@ -52,5 +52,21 @@ namespace AcumaticaMX
         public const string RequestNumber = "Numero de Pedimento";
         public const string ErrorCustoms = "Si ingresa Número de pedimento, debe ingresar nombre de aduana y la fecha de importación.";
         public const string ErrorImportDate = "El campo Fecha de Importacion no puede estar vacio";
+        #region Catalogo de Cuentas
+
+        //*** MXCESatAccountList
+        public const string GroupingCodeLabel = "Código Agrupador";
+        public const string LevelLabel = "Nivel";
+        public const string DescriptionLabel = "Descripción";
+        public const string ParentIDLabel = "Padre";
+
+        #endregion Catalogo de Cuentas
+
+        #region Catalogo de Monedas
+
+        //*** MXCESatMoneyList
+        public const string MoneyCodeLabel = "Código de Monedas";
+        public const string MoneyNameLabel = "Nombre de la moneda";
+        #endregion Catalogo de Monedas
     }
 }

@@ -58,6 +58,7 @@
     <Compile Include="DAC\MXARCustomsInformation.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
     <Compile Include="DAC\MXINTranExtension.cs" />
+    <Compile Include="DAC\MXCESatAccountList.cs" />
     <Compile Include="DAC\MXPOAddressExtension.cs" />
     <Compile Include="DAC\MXPOReceiptLineExtension.cs" />
     <Compile Include="DAC\MXSOAddressExtension.cs" />
@@ -80,6 +81,7 @@
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXARTranExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
+    <Content Include="Sql\MXCESatAccountList.sql" />
     <Content Include="Sql\MXINTranExtension.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
     <Content Include="Sql\MXPOReceiptLineExtension.sql" />
