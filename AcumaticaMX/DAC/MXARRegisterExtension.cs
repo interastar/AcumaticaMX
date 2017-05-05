@@ -49,8 +49,8 @@ namespace AcumaticaMX
                 AcumaticaMX.Common.PayMethod.Transfer, AcumaticaMX.Common.PayMethod.CreditCard,
                 AcumaticaMX.Common.PayMethod.Wallet, AcumaticaMX.Common.PayMethod.Electronic,
                 AcumaticaMX.Common.PayMethod.Coupons, AcumaticaMX.Common.PayMethod.DebitCard,
-                AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.NA,
-                AcumaticaMX.Common.PayMethod.Other,
+                AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.NAFE,
+                AcumaticaMX.Common.PayMethod.NACE, AcumaticaMX.Common.PayMethod.Other,
             },
             new string[]
             {
@@ -58,8 +58,8 @@ namespace AcumaticaMX
                 AcumaticaMX.Common.PayMethod.TransferLabel, AcumaticaMX.Common.PayMethod.CreditCardLabel,
                 AcumaticaMX.Common.PayMethod.WalletLabel, AcumaticaMX.Common.PayMethod.ElectronicLabel,
                 AcumaticaMX.Common.PayMethod.CouponsLabel, AcumaticaMX.Common.PayMethod.DebitCardLabel,
-                AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.NALabel,
-                AcumaticaMX.Common.PayMethod.OtherLabel,
+                AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.NAFELabel,
+                AcumaticaMX.Common.PayMethod.NACELabel, AcumaticaMX.Common.PayMethod.OtherLabel,
             }, MultiSelect = true)]
         [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentMethod { get; set; }
