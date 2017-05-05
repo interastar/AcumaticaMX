@@ -82,7 +82,8 @@ namespace AcumaticaMX
             public const string Coupons = "08";
             public const string DebitCard = "28";
             public const string ServiceCard = "29";
-            public const string NA = "98";
+            public const string NAFE = "NA";
+            public const string NACE = "98";
             public const string Other = "99";
 
             public static string Values
@@ -102,7 +103,8 @@ namespace AcumaticaMX
             public const string CouponsLabel = "Vales de despensa";
             public const string DebitCardLabel = "Tarjeta de Débito";
             public const string ServiceCardLabel = "Tarjeta de Servicio";
-            public const string NALabel = "NA";
+            public const string NAFELabel = "NA Facturacion Electrónica";
+            public const string NACELabel = "NA Contabilidad Electónica";
             public const string OtherLabel = "Otros";
 
             public static string Labels
