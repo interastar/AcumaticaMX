@@ -67,7 +67,7 @@ namespace AcumaticaMX
     /// </summary>
     public class SetCfdiStatusAttribute : PXEventSubscriberAttribute, IPXFieldVerifyingSubscriber, IPXRowSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber//, IPXRowSelectedSubscriber
     {
-        protected virtual void StatusSet(PXCache sender, ARRegister doc)
+        public static void StatusSet(PXCache sender, ARRegister doc)
         {
             var docExt = doc.GetExtension<MXARRegisterExtension>();
             if (docExt == null) return;
