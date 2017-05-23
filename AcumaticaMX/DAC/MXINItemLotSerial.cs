@@ -14,6 +14,9 @@ namespace AcumaticaMX
         }
 
         [PXDBString(15, IsUnicode = true, IsKey = true)]
+        [PXSelector(typeof(Search<INRegister.refNbr, 
+            Where<INRegister.docType, Equal<INDocType.receipt>>>))]
+        [PXUIField(DisplayName = "Numero de Referencia", Enabled = true)]
         public virtual string RefNbr { get; set; }
 
         #endregion RefNbr

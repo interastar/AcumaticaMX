@@ -58,8 +58,8 @@
     <Compile Include="DAC\MXARCustomsInformation.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
     <Compile Include="DAC\MXINItemLotSerial.cs" />
-    <Compile Include="DAC\MXINTranExtension.cs" />
     <Compile Include="DAC\MXCESatAccountList.cs" />
+    <Compile Include="DAC\MXINTranExtension.cs" />
     <Compile Include="DAC\MXPOAddressExtension.cs" />
     <Compile Include="DAC\MXPOReceiptLineExtension.cs" />
     <Compile Include="DAC\MXSOAddressExtension.cs" />
