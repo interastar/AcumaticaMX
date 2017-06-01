@@ -21,7 +21,7 @@ namespace AcumaticaMX
         public abstract class inventoryID : IBqlField
         {
         }
-
+        [PXDefault]
         [PXDBInt(IsKey = true)]
         public virtual int? InventoryID { get; set; }
 
@@ -32,7 +32,7 @@ namespace AcumaticaMX
         public abstract class lotSerialNbr : IBqlField
         {
         }
-
+        [PXDefault]
         [PXDBString(15, IsUnicode = true, IsKey = true)]
         [PXParent(typeof(Select<PX.Objects.IN.INItemLotSerial,
             Where<PX.Objects.IN.INItemLotSerial.lotSerialNbr,
@@ -83,7 +83,7 @@ namespace AcumaticaMX
         public abstract class lineNbr : IBqlField
         {
         }
-
+        [PXDefault]
         [PXDBInt(IsKey = true)]
         public virtual int? LineNbr { get; set; }
 
