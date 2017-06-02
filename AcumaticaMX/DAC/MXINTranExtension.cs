@@ -1,12 +1,12 @@
 ﻿using System;
 using PX.Data;
-using PX.Objects;
 using PX.Objects.IN;
 
 namespace AcumaticaMX
 {
-    [PXTable(typeof(INTran.refNbr), typeof(INTran.docType), typeof(INTran.lineNbr),  IsOptional = true)]
-    public class MXINTranExtension : PXCacheExtension<INTran>
+    [Serializable]
+    [PXTable(typeof(INTran.docType), typeof(INTran.refNbr), typeof(INTran.lineNbr), IsOptional = true)]
+    public class MXINTranExtension: PXCacheExtension<INTran>
     {
         #region Customs
 
