@@ -86,6 +86,15 @@ namespace AcumaticaMX
 
         #endregion condicionesDePago
 
+        #region MotivoDeDescuento
+
+        public abstract class discountReason : IBqlField { }
+
+        [PXDBString(250, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Motivo de Descuento")]
+        public virtual string DiscountReason { get; set; }
+
+        #endregion MotivoDeDescuento
         //  -- Datos de sello del comprobante
 
         #region noCertificado

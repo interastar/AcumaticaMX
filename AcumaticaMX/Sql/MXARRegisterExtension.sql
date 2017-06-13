@@ -45,6 +45,9 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	-- Cancelación
 	[CancelDate]		[smalldatetime] NULL,
 
+	-- Descuentos
+	[DiscountReason]	[nvarchar](250) NULL,
+
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
