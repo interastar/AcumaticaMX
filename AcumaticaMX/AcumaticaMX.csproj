@@ -77,6 +77,7 @@
     <Compile Include="MXCustomerMaintExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\MXAPRegisterExtension.sql" />
     <Content Include="Sql\MXARCustomsInformation.sql" />
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
