@@ -10,6 +10,15 @@ namespace AcumaticaMX
     [PXTable(typeof(ARRegister.docType), typeof(ARRegister.refNbr), IsOptional = true)]
     public class MXARRegisterExtension : PXCacheExtension<PX.Objects.AR.ARRegister>
     {
+
+
+        #region DocDate
+
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [TimeDocDate()]
+        public virtual DateTime? _DocDate { get; set; }
+
+        #endregion DocDate
         // Campos persistentes (en BD) *************
 
         // - Datos del comprobante fiscal
