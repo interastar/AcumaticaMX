@@ -44,6 +44,8 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 
 	-- Cancelación
 	[CancelDate]		[smalldatetime] NULL,
+	--Fecha de creación
+	[DocDateTime]		[smalldatetime] NULL,
 
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(

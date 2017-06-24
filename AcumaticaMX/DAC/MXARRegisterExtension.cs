@@ -10,15 +10,6 @@ namespace AcumaticaMX
     [PXTable(typeof(ARRegister.docType), typeof(ARRegister.refNbr), IsOptional = true)]
     public class MXARRegisterExtension : PXCacheExtension<PX.Objects.AR.ARRegister>
     {
-
-
-        #region DocDate
-
-        [PXMergeAttributes(Method = MergeMethod.Merge)]
-        [TimeDocDate()]
-        public virtual DateTime? _DocDate { get; set; }
-
-        #endregion DocDate
         // Campos persistentes (en BD) *************
 
         // - Datos del comprobante fiscal
@@ -164,8 +155,7 @@ namespace AcumaticaMX
         #region FechaTimbrado
 
         public abstract class stampDate : IBqlField { }
-
-        [PXDBDate()]
+        [PXDBDateAndTime()]
         [PXUIField(DisplayName = "Fecha de Timbrado", Enabled = false)]
         public virtual DateTime? StampDate { get; set; }
 
@@ -174,8 +164,7 @@ namespace AcumaticaMX
         #region FechaCancelacion
 
         public abstract class cancelDate : IBqlField { }
-
-        [PXDBDate()]
+        [PXDBDateAndTime()]
         [PXUIField(DisplayName = "Fecha de Cancelación", Enabled = false)]
         public virtual DateTime? CancelDate { get; set; }
 
@@ -290,5 +279,12 @@ namespace AcumaticaMX
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
+
+        #region DocDateTime
+        public abstract class docDateTime : IBqlField { }
+        [PXDBDateAndTime()]
+        [TimeDocDate()]
+        public virtual DateTime? DocDateTime { get; set; }
+        #endregion DocDateTime
     }
 }

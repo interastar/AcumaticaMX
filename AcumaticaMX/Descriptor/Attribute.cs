@@ -451,7 +451,7 @@ namespace AcumaticaMX
                         document.DocDate.Value.Day, document.LastModifiedDateTime.Value.Hour,
                         document.LastModifiedDateTime.Value.Minute,
                         document.LastModifiedDateTime.Value.Second);
-                    sender.SetValue<ARRegister.docDate>(document, docDateWithTime);
+                    sender.SetValue<MXARRegisterExtension.docDateTime>(document, docDateWithTime);
                 }
             }
         }
