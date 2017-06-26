@@ -436,4 +436,24 @@ namespace AcumaticaMX
             }
         }
     }
+
+    public class TimeDocDateAttribute : PXEventSubscriberAttribute, IPXRowPersistingSubscriber
+    {
+        public virtual void RowPersisting(PXCache sender, PXRowPersistingEventArgs e)
+        {
+            var document = e.Row as ARRegister;
+            if (document != null)
+            {
+                var documentExtension = document.GetExtension<MXARRegisterExtension>();
+                if(documentExtension.StampStatus == CfdiStatus.Clean)
+                {
+                    var docDateWithTime = new DateTime(document.DocDate.Value.Year, document.DocDate.Value.Month,
+                        document.DocDate.Value.Day, document.LastModifiedDateTime.Value.Hour,
+                        document.LastModifiedDateTime.Value.Minute,
+                        document.LastModifiedDateTime.Value.Second);
+                    sender.SetValue<MXARRegisterExtension.docDateTime>(document, docDateWithTime);
+                }
+            }
+        }
+    } 
 }
