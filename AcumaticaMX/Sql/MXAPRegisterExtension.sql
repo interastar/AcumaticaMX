@@ -2,7 +2,7 @@
 	Drop Table [MXAPRegisterExtension]
 Go
 
-/****** Object:  Table [dbo].[MXARRegisterExtension] ******/
+/****** Object:  Table [dbo].[MXAPRegisterExtension] ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	-- Campo de soporte multiempresa
 	[CompanyID]			[int] NOT NULL DEFAULT ((0)),
 
-	-- Llaves de relación con documento contable (ARRegister en Acumatica)
+	-- Llaves de relación con documento contable (APRegister en Acumatica)
 	[DocType]			char(3) NOT NULL,
 	[RefNbr]			char(15) NOT NULL,
 
@@ -41,8 +41,11 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	-- Cancelación
 	[CancelDate]		[smalldatetime] NULL,
 
-	-- Importar
-	[Import]			bit NOT NULL DEFAULT ((1)),
+	-- Datos de Validación
+	[Import]			BIT NULL DEFAULT ((1)),
+	[Provider]			[nvarchar](13) NULL,
+	[TotalTaxes]		DECIMAL(19, 4) NULL,
+	[TotalAmount]		DECIMAL(19, 4) NULL,
 
 	CONSTRAINT [MXAPRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(
