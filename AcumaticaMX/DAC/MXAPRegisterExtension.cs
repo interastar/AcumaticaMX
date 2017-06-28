@@ -29,7 +29,7 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayForm.One)]
+        //[PXDefault(AcumaticaMX.Common.PayForm.One)]
         [PXStringList(AcumaticaMX.Common.PayForm.Values)]
         [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentForm { get; set; }
@@ -41,7 +41,7 @@ namespace AcumaticaMX
         public abstract class paymentMethod : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+        //[PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
         [PXStringList(
             new string[]
             {
