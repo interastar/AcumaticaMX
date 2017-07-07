@@ -112,7 +112,7 @@ namespace AcumaticaMX
 
         public abstract class sealDate : IBqlField { }
 
-        [PXDBDate()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Emisión", Enabled = false)]
         public virtual DateTime? SealDate { get; set; }
 
@@ -155,7 +155,7 @@ namespace AcumaticaMX
         #region FechaTimbrado
 
         public abstract class stampDate : IBqlField { }
-        [PXDBDateAndTime()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Timbrado", Enabled = false)]
         public virtual DateTime? StampDate { get; set; }
 
@@ -164,7 +164,7 @@ namespace AcumaticaMX
         #region FechaCancelacion
 
         public abstract class cancelDate : IBqlField { }
-        [PXDBDateAndTime()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Cancelación", Enabled = false)]
         public virtual DateTime? CancelDate { get; set; }
 
@@ -282,8 +282,7 @@ namespace AcumaticaMX
 
         #region DocDateTime
         public abstract class docDateTime : IBqlField { }
-        [PXDBDateAndTime()]
-        [TimeDocDate()]
+        [PXDBDateAndTime(PreserveTime = true)]
         public virtual DateTime? DocDateTime { get; set; }
         #endregion DocDateTime
     }
