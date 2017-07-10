@@ -49,8 +49,8 @@ namespace AcumaticaMX
                 AcumaticaMX.Common.PayMethod.Transfer, AcumaticaMX.Common.PayMethod.CreditCard,
                 AcumaticaMX.Common.PayMethod.Wallet, AcumaticaMX.Common.PayMethod.Electronic,
                 AcumaticaMX.Common.PayMethod.Coupons, AcumaticaMX.Common.PayMethod.DebitCard,
-                AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.NA,
-                AcumaticaMX.Common.PayMethod.Other,
+                AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.NAFE,
+                AcumaticaMX.Common.PayMethod.NACE, AcumaticaMX.Common.PayMethod.Other,
             },
             new string[]
             {
@@ -58,8 +58,8 @@ namespace AcumaticaMX
                 AcumaticaMX.Common.PayMethod.TransferLabel, AcumaticaMX.Common.PayMethod.CreditCardLabel,
                 AcumaticaMX.Common.PayMethod.WalletLabel, AcumaticaMX.Common.PayMethod.ElectronicLabel,
                 AcumaticaMX.Common.PayMethod.CouponsLabel, AcumaticaMX.Common.PayMethod.DebitCardLabel,
-                AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.NALabel,
-                AcumaticaMX.Common.PayMethod.OtherLabel,
+                AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.NAFELabel,
+                AcumaticaMX.Common.PayMethod.NACELabel, AcumaticaMX.Common.PayMethod.OtherLabel,
             }, MultiSelect = true)]
         [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentMethod { get; set; }
@@ -86,6 +86,15 @@ namespace AcumaticaMX
 
         #endregion condicionesDePago
 
+        #region MotivoDeDescuento
+
+        public abstract class discountReason : IBqlField { }
+
+        [PXDBString(250, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Motivo de Descuento")]
+        public virtual string DiscountReason { get; set; }
+
+        #endregion MotivoDeDescuento
         //  -- Datos de sello del comprobante
 
         #region noCertificado
@@ -112,7 +121,7 @@ namespace AcumaticaMX
 
         public abstract class sealDate : IBqlField { }
 
-        [PXDBDate()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Emisión", Enabled = false)]
         public virtual DateTime? SealDate { get; set; }
 
@@ -155,8 +164,7 @@ namespace AcumaticaMX
         #region FechaTimbrado
 
         public abstract class stampDate : IBqlField { }
-
-        [PXDBDate()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Timbrado", Enabled = false)]
         public virtual DateTime? StampDate { get; set; }
 
@@ -165,8 +173,7 @@ namespace AcumaticaMX
         #region FechaCancelacion
 
         public abstract class cancelDate : IBqlField { }
-
-        [PXDBDate()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Cancelación", Enabled = false)]
         public virtual DateTime? CancelDate { get; set; }
 
@@ -281,5 +288,11 @@ namespace AcumaticaMX
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
+
+        #region DocDateTime
+        public abstract class docDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? DocDateTime { get; set; }
+        #endregion DocDateTime
     }
 }

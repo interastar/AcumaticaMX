@@ -1,5 +1,5 @@
-﻿<Sql TableName="MXARRegisterExtension" TableSchemaXml="#CDATA">
-    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXARRegisterExtension">
+﻿<Sql TableName="MXAPRegisterExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXAPRegisterExtension">
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="DocType" type="Char(3)" />
   <col name="RefNbr" type="Char(15)" />
@@ -16,12 +16,12 @@
   <col name="SatCertificateNum" type="Char(20)" nullable="true" />
   <col name="StampDate" type="SmallDateTime" nullable="true" />
   <col name="Stamp" type="NVarChar(500)" nullable="true" />
-  <col name="QrCode" type="NVarChar(95)" nullable="true" />
-  <col name="StampString" type="NVarChar(1000)" nullable="true" />
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
-  <col name="DocDateTime" type="SmallDateTime" nullable="true" />
-  <col name="DiscountReason" type="NVarChar(250)" nullable="true" />
-  <index name="MXARRegisterExtension_PK" clustered="true" primary="true" unique="true">
+  <col name="Import" type="Bit" nullable="true" raw-default="1" />
+  <col name="Provider" type="NVarChar(13)" nullable="true" />
+  <col name="TotalTaxes" type="Decimal(19,4)" nullable="true" />
+  <col name="TotalAmount" type="Decimal(19,4)" nullable="true" />
+  <index name="MXAPRegisterExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DocType" />
     <col name="RefNbr" />
