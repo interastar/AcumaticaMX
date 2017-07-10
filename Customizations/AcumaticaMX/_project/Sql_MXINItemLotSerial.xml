@@ -23,6 +23,7 @@
     <col name="InventoryID" />
     <col name="LotSerialNbr" />
     <col name="RefNbr" />
+    <col name="LineNbr" />
   </index>
 </table>]]></CDATA>
 </Sql>
