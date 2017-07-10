@@ -43,6 +43,7 @@ CREATE TABLE [dbo].[MXINItemLotSerial](
 		[CompanyID]		ASC,
 		[InventoryID]   ASC,
 		[LotSerialNbr]  ASC,
-		[RefNbr]		ASC
+		[RefNbr]		ASC,
+		[LineNbr]		ASC
 	)
 )
