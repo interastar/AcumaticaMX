@@ -20,6 +20,7 @@
   <col name="StampString" type="NVarChar(1000)" nullable="true" />
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
   <col name="DocDateTime" type="SmallDateTime" nullable="true" />
+  <col name="DiscountReason" type="NVarChar(250)" nullable="true" />
   <index name="MXARRegisterExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DocType" />
