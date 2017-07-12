@@ -1,12 +1,12 @@
 ﻿using System;
 using PX.Data;
-using PX.Objects;
-using PX.Objects.PO;
+using PX.Objects.IN;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
-    [PXTable(typeof(POReceiptLine.receiptNbr), typeof(POReceiptLine.lineNbr), IsOptional = true)]
-    public class MXPOReceiptLineExtension : PXCacheExtension<POReceiptLine>
+    [Serializable]
+    [PXTable(typeof(INTran.docType), typeof(INTran.refNbr), typeof(INTran.lineNbr), IsOptional = true)]
+    public class SYFEINTranExt: PXCacheExtension<INTran>
     {
         #region Customs
 
@@ -39,11 +39,10 @@ namespace AcumaticaMX
         }
 
         [PXDBString(40, IsUnicode = true)]
-        [ValidateFields(Messages.ErrorCustoms, typeof(customs), typeof(importDate))]
         [PXUIField(DisplayName = Messages.RequestNumber)]
+        [ValidateFields(Messages.ErrorCustoms, typeof(customs), typeof(importDate))]
         public virtual string RequestNbr { get; set; }
 
         #endregion RequestNbr
-
     }
 }

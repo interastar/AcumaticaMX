@@ -2,13 +2,13 @@ using PX.Data;
 using PX.Objects.AR;
 using System;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
     /// <summary>
     /// Extensión de ARRegister para asociar información de CFDIs
     /// </summary>
     [PXTable(typeof(ARRegister.docType), typeof(ARRegister.refNbr), IsOptional = true)]
-    public class MXARRegisterExtension : PXCacheExtension<PX.Objects.AR.ARRegister>
+    public class SYFEARRegisterExt : PXCacheExtension<PX.Objects.AR.ARRegister>
     {
         // Campos persistentes (en BD) *************
 
@@ -29,8 +29,8 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayForm.One)]
-        [PXStringList(AcumaticaMX.Common.PayForm.Values)]
+        [PXDefault(MX.Objects.Common.PayForm.One)]
+        [PXStringList(MX.Objects.Common.PayForm.Values)]
         [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentForm { get; set; }
 
@@ -41,25 +41,25 @@ namespace AcumaticaMX
         public abstract class paymentMethod : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+        [PXDefault(MX.Objects.Common.PayMethod.Transfer)]
         [PXStringList(
             new string[]
             {
-                AcumaticaMX.Common.PayMethod.Cash, AcumaticaMX.Common.PayMethod.Cheque,
-                AcumaticaMX.Common.PayMethod.Transfer, AcumaticaMX.Common.PayMethod.CreditCard,
-                AcumaticaMX.Common.PayMethod.Wallet, AcumaticaMX.Common.PayMethod.Electronic,
-                AcumaticaMX.Common.PayMethod.Coupons, AcumaticaMX.Common.PayMethod.DebitCard,
-                AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.NAFE,
-                AcumaticaMX.Common.PayMethod.NACE, AcumaticaMX.Common.PayMethod.Other,
+                MX.Objects.Common.PayMethod.Cash, MX.Objects.Common.PayMethod.Cheque,
+                MX.Objects.Common.PayMethod.Transfer, MX.Objects.Common.PayMethod.CreditCard,
+                MX.Objects.Common.PayMethod.Wallet, MX.Objects.Common.PayMethod.Electronic,
+                MX.Objects.Common.PayMethod.Coupons, MX.Objects.Common.PayMethod.DebitCard,
+                MX.Objects.Common.PayMethod.ServiceCard, MX.Objects.Common.PayMethod.NAFE,
+                MX.Objects.Common.PayMethod.NACE, MX.Objects.Common.PayMethod.Other,
             },
             new string[]
             {
-                AcumaticaMX.Common.PayMethod.CashLabel, AcumaticaMX.Common.PayMethod.ChequeLabel,
-                AcumaticaMX.Common.PayMethod.TransferLabel, AcumaticaMX.Common.PayMethod.CreditCardLabel,
-                AcumaticaMX.Common.PayMethod.WalletLabel, AcumaticaMX.Common.PayMethod.ElectronicLabel,
-                AcumaticaMX.Common.PayMethod.CouponsLabel, AcumaticaMX.Common.PayMethod.DebitCardLabel,
-                AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.NAFELabel,
-                AcumaticaMX.Common.PayMethod.NACELabel, AcumaticaMX.Common.PayMethod.OtherLabel,
+                MX.Objects.Common.PayMethod.CashLabel, MX.Objects.Common.PayMethod.ChequeLabel,
+                MX.Objects.Common.PayMethod.TransferLabel, MX.Objects.Common.PayMethod.CreditCardLabel,
+                MX.Objects.Common.PayMethod.WalletLabel, MX.Objects.Common.PayMethod.ElectronicLabel,
+                MX.Objects.Common.PayMethod.CouponsLabel, MX.Objects.Common.PayMethod.DebitCardLabel,
+                MX.Objects.Common.PayMethod.ServiceCardLabel, MX.Objects.Common.PayMethod.NAFELabel,
+                MX.Objects.Common.PayMethod.NACELabel, MX.Objects.Common.PayMethod.OtherLabel,
             }, MultiSelect = true)]
         [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentMethod { get; set; }

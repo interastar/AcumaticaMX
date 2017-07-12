@@ -1,19 +1,19 @@
-﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXAPRegisterExtension]') And type in (N'U'))
-	Drop Table [MXAPRegisterExtension]
+﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[SYFEARRegisterExt]') And type in (N'U'))
+	Drop Table [SYFEARRegisterExt]
 Go
 
-/****** Object:  Table [dbo].[MXAPRegisterExtension] ******/
+/****** Object:  Table [dbo].[SYFEARRegisterExt] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MXAPRegisterExtension](
+CREATE TABLE [dbo].[SYFEARRegisterExt](
 	-- Campo de soporte multiempresa
 	[CompanyID]			[int] NOT NULL DEFAULT ((0)),
 
-	-- Llaves de relación con documento contable (APRegister en Acumatica)
+	-- Llaves de relación con documento contable (ARRegister en Acumatica)
 	[DocType]			char(3) NOT NULL,
 	[RefNbr]			char(15) NOT NULL,
 
@@ -38,21 +38,23 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	-- Sello del SAT
 	[Stamp]				[nvarchar](500) NULL,
 
+	-- Campos de addenda
+	[QrCode]			[nvarchar](95) NULL,
+	[StampString]		[nvarchar](1000) NULL,
+
 	-- Cancelación
 	[CancelDate]		[smalldatetime] NULL,
+	--Fecha de creación
+	[DocDateTime]		[smalldatetime] NULL,
 
-	-- Datos de Validación
-	[Import]			BIT NULL DEFAULT ((1)),
-	[Provider]			[nvarchar](13) NULL,
-	[TotalTaxes]		DECIMAL(19, 4) NULL,
-	[TotalAmount]		DECIMAL(19, 4) NULL,
+	-- Descuentos
+	[DiscountReason]	[nvarchar](250) NULL,
 
-	CONSTRAINT [MXAPRegisterExtension_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [SYFEARRegisterExt_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
 		[DocType] ASC,
 		[RefNbr] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 )
-
 GO

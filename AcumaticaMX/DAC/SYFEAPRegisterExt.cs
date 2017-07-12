@@ -2,13 +2,13 @@
 using PX.Objects.AP;
 using System;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
     /// <summary>
     /// Extensión de ARRegister para asociar información de CFDIs
     /// </summary>
     [PXTable(typeof(APRegister.docType), typeof(APRegister.refNbr), IsOptional = true)]
-    public class MXAPRegisterExtension : PXCacheExtension<APRegister>
+    public class PXFEAPRegisterExt : PXCacheExtension<APRegister>
     {
         // Campos persistentes (en BD) *************
 
@@ -90,7 +90,7 @@ namespace AcumaticaMX
 
         public abstract class sealDate : IBqlField { }
 
-        [PXDBDate()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Emisión", Enabled = false)]
         public virtual DateTime? SealDate { get; set; }
 
@@ -134,7 +134,7 @@ namespace AcumaticaMX
 
         public abstract class stampDate : IBqlField { }
 
-        [PXDBDate()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Timbrado", Enabled = false)]
         public virtual DateTime? StampDate { get; set; }
 
@@ -144,7 +144,7 @@ namespace AcumaticaMX
 
         public abstract class cancelDate : IBqlField { }
 
-        [PXDBDate()]
+        [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = "Fecha de Cancelación", Enabled = false)]
         public virtual DateTime? CancelDate { get; set; }
 
@@ -164,12 +164,12 @@ namespace AcumaticaMX
 
         // -- Datos de importación del documento
 
-        #region Import
-        public abstract class import : IBqlField { }
+        #region IsImport
+        public abstract class isImport : IBqlField { }
         [PXDBBool]
         [PXUIField(DisplayName = "Importación", Enabled = false)]
-        public virtual bool? Import { get; set; }
-        #endregion Import
+        public virtual bool? IsImport { get; set; }
+        #endregion IsImport
 
         #region Provider
         public abstract class provider : IBqlField { }
@@ -178,18 +178,18 @@ namespace AcumaticaMX
         public virtual string Provider { get; set; }
         #endregion Provider
 
-        #region TotalTaxes
-        public abstract class totalTaxes : IBqlField { }
-        [PXDBDecimal]
+        #region TaxesTotal
+        public abstract class taxesTotal : IBqlField { }
+        [PXDBDecimal(4)]
         [PXUIField(DisplayName = "Total de Impuestos", Enabled = false)]
-        public virtual decimal? TotalTaxes { get; set; }
-        #endregion TotalTaxes
+        public virtual decimal? TaxesTotal { get; set; }
+        #endregion TaxesTotal
 
-        #region TotalAmount
-        public abstract class totalAmount : IBqlField { }
-        [PXDBDecimal]
+        #region AmountTotal
+        public abstract class amountTotal : IBqlField { }
+        [PXDBDecimal(4)]
         [PXUIField(DisplayName = "Monto total", Enabled = false)]
-        public virtual decimal? TotalAmount { get; set; }
-        #endregion TotalAmount
+        public virtual decimal? AmountTotal { get; set; }
+        #endregion AmountTotal
     }
 }

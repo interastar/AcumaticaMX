@@ -1,9 +1,9 @@
 using PX.Data;
 using PX.Objects.CR;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
-    public class MXContactExtension : PXCacheExtension<PX.Objects.CR.Contact>
+    public class SYFEContactExt : PXCacheExtension<PX.Objects.CR.Contact>
     {
         #region Lastname
 

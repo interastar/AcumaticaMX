@@ -1,9 +1,9 @@
 using PX.Data;
 using PX.Objects.AP;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
-    public class MXAPAddressExtension : PXCacheExtension<PX.Objects.AP.APAddress>, IMXAddressExtension
+    public class SYFEAPAddressExt : PXCacheExtension<PX.Objects.AP.APAddress>, IMXAddressExtension
     {
         #region AddressLine1
 

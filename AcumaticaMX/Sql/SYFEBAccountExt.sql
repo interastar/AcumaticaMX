@@ -1,15 +1,15 @@
-If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXBAccountExtension]') And type in (N'U'))
-	Drop Table [MXBAccountExtension]
+If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[SYFEBAccountExt]') And type in (N'U'))
+	Drop Table [SYFEBAccountExt]
 Go
 
-/****** Object:  Table [dbo].[MXBAccountExtension] ******/
+/****** Object:  Table [dbo].[SYFEBAccountExt] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MXBAccountExtension](
+CREATE TABLE [dbo].[SYFEBAccountExt](
 	-- multi-tenancy support
 	[CompanyID]		[int] NOT NULL DEFAULT ((0)),
 
@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[MXBAccountExtension](
 	[DefaultOriginAccount]	[nvarchar](30) NULL,
 	[DefaultPaymentMethod]	[nvarchar](50) NULL,
 
-	CONSTRAINT [MXBAccountExtension_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [SYFEBAccountExt_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
 		[BAccountID] ASC

@@ -1,9 +1,9 @@
 using PX.Data;
-using PX.Objects.AR;
+using PX.Objects.SO;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
-    public class MXARAddressExtension : PXCacheExtension<PX.Objects.AR.ARAddress>, IMXAddressExtension
+    public class SYFESOBillingAddressExt : PXCacheExtension<PX.Objects.SO.SOBillingAddress>, IMXAddressExtension
     {
         #region AddressLine1
 
@@ -62,7 +62,7 @@ namespace AcumaticaMX
         }
 
         [PXString(50, IsUnicode = true)]
-        [MultipartField(typeof(ARAddress.addressLine1), 1, typeof(street), typeof(extNumber), typeof(intNumber))]
+        [MultipartField(typeof(SOAddress.addressLine1), 1, typeof(street), typeof(extNumber), typeof(intNumber))]
         [PXUIField(DisplayName = "Calle", Required = true)]
         public virtual string Street { get; set; }
 
@@ -75,7 +75,7 @@ namespace AcumaticaMX
         }
 
         [PXString(50, IsUnicode = true)]
-        [MultipartField(typeof(ARAddress.addressLine1), 2, typeof(street), typeof(extNumber), typeof(intNumber))]
+        [MultipartField(typeof(SOAddress.addressLine1), 2, typeof(street), typeof(extNumber), typeof(intNumber))]
         [PXUIField(DisplayName = "Número Exterior", Required = true)]
         public virtual string ExtNumber { get; set; }
 
@@ -88,7 +88,7 @@ namespace AcumaticaMX
         }
 
         [PXString(50, IsUnicode = true)]
-        [MultipartField(typeof(ARAddress.addressLine1), 3, typeof(street), typeof(extNumber), typeof(intNumber))]
+        [MultipartField(typeof(SOAddress.addressLine1), 3, typeof(street), typeof(extNumber), typeof(intNumber))]
         [PXUIField(DisplayName = "Número Interior")]
         public virtual string IntNumber { get; set; }
 
@@ -101,7 +101,7 @@ namespace AcumaticaMX
         }
 
         [PXString(50, IsUnicode = true)]
-        [MultipartField(typeof(ARAddress.addressLine2), 1, typeof(neighborhood), typeof(municipality), Separator = ",")]
+        [MultipartField(typeof(SOAddress.addressLine2), 1, typeof(neighborhood), typeof(municipality), Separator = ",")]
         [PXUIField(DisplayName = "Colonia", Required = true)]
         public virtual string Neighborhood { get; set; }
 
@@ -114,7 +114,7 @@ namespace AcumaticaMX
         }
 
         [PXString(50, IsUnicode = true)]
-        [MultipartField(typeof(ARAddress.addressLine2), 2, typeof(neighborhood), typeof(municipality), Separator = ",")]
+        [MultipartField(typeof(SOAddress.addressLine2), 2, typeof(neighborhood), typeof(municipality), Separator = ",")]
         [PXUIField(DisplayName = "Municipio/Delegación", Required = true)]
         public virtual string Municipality { get; set; }
 
@@ -127,7 +127,7 @@ namespace AcumaticaMX
         }
 
         [PXString(100, IsUnicode = true)]
-        [MultipartField(typeof(ARAddress.addressLine3), 1, typeof(reference))]
+        [MultipartField(typeof(SOAddress.addressLine3), 1, typeof(reference))]
         [PXUIField(DisplayName = "Referencia")]
         public virtual string Reference { get; set; }
 

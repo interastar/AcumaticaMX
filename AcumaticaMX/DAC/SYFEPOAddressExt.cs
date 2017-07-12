@@ -1,9 +1,9 @@
 using PX.Data;
 using PX.Objects.PO;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
-    public class MXPOAddressExtension : PXCacheExtension<PX.Objects.PO.POAddress>, IMXAddressExtension
+    public class SYFEPOAddressExt : PXCacheExtension<PX.Objects.PO.POAddress>, IMXAddressExtension
     {
         #region AddressLine1
 

@@ -1,7 +1,7 @@
-﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[MXPaymentMethodExtension]') And type in (N'U'))
-	Drop Table [dbo].[MXPaymentMethodExtension]
+﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[SYFEPaymentMethodExt]') And type in (N'U'))
+	Drop Table [dbo].[SYFEPaymentMethodExt]
 Go
-Create Table [dbo].[MXPaymentMethodExtension]
+Create Table [dbo].[SYFEPaymentMethodExt]
 (
 	-- multi-tenancy support
 
@@ -11,7 +11,7 @@ Create Table [dbo].[MXPaymentMethodExtension]
 	-- Available Sat Payment Methods
 	[SatPaymentMethod]		nvarchar(2) NOT NULL,
 
-	CONSTRAINT MXPaymentMethodExtension_PK PRIMARY KEY
+	CONSTRAINT SYFEPaymentMethodExt_PK PRIMARY KEY
     (
         [CompanyID] ASC,
 		[PaymentMethodID] ASC
