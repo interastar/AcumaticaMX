@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
     public class CfdiStatus
     {
@@ -69,7 +69,7 @@ namespace AcumaticaMX
     {
         public static void StatusSet(PXCache sender, ARRegister doc)
         {
-            var docExt = doc.GetExtension<MXARRegisterExtension>();
+            var docExt = doc.GetExtension<SYFEARRegisterExt>();
             if (docExt == null) return;
 
             var status = CfdiStatus.Clean;
@@ -91,7 +91,7 @@ namespace AcumaticaMX
                 status = CfdiStatus.Clean;
             }
 
-            sender.SetValue<MXARRegisterExtension.stampStatus>(doc, status);
+            sender.SetValue<SYFEARRegisterExt.stampStatus>(doc, status);
         }
 
         public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
@@ -123,7 +123,7 @@ namespace AcumaticaMX
 
         public void FieldVerifying(PXCache sender, PXFieldVerifyingEventArgs e)
         {
-            e.NewValue = sender.GetValue<MXARRegisterExtension.stampStatus>(e.Row);
+            e.NewValue = sender.GetValue<SYFEARRegisterExt.stampStatus>(e.Row);
         }
     }
 
@@ -316,7 +316,7 @@ namespace AcumaticaMX
         {
             base.CacheAttached(sender);
 
-            sender.Graph.FieldUpdated.AddHandler<MXARRegisterExtension.uuid>((localSender, e) =>
+            sender.Graph.FieldUpdated.AddHandler<SYFEARRegisterExt.uuid>((localSender, e) =>
             {
                 var doc = e.Row as ARRegister;
                 if (doc != null)
@@ -329,7 +329,7 @@ namespace AcumaticaMX
         protected virtual void StatusSet(PXCache sender, ARRegister doc)
         {
             // Solo seguimos si tenemos el registro
-            var cfdi = doc.GetExtension<MXARRegisterExtension>();
+            var cfdi = doc.GetExtension<SYFEARRegisterExt>();
 
             if (cfdi == null) return;
             var check = false;
@@ -345,7 +345,7 @@ namespace AcumaticaMX
                 check = true;
             }
 
-            sender.SetValue<MXARRegisterExtension.notStampable>(doc, check);
+            sender.SetValue<SYFEARRegisterExt.notStampable>(doc, check);
         }
 
         public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
@@ -363,20 +363,20 @@ namespace AcumaticaMX
 
             if (item != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
+                var ext = item.GetExtension<SYFEARRegisterExt>();
                 if (ext == null) return;
 
                 if (((bool?)e.OldValue != true) && ext.NotStampable == true && ext.Uuid == null)
                 {
                     //ext.Uuid = Guid.Empty;
-                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, Guid.Empty);
+                    sender.SetValueExt<SYFEARRegisterExt.uuid>(item, Guid.Empty);
                     return;
                 }
 
                 if (((bool?)e.OldValue == true) && ext.NotStampable != true && ext.Uuid == Guid.Empty)
                 {
                     //ext.Uuid = null;
-                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
+                    sender.SetValueExt<SYFEARRegisterExt.uuid>(item, null);
                     return;
                 }
             }

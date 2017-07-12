@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
     /// <summary>
     /// Esta clase contiene todos los catálogos de campos que tienen opciones predefinidas por el SAT

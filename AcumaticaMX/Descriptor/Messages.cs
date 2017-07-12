@@ -1,6 +1,6 @@
 ﻿using PX.Common;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
     /// <summary>
     /// Librería de mensajes y etiquetas centralizada
