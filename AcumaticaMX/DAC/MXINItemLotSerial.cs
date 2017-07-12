@@ -2,7 +2,7 @@
 using PX.Data;
 using PX.Objects;
 using PX.Objects.IN;
-namespace AcumaticaMX
+namespace MX.Objects
 {
     public class MXINItemLotSerial : IBqlTable
     {

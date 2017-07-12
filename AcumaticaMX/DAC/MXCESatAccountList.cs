@@ -1,7 +1,7 @@
 ﻿using System;
 using PX.Data;
 
-namespace AcumaticaMX
+namespace MX.Objects
 {
     public class MXCESatAccountList : IBqlTable
     {
