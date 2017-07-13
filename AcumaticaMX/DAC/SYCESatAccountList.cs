@@ -1,134 +1,69 @@
 ﻿using System;
 using PX.Data;
-using PX.Objects;
-using PX.Objects.IN;
+
 namespace MX.Objects
 {
-    public class MXINItemLotSerial : IBqlTable
+    public class SYCESatAccountList : IBqlTable
     {
 
-        #region RefNbr
-        public abstract class refNbr : IBqlField
+        #region GroupingCodeCD
+
+        public abstract class groupingCodeCD : PX.Data.IBqlField
         {
         }
-        [PXDBString(15, IsUnicode = true)]
-        public virtual string RefNbr { get; set; }
 
-        #endregion RefNbr
-
-        #region InventoryID
-
-        public abstract class inventoryID : IBqlField
-        {
-        }
+        [PXDBString(6, IsKey = true, IsUnicode = true, InputMask = ">CCCCCC")]
         [PXDefault]
-        [PXDBInt(IsKey = true)]
-        public virtual int? InventoryID { get; set; }
+        [PXUIField(DisplayName = Messages.GroupingCodeLabel)]
+        public virtual string GroupingCodeCD { get; set; }
 
-        #endregion InventoryID
+        #endregion GroupingCodeCD
 
-        #region LotSerialNbr
+        #region GroupingCodeID
 
-        public abstract class lotSerialNbr : IBqlField
-        {
-        }
-        [PXDefault]
-        [PXDBString(15, IsUnicode = true, IsKey = true)]
-        [PXParent(typeof(Select<PX.Objects.IN.INItemLotSerial,
-            Where<PX.Objects.IN.INItemLotSerial.lotSerialNbr,
-                Equal<Current<lotSerialNbr>>>>))]
-        public virtual string LotSerialNbr { get; set; }
-
-        #endregion LotSerialNbr
-
-        #region Customs
-
-        public abstract class customs : IBqlField
+        public abstract class groupingCodeID : PX.Data.IBqlField
         {
         }
 
-        [PXDBString(40, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.Customs)]
-        public virtual string Customs { get; set; }
+        [PXDBInt]
+        public virtual int? GroupingCodeID { get; set; }
 
-        #endregion Customs
+        #endregion GroupingCodeID
 
-        #region ImportDate
+        #region Level
 
-        public abstract class importDate : IBqlField
+        public abstract class level : PX.Data.IBqlField
         {
         }
 
-        [PXDBDate()]
-        [PXUIField(DisplayName = Messages.ImportDate)]
-        public virtual DateTime? ImportDate { get; set; }
+        [PXDBInt]
+        [PXUIField(DisplayName = Messages.LevelLabel)]
+        public virtual int? Level { get; set; }
 
-        #endregion ImportDate
+        #endregion Level
 
-        #region RequestNbr
+        #region Description
 
-        public abstract class requestNbr : IBqlField
+        public abstract class description : PX.Data.IBqlField
         {
         }
 
-        [PXDBString(40, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.RequestNumber)]
-        [ValidateFields(Messages.ErrorCustoms, typeof(customs), typeof(importDate))]
-        public virtual string RequestNbr { get; set; }
+        [PXDBString(250, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.DescriptionLabel)]
+        public virtual string Description { get; set; }
 
-        #endregion RequestNbr
+        #endregion Description
 
-        #region LineNbr
+        #region ParentCD
 
-        public abstract class lineNbr : IBqlField
-        {
-        }
-        [PXDefault]
-        [PXDBInt(IsKey = true)]
-        public virtual int? LineNbr { get; set; }
-
-        #endregion LineNbr
-
-        #region ItemSold
-
-        public abstract class itemSold : PX.Data.IBqlField
+        public abstract class parentCD : PX.Data.IBqlField
         {
         }
 
-        [PXDBBool()]
-        [PXDefault(false)]
-        public virtual bool? ItemSold { get; set; }
+        [PXDBString(6, IsUnicode = true)]
+        public virtual string ParentCD { get; set; }
 
-        #endregion ItemSold
-
-        #region BatchSold
-
-        public abstract class batchSold : PX.Data.IBqlField
-        {
-        }
-
-        [PXDBBool()]
-        [PXDefault(false)]
-        public virtual bool? BatchSold { get; set; }
-
-        #endregion BatchSold
-
-        #region NoteID
-
-        public abstract class noteID : PX.Data.IBqlField
-        {
-        }
-
-        /// <summary>
-        /// Identifier of the <see cref="PX.Data.Note">Note</see> object, associated with the document.
-        /// </summary>
-        /// <value>
-        /// Corresponds to the <see cref="PX.Data.Note.NoteID">Note.NoteID</see> field.
-        /// </value>
-        [PXNote(ShowInReferenceSelector = true)]
-        public Guid? NoteID { get; set; }
-
-        #endregion NoteID
+        #endregion ParentCD
 
         #region tstamp
 

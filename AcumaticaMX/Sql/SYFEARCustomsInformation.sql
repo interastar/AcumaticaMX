@@ -1,27 +1,27 @@
-﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXARCustomsInformation]') And type in (N'U'))
-	Drop Table [MXARCustomsInformation]
+﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[SYFEARCustomsInformation]') And type in (N'U'))
+	Drop Table [SYFEARCustomsInformation]
 Go
 
-/****** Object:  Table [dbo].[MXARCustomsInformation] ******/
+/****** Object:  Table [dbo].[SYFEARCustomsInformation] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MXARCustomsInformation](
+CREATE TABLE [dbo].[SYFEARCustomsInformation](
 
 	-- Campo de soporte multiempresa
 	[CompanyID]					[INT] NOT NULL DEFAULT ((0)),
 
 	-- Llaves de relacion por factura
-	[NumericKey]				[INT] IDENTITY NOT NULL,
+	[RegisterID]				[INT] IDENTITY NOT NULL,
 	[RefNbr]					[NVARCHAR] (15) NOT NULL,
 	[LineNbr]					[INT] NOT NULL DEFAULT ((0)),
 	[TranType]					[CHAR] (15) NOT NULL,
 
 	-- Informacion adicional
-	[CustomsInformation]		[NVARCHAR](500) NULL,
+	[CustomsInformation]		[NVARCHAR](2500) NULL,
 
 	-- Notes support
 	[NoteID]					uniqueidentifier NULL,
@@ -39,6 +39,6 @@ CREATE TABLE [dbo].[MXARCustomsInformation](
 	CONSTRAINT MXARCustomsInformation_PK PRIMARY KEY
     (
         [CompanyID] ASC,
-		[NumericKey] ASC
+		[RegisterID] ASC
     )
 )

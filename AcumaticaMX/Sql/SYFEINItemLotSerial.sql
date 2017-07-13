@@ -1,15 +1,15 @@
-﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[MXINItemLotSerial]') And type in (N'U'))
-	Drop Table [MXINItemLotSerial]
+﻿If Exists (Select * From sys.objects Where object_id = OBJECT_ID(N'[SYFEINItemLotSerial]') And type in (N'U'))
+	Drop Table [SYFEINItemLotSerial]
 Go
 
-/****** Object:  Table [dbo].[MXINItemLotSerial] ******/
+/****** Object:  Table [dbo].[SYFEINItemLotSerial] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[MXINItemLotSerial](
+CREATE TABLE [dbo].[SYFEINItemLotSerial](
 	-- Campo de soporte multiempresa
 	[CompanyID]			[int] NOT NULL DEFAULT ((0)),
 

@@ -1,7 +1,7 @@
-﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[MXCESatAccountList]') And type in (N'U'))
-	Drop Table [dbo].[MXCESatAccountList]
+﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[SYCESatAccountList]') And type in (N'U'))
+	Drop Table [dbo].[SYCESatAccountList]
 Go
-Create Table [dbo].[MXCESatAccountList]
+Create Table [dbo].[SYCESatAccountList]
 (
 	-- multi-tenancy support
 	[CompanyID]			int NOT NULL DEFAULT ((0)),

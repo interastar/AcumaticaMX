@@ -1,50 +1,117 @@
 ﻿using System;
 using PX.Data;
-
+using PX.Objects;
+using PX.Objects.IN;
 namespace MX.Objects
 {
-    public class MXARCustomsInformation : IBqlTable
+    public class SYFEINItemLotSerial : IBqlTable
     {
-        #region NumericKey
-
-        public abstract class numericKey : IBqlField { }
-        [PXDBIdentity(IsKey = true)]
-        public virtual int? NumericKey { get; set; }
-         
-        #endregion NumericKey
 
         #region RefNbr
-
-        public abstract class refNbr : IBqlField { }
-
-        [PXDBString]
-        [PXDBDefault]
+        public abstract class refNbr : IBqlField
+        {
+        }
+        [PXDBString(15, IsUnicode = true)]
         public virtual string RefNbr { get; set; }
 
         #endregion RefNbr
 
-        #region TranType
-        public abstract class tranType : IBqlField { }
+        #region InventoryID
 
-        [PXDBString]
-        public virtual string TranType { get; set; }
-        #endregion TranType
+        public abstract class inventoryID : IBqlField
+        {
+        }
+        [PXDefault]
+        [PXDBInt(IsKey = true)]
+        public virtual int? InventoryID { get; set; }
+
+        #endregion InventoryID
+
+        #region LotSerialNbr
+
+        public abstract class lotSerialNbr : IBqlField
+        {
+        }
+        [PXDefault]
+        [PXDBString(15, IsUnicode = true, IsKey = true)]
+        [PXParent(typeof(Select<PX.Objects.IN.INItemLotSerial,
+            Where<PX.Objects.IN.INItemLotSerial.lotSerialNbr,
+                Equal<Current<lotSerialNbr>>>>))]
+        public virtual string LotSerialNbr { get; set; }
+
+        #endregion LotSerialNbr
+
+        #region Customs
+
+        public abstract class customs : IBqlField
+        {
+        }
+
+        [PXDBString(40, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.Customs)]
+        public virtual string Customs { get; set; }
+
+        #endregion Customs
+
+        #region ImportDate
+
+        public abstract class importDate : IBqlField
+        {
+        }
+
+        [PXDBDate()]
+        [PXUIField(DisplayName = Messages.ImportDate)]
+        public virtual DateTime? ImportDate { get; set; }
+
+        #endregion ImportDate
+
+        #region RequestNbr
+
+        public abstract class requestNbr : IBqlField
+        {
+        }
+
+        [PXDBString(40, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.RequestNumber)]
+        [ValidateFields(Messages.ErrorCustoms, typeof(customs), typeof(importDate))]
+        public virtual string RequestNbr { get; set; }
+
+        #endregion RequestNbr
 
         #region LineNbr
-        public abstract class lineNbr : IBqlField { }
-
-        [PXDBInt]
-        [PXDBDefault]
+        public abstract class lineNbr : IBqlField
+        {
+        }
+        [PXDefault]
+        [PXDBInt(IsKey = true)]
         public virtual int? LineNbr { get; set; }
+
         #endregion LineNbr
 
-        #region CustomsInformation
-        public abstract class customsInformation : IBqlField { }
+        #region ItemSold
+        // Indica si algun objeto con la misma información aduanera
+        // ya se ha vendido
+        public abstract class itemSold : PX.Data.IBqlField
+        {
+        }
 
-        [PXDBString]
-        public virtual string CustomsInformation { get; set; }
+        [PXDBBool()]
+        [PXDefault(false)]
+        public virtual bool? ItemSold { get; set; }
 
-        #endregion CustomsInformation
+        #endregion ItemSold
+
+        #region BatchSold
+        //Indica si la información aduanera puede ser modificada
+        public abstract class batchSold : PX.Data.IBqlField
+        {
+        }
+
+        [PXDBBool()]
+        [PXDefault(false)]
+        public virtual bool? BatchSold { get; set; }
+
+        #endregion BatchSold
 
         #region NoteID
 

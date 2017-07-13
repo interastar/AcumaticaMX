@@ -3,67 +3,65 @@ using PX.Data;
 
 namespace MX.Objects
 {
-    public class MXCESatAccountList : IBqlTable
+    public class SYFEARCustomsInformation : IBqlTable
     {
+        #region RegisterID
 
-        #region GroupingCodeCD
+        public abstract class registerID : IBqlField { }
+        [PXDBIdentity(IsKey = true)]
+        public virtual int? RegisterID { get; set; }
 
-        public abstract class groupingCodeCD : PX.Data.IBqlField
-        {
-        }
+        #endregion RegisterID
 
-        [PXDBString(6, IsKey = true, IsUnicode = true, InputMask = ">CCCCCC")]
-        [PXDefault]
-        [PXUIField(DisplayName = Messages.GroupingCodeLabel)]
-        public virtual string GroupingCodeCD { get; set; }
+        #region RefNbr
 
-        #endregion GroupingCodeCD
+        public abstract class refNbr : IBqlField { }
 
-        #region GroupingCodeID
+        [PXDBString]
+        [PXDBDefault]
+        public virtual string RefNbr { get; set; }
 
-        public abstract class groupingCodeID : PX.Data.IBqlField
-        {
-        }
+        #endregion RefNbr
 
-        [PXDBInt]
-        public virtual int? GroupingCodeID { get; set; }
+        #region TranType
+        public abstract class tranType : IBqlField { }
 
-        #endregion GroupingCodeID
+        [PXDBString]
+        public virtual string TranType { get; set; }
+        #endregion TranType
 
-        #region Level
-
-        public abstract class level : PX.Data.IBqlField
-        {
-        }
+        #region LineNbr
+        public abstract class lineNbr : IBqlField { }
 
         [PXDBInt]
-        [PXUIField(DisplayName = Messages.LevelLabel)]
-        public virtual int? Level { get; set; }
+        [PXDBDefault]
+        public virtual int? LineNbr { get; set; }
+        #endregion LineNbr
 
-        #endregion Level
+        #region CustomsInformation
+        public abstract class customsInformation : IBqlField { }
 
-        #region Description
+        [PXDBString]
+        public virtual string CustomsInformation { get; set; }
 
-        public abstract class description : PX.Data.IBqlField
+        #endregion CustomsInformation
+
+        #region NoteID
+
+        public abstract class noteID : PX.Data.IBqlField
         {
         }
 
-        [PXDBString(250, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.DescriptionLabel)]
-        public virtual string Description { get; set; }
+        /// <summary>
+        /// Identifier of the <see cref="PX.Data.Note">Note</see> object, associated with the document.
+        /// </summary>
+        /// <value>
+        /// Corresponds to the <see cref="PX.Data.Note.NoteID">Note.NoteID</see> field.
+        /// </value>
+        [PXNote(ShowInReferenceSelector = true)]
+        public Guid? NoteID { get; set; }
 
-        #endregion Description
-
-        #region ParentCD
-
-        public abstract class parentCD : PX.Data.IBqlField
-        {
-        }
-
-        [PXDBString(6, IsUnicode = true)]
-        public virtual string ParentCD { get; set; }
-
-        #endregion ParentCD
+        #endregion NoteID
 
         #region tstamp
 
