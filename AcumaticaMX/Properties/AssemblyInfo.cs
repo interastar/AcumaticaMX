@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MXObjects")]
+[assembly: AssemblyTitle("AcumaticaMX")]
 [assembly: AssemblyDescription("Paquete de Acumatica para estandarización de datos en México")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Syntegh")]
-[assembly: AssemblyProduct("MXObjects")]
+[assembly: AssemblyProduct("AcumaticaMX")]
 [assembly: AssemblyCopyright("Copyright © 2005-2016 SYNCHRONIZE TECHNOLOGY GH CONSULTING & SOLUTIONS SA DE CV")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

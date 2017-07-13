@@ -8,7 +8,7 @@
     <ProjectGuid>{ECDFC82D-D4CC-4979-8F8D-C2642A40BE1F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AcumaticaMX</RootNamespace>
+    <RootNamespace>MX.Objects</RootNamespace>
     <AssemblyName>AcumaticaMX</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -34,19 +34,19 @@
   <ItemGroup>
     <Reference Include="PX.Common">
       <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
-      <Private>False</Private>
+	  <Private>False</Private>
     </Reference>
     <Reference Include="PX.Data">
       <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
-      <Private>False</Private>
+	  <Private>False</Private>
     </Reference>
     <Reference Include="PX.Objects">
       <HintPath>..\..\..\..\Bin\PX.Objects.dll</HintPath>
-      <Private>False</Private>
+	  <Private>False</Private>
     </Reference>
     <Reference Include="PX.Reports">
       <HintPath>..\..\..\..\Bin\PX.Reports.dll</HintPath>
-      <Private>False</Private>
+	  <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -56,9 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAC\SYFEAPRegisterExt.cs" />
-    <Compile Include="DAC\MXARCustomsInformation.cs" />
-    <Compile Include="DAC\MXINItemLotSerial.cs" />
-    <Compile Include="DAC\MXCESatAccountList.cs" />
+    <Compile Include="DAC\SYFEARCustomsInformation.cs" />
+    <Compile Include="DAC\SYFEINItemLotSerial.cs" />
+    <Compile Include="DAC\SYCESatAccountList.cs" />
     <Compile Include="DAC\SYFEINTranExt.cs" />
     <Compile Include="DAC\SYFEPOAddressExt.cs" />
     <Compile Include="DAC\SYFEPOReceiptLineExt.cs" />
@@ -79,11 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\SYFEAPRegisterExt.sql" />
-    <Content Include="Sql\MXARCustomsInformation.sql" />
+    <Content Include="Sql\SYFEARCustomsInformation.sql" />
     <Content Include="Sql\SYFEARRegisterExt.sql" />
     <Content Include="Sql\SYFEBAccountExt.sql" />
-    <Content Include="Sql\MXCESatAccountList.sql" />
-    <Content Include="Sql\MXINItemLotSerial.sql" />
+    <Content Include="Sql\SYCESatAccountList.sql" />
+    <Content Include="Sql\SYFEINItemLotSerial.sql" />
     <Content Include="Sql\SYFEINTranExt.sql" />
     <Content Include="Sql\SYFEPaymentMethodExt.sql" />
     <Content Include="Sql\SYFEPOReceiptLineExt.sql" />
