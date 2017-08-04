@@ -34,19 +34,22 @@
   <ItemGroup>
     <Reference Include="PX.Common">
       <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
-	  <Private>False</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Data">
       <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
-	  <Private>False</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Objects">
       <HintPath>..\..\..\..\Bin\PX.Objects.dll</HintPath>
-	  <Private>False</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PX.Reports">
       <HintPath>..\..\..\..\Bin\PX.Reports.dll</HintPath>
-	  <Private>False</Private>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Syntegh.FE.Pac">
+      <HintPath>..\..\..\..\Bin\Syntegh.FE.Pac.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -55,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAC\SYMXSetup.cs" />
     <Compile Include="DAC\SYFEAPRegisterExt.cs" />
     <Compile Include="DAC\SYFEARCustomsInformation.cs" />
     <Compile Include="DAC\SYFEINItemLotSerial.cs" />
@@ -74,6 +78,7 @@
     <Compile Include="BranchMaintExt.cs" />
     <Compile Include="Descriptor\Common.cs" />
     <Compile Include="DAC\SYFEContactExt.cs" />
+    <Compile Include="MXSetupMaint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomerMaintExt.cs" />
   </ItemGroup>
@@ -87,6 +92,7 @@
     <Content Include="Sql\SYFEINTranExt.sql" />
     <Content Include="Sql\SYFEPaymentMethodExt.sql" />
     <Content Include="Sql\SYFEPOReceiptLineExt.sql" />
+    <Content Include="Sql\SYMXSetup.sql" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
