@@ -33,7 +33,7 @@ namespace AcumaticaMX
         {
         }
         [PXDefault]
-        [PXDBString(15, IsUnicode = true, IsKey = true)]
+        [PXDBString(50, IsUnicode = true, IsKey = true)]
         [PXParent(typeof(Select<PX.Objects.IN.INItemLotSerial,
             Where<PX.Objects.IN.INItemLotSerial.lotSerialNbr,
                 Equal<Current<lotSerialNbr>>>>))]
