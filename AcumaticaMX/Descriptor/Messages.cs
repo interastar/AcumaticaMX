@@ -56,8 +56,10 @@ namespace AcumaticaMX
 
         //*** MXCESatAccountList
         public const string GroupingCodeLabel = "Código Agrupador";
+        public const string GroupingCodeIDLabel = "GroupingCodeID";
         public const string LevelLabel = "Nivel";
         public const string DescriptionLabel = "Descripción";
+        public const string ParentCD = "Código agrupador Padre";
         public const string ParentIDLabel = "Padre";
 
         #endregion Catalogo de Cuentas
