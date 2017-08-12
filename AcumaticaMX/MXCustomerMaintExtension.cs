@@ -121,68 +121,68 @@ namespace AcumaticaMX
 
                 if (string.IsNullOrEmpty(address?.City))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
 
                     cache.RaiseExceptionHandling<Address.city>(
-                        address, address?.City, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                        address, address?.City, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowWarning));
                 }
 
                 if (string.IsNullOrEmpty(address?.State))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
 
                     cache.RaiseExceptionHandling<Address.state>(
-                        address, address?.State, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                        address, address?.State, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowWarning));
                 }
 
                 if (string.IsNullOrEmpty(address?.CountryID))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
 
                     cache.RaiseExceptionHandling<Address.countryID>(
-                        address, address?.CountryID, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                        address, address?.CountryID, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowWarning));
                 }
 
                 if (string.IsNullOrEmpty(address?.PostalCode))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
 
                     cache.RaiseExceptionHandling<Address.postalCode>(
-                        address, address?.PostalCode, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                        address, address?.PostalCode, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowWarning));
                 }
 
                 var addressExt = address?.GetExtension<MXAddressExtension>();
 
                 if (string.IsNullOrEmpty(addressExt?.Street))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
 
                     cache.RaiseExceptionHandling<MXAddressExtension.street>(
-                        address, addressExt?.Street, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                        address, addressExt?.Street, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowWarning));
                 }
 
                 if (string.IsNullOrEmpty(addressExt?.ExtNumber))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
 
                     cache.RaiseExceptionHandling<MXAddressExtension.extNumber>(
-                        address, addressExt?.ExtNumber, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                        address, addressExt?.ExtNumber, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowWarning));
                 }
 
                 if (string.IsNullOrEmpty(addressExt?.Neighborhood))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
 
                     cache.RaiseExceptionHandling<MXAddressExtension.neighborhood>(
-                        address, addressExt?.Neighborhood, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                        address, addressExt?.Neighborhood, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowWarning));
                 }
 
                 if (string.IsNullOrEmpty(addressExt?.Municipality))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
 
                     cache.RaiseExceptionHandling<MXAddressExtension.municipality>(
-                        address, addressExt?.Municipality, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowError));
+                        address, addressExt?.Municipality, new PXSetPropertyException(Messages.AddressInfoRequired, PXErrorLevel.RowWarning));
                 }
             }
         }

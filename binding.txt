@@ -1,1 +1,1 @@
-D:\Applications\Acumatica ERP 5.3\Acumatica\App_Data\Projects\AcumaticaMX
+C:\Program Files (x86)\Acumatica ERP\AcumaticaDEV\App_Data\Projects\AcumaticaMX

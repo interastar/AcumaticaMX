@@ -39,29 +39,29 @@ namespace AcumaticaMX
 
         #endregion AddressLine3
 
-        #region Mandatory fields
+        //#region Mandatory fields
 
-        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
-        [PXMergeAttributes(Method = MergeMethod.Merge)]
-        [PXDefault()]
-        public string City { get; set; }
+        //[PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", false)]
+        //[PXMergeAttributes(Method = MergeMethod.Merge)]
+        //[PXDefault()]
+        //public string City { get; set; }
 
-        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
-        [PXMergeAttributes(Method = MergeMethod.Merge)]
-        [PXDefault()]
-        public string CountryID { get; set; }
+        //[PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", false)]
+        //[PXMergeAttributes(Method = MergeMethod.Merge)]
+        //[PXDefault()]
+        //public string CountryID { get; set; }
 
-        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
-        [PXMergeAttributes(Method = MergeMethod.Merge)]
-        [PXDefault()]
-        public string State { get; set; }
+        //[PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", false)]
+        //[PXMergeAttributes(Method = MergeMethod.Merge)]
+        //[PXDefault()]
+        //public string State { get; set; }
 
-        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
-        [PXMergeAttributes(Method = MergeMethod.Merge)]
-        [PXDefault()]
-        public string PostalCode { get; set; }
+        //[PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", false)]
+        //[PXMergeAttributes(Method = MergeMethod.Merge)]
+        //[PXDefault()]
+        //public string PostalCode { get; set; }
 
-        #endregion Mandatory fields
+        //#endregion Mandatory fields
 
         #region Street
 
@@ -71,7 +71,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine1), 1, typeof(street), typeof(extNumber), typeof(intNumber))]
-        [PXUIField(DisplayName = "Calle", Required = true)]
+        [PXUIField(DisplayName = "Calle", Required = false)]
         public virtual string Street { get; set; }
 
         #endregion Street
@@ -84,7 +84,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine1), 2, typeof(street), typeof(extNumber), typeof(intNumber))]
-        [PXUIField(DisplayName = "Número Exterior", Required = true)]
+        [PXUIField(DisplayName = "Número Exterior", Required = false)]
         public virtual string ExtNumber { get; set; }
 
         #endregion ExtNumber
@@ -110,7 +110,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine2), 1, typeof(neighborhood), typeof(municipality), Separator = ",")]
-        [PXUIField(DisplayName = "Colonia", Required = true)]
+        [PXUIField(DisplayName = "Colonia", Required = false)]
         public virtual string Neighborhood { get; set; }
 
         #endregion Neighborhood
@@ -123,7 +123,7 @@ namespace AcumaticaMX
 
         [PXString(50, IsUnicode = true)]
         [MultipartField(typeof(Address.addressLine2), 2, typeof(neighborhood), typeof(municipality), Separator = ",")]
-        [PXUIField(DisplayName = Messages.Municipality, Required = true)]
+        [PXUIField(DisplayName = Messages.Municipality, Required = false)]
         public virtual string Municipality { get; set; }
 
         #endregion Municipality
