@@ -70,6 +70,9 @@ namespace MX.Objects
         public const string Provider = "PAC";
         public const string ProviderUser = "Usuario del PAC";
         public const string ProviderPassword = "Contraseña del PAC";
+
+        //Errores
+        public const string SetupNeeded = "Es necesario configurar un PAC para poder timbrar documentos.";
         #endregion Setup
     }
 }
