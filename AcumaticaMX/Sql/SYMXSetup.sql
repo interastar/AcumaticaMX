@@ -20,10 +20,6 @@ CREATE TABLE [dbo].[SYMXSetup](
 	[Credentials]				[nvarchar](25) NULL,
 	-- Numero de certificado
 	[CertificateNbr]			[nvarchar](20) NULL,
-	-- Configuración del PAC
-	[Provider]					nvarchar(20) NOT NULL,
-    [ProviderUser]				nvarchar(20) NULL,
-    [ProviderPassword]			nvarchar(20) NULL,
 	-- Notes support
 	[NoteID]					uniqueidentifier NULL,
 	-- handle concurrency

@@ -9,21 +9,16 @@
 <asp:Content ID="cont2" ContentPlaceHolderID="phF" runat="Server">
 	<px:PXFormView ID="form" runat="server" DataSourceID="ds" Style="z-index: 100" Width="100%" DataMember="Setup">
 		<Template>
-			<px:PXLayoutRule runat="server" StartRow="True"/>
-            <px:PXSelector ID="edMainBranch" runat="server" DataField="MainBranch">
+            <px:PXLayoutRule runat="server" StartRow="True" StartColumn="True"></px:PXLayoutRule>
+            <px:PXLayoutRule runat="server" GroupCaption="Sucursal Principal" StartColumn="True" StartGroup="True">
+            </px:PXLayoutRule>
+            <px:PXSelector runat="server" ID="edMainBranch" DataField="MainBranch" >
             </px:PXSelector>
+            <px:PXLayoutRule runat="server" StartRow="True" StartColumn="True"></px:PXLayoutRule>
+            <px:PXLayoutRule runat="server" GroupCaption="Credenciales" StartColumn="True" StartGroup="True"></px:PXLayoutRule>
             <px:PXSelector ID="edCredentials" runat="server" DataField="Credentials">
             </px:PXSelector>
-            <px:PXTextEdit ID="edCertificateNbr" runat="server" DataField="CertificateNbr">
-            </px:PXTextEdit>
-            <px:PXLayoutRule runat="server" GroupCaption="Proveedor" StartGroup="True">
-            </px:PXLayoutRule>
-            <px:PXDropDown ID="edProvider" runat="server" DataField="Provider">
-            </px:PXDropDown>
-            <px:PXTextEdit ID="edProviderUser" runat="server" DataField="ProviderUser">
-            </px:PXTextEdit>
-            <px:PXTextEdit ID="edProviderPassword" runat="server" DataField="ProviderPassword" TextMode="Password">
-            </px:PXTextEdit>
+            <px:PXTextEdit runat="server" ID="edCertificateNbr" DataField="CertificateNbr"></px:PXTextEdit>
 		</Template>
 	</px:PXFormView>
 </asp:Content>

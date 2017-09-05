@@ -3,20 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using PX.SM;
 using PX.Data;
-using SY.Objects.FE;
-
 namespace MX.Objects
 {
-    /// <summary>
-    /// Clase de atributo usado para elegir proveedor de timbrado
-    /// </summary>
-    public class PacAttribute : PXStringListAttribute
-    {
-        public PacAttribute()
-            : base(SY.Objects.FE.Pac.DefinedPacs.Values, SY.Objects.FE.Pac.DefinedPacs.Labels)
-        {
-        }
-    }
 
     public class SYMXSetup : IBqlTable
     {
@@ -54,56 +42,7 @@ namespace MX.Objects
 
         #endregion CertificateNbr
 
-        #region Provider
-        public abstract class provider : PX.Data.IBqlField
-        {
-        }
-
-        /// <summary>
-        /// El PAC seleccionado para timbrar.
-        /// </summary>
-        /// <value>
-        /// Valores posibles se definen en SYFEProvider
-        /// Defaults to WFactura (<c>"WFactura"</c>).
-        /// </value>
-        [PXDBString(20, IsFixed = false, IsUnicode = true)]
-        [PXDefault(SY.Objects.FE.Pac.DefinedPacs.WFactura)]
-        [PXUIField(DisplayName = Messages.Provider)]
-        [Pac]
-        public virtual string Provider { get; set; }
-        #endregion Provider
-
-        #region ProviderUser
-
-        public abstract class providerUser : PX.Data.IBqlField
-        {
-        }
-
-        /// <summary>
-        /// El usuario del PAC seleccionado para timbrar.
-        /// </summary>
-        [PXDBString(20, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.ProviderUser)]
-        public virtual string ProviderUser { get; set; }
-
-        #endregion ProviderUser
-
-        #region ProviderPassword
-
-        public abstract class providerPassword : PX.Data.IBqlField
-        {
-        }
-
-        /// <summary>
-        /// La contraseña del usuario del PAC seleccionado para timbrar.
-        /// </summary>
-        [PXDBString(20, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.ProviderPassword)]
-        public virtual string ProviderPassword { get; set; }
-
-        #endregion ProviderPassword
-
-        // Audit
+        #region Audit
 
         #region NoteID
 
@@ -282,6 +221,8 @@ namespace MX.Objects
         }
 
         #endregion LastModifiedDateTime
+
+        #endregion Audit
 
     }
 }
