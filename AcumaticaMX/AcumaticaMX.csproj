@@ -93,6 +93,7 @@
     <Content Include="Sql\MXFESatCustomsRequestNumberList.sql" />
     <Content Include="Sql\MXFESatPatentList.sql" />
     <Content Include="Sql\MXFESatProductServiceList.sql" />
+    <Content Include="Sql\MXFESatTaxRegimList.sql" />
     <Content Include="Sql\MXINItemLotSerial.sql" />
     <Content Include="Sql\MXINTranExtension.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
