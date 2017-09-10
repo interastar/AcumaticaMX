@@ -61,6 +61,7 @@
     <Compile Include="DAC\MXFESatCustomsRequestNumberList.cs" />
     <Compile Include="DAC\MXFESatPatentList.cs" />
     <Compile Include="DAC\MXFESatProductServiceList.cs" />
+    <Compile Include="DAC\MXFESatTaxRegimList.cs" />
     <Compile Include="DAC\MXINItemLotSerial.cs" />
     <Compile Include="DAC\MXCESatAccountList.cs" />
     <Compile Include="DAC\MXINTranExtension.cs" />
