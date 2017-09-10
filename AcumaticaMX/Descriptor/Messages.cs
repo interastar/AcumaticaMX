@@ -64,6 +64,15 @@ namespace AcumaticaMX
 
         #endregion Catalogo de Cuentas
 
+        #region Catalogo de Códigos Postales
+
+        //*** ZipCodeList
+        public const string ZipCodeCD = "Código Postal";
+        public const string State = "Estado";
+        public const string Town = "Localidad";
+
+        #endregion Catalogo de Códigos Postales
+
         #region Catalogo de Monedas
 
         //*** MXCESatMoneyList
