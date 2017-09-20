@@ -62,6 +62,7 @@
     <Compile Include="DAC\MXFESatPatentList.cs" />
     <Compile Include="DAC\MXFESatProductServiceList.cs" />
     <Compile Include="DAC\MXFESatTaxRegimList.cs" />
+    <Compile Include="DAC\MXFESatUseCFDIList.cs" />
     <Compile Include="DAC\MXINItemLotSerial.cs" />
     <Compile Include="DAC\MXCESatAccountList.cs" />
     <Compile Include="DAC\MXINTranExtension.cs" />
@@ -94,6 +95,7 @@
     <Content Include="Sql\MXFESatPatentList.sql" />
     <Content Include="Sql\MXFESatProductServiceList.sql" />
     <Content Include="Sql\MXFESatTaxRegimList.sql" />
+    <Content Include="Sql\MXFESatUseCFDIList.sql" />
     <Content Include="Sql\MXINItemLotSerial.sql" />
     <Content Include="Sql\MXINTranExtension.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
