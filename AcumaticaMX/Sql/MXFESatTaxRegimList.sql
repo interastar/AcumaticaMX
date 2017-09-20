@@ -7,7 +7,7 @@ Create Table [dbo].[MXFESatTaxRegimList]
 	[CompanyID]			int NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[TaxRegimID]	    int IDENTITY(1,1) NOT NULL,
+	[TaxRegimID]	    int NOT NULL,
 	[Description]		nvarchar(500) NOT NULL,
 
 	[ApplyNaturalPerson]bit null default((0)),

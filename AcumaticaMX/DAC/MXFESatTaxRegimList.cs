@@ -11,7 +11,7 @@ namespace AcumaticaMX
         }
         [PXDBInt(IsKey = true)]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.TaxRegimCD)]
         public virtual int? TaxRegimID { get; set; }
 
         public abstract class description : IBqlField
@@ -19,7 +19,7 @@ namespace AcumaticaMX
         }
         [PXDBString]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.DescriptionLabel)]
         public virtual string Description { get; set; }
 
         public abstract class applyNaturalPerson : IBqlField
@@ -27,31 +27,31 @@ namespace AcumaticaMX
         }
         [PXDBBool]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
-        public virtual string ApplyNaturalPerson { get; set; }
+        [PXUIField(DisplayName = Messages.ApplyNaturalPerson)]
+        public virtual bool? ApplyNaturalPerson { get; set; }
 
         public abstract class applyMoralPerson : IBqlField
         {
         }
         [PXDBBool]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
-        public virtual string ApplyMoralPerson { get; set; }
+        [PXUIField(DisplayName = Messages.ApplyMoralPerson)]
+        public virtual bool? ApplyMoralPerson { get; set; }
 
         public abstract class validityStartDate : IBqlField
         {
         }
         [PXDBDate]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
-        public virtual string ValidityStartDate { get; set; }
+        [PXUIField(DisplayName = Messages.ValidityStartDate)]
+        public virtual System.DateTime? ValidityStartDate { get; set; }
 
         public abstract class validityEndDate : IBqlField
         {
         }
         [PXDBDate]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
-        public virtual string ValidityEndDate { get; set; }
+        [PXUIField(DisplayName = Messages.ValidityEndDate)]
+        public virtual System.DateTime? ValidityEndDate { get; set; }
 
         #region audit
 
