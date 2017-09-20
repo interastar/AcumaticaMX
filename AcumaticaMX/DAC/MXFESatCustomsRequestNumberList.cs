@@ -15,7 +15,7 @@ namespace AcumaticaMX
         }
         [PXDBString(2, IsUnicode = true, InputMask = ">CC")]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.Customs)]
         public virtual string CustomsCD { get; set; }
 
         public abstract class patent : IBqlField
@@ -23,7 +23,7 @@ namespace AcumaticaMX
         }
         [PXDBInt]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.Patent)]
         public virtual int? Patent { get; set; }
 
         public abstract class fiscalExcercise : IBqlField
@@ -31,7 +31,7 @@ namespace AcumaticaMX
         }
         [PXDBInt]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.FiscalExcercise)]
         public virtual int? FiscalExcercise { get; set; }
 
         public abstract class qty : IBqlField
@@ -39,7 +39,7 @@ namespace AcumaticaMX
         }
         [PXDBString(6)]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.Qty)]
         public virtual string Qty { get; set; }
 
         public abstract class validityStartDate : IBqlField
@@ -47,14 +47,14 @@ namespace AcumaticaMX
         }
         [PXDBDate]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ValidityStartDate)]
         public virtual string ValidityStartDate { get; set; }
 
         public abstract class validityEndDate : IBqlField
         {
         }
         [PXDBDate]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ValidityEndDate)]
         public virtual string ValidityEndDate { get; set; }
 
         #region audit

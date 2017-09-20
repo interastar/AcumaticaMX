@@ -73,6 +73,33 @@ namespace AcumaticaMX
 
         #endregion Catalogo de Códigos Postales
 
+        #region Catalogo de Productos y Sevicios
+        public const string ProdServCode = "Clave Producto Servicio";
+        public const string ProdServIVA = "Inlcuir IVA trasladado";
+        public const string ProdServIEPS = "Incluir IEPS trasladado";
+        public const string ProdServComplement = "Incluir Complemento";
+        #endregion Catalogo de Productos y Servicios
+
+        #region Catalogo de Regimen Fiscal
+        public const string TaxRegimCD = "Clave Regimen Fiscal";
+        public const string ApplyNaturalPerson = "Aplica persona fisica";
+        public const string ApplyMoralPerson = "Aplica persona Moral";
+        #endregion Catalogo de Regimen Fiscal
+
+        #region Catalogo de Numero de pedimento de Aduana
+        public const string Patent = "Patente";
+        public const string FiscalExcercise = "Ejercicio Fiscal";
+        #endregion Catalogo de Numero de pedimento de Aduana
+
+        #region Catalogo de uso de CFDI
+        public const string useCFDI = "Clave Uso";
+        #endregion
+
+        #region Common
+        public const string ValidityStartDate = "Inicio Vigencia";
+        public const string ValidityEndDate = "Fin Vigencia";
+        public const string Qty = "Cantidad";
+        #endregion
         #region Catalogo de Monedas
 
         //*** MXCESatMoneyList

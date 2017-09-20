@@ -16,7 +16,7 @@ namespace AcumaticaMX
         }
         [PXDBString(8, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCC")]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ProdServCode)]
         public virtual string ProductServiceCD { get; set; }
 
         public abstract class description : IBqlField
@@ -24,7 +24,7 @@ namespace AcumaticaMX
         }
         [PXDBString(500, IsUnicode = true, InputMask = ">CCCCCCCC")]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.DescriptionLabel)]
         public virtual string Description { get; set; }
 
         public abstract class validityStartDate : IBqlField
@@ -32,14 +32,14 @@ namespace AcumaticaMX
         }
         [PXDBDate]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ValidityStartDate)]
         public virtual DateTime? ValidityStartDate { get; set; }
 
         public abstract class validityEndDate : IBqlField
         {
         }
         [PXDBDate]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ValidityEndDate)]
         public virtual DateTime? ValidityEndDate { get; set; }
 
         public abstract class transferredIVA : IBqlField
@@ -47,7 +47,7 @@ namespace AcumaticaMX
         }
         [PXDBString]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ProdServIVA)]
         public virtual string TransferredIVA { get; set; }
 
         public abstract class transferredIEPS : IBqlField
@@ -55,14 +55,14 @@ namespace AcumaticaMX
         }
         [PXDBString]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ProdServIEPS)]
         public virtual string TransferredIEPS { get; set; }
 
         public abstract class includeComplement : IBqlField
         {
         }
         [PXDBString]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ProdServComplement)]
         public virtual string IncludeComplement { get; set; }
 
         #region audit

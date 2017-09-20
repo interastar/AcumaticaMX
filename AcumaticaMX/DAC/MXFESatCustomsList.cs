@@ -16,15 +16,15 @@ namespace AcumaticaMX
         }
         [PXDBString(2, IsKey = true, IsUnicode = true, InputMask = ">CC")]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.Customs)]
         public virtual string CustomsCD { get; set; }
 
         public abstract class description : IBqlField
         {
         }
-        [PXDBString(255, IsKey = true, IsUnicode = true)]
+        [PXDBString(255,IsUnicode = true)]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.DescriptionLabel)]
         public virtual string Description { get; set; }
 
         #region audit
