@@ -3,16 +3,16 @@ using PX.Data;
 
 namespace AcumaticaMX
 {
-    public class MXFESatTaxRegimList : IBqlTable
+    public class MXFESatTaxRegimeList : IBqlTable
     {
 
-        public abstract class taxRegimID : IBqlField
+        public abstract class taxRegimeID : IBqlField
         {
         }
         [PXDBInt(IsKey = true)]
         [PXDefault]
         [PXUIField(DisplayName = Messages.TaxRegimCD)]
-        public virtual int? TaxRegimID { get; set; }
+        public virtual int? TaxRegimeID { get; set; }
 
         public abstract class description : IBqlField
         {
