@@ -15,33 +15,22 @@ namespace AcumaticaMX
 
         #endregion RFC
 
-        #region Regimen
-
-        public abstract class regimen : IBqlField
+        #region TaxRegimeID
+        public abstract class taxRegimeID : PX.Data.IBqlField
         {
         }
-
-        [PXDBString(100, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXStringList(
-            new string[]
-            {
-                AcumaticaMX.Common.RegimenTypes.NaturalSalaried, AcumaticaMX.Common.RegimenTypes.NaturalFee,
-                AcumaticaMX.Common.RegimenTypes.NaturalLessor, AcumaticaMX.Common.RegimenTypes.NaturalBusinessActivity,
-                AcumaticaMX.Common.RegimenTypes.NaturalTaxIncorporated,
-                AcumaticaMX.Common.RegimenTypes.JuridicalGeneral, AcumaticaMX.Common.RegimenTypes.JuridicalNonProfit
-            },
-            new string[]
-            {
-                AcumaticaMX.Common.RegimenTypes.NaturalSalariedLabel, AcumaticaMX.Common.RegimenTypes.NaturalFeeLabel,
-                AcumaticaMX.Common.RegimenTypes.NaturalLessorLabel, AcumaticaMX.Common.RegimenTypes.NaturalBusinessActivityLabel,
-                AcumaticaMX.Common.RegimenTypes.NaturalTaxIncorporatedLabel,
-                AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, AcumaticaMX.Common.RegimenTypes.JuridicalNonProfitLabel
-            })]
+        [PXDBInt]
+        [PXSelector(
+            typeof(Search<AcumaticaMX.MXFESatTaxRegimeList.taxRegimeID>),
+            typeof(AcumaticaMX.MXFESatTaxRegimeList.description),
+            typeof(AcumaticaMX.MXFESatTaxRegimeList.applyMoralPerson),
+            typeof(AcumaticaMX.MXFESatTaxRegimeList.applyNaturalPerson),
+            SubstituteKey = typeof(AcumaticaMX.MXFESatTaxRegimeList.description))]
+        [PXDefault]
         [PXUIField(DisplayName = "Regimen fiscal")]
-        public virtual string Regimen { get; set; }
+        public virtual int? TaxRegimeID { get; set; }
 
-        #endregion Regimen
+        #endregion TaxRegimeID
 
         #region IsNaturalPerson
 
