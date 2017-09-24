@@ -29,8 +29,9 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayForm.One)]
-        [PXStringList(AcumaticaMX.Common.PayForm.Values)]
+        [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
+            typeof(MXFESatPaymentMethodList.description),
+            SubstituteKey = typeof(MXFESatPaymentMethodList.description))]
         [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentForm { get; set; }
 

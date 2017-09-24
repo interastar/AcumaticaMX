@@ -100,6 +100,7 @@ namespace AcumaticaMX
         public const string ValidityEndDate = "Fin Vigencia";
         public const string Qty = "Cantidad";
         #endregion
+
         #region Catalogo de Monedas
 
         //*** MXCESatMoneyList
