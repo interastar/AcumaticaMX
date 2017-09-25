@@ -5,13 +5,13 @@ namespace AcumaticaMX
 {
     public class MXFESatUseCFDIList : IBqlTable
     {
-        public abstract class useCFDI : IBqlField
+        public abstract class useCfdiCD : IBqlField
         {
         }
         [PXDBString(3, IsKey = true, IsUnicode = true, InputMask = ">CCC")]
         [PXDefault]
         [PXUIField(DisplayName = Messages.useCFDI)]
-        public virtual string UseCFDI { get; set; }
+        public virtual string UseCfdiCD { get; set; }
 
         public abstract class description : IBqlField
         {

@@ -7,7 +7,7 @@ Create Table [dbo].[MXFESatUseCFDIList]
 	[CompanyID]					int NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[UseCFDI]					nvarchar(3) NOT NULL,
+	[UseCfdiCD]					nvarchar(3) NOT NULL,
 	[Description]				nvarchar(500) NOT NULL,
 
 	[ApplyNaturalPerson]		bit null default((0)),
@@ -29,6 +29,6 @@ Create Table [dbo].[MXFESatUseCFDIList]
 	CONSTRAINT MXFESatUseCFDIList_PK PRIMARY KEY
 	(
 		[CompanyID] ASC,
-		[UseCFDI] ASC
+		[UseCfdiCD] ASC
 	)
 )
