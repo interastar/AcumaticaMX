@@ -29,9 +29,8 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
-            typeof(MXFESatPaymentMethodList.description),
-            SubstituteKey = typeof(MXFESatPaymentMethodList.description))]
+        [PXDefault(AcumaticaMX.Common.PayForm.One)]
+        [PXStringList(AcumaticaMX.Common.PayForm.Values)]
         [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentForm { get; set; }
 
@@ -43,25 +42,9 @@ namespace AcumaticaMX
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
         [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
-        [PXStringList(
-            new string[]
-            {
-                AcumaticaMX.Common.PayMethod.Cash, AcumaticaMX.Common.PayMethod.Cheque,
-                AcumaticaMX.Common.PayMethod.Transfer, AcumaticaMX.Common.PayMethod.CreditCard,
-                AcumaticaMX.Common.PayMethod.Wallet, AcumaticaMX.Common.PayMethod.Electronic,
-                AcumaticaMX.Common.PayMethod.Coupons, AcumaticaMX.Common.PayMethod.DebitCard,
-                AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.NAFE,
-                AcumaticaMX.Common.PayMethod.NACE, AcumaticaMX.Common.PayMethod.Other,
-            },
-            new string[]
-            {
-                AcumaticaMX.Common.PayMethod.CashLabel, AcumaticaMX.Common.PayMethod.ChequeLabel,
-                AcumaticaMX.Common.PayMethod.TransferLabel, AcumaticaMX.Common.PayMethod.CreditCardLabel,
-                AcumaticaMX.Common.PayMethod.WalletLabel, AcumaticaMX.Common.PayMethod.ElectronicLabel,
-                AcumaticaMX.Common.PayMethod.CouponsLabel, AcumaticaMX.Common.PayMethod.DebitCardLabel,
-                AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.NAFELabel,
-                AcumaticaMX.Common.PayMethod.NACELabel, AcumaticaMX.Common.PayMethod.OtherLabel,
-            }, MultiSelect = true)]
+        [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
+            typeof(MXFESatPaymentMethodList.description),
+            SubstituteKey = typeof(MXFESatPaymentMethodList.description))]
         [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentMethod { get; set; }
 
@@ -96,6 +79,7 @@ namespace AcumaticaMX
         public virtual string DiscountReason { get; set; }
 
         #endregion MotivoDeDescuento
+
         //  -- Datos de sello del comprobante
 
         #region noCertificado
@@ -295,5 +279,22 @@ namespace AcumaticaMX
         [PXDBDateAndTime(PreserveTime = true)]
         public virtual DateTime? DocDateTime { get; set; }
         #endregion DocDateTime
+
+        #region UseCfdiCD
+        public abstract class useCfdiCD : PX.Data.IBqlField
+        {
+        }
+        [PXDBString]
+        [PXSelector(
+            typeof(Search<MXFESatUseCFDIList.useCfdiCD>),
+            typeof(MXFESatUseCFDIList.description),
+            typeof(MXFESatUseCFDIList.applyMoralPerson),
+            typeof(MXFESatUseCFDIList.applyNaturalPerson),
+            DescriptionField = typeof(MXFESatUseCFDIList.description))]
+        [PXDefault]
+        [PXFormula(typeof(Selector<ARRegister.customerID, MXBAccountExtension.useCfdiCD>))]
+        [PXUIField(DisplayName = Messages.UseCFDI)]
+        public virtual string UseCfdiCD { get; set; }
+        #endregion UseCfdiCD
     }
 }
