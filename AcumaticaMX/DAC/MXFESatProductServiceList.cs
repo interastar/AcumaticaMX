@@ -5,12 +5,6 @@ namespace AcumaticaMX
 {
     public class MXFESatProductServiceList : IBqlTable
     {
-        public abstract class productServiceID : IBqlField
-        {
-        }
-        [PXDBIdentity]
-        public virtual int? ProductServiceID { get; set; }
-
         public abstract class productServiceCD : IBqlField
         {
         }
@@ -22,7 +16,7 @@ namespace AcumaticaMX
         public abstract class description : IBqlField
         {
         }
-        [PXDBString(500, IsUnicode = true, InputMask = ">CCCCCCCC")]
+        [PXDBString(500, IsUnicode = true)]
         [PXDefault]
         [PXUIField(DisplayName = Messages.DescriptionLabel)]
         public virtual string Description { get; set; }

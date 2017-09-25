@@ -7,7 +7,6 @@ Create Table [dbo].[MXFESatProductServiceList]
 	[CompanyID]					int NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[ProductServiceID]	        int IDENTITY(1,1) NOT NULL,
 	[ProductServiceCD]			nvarchar(8) NOT NULL,
 
 	[Description]				nvarchar(500) NOT NULL,
