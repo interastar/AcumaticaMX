@@ -21,16 +21,31 @@ namespace AcumaticaMX
         }
         [PXDBInt]
         [PXSelector(
-            typeof(Search<AcumaticaMX.MXFESatTaxRegimeList.taxRegimeID>),
-            typeof(AcumaticaMX.MXFESatTaxRegimeList.description),
-            typeof(AcumaticaMX.MXFESatTaxRegimeList.applyMoralPerson),
-            typeof(AcumaticaMX.MXFESatTaxRegimeList.applyNaturalPerson),
-            SubstituteKey = typeof(AcumaticaMX.MXFESatTaxRegimeList.description))]
-        [PXDefault]
+            typeof(Search<MXFESatTaxRegimeList.taxRegimeID>),
+            typeof(MXFESatTaxRegimeList.description),
+            typeof(MXFESatTaxRegimeList.applyMoralPerson),
+            typeof(MXFESatTaxRegimeList.applyNaturalPerson),
+            SubstituteKey = typeof(MXFESatTaxRegimeList.description))]
         [PXUIField(DisplayName = "Regimen fiscal")]
         public virtual int? TaxRegimeID { get; set; }
 
         #endregion TaxRegimeID
+
+        #region UseCFDI
+        public abstract class useCfdiCD : PX.Data.IBqlField
+        {
+        }
+        [PXDBString]
+        [PXSelector(
+            typeof(Search<MXFESatUseCFDIList.useCfdiCD>),
+            typeof(MXFESatUseCFDIList.description),
+            typeof(MXFESatUseCFDIList.applyMoralPerson),
+            typeof(MXFESatUseCFDIList.applyNaturalPerson),
+            DescriptionField = typeof(MXFESatUseCFDIList.description)
+            )]
+        [PXUIField(DisplayName = "Uso de Cfdi")]
+        public virtual string UseCfdiCD { get; set; }
+        #endregion UseCFDI
 
         #region IsNaturalPerson
 
