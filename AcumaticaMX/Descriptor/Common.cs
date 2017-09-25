@@ -59,8 +59,8 @@ namespace AcumaticaMX
         /// </summary>
         public static class PayForm
         {
-            public const string One = "Pago en una sola exhibición";
-            public const string Partial = "Pago en parcialidades";
+            public const string One = "PUE";
+            public const string Partial = "PPD";
 
             public const string OneLabel = "Pago en una sola exhibición";
             public const string PartialLabel = "Pago en parcialidades";

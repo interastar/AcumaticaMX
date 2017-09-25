@@ -75,7 +75,7 @@ namespace AcumaticaMX
 
         #region Catalogo de Productos y Sevicios
         public const string ProdServCode = "Clave Producto Servicio";
-        public const string ProdServIVA = "Inlcuir IVA trasladado";
+        public const string ProdServIVA = "Incluir IVA trasladado";
         public const string ProdServIEPS = "Incluir IEPS trasladado";
         public const string ProdServComplement = "Incluir Complemento";
         #endregion Catalogo de Productos y Servicios
@@ -99,6 +99,8 @@ namespace AcumaticaMX
         public const string ValidityStartDate = "Inicio Vigencia";
         public const string ValidityEndDate = "Fin Vigencia";
         public const string Qty = "Cantidad";
+        public const string UseCFDI = "Uso de Cfdi";
+        public const string ProductService = "SAT Producto o Servicio";
         #endregion
 
         #region Catalogo de Monedas
