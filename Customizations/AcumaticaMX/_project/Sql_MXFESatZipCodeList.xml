@@ -1,0 +1,21 @@
+﻿<Sql TableName="MXFESatZipCodeList" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFESatZipCodeList">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ZipCodeID" type="Int" identity="true" />
+  <col name="ZipCodeCD" type="NVarChar(5)" />
+  <col name="State" type="NVarChar(3)" />
+  <col name="Municipality" type="NVarChar(3)" nullable="true" />
+  <col name="Town" type="NVarChar(3)" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXFESatZipCodeList_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ZipCodeCD" />
+  </index>
+</table>]]></CDATA>
+</Sql>
