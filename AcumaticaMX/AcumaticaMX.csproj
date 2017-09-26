@@ -60,6 +60,7 @@
     <Compile Include="DAC\MXARTranExtension.cs" />
     <Compile Include="DAC\MXFESatCustomsList.cs" />
     <Compile Include="DAC\MXFESatCustomsRequestNumberList.cs" />
+    <Compile Include="DAC\MXFESatMeasureList.cs" />
     <Compile Include="DAC\MXFESatPatentList.cs" />
     <Compile Include="DAC\MXFESatPaymentMethodList.cs" />
     <Compile Include="DAC\MXFESatProductServiceList.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="DAC\MXINItemLotSerial.cs" />
     <Compile Include="DAC\MXCESatAccountList.cs" />
     <Compile Include="DAC\MXINTranExtension.cs" />
+    <Compile Include="DAC\MXFEUnit.cs" />
     <Compile Include="DAC\MXPOAddressExtension.cs" />
     <Compile Include="DAC\MXPOReceiptLineExtension.cs" />
     <Compile Include="DAC\MXSOAddressExtension.cs" />
@@ -96,6 +98,7 @@
     <Content Include="Sql\MXCESatAccountList.sql" />
     <Content Include="Sql\MXFESatCustomsList.sql" />
     <Content Include="Sql\MXFESatCustomsRequestNumberList.sql" />
+    <Content Include="Sql\MXFESatMeasureList.sql" />
     <Content Include="Sql\MXFESatPatentList.sql" />
     <Content Include="Sql\MXFESatPaymentMethodList.sql" />
     <Content Include="Sql\MXFESatProductServiceList.sql" />
@@ -104,6 +107,7 @@
     <Content Include="Sql\MXINInventoryItemExtension.sql" />
     <Content Include="Sql\MXINItemLotSerial.sql" />
     <Content Include="Sql\MXINTranExtension.sql" />
+    <Content Include="Sql\MXFEUnit.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
     <Content Include="Sql\MXPOReceiptLineExtension.sql" />
     <Content Include="Sql\MXFESatZipCodeList.sql" />

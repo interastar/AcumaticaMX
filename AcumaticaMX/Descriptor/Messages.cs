@@ -95,12 +95,19 @@ namespace AcumaticaMX
         public const string useCFDI = "Clave Uso";
         #endregion
 
+        #region Catalogo Unidades de Medida
+        public const string MeasureCD = "Clave Unidad de Medida";
+        #endregion
+
         #region Common
         public const string ValidityStartDate = "Inicio Vigencia";
         public const string ValidityEndDate = "Fin Vigencia";
         public const string Qty = "Cantidad";
         public const string UseCFDI = "Uso de Cfdi";
         public const string ProductService = "SAT Producto o Servicio";
+        public const string Name = "Nombre";
+        public const string Measure = "Sat Unidad de Medida";
+        public const string Unit = "Unidad";
         #endregion
 
         #region Catalogo de Monedas
