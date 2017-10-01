@@ -5,12 +5,6 @@ namespace AcumaticaMX
 {
     public class MXFESatCustomsList : IBqlTable
     {
-        public abstract class customsID : IBqlField
-        {
-        }
-        [PXDBIdentity]
-        public virtual int? CustomsID { get; set; }
-
         public abstract class customsCD : IBqlField
         {
         }

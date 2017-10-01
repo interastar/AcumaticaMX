@@ -7,7 +7,6 @@ Create Table [dbo].[MXFESatCustomsList]
 	[CompanyID]			int NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[CustomsID]	        int IDENTITY(1,1) NOT NULL,
 	[CustomsCD]			nvarchar(2) NOT NULL,
 
 	[Description]		nvarchar(255) NOT NULL,
