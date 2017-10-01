@@ -8,12 +8,20 @@ namespace AcumaticaMX
     public class MXFEUnit : IBqlTable
     {
 
-        public abstract class unit : IBqlField
+        public abstract class unitCD : IBqlField
         {
         }
-        [PXDBString]
+        [PXDBString(IsKey = true, IsFixed = true)]
+        [PXSelector(
+            typeof(Search4<INUnit.fromUnit,
+                Where<INUnit.unitType,
+                    Equal<GlobalUnit.Constant_3>>,
+                Aggregate<
+                    GroupBy<INUnit.fromUnit>>>),
+            DescriptionField = typeof(INUnit.fromUnit))]
         [PXUIField(DisplayName = Messages.Unit)]
-        public virtual string Unit { get; set; }
+        [PXDefault]
+        public virtual string UnitCD { get; set; }
 
         public abstract class measureCD : IBqlField
         {
@@ -24,6 +32,7 @@ namespace AcumaticaMX
             typeof(MXFESatMeasureList.description),
             DescriptionField = typeof(MXFESatMeasureList.name))]
         [PXDBString]
+        [PXDefault]
         [PXUIField(DisplayName = Messages.Measure)]
         public virtual string MeasureCD { get; set; }
 
@@ -191,5 +200,16 @@ namespace AcumaticaMX
         #endregion LastModifiedDateTime
 
         #endregion audit
+    }
+
+    public class GlobalUnit
+    {
+        public class Constant_3 : Constant<int>
+        {
+            public Constant_3()
+            : base(3)
+            {
+            }
+        }
     }
 }

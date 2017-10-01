@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[MXFEUnit](
 	[CompanyID]					[int] NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[Unit]						[nvarchar](6) NOT NULL,
+	[UnitCD]					[nvarchar](25) NOT NULL,
 
 	-- extension fields
 	[MeasureCD]					[nvarchar](3) NOT NULL,
@@ -33,6 +33,6 @@ CREATE TABLE [dbo].[MXFEUnit](
 	CONSTRAINT [MXFEUnit_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
-		[Unit] ASC
+		[UnitCD] ASC
 	)
 )
