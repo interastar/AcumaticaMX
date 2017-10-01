@@ -19,5 +19,19 @@ namespace AcumaticaMX
         [PXFormula(typeof(Selector<ARTran.inventoryID, MXINInventoryItemExtension.productServiceCD>))]
         [PXUIField(DisplayName = Messages.ProductService)]
         public virtual string ProductServiceCD { get; set; }
+
+        public abstract class measureCD : IBqlField
+        {
+        }
+        [PXDBString]
+        //[PXFormula(typeof(Selector<ARTran.uOM, MXFEUnit.measureCD>))]
+        public virtual string MeasureCD { get; set; }
+
+        public abstract class measureName : IBqlField
+        {
+        }
+        [PXDBString]
+        //[PXFormula(typeof(Selector<measureCD, MXFESatMeasureList.name>))]
+        public virtual string MeasureName { get; set; }
     }
 }
