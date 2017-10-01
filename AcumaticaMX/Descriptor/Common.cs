@@ -64,8 +64,6 @@ namespace AcumaticaMX
 
             public const string OneLabel = "Pago en una sola exhibición";
             public const string PartialLabel = "Pago en parcialidades";
-
-            public const string Values = "Pago en una sola exhibición,Pago en parcialidades";
         }
 
         /// <summary>
