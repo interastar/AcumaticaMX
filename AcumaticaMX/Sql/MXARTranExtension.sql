@@ -20,4 +20,6 @@ CREATE TABLE [dbo].[MXARTranExtension](
 
 	-- extension fields
 	[ProductServiceCD]		[nvarchar](8) NOT NULL,
+	[MeasureCD]				[nvarchar](3) NOT NULL,
+	[MeasureName]	[nvarchar](1000) NOT NULL,
 )
