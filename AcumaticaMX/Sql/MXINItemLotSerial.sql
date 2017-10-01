@@ -21,6 +21,7 @@ CREATE TABLE [dbo].[MXINItemLotSerial](
 	[Customs]			[nvarchar](25) NULL,
 	[ImportDate]		[smalldatetime] NULL,
 	[RequestNbr]		[nvarchar](50) NULL,
+	[CustomsRequestNbr]	[nvarchar](50) NULL,
 	[LineNbr]			[int] NOT NULL DEFAULT ((0)),  -- Numerp de linea de la recepción (uso futura modificación)
 	[ItemSold]			[bit] NOT NULL DEFAULT ((0)),  -- Indica si el item ya ha sido vendido 
 	[BatchSold]			[bit] NOT NULL DEFAULT ((0)),  -- Indica si la información aduanera puede ser modificada

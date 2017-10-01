@@ -26,6 +26,17 @@ namespace AcumaticaMX
         public virtual int? InventoryID { get; set; }
 
         #endregion InventoryID
+        
+        #region LineNbr
+
+        public abstract class lineNbr : IBqlField
+        {
+        }
+        [PXDefault]
+        [PXDBInt(IsKey = true)]
+        public virtual int? LineNbr { get; set; }
+
+        #endregion LineNbr
 
         #region LotSerialNbr
 
@@ -78,16 +89,16 @@ namespace AcumaticaMX
 
         #endregion RequestNbr
 
-        #region LineNbr
+        #region CustomsRequestNbr
 
-        public abstract class lineNbr : IBqlField
+        public abstract class customsRequestNbr : IBqlField
         {
         }
-        [PXDefault]
-        [PXDBInt(IsKey = true)]
-        public virtual int? LineNbr { get; set; }
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.CustomsRequestNbr)]
+        public virtual string CustomsRequestNbr { get; set; }
 
-        #endregion LineNbr
+        #endregion CustomsRequestNbr
 
         #region ItemSold
 
