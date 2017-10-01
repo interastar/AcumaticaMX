@@ -4,16 +4,16 @@ namespace AcumaticaMX
 {
     public class MXFESatCustomsRequestNumberList : IBqlTable
     {
-        public abstract class key : IBqlField
+        public abstract class customsRequestNumberID : IBqlField
         {
         }
         [PXDBGuid]
-        public virtual int? Key { get; set; }
+        public virtual Guid? CustomsRequestNumberID { get; set; }
 
         public abstract class customsCD : IBqlField
         {
         }
-        [PXDBString(2, IsUnicode = true, InputMask = ">CC")]
+        [PXDBString(2, IsKey = true,  IsUnicode = true, InputMask = ">CC")]
         [PXDefault]
         [PXUIField(DisplayName = Messages.Customs)]
         public virtual string CustomsCD { get; set; }
@@ -21,7 +21,7 @@ namespace AcumaticaMX
         public abstract class patent : IBqlField
         {
         }
-        [PXDBInt]
+        [PXDBInt(IsKey = true)]
         [PXDefault]
         [PXUIField(DisplayName = Messages.Patent)]
         public virtual int? Patent { get; set; }
@@ -29,7 +29,7 @@ namespace AcumaticaMX
         public abstract class fiscalExcercise : IBqlField
         {
         }
-        [PXDBInt]
+        [PXDBInt(IsKey = true)]
         [PXDefault]
         [PXUIField(DisplayName = Messages.FiscalExcercise)]
         public virtual int? FiscalExcercise { get; set; }
@@ -37,7 +37,7 @@ namespace AcumaticaMX
         public abstract class qty : IBqlField
         {
         }
-        [PXDBString(6)]
+        [PXDBString(6, IsKey = true)]
         [PXDefault]
         [PXUIField(DisplayName = Messages.Qty)]
         public virtual string Qty { get; set; }
@@ -48,14 +48,14 @@ namespace AcumaticaMX
         [PXDBDate]
         [PXDefault]
         [PXUIField(DisplayName = Messages.ValidityStartDate)]
-        public virtual string ValidityStartDate { get; set; }
+        public virtual System.DateTime? ValidityStartDate { get; set; }
 
         public abstract class validityEndDate : IBqlField
         {
         }
         [PXDBDate]
         [PXUIField(DisplayName = Messages.ValidityEndDate)]
-        public virtual string ValidityEndDate { get; set; }
+        public virtual System.DateTime? ValidityEndDate { get; set; }
 
         #region audit
 
