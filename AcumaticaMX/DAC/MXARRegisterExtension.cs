@@ -30,7 +30,18 @@ namespace AcumaticaMX
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
         [PXDefault(AcumaticaMX.Common.PayForm.One)]
-        [PXStringList(AcumaticaMX.Common.PayForm.Values)]
+        [PXStringList(
+            new string[]
+            {
+                Common.PayForm.One,
+                Common.PayForm.Partial,
+            },
+            new string[]
+            {
+                Common.PayForm.OneLabel,
+                Common.PayForm.PartialLabel,
+            }
+            )]
         [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentForm { get; set; }
 
