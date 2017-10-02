@@ -7,6 +7,7 @@
   <col name="Customs" type="NVarChar(25)" nullable="true" />
   <col name="ImportDate" type="SmallDateTime" nullable="true" />
   <col name="RequestNbr" type="NVarChar(50)" nullable="true" />
+  <col name="CustomsRequestNbr" type="UniqueIdentifier" nullable="true" />
   <index name="MXINTranExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DocType" />

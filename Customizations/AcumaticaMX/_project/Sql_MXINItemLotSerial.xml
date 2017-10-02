@@ -7,6 +7,7 @@
   <col name="Customs" type="NVarChar(25)" nullable="true" />
   <col name="ImportDate" type="SmallDateTime" nullable="true" />
   <col name="RequestNbr" type="NVarChar(50)" nullable="true" />
+  <col name="CustomsRequestNbr" type="NVarChar(50)" nullable="true" />
   <col name="LineNbr" type="Int" default="Zero" />
   <col name="ItemSold" type="Bit" default="Zero" />
   <col name="BatchSold" type="Bit" default="Zero" />

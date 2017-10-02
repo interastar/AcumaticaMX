@@ -5,5 +5,7 @@
   <col name="RefNbr" type="NVarChar(15)" />
   <col name="LineNbr" type="Int" default="Zero" />
   <col name="ProductServiceCD" type="NVarChar(8)" />
+  <col name="MeasureCD" type="NVarChar(3)" />
+  <col name="MeasureName" type="NVarChar(1000)" />
 </table>]]></CDATA>
 </Sql>

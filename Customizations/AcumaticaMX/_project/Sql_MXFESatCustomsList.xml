@@ -1,7 +1,6 @@
 ﻿<Sql TableName="MXFESatCustomsList" TableSchemaXml="#CDATA">
     <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFESatCustomsList">
   <col name="CompanyID" type="Int" default="Zero" />
-  <col name="CustomsID" type="Int" identity="true" />
   <col name="CustomsCD" type="NVarChar(2)" />
   <col name="Description" type="NVarChar(255)" />
   <col name="tstamp" type="Timestamp" />
