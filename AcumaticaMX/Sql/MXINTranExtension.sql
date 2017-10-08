@@ -22,7 +22,6 @@ CREATE TABLE [dbo].[MXINTranExtension](
 	[Customs]			[nvarchar](25) NULL,
 	[ImportDate]		[smalldatetime] NULL,
 	[RequestNbr]		[nvarchar](50) NULL,
-	[CustomsRequestNbr]	uniqueidentifier NULL,
 
 	CONSTRAINT [MXINTranExtension_PK] PRIMARY KEY CLUSTERED 
 	(

@@ -38,35 +38,11 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(40, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.RequestNumber, Enabled = false)]
-        //[ValidateFields(Messages.ErrorCustoms, typeof(customs), typeof(importDate))]
+        [PXDBString(21, IsUnicode = true, IsFixed = true ,InputMask = "00  00  0000  0000000")]
+        [PXUIField(DisplayName = Messages.RequestNumber, Enabled = true)]
+        [RequestNumber("Es necesario asignar el numero de pedimento", typeof(requestNbr))]
         public virtual string RequestNbr { get; set; }
 
         #endregion RequestNbr
-
-        #region CustomsRequestNbr
-
-        public abstract class customsRequestNbr : IBqlField
-        {
-        }
-
-        [PXSelector(
-            typeof(Search2<MXFESatCustomsRequestNumberList.customsRequestNumberID,
-                LeftJoin<MXFESatCustomsList,
-                    On<MXFESatCustomsRequestNumberList.customsCD,
-                        Equal<MXFESatCustomsList.customsCD>>>>),
-            typeof(MXFESatCustomsList.description),
-            typeof(MXFESatCustomsRequestNumberList.customsCD),
-            typeof(MXFESatCustomsRequestNumberList.patent),
-            typeof(MXFESatCustomsRequestNumberList.fiscalExcercise),
-            typeof(MXFESatCustomsRequestNumberList.qty),
-            DescriptionField = typeof(MXFESatCustomsRequestNumberList.customsCD))]
-        [PXDBGuid]
-        [PXDefault]
-        [PXUIField(DisplayName = Messages.CustomsRequestNbr)]
-        public virtual Guid? CustomsRequestNbr { get; set; }
-
-        #endregion CustomsRequestNbr
     }
 }
