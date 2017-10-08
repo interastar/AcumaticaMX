@@ -24,7 +24,6 @@ namespace AcumaticaMX
         {
         }
         [PXDBString]
-        //[PXFormula(typeof(Selector<ARTran.uOM, MXFEUnit.measureCD>))]
         public virtual string MeasureCD { get; set; }
 
         public abstract class measureName : IBqlField
