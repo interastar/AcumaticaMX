@@ -55,7 +55,7 @@ namespace AcumaticaMX
         [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
         [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
             typeof(MXFESatPaymentMethodList.description),
-            SubstituteKey = typeof(MXFESatPaymentMethodList.description))]
+            DescriptionField = typeof(MXFESatPaymentMethodList.description))]
         [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentMethod { get; set; }
 
