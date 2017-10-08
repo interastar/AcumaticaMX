@@ -388,7 +388,7 @@ namespace AcumaticaMX
         private List<string> _SourceFields;
         private string _ErrorMsg;
 
-        public ValidateFieldsAttribute(string ErrorMsg,params Type[] SourceFieldTypes)
+        public ValidateFieldsAttribute(string ErrorMsg, params Type[] SourceFieldTypes)
             : base()
         {
             _ErrorMsg = ErrorMsg;
@@ -412,7 +412,7 @@ namespace AcumaticaMX
             if (value != null ||
                 ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
             {
-                foreach(var field in _SourceFields)
+                foreach (var field in _SourceFields)
                 {
                     var fieldValue = sender.GetValue(e.Row, field);
 
@@ -426,11 +426,107 @@ namespace AcumaticaMX
                     }
                     else if ((fieldValue.GetType() == typeof(string)))
                     {
-                        if(string.IsNullOrEmpty((string)fieldValue))
+                        if (string.IsNullOrEmpty((string)fieldValue))
                         {
                             sender.RaiseExceptionHandling(field,
                                e.Row, null, new PXSetPropertyException(_ErrorMsg, PXErrorLevel.RowError));
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    public class RequestNumberAttribute : PXEventSubscriberAttribute, IPXRowPersistingSubscriber, IPXRowSelectingSubscriber, IPXRowPersistedSubscriber
+    {
+        private List<string> _SourceFields;
+        private string _ErrorMsg;
+
+        public RequestNumberAttribute(string ErrorMsg, params Type[] SourceFieldTypes)
+            : base()
+        {
+            _ErrorMsg = ErrorMsg;
+
+            if (SourceFieldTypes.Length > 0)
+            {
+                _SourceFields = new List<string>(SourceFieldTypes.Select(t => t.Name));
+            }
+            else
+            {
+                throw new PXArgumentException();
+            }
+        }
+
+        public virtual void RowPersisting(PXCache sender, PXRowPersistingEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, this._FieldName);
+
+            if (value != null ||
+                ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
+            {
+                foreach (var field in _SourceFields)
+                {
+                    var fieldValue = sender.GetValue(e.Row, field);
+
+                    // Si es nulo o
+                    //  es una cadena vacía...
+                    if (fieldValue == null || string.IsNullOrEmpty((string)fieldValue))
+                    {
+                        sender.RaiseExceptionHandling(field,
+                                e.Row, null, new PXSetPropertyException(_ErrorMsg, PXErrorLevel.RowError));
+                    }
+                    else
+                    {
+                        var rowValue = fieldValue.ToString();
+                        var parsedValue = rowValue.Substring(0, 2) + "  " + rowValue.Substring(2, 2) + "  " + 
+                            rowValue.Substring(4, 4).Trim().PadLeft(4,'0') + "  " + rowValue.Substring(8, 7);
+                        sender.SetValue(e.Row, this._FieldName, parsedValue);
+                    }
+                }
+            }
+        }
+
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, this._FieldName);
+
+            if (value != null ||
+                ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
+            {
+                foreach (var field in _SourceFields)
+                {
+                    var fieldValue = sender.GetValue(e.Row, field);
+
+                    if (fieldValue != null || !string.IsNullOrEmpty(fieldValue.ToString()))
+                    {
+                        var joinValue = String.Join("", fieldValue.ToString().Split(' '));
+                        sender.SetValue(e.Row, this._FieldName, joinValue);
+                    }
+                }
+            }
+        }
+
+        public virtual void RowPersisted(PXCache sender, PXRowPersistedEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, this._FieldName);
+
+            if (value != null ||
+                ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
+            {
+                foreach (var field in _SourceFields)
+                {
+                    var fieldValue = sender.GetValue(e.Row, field);
+
+                    if (fieldValue != null || !string.IsNullOrEmpty(fieldValue.ToString()))
+                    {
+                        var joinValue = String.Join("", fieldValue.ToString().Split(' '));
+                        sender.SetValue(e.Row, this._FieldName, joinValue);
                     }
                 }
             }

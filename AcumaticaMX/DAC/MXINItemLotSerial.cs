@@ -84,21 +84,10 @@ namespace AcumaticaMX
 
         [PXDBString(40, IsUnicode = true)]
         [PXUIField(DisplayName = Messages.RequestNumber)]
-        [ValidateFields(Messages.ErrorCustoms, typeof(customs), typeof(importDate))]
+        [RequestNumber("Es necesario asignar el numero de pedimento",typeof(requestNbr))]
         public virtual string RequestNbr { get; set; }
 
         #endregion RequestNbr
-
-        #region CustomsRequestNbr
-
-        public abstract class customsRequestNbr : IBqlField
-        {
-        }
-        [PXDBString]
-        [PXUIField(DisplayName = Messages.CustomsRequestNbr)]
-        public virtual string CustomsRequestNbr { get; set; }
-
-        #endregion CustomsRequestNbr
 
         #region ItemSold
 
