@@ -42,7 +42,7 @@ namespace AcumaticaMX
                 Common.PayForm.PartialLabel,
             }
             )]
-        [PXUIField(DisplayName = "Forma de Pago")]
+        [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentForm { get; set; }
 
         #endregion FormaDePago
@@ -56,7 +56,7 @@ namespace AcumaticaMX
         [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
             typeof(MXFESatPaymentMethodList.description),
             DescriptionField = typeof(MXFESatPaymentMethodList.description))]
-        [PXUIField(DisplayName = "Metodo de Pago")]
+        [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentMethod { get; set; }
 
         #endregion MetodoDePago
