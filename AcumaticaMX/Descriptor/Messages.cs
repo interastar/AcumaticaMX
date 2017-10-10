@@ -117,5 +117,9 @@ namespace AcumaticaMX
         public const string MoneyCodeLabel = "Código de Monedas";
         public const string MoneyNameLabel = "Nombre de la moneda";
         #endregion Catalogo de Monedas
+
+        #region Impuestos
+        public const string Tax = "Sat Tipo de Impuesto";
+        #endregion
     }
 }

@@ -113,6 +113,17 @@ namespace AcumaticaMX
                 }
             }
         }
+
+        public static class Tax
+        {
+            public const string ISR = "001";
+            public const string IVA = "002";
+            public const string IEPS = "003";
+
+            public const string ISRLabel = "ISR";
+            public const string IVALabel = "IVA";
+            public const string IEPSLabel = "IEPS";
+        }
     }
 
     public class Convert
