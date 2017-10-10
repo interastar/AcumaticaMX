@@ -58,7 +58,7 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(40, IsUnicode = true)]
+        [PXDBString(255, IsUnicode = true)]
         [PXUIField(DisplayName = Messages.Customs)]
         public virtual string Customs { get; set; }
 

@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[MXINItemLotSerial](
 	[RefNbr]			[nvarchar] (15) NOT NULL, 
 	-- Numero de referencia de la recepción con la cual entro por primera vez 
 	-- Datos de Informacion Aduanera
-	[Customs]			[nvarchar](25) NULL,
+	[Customs]			[nvarchar](255) NULL,
 	[ImportDate]		[smalldatetime] NULL,
 	[RequestNbr]		[nvarchar](50) NULL,
 	[LineNbr]			[int] NOT NULL DEFAULT ((0)),  -- Numerp de linea de la recepción (uso futura modificación)
