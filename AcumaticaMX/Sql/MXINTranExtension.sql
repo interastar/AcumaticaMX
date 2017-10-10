@@ -19,7 +19,7 @@ CREATE TABLE [dbo].[MXINTranExtension](
 	[LineNbr]			[int] NOT NULL DEFAULT ((0)),
 
 	-- Datos de Informacion Aduanera
-	[Customs]			[nvarchar](25) NULL,
+	[Customs]			[nvarchar](255) NULL,
 	[ImportDate]		[smalldatetime] NULL,
 	[RequestNbr]		[nvarchar](50) NULL,
 

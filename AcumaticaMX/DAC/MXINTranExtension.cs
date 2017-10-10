@@ -14,7 +14,7 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(40, IsUnicode = true)]
+        [PXDBString(255, IsUnicode = true)]
         [PXUIField(DisplayName = Messages.Customs, Enabled = false)]
         public virtual string Customs { get; set; }
 
@@ -27,7 +27,7 @@ namespace AcumaticaMX
         }
 
         [PXDBDate()]
-        [PXUIField(DisplayName = Messages.ImportDate, Enabled = false)]
+        [PXUIField(DisplayName = Messages.ImportDate, Enabled = true)]
         public virtual DateTime? ImportDate { get; set; }
 
         #endregion ImportDate
