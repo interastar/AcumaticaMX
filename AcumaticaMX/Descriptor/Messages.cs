@@ -120,7 +120,6 @@ namespace AcumaticaMX
 
         #region Impuestos
         public const string Tax = "Sat Tipo de Impuesto";
-        public const string TaxType = "Sat Impuesto";
         #endregion
     }
 }

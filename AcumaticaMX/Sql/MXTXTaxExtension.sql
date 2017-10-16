@@ -18,7 +18,6 @@ CREATE TABLE [dbo].[MXTXTaxExtension](
 
 	-- Datos de Informacion Aduanera
 	[SatTax]			[nvarchar](4) NOT NULL,
-	[SatTaxType]		[nvarchar](1) NOT NULL,
 
 	CONSTRAINT [MXTXTaxExtension_PK] PRIMARY KEY CLUSTERED 
 	(
