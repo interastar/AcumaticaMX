@@ -29,5 +29,26 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.Tax, Enabled = true)]
         [PXDefault(Common.Tax.IVA)]
         public virtual string SatTax { get; set; }
+
+        public abstract class satTaxType : IBqlField
+        {
+        }
+
+        [PXDBString(4, IsUnicode = true)]
+        [PXStringList(
+            new string[]
+            {
+                Common.TaxType.Holding,
+                Common.TaxType.Transfer,
+            },
+            new string[]
+            {
+                Common.TaxType.HoldingLabel,
+                Common.TaxType.TransferLabel,
+            }
+            )]
+        [PXUIField(DisplayName = Messages.TaxType, Enabled = true)]
+        [PXDefault(Common.TaxType.Holding)]
+        public virtual string SatTaxType { get; set; }
     }
 }

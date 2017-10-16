@@ -124,6 +124,15 @@ namespace AcumaticaMX
             public const string IVALabel = "IVA";
             public const string IEPSLabel = "IEPS";
         }
+
+        public static class TaxType
+        {
+            public const string Holding = "R";
+            public const string Transfer = "T";
+
+            public const string HoldingLabel = "Retención";
+            public const string TransferLabel = "Traslado";
+        }
     }
 
     public class Convert
