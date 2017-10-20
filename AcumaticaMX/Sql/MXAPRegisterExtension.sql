@@ -42,6 +42,8 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	[CancelDate]		[smalldatetime] NULL,
 
 	-- Datos de Validación
+	[DocumentType]		[nvarchar](1) NOT NULL,
+	[Folio]		[nvarchar](25) NULL,
 	[Import]			BIT NULL DEFAULT ((1)),
 	[Provider]			[nvarchar](13) NULL,
 	[TotalTaxes]		DECIMAL(19, 4) NULL,
