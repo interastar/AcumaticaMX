@@ -96,6 +96,11 @@ namespace AcumaticaMX
         public const string useCFDI = "Clave Uso";
         #endregion
 
+        #region Catalogo de Bancos
+        public const string BanckCD = "Clave del Banco";
+        public const string BanckName = "Nombre del Banco";
+        #endregion
+
         #region Catalogo Unidades de Medida
         public const string MeasureCD = "Clave Unidad de Medida";
         #endregion

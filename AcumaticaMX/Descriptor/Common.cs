@@ -133,6 +133,17 @@ namespace AcumaticaMX
             public const string HoldingLabel = "Retención";
             public const string TransferLabel = "Traslado";
         }
+
+        public static class DocumentType
+        {
+            public const string Cfdi = "C";
+            public const string CfdCbb = "B";
+            public const string Foreign = "F";
+
+            public const string CfdiLabel = "CFDI";
+            public const string CfdCbbLabel = "CFD/CBB";
+            public const string ForeignLabel = "Factura Extranjera";
+        }
     }
 
     public class Convert

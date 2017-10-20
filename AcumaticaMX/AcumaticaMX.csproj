@@ -58,6 +58,8 @@
     <Compile Include="DAC\MXAPRegisterExtension.cs" />
     <Compile Include="DAC\MXARCustomsInformation.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
+    <Compile Include="DAC\MXCACashAccountExtension.cs" />
+    <Compile Include="DAC\MXFESatBankList.cs" />
     <Compile Include="DAC\MXFESatCustomsList.cs" />
     <Compile Include="DAC\MXFESatCustomsRequestNumberList.cs" />
     <Compile Include="DAC\MXFESatMeasureList.cs" />
@@ -96,7 +98,9 @@
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXARTranExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
+    <Content Include="Sql\MXCACashAccountExtension.sql" />
     <Content Include="Sql\MXCESatAccountList.sql" />
+    <Content Include="Sql\MXFESatBankList.sql" />
     <Content Include="Sql\MXFESatCustomsList.sql" />
     <Content Include="Sql\MXFESatCustomsRequestNumberList.sql" />
     <Content Include="Sql\MXFESatMeasureList.sql" />
