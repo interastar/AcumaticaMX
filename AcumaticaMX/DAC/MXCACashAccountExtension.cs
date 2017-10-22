@@ -16,8 +16,8 @@ namespace AcumaticaMX
 
         [PXDBString(3, IsUnicode = true)]
         [PXSelector(
-            typeof(Search<MXFESatBankList.banckCD>),
-            DescriptionField = typeof(MXFESatBankList.banckName))]
+            typeof(Search<MXFESatBankList.bankCD>),
+            DescriptionField = typeof(MXFESatBankList.bankName))]
         [PXUIField(DisplayName = "Banco")]
         public virtual string BankCD { get; set; }
 
