@@ -14,10 +14,10 @@ CREATE TABLE [dbo].[MXFESatBankList](
 	[CompanyID]					[int] NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[BanckCD]					[nvarchar](3) NOT NULL,
+	[BankCD]					[nvarchar](3) NOT NULL,
 
 	-- extension fields
-	[BanckName]					[nvarchar](255) NOT NULL,
+	[BankName]					[nvarchar](255) NOT NULL,
 
 	-- handle concurrency
 	[tstamp]					timestamp NOT NULL,
@@ -33,6 +33,6 @@ CREATE TABLE [dbo].[MXFESatBankList](
 	CONSTRAINT [MXFESatBankListt_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
-		[BanckCD] ASC
+		[BankCD] ASC
 	)
 )

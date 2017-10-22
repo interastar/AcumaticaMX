@@ -5,21 +5,21 @@ namespace AcumaticaMX
 {
     public class MXFESatBankList : IBqlTable
     {
-        public abstract class banckCD : IBqlField
+        public abstract class bankCD : IBqlField
         {
         }
         [PXDBString(3, IsKey = true, IsUnicode = true, InputMask = ">000")]
         [PXDefault]
         [PXUIField(DisplayName = Messages.BanckCD)]
-        public virtual string BanckCD { get; set; }
+        public virtual string BankCD { get; set; }
 
-        public abstract class banckName : IBqlField
+        public abstract class bankName : IBqlField
         {
         }
         [PXDBString(255, IsUnicode = true)]
         [PXDefault]
         [PXUIField(DisplayName = Messages.BanckName)]
-        public virtual string BanckName { get; set; }
+        public virtual string BankName { get; set; }
 
         #region audit
 
