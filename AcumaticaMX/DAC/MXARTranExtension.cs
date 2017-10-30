@@ -15,7 +15,6 @@ namespace AcumaticaMX
             typeof(Search<MXFESatProductServiceList.productServiceCD>),
             typeof(MXFESatProductServiceList.description),
             DescriptionField = typeof(MXFESatProductServiceList.description))]
-        [PXDefault]
         [PXFormula(typeof(Selector<ARTran.inventoryID, MXINInventoryItemExtension.productServiceCD>))]
         [PXUIField(DisplayName = Messages.ProductService)]
         public virtual string ProductServiceCD { get; set; }

@@ -19,7 +19,7 @@ CREATE TABLE [dbo].[MXARTranExtension](
 	[LineNbr]				[int] NOT NULL DEFAULT ((0)),
 
 	-- extension fields
-	[ProductServiceCD]		[nvarchar](8) NOT NULL,
-	[MeasureCD]				[nvarchar](3) NOT NULL,
-	[MeasureName]	[nvarchar](1000) NOT NULL,
+	[ProductServiceCD]		[nvarchar](8) NULL,
+	[MeasureCD]				[nvarchar](3) NULL,
+	[MeasureName]			[nvarchar](1000) NULL,
 )
