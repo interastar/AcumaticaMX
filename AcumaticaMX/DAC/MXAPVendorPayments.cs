@@ -70,7 +70,7 @@ namespace AcumaticaMX
         [PXFormula(typeof(Selector<bankCD, MXFESatBankList.bankName>))]
         [PXUIField(DisplayName = "Nombre del banco", Visible = false)] // Este atributo lo mantiene invisible
         public virtual string BankName { get; set; }
-
+        
         #endregion BankName
 
         #region Bank Account

@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAC\MXAPRegisterExtension.cs" />
+    <Compile Include="DAC\MXAPVendorPayments.cs" />
+    <Compile Include="DAC\MXARAdjustExtension.cs" />
     <Compile Include="DAC\MXARCustomsInformation.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
     <Compile Include="DAC\MXCACashAccountExtension.cs" />
@@ -94,6 +96,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\MXAPRegisterExtension.sql" />
+    <Content Include="Sql\MXAPVendorPayment.sql" />
+    <Content Include="Sql\MXARAdjustExtension.sql" />
     <Content Include="Sql\MXARCustomsInformation.sql" />
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXARTranExtension.sql" />
