@@ -9,16 +9,16 @@ namespace AcumaticaMX
         typeof(ARAdjust.adjdDocType), typeof(ARAdjust.adjdRefNbr), IsOptional = true)]
     public class MXARAdjustExtension : PXCacheExtension<ARAdjust>
     {
-        #region Send
+        //#region Send
 
-        public abstract class send : IBqlField { }
+        //public abstract class send : IBqlField { }
 
-        [PXDBBool]
-        [PXDefault(true)]
-        [PXUIField(DisplayName = "Enviar por correo", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
-        public virtual bool? Send { get; set; }
+        //[PXDBBool]
+        //[PXDefault(true)]
+        //[PXUIField(DisplayName = "Enviar por correo", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
+        //public virtual bool? Send { get; set; }
 
-        #endregion Send
+        //#endregion Send
 
         #region DocumentID
 
@@ -45,7 +45,7 @@ namespace AcumaticaMX
         public abstract class debtAmt : IBqlField { }
 
         [PXDBDecimal]
-        [PXUIField(DisplayName = "Saldo insoluto anterior")]
+        [PXUIField(DisplayName = "Saldo Insoluto Anterior")]
         public virtual decimal? DebtAmt { get; set; }
 
         #endregion DebtAmt

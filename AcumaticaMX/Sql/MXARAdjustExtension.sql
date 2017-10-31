@@ -22,7 +22,6 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 	[AdjdRefNbr]				[CHAR] (15) NOT NULL,
 
 	-- Informacion adicional
-	[Send]						BIT NULL DEFAULT ((1)),
 	[DocumentID]				[UNIQUEIDENTIFIER] NULL,
 	[Partiality]				[INT] NULL,
 	[DebtAmt]					DECIMAL(19, 4) NULL,
