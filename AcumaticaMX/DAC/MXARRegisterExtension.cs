@@ -296,14 +296,6 @@ namespace AcumaticaMX
         {
         }
         [PXDBString]
-        [PXSelector(
-            typeof(Search<MXFESatUseCFDIList.useCfdiCD>),
-            typeof(MXFESatUseCFDIList.description),
-            typeof(MXFESatUseCFDIList.applyMoralPerson),
-            typeof(MXFESatUseCFDIList.applyNaturalPerson),
-            DescriptionField = typeof(MXFESatUseCFDIList.description))]
-        [PXDefault]
-        [PXFormula(typeof(Selector<ARRegister.customerID, MXBAccountExtension.useCfdiCD>))]
         [PXUIField(DisplayName = Messages.UseCFDI)]
         public virtual string UseCfdiCD { get; set; }
         #endregion UseCfdiCD
