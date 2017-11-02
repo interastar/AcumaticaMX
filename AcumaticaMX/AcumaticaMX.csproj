@@ -59,8 +59,10 @@
     <Compile Include="DAC\MXAPVendorPayments.cs" />
     <Compile Include="DAC\MXARAdjustExtension.cs" />
     <Compile Include="DAC\MXARCustomsInformation.cs" />
+    <Compile Include="DAC\MXARPaymentNotifications.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
     <Compile Include="DAC\MXCACashAccountExtension.cs" />
+    <Compile Include="DAC\MXARCustomerPaymentMethodExtension.cs" />
     <Compile Include="DAC\MXFESatBankList.cs" />
     <Compile Include="DAC\MXFESatCustomsList.cs" />
     <Compile Include="DAC\MXFESatCustomsRequestNumberList.cs" />
@@ -98,7 +100,9 @@
     <Content Include="Sql\MXAPRegisterExtension.sql" />
     <Content Include="Sql\MXAPVendorPayment.sql" />
     <Content Include="Sql\MXARAdjustExtension.sql" />
+    <Content Include="Sql\MXARCustomerPaymentMethodExtension.sql" />
     <Content Include="Sql\MXARCustomsInformation.sql" />
+    <Content Include="Sql\MXARPaymentNotifications.sql" />
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXARTranExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />

@@ -97,8 +97,9 @@ namespace AcumaticaMX
         #endregion
 
         #region Catalogo de Bancos
-        public const string BanckCD = "Clave del Banco";
-        public const string BanckName = "Nombre del Banco";
+        public const string BankCD = "Clave del Banco";
+        public const string BankName = "Nombre del Banco";
+        public const string BankRFC = "RFC del Banco";
         #endregion
 
         #region Catalogo Unidades de Medida
@@ -114,6 +115,7 @@ namespace AcumaticaMX
         public const string Name = "Nombre";
         public const string Measure = "Sat Unidad de Medida";
         public const string Unit = "Unidad";
+        public const string PaymentDocDateTime = "Fecha de Deposito";
         #endregion
 
         #region Catalogo de Monedas
