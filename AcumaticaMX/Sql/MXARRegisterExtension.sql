@@ -52,6 +52,8 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 
 	[UseCfdiCD]			[nvarchar](3) NULL,
 
+	[PaymentDocDateTime][smalldatetime] NULL,
+
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,

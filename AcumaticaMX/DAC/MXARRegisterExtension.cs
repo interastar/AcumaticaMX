@@ -299,5 +299,12 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.UseCFDI)]
         public virtual string UseCfdiCD { get; set; }
         #endregion UseCfdiCD
+
+        #region PaymentDocDateTime
+        public abstract class paymentDocDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
+        public virtual DateTime? PaymentDocDateTime { get; set; }
+        #endregion PaymentDocDateTime
     }
 }
