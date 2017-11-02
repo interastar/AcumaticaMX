@@ -9,17 +9,6 @@ namespace AcumaticaMX
         typeof(ARAdjust.adjdDocType), typeof(ARAdjust.adjdRefNbr), IsOptional = true)]
     public class MXARAdjustExtension : PXCacheExtension<ARAdjust>
     {
-        //#region Send
-
-        //public abstract class send : IBqlField { }
-
-        //[PXDBBool]
-        //[PXDefault(true)]
-        //[PXUIField(DisplayName = "Enviar por correo", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
-        //public virtual bool? Send { get; set; }
-
-        //#endregion Send
-
         #region DocumentID
 
         public abstract class documentID : IBqlField { }
@@ -29,6 +18,15 @@ namespace AcumaticaMX
         public virtual Guid? DocumentID { get; set; }
 
         #endregion DocumentID
+
+        #region FormaDePago
+
+        public abstract class paymentForm : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        public virtual string PaymentForm { get; set; }
+
+        #endregion FormaDePago
 
         #region Partiality
 
@@ -89,7 +87,6 @@ namespace AcumaticaMX
         #endregion CancelDate
 
         ///*** Campos calculados
-        ///
 
         #region Estado
 

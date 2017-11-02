@@ -23,6 +23,7 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 
 	-- Informacion adicional
 	[DocumentID]				[UNIQUEIDENTIFIER] NULL,
+	[PaymentForm]				[nvarchar](3) NULL,
 	[Partiality]				[INT] NULL,
 	[DebtAmt]					DECIMAL(19, 4) NULL,
 	[PaymentAmt]				DECIMAL(19, 4) NULL,
