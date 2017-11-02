@@ -182,30 +182,6 @@ namespace AcumaticaMX
 
         // -- Datos de importación del documento
 
-        #region Document Type
-
-        public abstract class documentType : IBqlField { }
-
-        [PXDBString(1, IsFixed = false, IsUnicode = true)]
-        [PXDefault(Common.DocumentType.Cfdi)]
-        [PXStringList(
-            new string[]
-            {
-                Common.DocumentType.Cfdi,
-                Common.DocumentType.CfdCbb,
-                Common.DocumentType.Foreign,
-            },
-            new string[]
-            {
-                Common.DocumentType.CfdiLabel,
-                Common.DocumentType.CfdCbbLabel,
-                Common.DocumentType.ForeignLabel,
-            }
-            )]
-        [PXUIField(DisplayName = "Tipo de documento")]
-        public virtual string DocumentType { get; set; }
-        #endregion Document Type
-
         #region Folio
 
         public abstract class folio : IBqlField { }
@@ -241,5 +217,43 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Monto total", Enabled = false)]
         public virtual decimal? TotalAmount { get; set; }
         #endregion TotalAmount
+
+        // -- Datos para poliza
+
+
+        #region Document Type
+
+        public abstract class documentType : IBqlField { }
+
+        [PXDBString(1, IsFixed = false, IsUnicode = true)]
+        [PXDefault(Common.DocumentType.Cfdi)]
+        [PXStringList(
+            new string[]
+            {
+                Common.DocumentType.Cfdi,
+                Common.DocumentType.CfdCbb,
+                Common.DocumentType.Foreign,
+            },
+            new string[]
+            {
+                Common.DocumentType.CfdiLabel,
+                Common.DocumentType.CfdCbbLabel,
+                Common.DocumentType.ForeignLabel,
+            }
+            )]
+        [PXUIField(DisplayName = "Tipo de documento")]
+        public virtual string DocumentType { get; set; }
+        #endregion Document Type
+
+        #region Bank
+
+        public abstract class bankCD : IBqlField
+        {
+        }
+        [PXDBString(3, IsUnicode = true)]
+        [PXUIField(DisplayName = "Banco Destino")]
+        public virtual string BankCD { get; set; }
+
+        #endregion Bank
     }
 }
