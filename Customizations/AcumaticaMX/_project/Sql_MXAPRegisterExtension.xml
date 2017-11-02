@@ -17,10 +17,13 @@
   <col name="StampDate" type="SmallDateTime" nullable="true" />
   <col name="Stamp" type="NVarChar(500)" nullable="true" />
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
-  <col name="Import" type="Bit" nullable="true" />
+  <col name="DocumentType" type="NVarChar(1)" nullable="true" />
+  <col name="Folio" type="NVarChar(25)" nullable="true" />
+  <col name="Import" type="Bit" nullable="true" raw-default="1" />
   <col name="Provider" type="NVarChar(13)" nullable="true" />
   <col name="TotalTaxes" type="Decimal(19,4)" nullable="true" />
   <col name="TotalAmount" type="Decimal(19,4)" nullable="true" />
+  <col name="BankCD" type="NVarChar(3)" nullable="true" />
   <index name="MXAPRegisterExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DocType" />

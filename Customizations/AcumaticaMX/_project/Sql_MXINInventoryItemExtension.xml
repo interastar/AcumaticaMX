@@ -1,0 +1,7 @@
+﻿<Sql TableName="MXINInventoryItemExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXINInventoryItemExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="InventoryID" type="Int" default="Zero" />
+  <col name="ProductServiceCD" type="NVarChar(8)" />
+</table>]]></CDATA>
+</Sql>

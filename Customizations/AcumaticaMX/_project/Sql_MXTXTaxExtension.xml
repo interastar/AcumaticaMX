@@ -1,0 +1,11 @@
+﻿<Sql TableName="MXTXTaxExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXTXTaxExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="TaxID" type="NVarChar(30)" />
+  <col name="SatTax" type="NVarChar(4)" />
+  <index name="MXTXTaxExtension_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="TaxID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

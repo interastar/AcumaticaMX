@@ -1,0 +1,8 @@
+﻿<Sql TableName="MXCACashAccountExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXCACashAccountExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="CashAccountID" type="Int" default="Zero" />
+  <col name="BankCD" type="NVarChar(3)" nullable="true" />
+  <col name="BankAccount" type="NVarChar(50)" nullable="true" />
+</table>]]></CDATA>
+</Sql>

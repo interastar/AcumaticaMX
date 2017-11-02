@@ -22,6 +22,7 @@
   <col name="DocDateTime" type="SmallDateTime" nullable="true" />
   <col name="DiscountReason" type="NVarChar(250)" nullable="true" />
   <col name="UseCfdiCD" type="NVarChar(3)" nullable="true" />
+  <col name="PaymentDocDateTime" type="SmallDateTime" nullable="true" />
   <index name="MXARRegisterExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DocType" />

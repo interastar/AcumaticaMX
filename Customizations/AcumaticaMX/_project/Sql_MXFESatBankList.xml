@@ -1,0 +1,19 @@
+﻿<Sql TableName="MXFESatBankList" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFESatBankList">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="BankCD" type="NVarChar(3)" />
+  <col name="BankName" type="NVarChar(255)" />
+  <col name="BankRFC" type="NVarChar(50)" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXFESatBankListt_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="BankCD" />
+  </index>
+</table>]]></CDATA>
+</Sql>
