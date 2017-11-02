@@ -10,7 +10,7 @@ namespace AcumaticaMX
         }
         [PXDBString(3, IsKey = true, IsUnicode = true, InputMask = ">000")]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.BanckCD)]
+        [PXUIField(DisplayName = Messages.BankCD)]
         public virtual string BankCD { get; set; }
 
         public abstract class bankName : IBqlField
@@ -18,8 +18,16 @@ namespace AcumaticaMX
         }
         [PXDBString(255, IsUnicode = true)]
         [PXDefault]
-        [PXUIField(DisplayName = Messages.BanckName)]
+        [PXUIField(DisplayName = Messages.BankName)]
         public virtual string BankName { get; set; }
+
+        public abstract class bankRFC : IBqlField
+        {
+        }
+        [PXDBString(50, IsUnicode = true)]
+        [PXDefault]
+        [PXUIField(DisplayName = Messages.BankRFC)]
+        public virtual string BankRFC { get; set; }
 
         #region audit
 

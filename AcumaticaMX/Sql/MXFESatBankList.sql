@@ -18,6 +18,7 @@ CREATE TABLE [dbo].[MXFESatBankList](
 
 	-- extension fields
 	[BankName]					[nvarchar](255) NOT NULL,
+	[BankRFC]					[nvarchar](50) NOT NULL,
 
 	-- handle concurrency
 	[tstamp]					timestamp NOT NULL,
