@@ -86,6 +86,7 @@ namespace AcumaticaMX
         public abstract class uuid : IBqlField { }
 
         [PXDBGuid]
+        [CfdiStatus(typeof(stampStatus), typeof(uuid), typeof(cancelDate))]
         [PXUIField(DisplayName = "Uuid")]
         public virtual Guid? Uuid { get; set; }
 
@@ -117,9 +118,8 @@ namespace AcumaticaMX
         public abstract class stampStatus : IBqlField { }
 
         [PXString(1, IsFixed = true)]
-        [PXDefault(CfdiStatus.Clean)]
-        [PXUnboundDefault(CfdiStatus.Clean)]
         [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
+        [CfdiStatus.List()]
         public virtual string StampStatus { get; set; }
 
         #endregion Estado
