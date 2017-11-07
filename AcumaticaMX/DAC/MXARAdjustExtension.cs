@@ -24,6 +24,19 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        [PXStringList(
+            new string[]
+            {
+                Common.PayForm.One,
+                Common.PayForm.Partial,
+            },
+            new string[]
+            {
+                Common.PayForm.OneLabel,
+                Common.PayForm.PartialLabel,
+            }
+            )]
+        [PXUIField(DisplayName = "Forma de pago", Enabled = false)]
         public virtual string PaymentForm { get; set; }
 
         #endregion FormaDePago
@@ -85,6 +98,17 @@ namespace AcumaticaMX
         public virtual DateTime? CancelDate { get; set; }
 
         #endregion CancelDate
+
+        #region PaymentRefNbr
+
+        public abstract class paymentRefNbr : IBqlField
+        {
+        }
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.PaymentRefNbr, Enabled = false)]
+        public virtual string PaymentRefNbr { get; set; }
+
+        #endregion PaymentRefNbr
 
         ///*** Campos calculados
 

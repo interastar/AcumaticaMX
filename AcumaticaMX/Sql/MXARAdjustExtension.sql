@@ -29,6 +29,7 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 	[PaymentAmt]				DECIMAL(19, 4) NULL,
 	[NewDebtAmt]				DECIMAL(19, 4) NULL,
 	[Uuid]						[UNIQUEIDENTIFIER] NULL,
+	[PaymentRefNbr]				[NVARCHAR] (15) NULL,
 	[CancelDate]				[SMALLDATETIME] NULL,
 	
 	CONSTRAINT MXARAdjustExtension_PK PRIMARY KEY
