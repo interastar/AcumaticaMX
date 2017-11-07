@@ -21,7 +21,7 @@ Create Table [dbo].[MXFEPayments]
 	[StampString]			nvarchar(1000) NOT NULL,
 	[StampDate]				smalldatetime NOT NULL,
 	[AttachedUuid]			uniqueidentifier NULL,
-
+	[CancelDate]			smalldatetime NULL,
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
 	-- handle concurrency

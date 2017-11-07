@@ -26,9 +26,18 @@ namespace AcumaticaMX
 
         [PXDBGuid]
         [PXUIField(DisplayName = "Folio Fiscal del Complemento de Pago", Enabled = false)]
+        [CfdiStatus(typeof(stampStatus), typeof(stampedUuid), typeof(cancelDate))]
         public virtual Guid? StampedUuid { get; set; }
 
         #endregion StampedUuid
+
+        #region CancelDate
+
+        public abstract class cancelDate : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? CancelDate { get; set; }
+
+        #endregion CancelDate
 
         #region CustomerID
 
@@ -93,6 +102,17 @@ namespace AcumaticaMX
         public virtual Guid? AttachedUuid { get; set; }
 
         #endregion AttachedUuid
+
+        #region Estado
+
+        public abstract class stampStatus : IBqlField { }
+
+        [PXString(1, IsFixed = true)]
+        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
+        [CfdiStatus.List()]
+        public virtual string StampStatus { get; set; }
+
+        #endregion Estado
 
         #region audit
 
