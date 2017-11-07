@@ -128,5 +128,10 @@ namespace AcumaticaMX
         #region Impuestos
         public const string Tax = "Sat Tipo de Impuesto";
         #endregion
+
+        #region Complemento de Pagos
+        public const string PaymentRefNbr = "No. Referencia de Complemento de Pago";
+        #endregion Complemento de Pagos
+
     }
 }
