@@ -533,4 +533,62 @@ namespace AcumaticaMX
         }
     }
 
+    public class CfdiStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
+    {
+        private string _TargetField;
+        private string _SourceField;
+        private string _CancelField;
+
+        public CfdiStatusAttribute(Type TargetFieldType, Type SourceField, Type CancelField) : base()
+        {
+            _TargetField = TargetFieldType.Name;
+            _SourceField = SourceField.Name;
+            _CancelField = CancelField.Name;
+        }
+
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+            var value = sender.GetValue(e.Row, this._SourceField);
+            if(value != null)
+            {
+                value = sender.GetValue(e.Row, this._CancelField);
+                if (value != null)
+                {
+                    sender.SetValue(e.Row, this._TargetField, CfdiStatus.Canceled);
+                }
+                else
+                {
+                    sender.SetValue(e.Row, this._TargetField, CfdiStatus.Stamped);
+                }
+            }
+            else
+            {
+                sender.SetValue(e.Row, this._TargetField, CfdiStatus.Clean);
+            }
+        }
+
+        public virtual void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            if (e.Row == null) return;
+            var value = sender.GetValue(e.Row, this._SourceField);
+            if (value != null)
+            {
+                value = sender.GetValue(e.Row, this._CancelField);
+                if (value != null)
+                {
+                    sender.SetValue(e.Row, this._TargetField, CfdiStatus.Canceled);
+                }
+                else
+                {
+                    sender.SetValue(e.Row, this._TargetField, CfdiStatus.Stamped);
+                }
+            }
+            else
+            {
+                sender.SetValue(e.Row, this._TargetField, CfdiStatus.Clean);
+            }
+        }
+    }
+
 }
