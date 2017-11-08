@@ -1,0 +1,26 @@
+﻿<Sql TableName="MXFEPayments" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFEPayments">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="PaymentRefNbr" type="NVarChar(15)" />
+  <col name="StampedUuid" type="UniqueIdentifier" />
+  <col name="CustomerID" type="Int" />
+  <col name="Stamp" type="NVarChar(500)" />
+  <col name="CFDSeal" type="NVarChar(500)" />
+  <col name="StampString" type="NVarChar(1000)" />
+  <col name="StampDate" type="SmallDateTime" />
+  <col name="AttachedUuid" type="UniqueIdentifier" nullable="true" />
+  <col name="CancelDate" type="SmallDateTime" nullable="true" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXFEPayments_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="StampedUuid" />
+  </index>
+</table>]]></CDATA>
+</Sql>
