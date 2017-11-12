@@ -91,6 +91,16 @@ namespace AcumaticaMX
 
         #endregion MotivoDeDescuento
 
+        #region TipoCambio
+
+        public abstract class currencyRate : IBqlField { }
+
+        [PXDBDecimal(6)]
+        [PXUIField(DisplayName = "Tipo de Cambio actual")]
+        public virtual decimal? CurrencyRate { get; set; }
+
+        #endregion TipoCambio
+
         //  -- Datos de sello del comprobante
 
         #region noCertificado
