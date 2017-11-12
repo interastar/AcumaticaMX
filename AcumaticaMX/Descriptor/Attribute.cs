@@ -1,4 +1,4 @@
-using PX.Common;
+using System.Text.RegularExpressions;
 using PX.Data;
 using PX.Objects.AR;
 using PX.Objects.IN;
@@ -591,4 +591,38 @@ namespace AcumaticaMX
         }
     }
 
+    public class FieldPatternVerifyingAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
+    {
+        private string _Pattern;
+        private string _TargetField;
+        private Regex _Rgx;
+        public FieldPatternVerifyingAttribute(Type TargetFieldType, string Pattern) : base()
+        {
+            _Pattern = Pattern;
+            _TargetField = TargetFieldType.Name;
+            _Rgx = new Regex(Pattern);
+        }
+
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+            var value = sender.GetValue(e.Row, this._TargetField);
+            if(!_Rgx.IsMatch(value.ToString()))
+            {
+                sender.RaiseExceptionHandling(_TargetField, e.Row, value, 
+                    new PXSetPropertyException("No campo no cumple con las reglas del SAT"));
+            }
+        }
+
+        public virtual void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            if (e.Row == null) return;
+            var value = sender.GetValue(e.Row, this._TargetField);
+            if (!_Rgx.IsMatch(value.ToString()))
+            {
+                sender.RaiseExceptionHandling(_TargetField, e.Row, value,
+                    new PXSetPropertyException("No campo no cumple con las reglas del SAT"));
+            }
+        }
+    }
 }
