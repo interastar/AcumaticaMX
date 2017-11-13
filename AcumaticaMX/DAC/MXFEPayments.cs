@@ -2,7 +2,6 @@
 using PX.Data;
 using PX.Objects.AR;
 using PX.Objects.CR;
-
 namespace AcumaticaMX
 {
     [Serializable]
@@ -15,8 +14,10 @@ namespace AcumaticaMX
         }
 
         [PXDBString(15, IsKey = true, InputMask = ">CCCCCCCCCC")]
-        [PXSelector(typeof(paymentRefNbr))]
-        [PXUIField(DisplayName = "Numero de pago", Visible = true, Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
+        [PXSelector(typeof(Search<MXFEPayments.paymentRefNbr>),
+            typeof(paymentRefNbr),
+            typeof(customerID))]
+        [PXUIField(DisplayName = "Numero de pago", Visible = true, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string PaymentRefNbr { get; set; }
 
         #endregion PaymentRefNbr
@@ -49,9 +50,9 @@ namespace AcumaticaMX
         [PXDBInt]
         [PXSelector(typeof(Search<BAccount.bAccountID,
             Where<BAccount.bAccountID,
-                Equal<Current<ARPayment.customerID>>>>),
+                Equal<Current<customerID>>>>),
             SubstituteKey = typeof(BAccount.acctName))]
-        [PXUIField(DisplayName = "Cliente", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
+        [PXUIField(DisplayName = "Cliente", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual int? CustomerID { get; set; }
 
         #endregion CustomerID
