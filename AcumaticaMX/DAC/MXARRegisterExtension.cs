@@ -14,6 +14,15 @@ namespace AcumaticaMX
 
         // - Datos del comprobante fiscal
 
+        #region Version
+
+        public abstract class version : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        public virtual string Version { get; set; }
+
+        #endregion Version
+
         #region Serie
 
         public abstract class series : IBqlField { }

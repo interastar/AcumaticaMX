@@ -22,6 +22,8 @@ Create Table [dbo].[MXFEPayments]
 	[StampDate]				smalldatetime NOT NULL,
 	[AttachedUuid]			uniqueidentifier NULL,
 	[CancelDate]			smalldatetime NULL,
+	[QrCode]				nvarchar(95) NULL,
+	[Version]               nvarchar(3) NULL,
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
 	-- handle concurrency
@@ -40,4 +42,10 @@ Create Table [dbo].[MXFEPayments]
 		[CompanyID] ASC,
 		[StampedUuid] ASC
 	)
+)
+
+CREATE UNIQUE NONCLUSTERED INDEX [MXFEPayments|] ON [MXFEPayments] 
+(
+    [CompanyID] ASC,
+    [PaymentRefNbr] ASC
 )

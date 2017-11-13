@@ -53,8 +53,8 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[UseCfdiCD]			[nvarchar](3) NULL,
 
 	[PaymentDocDateTime][smalldatetime] NULL,
-	[CurrencyRate]		[decimal](19, 6) NULL
-
+	[CurrencyRate]		[decimal](19, 6) NULL,
+	[Version]			[nvarchar](3) NULL,
 
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(

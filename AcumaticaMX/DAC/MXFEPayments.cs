@@ -15,7 +15,8 @@ namespace AcumaticaMX
         }
 
         [PXDBString(15, IsKey = true, InputMask = ">CCCCCCCCCC")]
-        [PXUIField(DisplayName = "Numero de pago", Visible = true, Enabled = false)]
+        [PXSelector(typeof(paymentRefNbr))]
+        [PXUIField(DisplayName = "Numero de pago", Visible = true, Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string PaymentRefNbr { get; set; }
 
         #endregion PaymentRefNbr
@@ -25,7 +26,7 @@ namespace AcumaticaMX
         public abstract class stampedUuid : IBqlField { }
 
         [PXDBGuid]
-        [PXUIField(DisplayName = "Folio Fiscal del Complemento de Pago", Enabled = false)]
+        [PXUIField(DisplayName = "Folio Fiscal del Complemento de Pago", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
         [CfdiStatus(typeof(stampStatus), typeof(stampedUuid), typeof(cancelDate))]
         public virtual Guid? StampedUuid { get; set; }
 
@@ -50,7 +51,7 @@ namespace AcumaticaMX
             Where<BAccount.bAccountID,
                 Equal<Current<ARPayment.customerID>>>>),
             SubstituteKey = typeof(BAccount.acctName))]
-        [PXUIField(DisplayName = "Cliente", Visibility = PXUIVisibility.Visible, Enabled = false)]
+        [PXUIField(DisplayName = "Cliente", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
         public virtual int? CustomerID { get; set; }
 
         #endregion CustomerID
@@ -113,6 +114,43 @@ namespace AcumaticaMX
         public virtual string StampStatus { get; set; }
 
         #endregion Estado
+
+        #region QrCode
+
+        public abstract class qrCode : IBqlField { }
+
+        [PXDBString(95, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Codigo QR", Enabled = false)]
+        public virtual string QrCode { get; set; }
+
+        #endregion QrCode
+
+        #region QrCodeImg
+
+        public abstract class qrCodeImg : PX.Data.IBqlField
+        {
+        }
+
+        /// <summary>
+        /// Propiedad disponible para calcular y mostrar la imagen del código QR.
+        /// </summary>
+        /// <value>
+        /// Debe regresar un Data URL con el contenido de la imagen del código.
+        /// </value>
+        [PXString(IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Código QR", IsReadOnly = true)]
+        public virtual string QrCodeImg { get; set; }
+
+        #endregion QrCodeImg
+
+        #region Version
+
+        public abstract class version : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        public virtual string Version { get; set; }
+
+        #endregion Version
 
         #region audit
 
