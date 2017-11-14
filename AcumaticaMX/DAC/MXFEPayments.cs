@@ -50,7 +50,7 @@ namespace AcumaticaMX
         [PXDBInt]
         [PXSelector(typeof(Search<BAccount.bAccountID,
             Where<BAccount.bAccountID,
-                Equal<Current<customerID>>>>),
+                Equal<Current<ARPayment.customerID>>>>),
             SubstituteKey = typeof(BAccount.acctName))]
         [PXUIField(DisplayName = "Cliente", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual int? CustomerID { get; set; }
