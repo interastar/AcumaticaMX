@@ -10,9 +10,10 @@ GO
 Create Table [dbo].[MXFEExternalTrade]
 (
 	-- multi-tenancy support
-	[CompanyID]				int NOT NULL DEFAULT ((0)),
-	
-	
+	[CompanyID]					int NOT NULL DEFAULT ((0)),
+	[DocType]					char(3) NOT NULL,
+	[RefNbr]					char(15) NOT NULL,
+
 	[Version]					nvarchar(3) NOT NULL,
 	[TransferReason]			nvarchar(2) NOT NULL,
 	[OperationType]				int NOT NULL,
@@ -30,21 +31,22 @@ Create Table [dbo].[MXFEExternalTrade]
 	[ReceiverTaxRegistrationID]	nvarchar(40) NOT NULL,
 	[ReceiverName]				nvarchar(40) NOT NULL,
 	-- Notes support
-	[NoteID]				uniqueidentifier NULL,
+	[NoteID]					uniqueidentifier NULL,
 	-- handle concurrency
-	[tstamp]				timestamp NOT NULL,
+	[tstamp]					timestamp NOT NULL,
 
 	-- basic audit fields
-	[CreatedByID]			uniqueidentifier NOT NULL,
-	[CreatedByScreenID]		char(8) NOT NULL,
-	[CreatedDateTime]		smalldatetime NOT NULL,
-	[LastModifiedByID]		uniqueidentifier NOT NULL,
-	[LastModifiedByScreenID]char(8) NOT NULL,
-	[LastModifiedDateTime]	smalldatetime NOT NULL,
+	[CreatedByID]				uniqueidentifier NOT NULL,
+	[CreatedByScreenID]			char(8) NOT NULL,
+	[CreatedDateTime]			smalldatetime NOT NULL,
+	[LastModifiedByID]			uniqueidentifier NOT NULL,
+	[LastModifiedByScreenID]	char(8) NOT NULL,
+	[LastModifiedDateTime]		smalldatetime NOT NULL,
 
-	CONSTRAINT [MXFEPayments_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [MXFEExternalTrade_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
-		[StampedUuid] ASC
+		[DocType] ASC,
+		[RefNbr] ASC
 	)
 )

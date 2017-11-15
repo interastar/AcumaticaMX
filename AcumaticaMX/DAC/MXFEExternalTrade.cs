@@ -5,6 +5,26 @@ namespace AcumaticaMX
     [Serializable]
     public class MXFEExternalTrade : IBqlTable
     {
+        #region RefNbr
+
+        public abstract class refNbr : IBqlField
+        {
+        }
+        [PXDBString(15)]
+        public virtual string RefNbr { get; set; }
+
+        #endregion RefNbr
+
+        #region DocType
+
+        public abstract class docType : IBqlField
+        {
+        }
+        [PXDBString(3)]
+        public virtual string DocType { get; set; }
+
+        #endregion DocType
+
         #region Version
 
         public abstract class version : IBqlField
