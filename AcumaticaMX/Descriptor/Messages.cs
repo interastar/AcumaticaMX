@@ -53,6 +53,7 @@ namespace AcumaticaMX
         public const string CustomsRequestNbr = "Información aduanera";
         public const string ErrorCustoms = "Si ingresa Número de pedimento, debe ingresar nombre de aduana y la fecha de importación.";
         public const string ErrorImportDate = "El campo Fecha de Importacion no puede estar vacio";
+
         #region Catalogo de Cuentas
 
         //*** MXCESatAccountList
@@ -104,6 +105,12 @@ namespace AcumaticaMX
 
         #region Catalogo Unidades de Medida
         public const string MeasureCD = "Clave Unidad de Medida";
+        #endregion
+
+        #region Catalogo Unidades de Medida
+        public const string CurrencyCD = "Moneda";
+        public const string Precision = "Decimales";
+        public const string Variation = "Variacion";
         #endregion
 
         #region Common
