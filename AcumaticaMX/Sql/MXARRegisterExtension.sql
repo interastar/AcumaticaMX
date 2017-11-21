@@ -50,6 +50,12 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	-- Descuentos
 	[DiscountReason]	[nvarchar](250) NULL,
 
+	[UseCfdiCD]			[nvarchar](3) NULL,
+
+	[PaymentDocDateTime][smalldatetime] NULL,
+	[CurrencyRate]		[decimal](19, 6) NULL,
+	[Version]			[nvarchar](3) NULL,
+
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,

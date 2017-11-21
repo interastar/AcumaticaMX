@@ -15,33 +15,21 @@ namespace AcumaticaMX
 
         #endregion RFC
 
-        #region Regimen
-
-        public abstract class regimen : IBqlField
+        #region TaxRegimeID
+        public abstract class taxRegimeID : PX.Data.IBqlField
         {
         }
-
-        [PXDBString(100, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXStringList(
-            new string[]
-            {
-                AcumaticaMX.Common.RegimenTypes.NaturalSalaried, AcumaticaMX.Common.RegimenTypes.NaturalFee,
-                AcumaticaMX.Common.RegimenTypes.NaturalLessor, AcumaticaMX.Common.RegimenTypes.NaturalBusinessActivity,
-                AcumaticaMX.Common.RegimenTypes.NaturalTaxIncorporated,
-                AcumaticaMX.Common.RegimenTypes.JuridicalGeneral, AcumaticaMX.Common.RegimenTypes.JuridicalNonProfit
-            },
-            new string[]
-            {
-                AcumaticaMX.Common.RegimenTypes.NaturalSalariedLabel, AcumaticaMX.Common.RegimenTypes.NaturalFeeLabel,
-                AcumaticaMX.Common.RegimenTypes.NaturalLessorLabel, AcumaticaMX.Common.RegimenTypes.NaturalBusinessActivityLabel,
-                AcumaticaMX.Common.RegimenTypes.NaturalTaxIncorporatedLabel,
-                AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, AcumaticaMX.Common.RegimenTypes.JuridicalNonProfitLabel
-            })]
+        [PXDBInt]
+        [PXSelector(
+            typeof(Search<MXFESatTaxRegimeList.taxRegimeID>),
+            typeof(MXFESatTaxRegimeList.description),
+            typeof(MXFESatTaxRegimeList.applyMoralPerson),
+            typeof(MXFESatTaxRegimeList.applyNaturalPerson),
+            SubstituteKey = typeof(MXFESatTaxRegimeList.description))]
         [PXUIField(DisplayName = "Regimen fiscal")]
-        public virtual string Regimen { get; set; }
+        public virtual int? TaxRegimeID { get; set; }
 
-        #endregion Regimen
+        #endregion TaxRegimeID
 
         #region IsNaturalPerson
 
@@ -55,6 +43,26 @@ namespace AcumaticaMX
         public virtual bool? IsNaturalPerson { get; set; }
 
         #endregion IsNaturalPerson
+
+        #region UseCFDI
+        public abstract class useCfdiCD : PX.Data.IBqlField
+        {
+        }
+        [PXDBString]
+        [PXSelector(
+            typeof(Search<MXFESatUseCFDIList.useCfdiCD,
+                Where<MXFESatUseCFDIList.applyNaturalPerson,
+                    Equal<Current<isNaturalPerson>>,
+                    Or<MXFESatUseCFDIList.applyMoralPerson,
+                        NotEqual<Current<isNaturalPerson>>>>>),
+            typeof(MXFESatUseCFDIList.description),
+            typeof(MXFESatUseCFDIList.applyMoralPerson),
+            typeof(MXFESatUseCFDIList.applyNaturalPerson),
+            DescriptionField = typeof(MXFESatUseCFDIList.description)
+            )]
+        [PXUIField(DisplayName = "Uso de Cfdi")]
+        public virtual string UseCfdiCD { get; set; }
+        #endregion UseCFDI
 
         #region DefaultOriginAccount
 

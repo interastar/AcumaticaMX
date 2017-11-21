@@ -1,0 +1,18 @@
+﻿<Sql TableName="MXFEUnit" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFEUnit">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="UnitCD" type="NVarChar(25)" />
+  <col name="MeasureCD" type="NVarChar(3)" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXFEUnit_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="UnitCD" />
+  </index>
+</table>]]></CDATA>
+</Sql>

@@ -14,8 +14,8 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(40, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.Customs)]
+        [PXDBString(255, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.Customs, Enabled = false)]
         public virtual string Customs { get; set; }
 
         #endregion Customs
@@ -27,7 +27,7 @@ namespace AcumaticaMX
         }
 
         [PXDBDate()]
-        [PXUIField(DisplayName = Messages.ImportDate)]
+        [PXUIField(DisplayName = Messages.ImportDate, Enabled = true)]
         public virtual DateTime? ImportDate { get; set; }
 
         #endregion ImportDate
@@ -38,9 +38,9 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(40, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.RequestNumber)]
-        [ValidateFields(Messages.ErrorCustoms, typeof(customs), typeof(importDate))]
+        [PXDBString(21, IsUnicode = true, IsFixed = true ,InputMask = "00  00  0000  0000000")]
+        [PXUIField(DisplayName = Messages.RequestNumber, Enabled = true)]
+        [RequestNumber("Es necesario asignar el numero de pedimento", typeof(requestNbr))]
         public virtual string RequestNbr { get; set; }
 
         #endregion RequestNbr
