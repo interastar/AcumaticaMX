@@ -325,5 +325,16 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
         public virtual DateTime? PaymentDocDateTime { get; set; }
         #endregion PaymentDocDateTime
+
+        #region External Trade
+
+        public abstract class isExternalTrade : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Comercio Exterior", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
+        public virtual bool? IsExternalTrade { get; set; }
+
+        #endregion External Trade
     }
 }
