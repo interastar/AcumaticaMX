@@ -107,10 +107,14 @@ namespace AcumaticaMX
         public const string MeasureCD = "Clave Unidad de Medida";
         #endregion
 
-        #region Catalogo Unidades de Medida
+        #region Catalogo Unidades de Monedas
         public const string CurrencyCD = "Moneda";
         public const string Precision = "Decimales";
         public const string Variation = "Variacion";
+        #endregion
+
+        #region Catalogo Unidades de Incoterm
+        public const string IncotermCD = "INCOTERM";
         #endregion
 
         #region Common
@@ -139,6 +143,20 @@ namespace AcumaticaMX
         #region Complemento de Pagos
         public const string PaymentRefNbr = "No. Referencia de Complemento de Pago";
         #endregion Complemento de Pagos
-
+        
+        #region Comercio Exterior
+        public const string OperationType = "Tipo de Operación";
+        public const string RequestKey = "Clave de Pedimento";
+        public const string OriginCertificateNbr = "Número de Certificado de Origen";
+        public const string TrustworthyExporterNbr = "Número de Exportador Confiable";
+        public const string Incoterm = "Incoterm";
+        public const string Subdivision = "Subdivision";
+        public const string Description = "Observaciones";
+        public const string UsdTotal = "Total en Dolares";
+        public const string OwnerTaxRegistrationID = "Número de registro del Propietario";
+        public const string OwnerFiscalAddress = "Dirección Fiscal del Propietario";
+        public const string ReceiverTaxRegistrationID = "Número de registro del Destinatario";
+        public const string ReceiverName = "Nombre del Destinatario";
+        #endregion Comercio Exterior
     }
 }
