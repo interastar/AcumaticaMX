@@ -1,0 +1,36 @@
+﻿<Sql TableName="MXFEExternalTrade" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFEExternalTrade">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="DocType" type="Char(3)" />
+  <col name="RefNbr" type="Char(15)" />
+  <col name="Version" type="NVarChar(3)" />
+  <col name="TransferReason" type="NVarChar(2)" />
+  <col name="OperationType" type="Int" />
+  <col name="RequestKey" type="NVarChar(2)" />
+  <col name="IsOriginCertificate" type="Bit" default="Zero" />
+  <col name="OriginCertificateNbr" type="NVarChar(40)" />
+  <col name="TrustworthyExporterNbr" type="NVarChar(50)" />
+  <col name="Incoterm" type="NVarChar(3)" nullable="true" />
+  <col name="HasSubdivision" type="Bit" default="Zero" />
+  <col name="Description" type="NVarChar(300)" nullable="true" />
+  <col name="CurrencyRateAmt" type="Decimal(19,6)" nullable="true" />
+  <col name="UsdTotal" type="Decimal(19,4)" nullable="true" />
+  <col name="OwnerTaxRegistrationID" type="NVarChar(40)" />
+  <col name="OwnerFiscalAddress" type="NVarChar(3)" />
+  <col name="ReceiverTaxRegistrationID" type="NVarChar(40)" />
+  <col name="ReceiverName" type="NVarChar(40)" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXFEExternalTrade_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="DocType" />
+    <col name="RefNbr" />
+  </index>
+</table>]]></CDATA>
+</Sql>

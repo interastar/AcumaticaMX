@@ -1,0 +1,7 @@
+﻿<Sql TableName="MXCSShipTermsExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXCSShipTermsExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ShipTermsID" type="NVarChar(10)" />
+  <col name="IncotermCD" type="NVarChar(3)" />
+</table>]]></CDATA>
+</Sql>
