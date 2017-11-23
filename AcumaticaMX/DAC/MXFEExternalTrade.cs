@@ -1,5 +1,7 @@
 ﻿using System;
 using PX.Data;
+using PX.Objects.AR;
+using PX.Objects.SO;
 namespace AcumaticaMX
 {
     [Serializable]
@@ -10,7 +12,11 @@ namespace AcumaticaMX
         public abstract class refNbr : IBqlField
         {
         }
-        [PXDBString(15)]
+        [PXParent(typeof(Select<ARRegister,
+            Where<ARRegister.refNbr,
+                Equal<Current<refNbr>>>>))]
+        [PXDBString(15, IsKey = true)]
+        [PXDefault(typeof(ARRegister.refNbr))]
         public virtual string RefNbr { get; set; }
 
         #endregion RefNbr
@@ -20,7 +26,8 @@ namespace AcumaticaMX
         public abstract class docType : IBqlField
         {
         }
-        [PXDBString(3)]
+        [PXDBString(3, IsKey = true)]
+        [PXDefault(typeof(ARRegister.docType))]
         public virtual string DocType { get; set; }
 
         #endregion DocType
@@ -51,6 +58,8 @@ namespace AcumaticaMX
         {
         }
         [PXDBInt]
+        [PXDefault(2)]
+        [PXUIField( DisplayName = Messages.OperationType, Enabled = false )]
         public virtual int? OperationType { get; set; }
 
         #endregion TipoOperacion
@@ -61,6 +70,8 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(2)]
+        [PXDefault("A1")]
+        [PXUIField(DisplayName = Messages.RequestKey, Enabled = false)]
         public virtual string RequestKey { get; set; }
 
         #endregion ClavePedimento
@@ -81,6 +92,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(40)]
+        [PXUIField(DisplayName = Messages.OriginCertificateNbr)]
         public virtual string OriginCertificateNbr { get; set; }
 
         #endregion Numero de Certificado de Origen
@@ -91,6 +103,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(50)]
+        [PXUIField(DisplayName = Messages.TrustworthyExporterNbr)]
         public virtual string TrustworthyExporterNbr { get; set; }
 
         #endregion Numero de Exportador Confiable
@@ -101,6 +114,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(3)]
+        [PXUIField(DisplayName = Messages.Incoterm, Enabled = false)]
         public virtual string Incoterm { get; set; }
 
         #endregion Incoterm
@@ -111,6 +125,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBBool]
+        [PXUIField(DisplayName = Messages.Subdivision)]
         public virtual bool? HasSubdivision { get; set; }
 
         #endregion Subdivision
@@ -121,6 +136,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(300)]
+        [PXUIField(DisplayName = Messages.Description)]
         public virtual string Description { get; set; }
 
         #endregion Observaciones
@@ -141,6 +157,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(4)]
+        [PXUIField(DisplayName = Messages.UsdTotal)]
         public virtual decimal? UsdTotal { get; set; }
 
         #endregion Total USD
@@ -151,6 +168,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(40)]
+        [PXUIField(DisplayName = Messages.UsdTotal)]
         public virtual string OwnerTaxRegistrationID { get; set; }
 
         #endregion Numero de Registro del Propietario
@@ -162,7 +180,7 @@ namespace AcumaticaMX
         }
         [PXDBString(3)]
         public virtual string OwnerFiscalAddress { get; set; }
-
+        [PXUIField(DisplayName = Messages.UsdTotal)]
         #endregion Residencia Fiscal del Propietario
 
         #region Numero de Registro  del Destinatario
@@ -171,6 +189,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(40)]
+        [PXUIField(DisplayName = Messages.ReceiverTaxRegistrationID)]
         public virtual string ReceiverTaxRegistrationID { get; set; }
 
         #endregion Numero de Registro del Destinatario
@@ -181,6 +200,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(40)]
+        [PXUIField(DisplayName = Messages.ReceiverName)]
         public virtual string ReceiverName { get; set; }
 
         #endregion Nombre del Destinatario
