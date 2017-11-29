@@ -111,6 +111,16 @@ namespace AcumaticaMX
 
         #endregion PaymentRefNbr
 
+        #region CuryID
+
+        public abstract class curyID : IBqlField
+        {
+        }
+        [PXDBString]
+        public virtual string CuryID { get; set; }
+
+        #endregion CuryID
+
         ///*** Campos calculados
 
         #region Estado
