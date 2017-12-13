@@ -62,6 +62,7 @@
     <Compile Include="DAC\MXFECommodity.cs" />
     <Compile Include="DAC\MXFECurrency.cs" />
     <Compile Include="DAC\MXFEExternalTrade.cs" />
+    <Compile Include="DAC\MXINInventoryKits.cs" />
     <Compile Include="DAC\MXFEPayments.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
     <Compile Include="DAC\MXCACashAccountExtension.cs" />
@@ -78,9 +79,10 @@
     <Compile Include="DAC\MXFESatUseCFDIList.cs" />
     <Compile Include="DAC\MXFESpecificDescription.cs" />
     <Compile Include="DAC\MXINInventoryItemExtension.cs" />
+    <Compile Include="DAC\MXINInvetoryParts.cs" />
     <Compile Include="DAC\MXINItemLotSerial.cs" />
     <Compile Include="DAC\MXCESatAccountList.cs" />
-    <Compile Include="DAC\MXINTranExtension.cs" />
+    <Compile Include="DAC\MXINTran.cs" />
     <Compile Include="DAC\MXFEUnit.cs" />
     <Compile Include="DAC\MXPOAddressExtension.cs" />
     <Compile Include="DAC\MXPOReceiptLineExtension.cs" />
@@ -127,8 +129,10 @@
     <Content Include="Sql\MXFESatTaxRegimeList.sql" />
     <Content Include="Sql\MXFESatUseCFDIList.sql" />
     <Content Include="Sql\MXINInventoryItemExtension.sql" />
+    <Content Include="Sql\MXINInventoryKits.sql" />
+    <Content Include="Sql\MXINInventoryParts.sql" />
     <Content Include="Sql\MXINItemLotSerial.sql" />
-    <Content Include="Sql\MXINTranExtension.sql" />
+    <Content Include="Sql\MXINTran.sql" />
     <Content Include="Sql\MXFEUnit.sql" />
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
     <Content Include="Sql\MXPOReceiptLineExtension.sql" />
