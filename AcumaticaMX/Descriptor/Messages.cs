@@ -53,6 +53,7 @@ namespace AcumaticaMX
         public const string CustomsRequestNbr = "Información aduanera";
         public const string ErrorCustoms = "Si ingresa Número de pedimento, debe ingresar nombre de aduana y la fecha de importación.";
         public const string ErrorImportDate = "El campo Fecha de Importacion no puede estar vacio";
+        public const string LineNbr = "LineNbr";
 
         #region Catalogo de Cuentas
 
