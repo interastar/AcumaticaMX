@@ -59,6 +59,8 @@
     <Compile Include="DAC\MXAPVendorPayments.cs" />
     <Compile Include="DAC\MXARAdjustExtension.cs" />
     <Compile Include="DAC\MXARCustomsInformation.cs" />
+    <Compile Include="DAC\MXFEAgreement.cs" />
+    <Compile Include="DAC\MXFEAgreementItem.cs" />
     <Compile Include="DAC\MXFECommodity.cs" />
     <Compile Include="DAC\MXFECurrency.cs" />
     <Compile Include="DAC\MXFEExternalTrade.cs" />
@@ -109,6 +111,8 @@
     <Content Include="Sql\MXARAdjustExtension.sql" />
     <Content Include="Sql\MXARCustomerPaymentMethodExtension.sql" />
     <Content Include="Sql\MXARCustomsInformation.sql" />
+    <Content Include="Sql\MXFEAgreement.sql" />
+    <Content Include="Sql\MXFEAgreementItem.sql" />
     <Content Include="Sql\MXFECommodity.sql" />
     <Content Include="Sql\MXFECurrency.sql" />
     <Content Include="Sql\MXFEExternalTrade.sql" />
