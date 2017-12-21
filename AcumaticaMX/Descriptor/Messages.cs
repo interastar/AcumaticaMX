@@ -46,6 +46,8 @@ namespace AcumaticaMX
         //*** SYFEPaymentMethodExtension
         public const string PaymentMethod = "Clave Método de Pago en SAT";
 
+        #region Información Aduanera
+
         //*** MXPOReceipLineExt
         public const string Customs = "Aduana";
         public const string ImportDate = "Fecha de importación";
@@ -54,6 +56,7 @@ namespace AcumaticaMX
         public const string ErrorCustoms = "Si ingresa Número de pedimento, debe ingresar nombre de aduana y la fecha de importación.";
         public const string ErrorImportDate = "El campo Fecha de Importacion no puede estar vacio";
         public const string LineNbr = "LineNbr";
+        #endregion Información Aduanera
 
         #region Catalogo de Cuentas
 
@@ -124,6 +127,9 @@ namespace AcumaticaMX
         public const string Measure = "Sat Unidad de Medida";
         public const string Unit = "Unidad";
         public const string PaymentDocDateTime = "Fecha de Deposito";
+        public const string RefNbr = "No. Referencia";
+        public const string Customer = "Cliente";
+        public const string InventoryItem = "InventoryItem";
         #endregion
 
         #region Catalogo de Monedas
@@ -140,6 +146,11 @@ namespace AcumaticaMX
         #region Complemento de Pagos
         public const string PaymentRefNbr = "No. Referencia de Complemento de Pago";
         #endregion Complemento de Pagos
+
+        #region Acuerdos
+        public const string AgreemenName = "Nombre del acuerdo";
+        public const string AgreemenNbr = "Numero del acuerdo";
+        #endregion Acuerdos
 
     }
 }
