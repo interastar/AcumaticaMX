@@ -38,7 +38,7 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayForm.One)]
+        [PXDefault(AcumaticaMX.Common.PayForm.Partial)]
         [PXStringList(
             new string[]
             {
@@ -299,7 +299,7 @@ namespace AcumaticaMX
         [PXBool()]
         [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
         [PXUIField(DisplayName = "No Timbrar", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
-        [StampableStatus()]
+        [StampableStatus(typeof(notStampable), typeof(stampStatus), typeof(uuid))]
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable

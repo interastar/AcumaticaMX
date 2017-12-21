@@ -312,6 +312,17 @@ namespace AcumaticaMX
 
     public class StampableStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
     {
+        private string _StampStatusField;
+        private string _UuidField;
+        private string _NotStampableField;
+
+        public StampableStatusAttribute(Type NotStampableFieldType, Type StampStatusFieldType, Type UuidFieldType) : base()
+        {
+            _StampStatusField = StampStatusFieldType.Name;
+            _UuidField = UuidFieldType.Name;
+            _NotStampableField = NotStampableFieldType.Name;
+        }
+
         public override void CacheAttached(PXCache sender)
         {
             base.CacheAttached(sender);
@@ -326,60 +337,71 @@ namespace AcumaticaMX
             });
         }
 
-        protected virtual void StatusSet(PXCache sender, ARRegister doc)
+        protected virtual void StatusSet(PXCache sender, object row)
         {
+            //Obtenemos el valor de stamStatus
+            var stampStatus = sender.GetValue(row, this._StampStatusField);
+            var uuid = sender.GetValue(row, this._UuidField);
             // Solo seguimos si tenemos el registro
-            var cfdi = doc.GetExtension<MXARRegisterExtension>();
+            //var cfdi = row.GetExtension<MXARRegisterExtension>();
 
-            if (cfdi == null) return;
+            if (stampStatus == null) return;
             var check = false;
 
             // Si el documento está timbrado o cancelado limpiamos la bandera
-            if (cfdi.StampStatus == CfdiStatus.Stamped || cfdi.StampStatus == CfdiStatus.Canceled)
+            if (stampStatus?.ToString() == CfdiStatus.Stamped || stampStatus?.ToString() == CfdiStatus.Canceled)
             {
                 check = false;
             }
             // Si tiene valor en ceros
-            else if (cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty)
+            else if (!string.IsNullOrEmpty(uuid?.ToString()) && Guid.Parse(uuid?.ToString()) == Guid.Empty)
             {
                 check = true;
             }
 
-            sender.SetValue<MXARRegisterExtension.notStampable>(doc, check);
+            //sender.SetValue<MXARRegisterExtension.notStampable>(row, check);
+            sender.SetValue(row, this. _NotStampableField, check);
         }
 
         public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
         {
-            var doc = e.Row as ARRegister;
-            if (doc != null)
+            //var doc = e.Row as ARRegister;
+            if (e.Row != null)
             {
-                StatusSet(sender, doc);
+                StatusSet(sender, e.Row);
             }
         }
 
         public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
         {
-            var item = (ARRegister)e.Row;
+            //var item = (ARRegister)e.Row;
 
-            if (item != null)
+            if (e.Row != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                if (ext == null) return;
+                var notStampable = sender.GetValue(e.Row, this._NotStampableField);
+                var uuid = sender.GetValue(e.Row, this._UuidField);
+                //var ext = item.GetExtension<MXARRegisterExtension>();
+                //if (ext == null) return;
 
-                if (((bool?)e.OldValue != true) && ext.NotStampable == true && ext.Uuid == null)
+                if (((bool?)e.OldValue != true) && System.Convert.ToBoolean(notStampable?.ToString()) == true 
+                    && uuid == null)
                 {
                     //ext.Uuid = Guid.Empty;
-                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, Guid.Empty);
+                    //sender.SetValueExt<MXARRegisterExtension.uuid>(item, Guid.Empty);
+                    sender.SetValue(e.Row, this._UuidField, Guid.Empty);
                     return;
                 }
 
-                if (((bool?)e.OldValue == true) && ext.NotStampable != true && ext.Uuid == Guid.Empty)
+                if (((bool?)e.OldValue == true) && System.Convert.ToBoolean(notStampable?.ToString()) != true 
+                    && Guid.Parse(uuid?.ToString()) == Guid.Empty)
                 {
                     //ext.Uuid = null;
-                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
+                    //sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
+                    sender.SetValue(e.Row, this._UuidField, null);
                     return;
                 }
             }
+
         }
     }
 

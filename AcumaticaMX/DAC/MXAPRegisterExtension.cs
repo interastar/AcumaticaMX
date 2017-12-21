@@ -180,6 +180,34 @@ namespace AcumaticaMX
 
         #endregion SelloSAT
 
+        // -- Campos no persistentes
+
+        #region Estado
+
+        public abstract class stampStatus : IBqlField { }
+
+        [PXString(1, IsFixed = true)]
+        [PXDefault(CfdiStatus.Clean)]
+        [PXUnboundDefault(CfdiStatus.Clean)]
+        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
+        [CfdiStatus.List()]
+        [SetCfdiStatus()]
+        public virtual string StampStatus { get; set; }
+
+        #endregion Estado
+
+        #region Timbrable
+
+        public abstract class notStampable : IBqlField { }
+
+        [PXBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "No Timbrar", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
+        [StampableStatus(typeof(notStampable), typeof(stampStatus), typeof(uuid))]
+        public virtual bool? NotStampable { get; set; }
+
+        #endregion Timbrable
+
         // -- Datos de importación del documento
 
         #region Folio
