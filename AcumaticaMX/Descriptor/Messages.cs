@@ -127,6 +127,7 @@ namespace AcumaticaMX
         public const string Measure = "Sat Unidad de Medida";
         public const string Unit = "Unidad";
         public const string PaymentDocDateTime = "Fecha de Deposito";
+        public const string InvenotryID = "InventoryID";
         #endregion
 
         #region Catalogo de Monedas
@@ -157,6 +158,12 @@ namespace AcumaticaMX
         public const string OwnerFiscalAddress = "Dirección Fiscal del Propietario";
         public const string ReceiverTaxRegistrationID = "Número de registro del Destinatario";
         public const string ReceiverName = "Nombre del Destinatario";
+        public const string NumberID = "No. Identificación";
+        public const string TarrifFraction = "Fracción Arancelaría";
+        public const string CustomsQty = "Cantidad Aduana";
+        public const string CustomsUnit = "Unidad Aduana";
+        public const string CustomsUnitAmt = "Valor unitario Aduana";
+        public const string UsdAmt = "Valor en Dolares";
         #endregion Comercio Exterior
     }
 }

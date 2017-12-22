@@ -130,6 +130,7 @@
     <Content Include="Sql\MXFESatProductServiceList.sql" />
     <Content Include="Sql\MXFESatTaxRegimeList.sql" />
     <Content Include="Sql\MXFESatUseCFDIList.sql" />
+    <Content Include="Sql\MXFESpecificDescription.sql" />
     <Content Include="Sql\MXINInventoryItemExtension.sql" />
     <Content Include="Sql\MXINItemLotSerial.sql" />
     <Content Include="Sql\MXINTranExtension.sql" />
