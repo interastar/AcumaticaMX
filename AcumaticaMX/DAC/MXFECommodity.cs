@@ -1,6 +1,6 @@
 ﻿using System;
 using PX.Data;
-
+using PX.Objects.AR;
 namespace AcumaticaMX
 {
     [Serializable]
@@ -11,7 +11,11 @@ namespace AcumaticaMX
         public abstract class refNbr : IBqlField
         {
         }
-        [PXDBString(15)]
+        [PXDBString(15, IsKey = true)]
+        [PXParent(typeof(Select<ARTran,
+            Where<ARTran.refNbr,
+                Equal<Current<refNbr>>>>))]
+        [PXDBDefault(typeof(ARTran.refNbr))]
         public virtual string RefNbr { get; set; }
 
         #endregion RefNbr
@@ -21,7 +25,8 @@ namespace AcumaticaMX
         public abstract class docType : IBqlField
         {
         }
-        [PXDBString(3)]
+        [PXDBString(3, IsKey = true)]
+        [PXDBDefault(typeof(ARTran.tranType))]
         public virtual string DocType { get; set; }
 
         #endregion DocType
@@ -31,7 +36,9 @@ namespace AcumaticaMX
         public abstract class inventoryID : IBqlField
         {
         }
-        [PXDBInt]
+        [PXDBInt(IsKey = true)]
+        [PXDBDefault(typeof(ARTran.inventoryID))]
+        [PXUIField(DisplayName = Messages.InvenotryID, Enabled = false)]
         public virtual int? InventoryID { get; set; }
 
         #endregion InventoryID
@@ -41,7 +48,8 @@ namespace AcumaticaMX
         public abstract class lineNbr : IBqlField
         {
         }
-        [PXDBInt]
+        [PXDBInt(IsKey = true)]
+        [PXDBDefault(typeof(ARTran.lineNbr))]
         public virtual int? LineNbr { get; set; }
 
         #endregion LineNbr
@@ -52,6 +60,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(100)]
+        [PXUIField(DisplayName = Messages.NumberID, Enabled = false)]
         public virtual string IdentificationCD { get; set; }
 
         #endregion Numero de identificacion
@@ -62,6 +71,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(100)]
+        [PXUIField(DisplayName = Messages.TarrifFraction, Enabled = true)]
         public virtual string TariffFraction { get; set; }
 
         #endregion Fracción Arancelaria
@@ -82,6 +92,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(2)]
+        [PXUIField(DisplayName = Messages.CustomsUnit, Enabled = true)]
         public virtual string CustomsUnit { get; set; }
 
         #endregion Unidad Aduana
@@ -92,6 +103,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(4)]
+        [PXUIField(DisplayName = Messages.CustomsUnitAmt, Enabled = true)]
         public virtual decimal? CustomsUnitAmt { get; set; }
 
         #endregion Valor Unitario de Aduana
@@ -102,6 +114,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(4)]
+        [PXUIField(DisplayName = Messages.UsdAmt, Enabled = true)]
         public virtual decimal? UsdAmt { get; set; }
 
         #endregion Valor en Dolares

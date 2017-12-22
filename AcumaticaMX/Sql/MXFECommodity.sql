@@ -43,7 +43,6 @@ Create Table [dbo].[MXFECommodity]
 		[CompanyID] ASC,
 		[DocType] ASC,
 		[RefNbr] ASC,
-		[InventoryID] ASC,
 		[LineNbr] ASC
 	)
 )
