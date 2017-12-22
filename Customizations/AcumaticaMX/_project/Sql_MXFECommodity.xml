@@ -1,0 +1,29 @@
+﻿<Sql TableName="MXFECommodity" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFECommodity">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="DocType" type="Char(3)" />
+  <col name="RefNbr" type="Char(15)" />
+  <col name="InventoryID" type="Int" />
+  <col name="LineNbr" type="Int" />
+  <col name="IdentificationCD" type="NVarChar(100)" />
+  <col name="TariffFraction" type="NVarChar(100)" />
+  <col name="CustomsQty" type="Decimal(25,6)" />
+  <col name="CustomsUnit" type="NVarChar(2)" />
+  <col name="CustomsUnitAmt" type="Decimal(19,4)" />
+  <col name="UsdAmt" type="Decimal(19,4)" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXFECommodity_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="DocType" />
+    <col name="RefNbr" />
+    <col name="LineNbr" />
+  </index>
+</table>]]></CDATA>
+</Sql>
