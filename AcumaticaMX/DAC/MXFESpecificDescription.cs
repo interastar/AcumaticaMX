@@ -3,7 +3,8 @@ using PX.Data;
 
 namespace AcumaticaMX
 {
-    public class MXFESpecificDescription
+    [Serializable]
+    public class MXFESpecificDescription : IBqlTable
     {
         #region RefNbr
 
