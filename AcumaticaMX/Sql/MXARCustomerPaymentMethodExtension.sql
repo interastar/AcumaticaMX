@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[MXARCustomerPaymentMethodExtension](
 	[PMInstanceID]				[INT] NOT NULL DEFAULT ((0)),
 
 	-- Informacion adicional
-	[BankCD]					[NVARCHAR] (15) NOT NULL,
+	[BankCD]					[NVARCHAR] (15) NULL,
 
 	CONSTRAINT MXARCustomerPaymentMethodExtension_PK PRIMARY KEY
     (

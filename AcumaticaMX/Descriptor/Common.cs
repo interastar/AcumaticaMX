@@ -63,7 +63,7 @@ namespace AcumaticaMX
             public const string Partial = "PPD";
 
             public const string OneLabel = "Pago en una sola exhibición";
-            public const string PartialLabel = "Pago en parcialidades";
+            public const string PartialLabel = "Pago en parcialidades o diferido";
         }
 
         /// <summary>
