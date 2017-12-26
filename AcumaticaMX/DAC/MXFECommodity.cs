@@ -38,7 +38,7 @@ namespace AcumaticaMX
         }
         [PXDBInt(IsKey = true)]
         [PXDBDefault(typeof(ARTran.inventoryID))]
-        [PXUIField(DisplayName = Messages.InvenotryID, Enabled = false)]
+        [PXUIField(DisplayName = Messages.InventoryItem, Enabled = false)]
         public virtual int? InventoryID { get; set; }
 
         #endregion InventoryID
