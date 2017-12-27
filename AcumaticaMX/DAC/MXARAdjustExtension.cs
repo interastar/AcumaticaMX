@@ -4,134 +4,134 @@ using PX.Objects.AR;
 
 namespace AcumaticaMX
 {
-    [Serializable]
-    [PXTable(typeof(ARAdjust.adjgDocType), typeof(ARAdjust.adjgRefNbr), typeof(ARAdjust.adjNbr), 
-        typeof(ARAdjust.adjdDocType), typeof(ARAdjust.adjdRefNbr), IsOptional = true)]
-    public class MXARAdjustExtension : PXCacheExtension<ARAdjust>
-    {
-        #region DocumentID
+    //[Serializable]
+    //[PXTable(typeof(ARAdjust.adjgDocType), typeof(ARAdjust.adjgRefNbr), typeof(ARAdjust.adjNbr),
+    //    typeof(ARAdjust.adjdDocType), typeof(ARAdjust.adjdRefNbr), IsOptional = true)]
+    //public class MXARAdjustExtension : PXCacheExtension<ARAdjust>
+    //{
+    //    #region DocumentID
 
-        public abstract class documentID : IBqlField { }
+    //    public abstract class documentID : IBqlField { }
 
-        [PXDBGuid]
-        [PXUIField(DisplayName = "Folio Fiscal de la factura relacionada")]
-        public virtual Guid? DocumentID { get; set; }
+    //    [PXDBGuid]
+    //    [PXUIField(DisplayName = "Folio Fiscal de la factura relacionada")]
+    //    public virtual Guid? DocumentID { get; set; }
 
-        #endregion DocumentID
+    //    #endregion DocumentID
 
-        #region FormaDePago
+    //    #region FormaDePago
 
-        public abstract class paymentForm : IBqlField { }
+    //    public abstract class paymentForm : IBqlField { }
 
-        [PXDBString(3, IsFixed = false, IsUnicode = true)]
-        [PXStringList(
-            new string[]
-            {
-                Common.PayForm.One,
-                Common.PayForm.Partial,
-            },
-            new string[]
-            {
-                Common.PayForm.OneLabel,
-                Common.PayForm.PartialLabel,
-            }
-            )]
-        [PXUIField(DisplayName = "Forma de pago", Enabled = false)]
-        public virtual string PaymentForm { get; set; }
+    //    [PXDBString(3, IsFixed = false, IsUnicode = true)]
+    //    [PXStringList(
+    //        new string[]
+    //        {
+    //            Common.PayForm.One,
+    //            Common.PayForm.Partial,
+    //        },
+    //        new string[]
+    //        {
+    //            Common.PayForm.OneLabel,
+    //            Common.PayForm.PartialLabel,
+    //        }
+    //        )]
+    //    [PXUIField(DisplayName = "Forma de pago", Enabled = false)]
+    //    public virtual string PaymentForm { get; set; }
 
-        #endregion FormaDePago
+    //    #endregion FormaDePago
 
-        #region Partiality
+    //    #region Partiality
 
-        public abstract class partiality : IBqlField { }
+    //    public abstract class partiality : IBqlField { }
 
-        [PXDBInt]
-        [PXUIField(DisplayName = "Parcialidad")]
-        public virtual int? Partiality { get; set; }
+    //    [PXDBInt]
+    //    [PXUIField(DisplayName = "Parcialidad")]
+    //    public virtual int? Partiality { get; set; }
 
-        #endregion Partiality
+    //    #endregion Partiality
 
-        #region DebtAmt
+    //    #region DebtAmt
 
-        public abstract class debtAmt : IBqlField { }
+    //    public abstract class debtAmt : IBqlField { }
 
-        [PXDBDecimal]
-        [PXUIField(DisplayName = "Saldo Insoluto Anterior")]
-        public virtual decimal? DebtAmt { get; set; }
+    //    [PXDBDecimal]
+    //    [PXUIField(DisplayName = "Saldo Insoluto Anterior")]
+    //    public virtual decimal? DebtAmt { get; set; }
 
-        #endregion DebtAmt
+    //    #endregion DebtAmt
 
-        #region PaymentAmt
+    //    #region PaymentAmt
 
-        public abstract class paymentAmt : IBqlField { }
+    //    public abstract class paymentAmt : IBqlField { }
 
-        [PXDBDecimal]
-        [PXUIField(DisplayName = "Importe")]
-        public virtual decimal? PaymentAmt { get; set; }
+    //    [PXDBDecimal]
+    //    [PXUIField(DisplayName = "Importe")]
+    //    public virtual decimal? PaymentAmt { get; set; }
 
-        #endregion PaymentAmt
+    //    #endregion PaymentAmt
 
-        #region NewDebtAmt
+    //    #region NewDebtAmt
 
-        public abstract class newDebtAmt : IBqlField { }
+    //    public abstract class newDebtAmt : IBqlField { }
 
-        [PXDBDecimal]
-        [PXUIField(DisplayName = "Nuevo Saldo Insoluto")]
-        public virtual decimal? NewDebtAmt { get; set; }
+    //    [PXDBDecimal]
+    //    [PXUIField(DisplayName = "Nuevo Saldo Insoluto")]
+    //    public virtual decimal? NewDebtAmt { get; set; }
 
-        #endregion NewDebtAmt
+    //    #endregion NewDebtAmt
 
-        #region Uuid
+    //    #region Uuid
 
-        public abstract class uuid : IBqlField { }
+    //    public abstract class uuid : IBqlField { }
 
-        [PXDBGuid]
-        [CfdiStatus(typeof(stampStatus), typeof(uuid), typeof(cancelDate))]
-        [PXUIField(DisplayName = "Uuid")]
-        public virtual Guid? Uuid { get; set; }
+    //    [PXDBGuid]
+    //    [CfdiStatus(typeof(stampStatus), typeof(uuid), typeof(cancelDate))]
+    //    [PXUIField(DisplayName = "Uuid")]
+    //    public virtual Guid? Uuid { get; set; }
 
-        #endregion Uuid
+    //    #endregion Uuid
 
-        #region CancelDate
+    //    #region CancelDate
 
-        public abstract class cancelDate : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        public virtual DateTime? CancelDate { get; set; }
+    //    public abstract class cancelDate : IBqlField { }
+    //    [PXDBDateAndTime(PreserveTime = true)]
+    //    public virtual DateTime? CancelDate { get; set; }
 
-        #endregion CancelDate
+    //    #endregion CancelDate
 
-        #region PaymentRefNbr
+    //    #region PaymentRefNbr
 
-        public abstract class paymentRefNbr : IBqlField
-        {
-        }
-        [PXDBString]
-        [PXUIField(DisplayName = Messages.PaymentRefNbr, Enabled = false)]
-        public virtual string PaymentRefNbr { get; set; }
+    //    public abstract class paymentRefNbr : IBqlField
+    //    {
+    //    }
+    //    [PXDBString]
+    //    [PXUIField(DisplayName = Messages.PaymentRefNbr, Enabled = false)]
+    //    public virtual string PaymentRefNbr { get; set; }
 
-        #endregion PaymentRefNbr
+    //    #endregion PaymentRefNbr
 
-        #region CuryID
+    //    #region CuryID
 
-        public abstract class curyID : IBqlField
-        {
-        }
-        [PXDBString]
-        public virtual string CuryID { get; set; }
+    //    public abstract class curyID : IBqlField
+    //    {
+    //    }
+    //    [PXDBString]
+    //    public virtual string CuryID { get; set; }
 
-        #endregion CuryID
+    //    #endregion CuryID
 
-        ///*** Campos calculados
+    //    ///*** Campos calculados
 
-        #region Estado
+    //    #region Estado
 
-        public abstract class stampStatus : IBqlField { }
+    //    public abstract class stampStatus : IBqlField { }
 
-        [PXString(1, IsFixed = true)]
-        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
-        [CfdiStatus.List()]
-        public virtual string StampStatus { get; set; }
+    //    [PXString(1, IsFixed = true)]
+    //    [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
+    //    [CfdiStatus.List()]
+    //    public virtual string StampStatus { get; set; }
 
-        #endregion Estado
-    }
+    //    #endregion Estado
+    //}
 }
