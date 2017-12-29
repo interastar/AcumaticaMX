@@ -38,6 +38,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(3)]
+        [PXDefault("1.1")]
         public virtual string Version { get; set; }
 
         #endregion Version
@@ -47,6 +48,27 @@ namespace AcumaticaMX
         public abstract class transferReason : IBqlField
         {
         }
+        [PXStringList(
+            new string[]
+            {
+                        Common.TransferReason.ReasonOne,
+                        Common.TransferReason.ReasonTwo,
+                        Common.TransferReason.ReasonThree,
+                        Common.TransferReason.ReasonFour,
+                        Common.TransferReason.ReasonFive,
+                        Common.TransferReason.ReasonSix,
+            },
+            new string[]
+            {
+                        Common.TransferReason.ReasonOneLabel,
+                        Common.TransferReason.ReasonTwoLabel,
+                        Common.TransferReason.ReasonThreeLabel,
+                        Common.TransferReason.ReasonFourLabel,
+                        Common.TransferReason.ReasonFiveLabel,
+                        Common.TransferReason.ReasonSixLabel,
+            }
+        )]
+        [PXUIField(DisplayName = Messages.TransferReason)]
         [PXDBString(2)]
         public virtual string TransferReason { get; set; }
 
