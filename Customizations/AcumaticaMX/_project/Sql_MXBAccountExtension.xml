@@ -7,6 +7,7 @@
   <col name="IsNaturalPerson" type="Bit" nullable="true" default="Zero" />
   <col name="DefaultOriginAccount" type="NVarChar(30)" nullable="true" />
   <col name="DefaultPaymentMethod" type="NVarChar(50)" nullable="true" />
+  <col name="Regimen" type="NVarChar(100)" nullable="true" />
   <index name="MXBAccountExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="BAccountID" />

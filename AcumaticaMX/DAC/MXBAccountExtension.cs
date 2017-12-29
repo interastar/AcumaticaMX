@@ -31,6 +31,35 @@ namespace AcumaticaMX
 
         #endregion TaxRegimeID
 
+        #region Regimen
+
+
+
+        public abstract class regimen : IBqlField
+        {
+
+        }
+        [PXDBString(100, IsFixed = false, IsUnicode = true)]
+        [PXDefault(AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXStringList(
+            new string[]
+            {
+                AcumaticaMX.Common.RegimenTypes.NaturalSalaried, AcumaticaMX.Common.RegimenTypes.NaturalFee,
+                AcumaticaMX.Common.RegimenTypes.NaturalLessor, AcumaticaMX.Common.RegimenTypes.NaturalBusinessActivity,
+                AcumaticaMX.Common.RegimenTypes.NaturalTaxIncorporated,
+                AcumaticaMX.Common.RegimenTypes.JuridicalGeneral, AcumaticaMX.Common.RegimenTypes.JuridicalNonProfit
+            },
+            new string[]
+            {
+                AcumaticaMX.Common.RegimenTypes.NaturalSalariedLabel, AcumaticaMX.Common.RegimenTypes.NaturalFeeLabel,
+                AcumaticaMX.Common.RegimenTypes.NaturalLessorLabel, AcumaticaMX.Common.RegimenTypes.NaturalBusinessActivityLabel,
+                AcumaticaMX.Common.RegimenTypes.NaturalTaxIncorporatedLabel,
+                AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, AcumaticaMX.Common.RegimenTypes.JuridicalNonProfitLabel
+            })]
+        [PXUIField(DisplayName = "Regimen fiscal")]
+        public virtual string Regimen { get; set; }
+        #endregion Regimen
+
         #region IsNaturalPerson
 
         public abstract class isNaturalPerson : IBqlField
