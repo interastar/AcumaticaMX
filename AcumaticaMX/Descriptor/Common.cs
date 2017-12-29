@@ -144,6 +144,23 @@ namespace AcumaticaMX
             public const string CfdCbbLabel = "CFD/CBB";
             public const string ForeignLabel = "Factura Extranjera";
         }
+
+        public static class TransferReason
+        {
+            public const string ReasonOne = "01";
+            public const string ReasonTwo = "02";
+            public const string ReasonThree = "03";
+            public const string ReasonFour = "04";
+            public const string ReasonFive = "05";
+            public const string ReasonSix = "99";
+
+            public const string ReasonOneLabel = "Envío de mercancias facturadas con anterioridad";
+            public const string ReasonTwoLabel = "Reubicación de mercancías propias";
+            public const string ReasonThreeLabel = "Envío de mercancías objeto de contrato de consignación";
+            public const string ReasonFourLabel = "Envío de mercancías para posterior enajenación";
+            public const string ReasonFiveLabel = "Envío de mercancías propiedad de terceros";
+            public const string ReasonSixLabel = "Otros";
+        }
     }
 
     public class Convert
