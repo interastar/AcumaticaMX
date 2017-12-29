@@ -60,7 +60,6 @@ namespace AcumaticaMX
         public virtual string Regimen { get; set; }
         #endregion Regimen
 
-
         #region IsNaturalPerson
 
         public abstract class isNaturalPerson : IBqlField
