@@ -1,0 +1,23 @@
+﻿<Sql TableName="MXFESatProductServiceList" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFESatProductServiceList">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ProductServiceCD" type="NVarChar(8)" />
+  <col name="Description" type="NVarChar(500)" />
+  <col name="ValidityStartDate" type="SmallDateTime" />
+  <col name="ValidityEndDate" type="SmallDateTime" nullable="true" />
+  <col name="TransferredIVA" type="NVarChar(15)" nullable="true" />
+  <col name="TransferredIEPS" type="NVarChar(15)" nullable="true" />
+  <col name="IncludeComplement" type="NVarChar(50)" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXFESatProductServiceList_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ProductServiceCD" />
+  </index>
+</table>]]></CDATA>
+</Sql>

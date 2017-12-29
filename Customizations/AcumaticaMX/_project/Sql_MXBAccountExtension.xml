@@ -2,10 +2,12 @@
     <CDATA name="TableSchemaXml"><![CDATA[<table name="MXBAccountExtension">
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="BAccountID" type="Int" />
-  <col name="Regimen" type="NVarChar(100)" nullable="true" />
+  <col name="TaxRegimeID" type="Int" nullable="true" default="Zero" />
+  <col name="UseCfdiCD" type="NVarChar(3)" nullable="true" />
   <col name="IsNaturalPerson" type="Bit" nullable="true" default="Zero" />
   <col name="DefaultOriginAccount" type="NVarChar(30)" nullable="true" />
   <col name="DefaultPaymentMethod" type="NVarChar(50)" nullable="true" />
+  <col name="Regimen" type="NVarChar(100)" nullable="true" />
   <index name="MXBAccountExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="BAccountID" />

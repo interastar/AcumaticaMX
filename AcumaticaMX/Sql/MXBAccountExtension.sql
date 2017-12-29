@@ -11,13 +11,15 @@ GO
 
 CREATE TABLE [dbo].[MXBAccountExtension](
 	-- multi-tenancy support
-	[CompanyID]		[int] NOT NULL DEFAULT ((0)),
+	[CompanyID]				[int] NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[BAccountID]	[int] NOT NULL,
+	[BAccountID]			[int] NOT NULL,
 
 	-- extension fields
+	[TaxRegimeID]			[int] NULL DEFAULT ((0)),
 	[Regimen]				[nvarchar](100) NULL,
+	[UseCfdiCD]				[nvarchar](3) NULL,
 	[IsNaturalPerson]		[bit] NULL DEFAULT ((0)),
 	[DefaultOriginAccount]	[nvarchar](30) NULL,
 	[DefaultPaymentMethod]	[nvarchar](50) NULL,

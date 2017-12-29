@@ -7,6 +7,7 @@ namespace AcumaticaMX
     /// <summary>
     /// Extensión de ARRegister para asociar información de CFDIs
     /// </summary>
+    [Serializable]
     [PXTable(typeof(APRegister.docType), typeof(APRegister.refNbr), IsOptional = true)]
     public class MXAPRegisterExtension : PXCacheExtension<APRegister>
     {
@@ -29,7 +30,20 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = "Forma de Pago")]
+        //[PXDefault(AcumaticaMX.Common.PayForm.One)]
+        [PXStringList(
+            new string[]
+            {
+                Common.PayForm.One,
+                Common.PayForm.Partial,
+            },
+            new string[]
+            {
+                Common.PayForm.OneLabel,
+                Common.PayForm.PartialLabel,
+            }
+            )]
+        [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentForm { get; set; }
 
         #endregion FormaDePago
@@ -39,7 +53,11 @@ namespace AcumaticaMX
         public abstract class paymentMethod : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = "Metodo de Pago")]
+        //[PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+        [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
+            typeof(MXFESatPaymentMethodList.description),
+            DescriptionField = typeof(MXFESatPaymentMethodList.description))]
+        [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentMethod { get; set; }
 
         #endregion MetodoDePago
@@ -162,7 +180,43 @@ namespace AcumaticaMX
 
         #endregion SelloSAT
 
+        // -- Campos no persistentes
+
+        #region Estado
+
+        public abstract class stampStatus : IBqlField { }
+
+        [PXString(1, IsFixed = true)]
+        //[PXDefault(CfdiStatus.Clean)]
+        //[PXUnboundDefault(CfdiStatus.Clean)]
+        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
+        [CfdiStatus.List()]
+        [SetCfdiStatus()]
+        public virtual string StampStatus { get; set; }
+
+        #endregion Estado
+
+        #region Timbrable
+
+        public abstract class notStampable : IBqlField { }
+
+        [PXBool()]
+        //[PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "No Timbrar", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
+        [StampableStatus(typeof(notStampable), typeof(stampStatus), typeof(uuid))]
+        public virtual bool? NotStampable { get; set; }
+
+        #endregion Timbrable
+
         // -- Datos de importación del documento
+
+        #region Folio
+
+        public abstract class folio : IBqlField { }
+
+        [PXDBString(25, IsFixed = false, IsUnicode = true)]
+        public virtual string Folio { get; set; }
+        #endregion Folio
 
         #region Import
         public abstract class import : IBqlField { }
@@ -191,5 +245,43 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Monto total", Enabled = false)]
         public virtual decimal? TotalAmount { get; set; }
         #endregion TotalAmount
+
+        // -- Datos para poliza
+
+
+        #region Document Type
+
+        public abstract class documentType : IBqlField { }
+
+        [PXDBString(1, IsFixed = false, IsUnicode = true)]
+        //[PXDefault(Common.DocumentType.Cfdi)]
+        [PXStringList(
+            new string[]
+            {
+                Common.DocumentType.Cfdi,
+                Common.DocumentType.CfdCbb,
+                Common.DocumentType.Foreign,
+            },
+            new string[]
+            {
+                Common.DocumentType.CfdiLabel,
+                Common.DocumentType.CfdCbbLabel,
+                Common.DocumentType.ForeignLabel,
+            }
+            )]
+        [PXUIField(DisplayName = "Tipo de documento")]
+        public virtual string DocumentType { get; set; }
+        #endregion Document Type
+
+        #region Bank
+
+        public abstract class bankCD : IBqlField
+        {
+        }
+        [PXDBString(3, IsUnicode = true)]
+        [PXUIField(DisplayName = "Banco Destino")]
+        public virtual string BankCD { get; set; }
+
+        #endregion Bank
     }
 }

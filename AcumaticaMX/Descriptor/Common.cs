@@ -59,13 +59,11 @@ namespace AcumaticaMX
         /// </summary>
         public static class PayForm
         {
-            public const string One = "Pago en una sola exhibición";
-            public const string Partial = "Pago en parcialidades";
+            public const string One = "PUE";
+            public const string Partial = "PPD";
 
             public const string OneLabel = "Pago en una sola exhibición";
-            public const string PartialLabel = "Pago en parcialidades";
-
-            public const string Values = "Pago en una sola exhibición,Pago en parcialidades";
+            public const string PartialLabel = "Pago en parcialidades o diferido";
         }
 
         /// <summary>
@@ -114,6 +112,37 @@ namespace AcumaticaMX
                     return string.Join(",", typeof(PayMethod).GetFields().Where(x => x.Name.Contains("Label")).Select(x => x.GetValue(null)));
                 }
             }
+        }
+
+        public static class Tax
+        {
+            public const string ISR = "001";
+            public const string IVA = "002";
+            public const string IEPS = "003";
+
+            public const string ISRLabel = "ISR";
+            public const string IVALabel = "IVA";
+            public const string IEPSLabel = "IEPS";
+        }
+
+        public static class TaxType
+        {
+            public const string Holding = "R";
+            public const string Transfer = "T";
+
+            public const string HoldingLabel = "Retención";
+            public const string TransferLabel = "Traslado";
+        }
+
+        public static class DocumentType
+        {
+            public const string Cfdi = "C";
+            public const string CfdCbb = "B";
+            public const string Foreign = "F";
+
+            public const string CfdiLabel = "CFDI";
+            public const string CfdCbbLabel = "CFD/CBB";
+            public const string ForeignLabel = "Factura Extranjera";
         }
     }
 

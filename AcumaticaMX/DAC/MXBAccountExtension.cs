@@ -15,12 +15,30 @@ namespace AcumaticaMX
 
         #endregion RFC
 
+        #region TaxRegimeID
+        public abstract class taxRegimeID : PX.Data.IBqlField
+        {
+        }
+        [PXDBInt]
+        [PXSelector(
+            typeof(Search<MXFESatTaxRegimeList.taxRegimeID>),
+            typeof(MXFESatTaxRegimeList.description),
+            typeof(MXFESatTaxRegimeList.applyMoralPerson),
+            typeof(MXFESatTaxRegimeList.applyNaturalPerson),
+            SubstituteKey = typeof(MXFESatTaxRegimeList.description))]
+        [PXUIField(DisplayName = "Regimen fiscal")]
+        public virtual int? TaxRegimeID { get; set; }
+
+        #endregion TaxRegimeID
+
         #region Regimen
+
+
 
         public abstract class regimen : IBqlField
         {
-        }
 
+        }
         [PXDBString(100, IsFixed = false, IsUnicode = true)]
         [PXDefault(AcumaticaMX.Common.RegimenTypes.JuridicalGeneralLabel, PersistingCheck = PXPersistingCheck.Nothing)]
         [PXStringList(
@@ -40,7 +58,6 @@ namespace AcumaticaMX
             })]
         [PXUIField(DisplayName = "Regimen fiscal")]
         public virtual string Regimen { get; set; }
-
         #endregion Regimen
 
         #region IsNaturalPerson
@@ -55,6 +72,26 @@ namespace AcumaticaMX
         public virtual bool? IsNaturalPerson { get; set; }
 
         #endregion IsNaturalPerson
+
+        #region UseCFDI
+        public abstract class useCfdiCD : PX.Data.IBqlField
+        {
+        }
+        [PXDBString]
+        [PXSelector(
+            typeof(Search<MXFESatUseCFDIList.useCfdiCD,
+                Where<MXFESatUseCFDIList.applyNaturalPerson,
+                    Equal<Current<isNaturalPerson>>,
+                    Or<MXFESatUseCFDIList.applyMoralPerson,
+                        NotEqual<Current<isNaturalPerson>>>>>),
+            typeof(MXFESatUseCFDIList.description),
+            typeof(MXFESatUseCFDIList.applyMoralPerson),
+            typeof(MXFESatUseCFDIList.applyNaturalPerson),
+            DescriptionField = typeof(MXFESatUseCFDIList.description)
+            )]
+        [PXUIField(DisplayName = "Uso de Cfdi")]
+        public virtual string UseCfdiCD { get; set; }
+        #endregion UseCFDI
 
         #region DefaultOriginAccount
 

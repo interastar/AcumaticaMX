@@ -14,6 +14,15 @@ namespace AcumaticaMX
 
         // - Datos del comprobante fiscal
 
+        #region Version
+
+        public abstract class version : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        public virtual string Version { get; set; }
+
+        #endregion Version
+
         #region Serie
 
         public abstract class series : IBqlField { }
@@ -29,9 +38,20 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayForm.One)]
-        [PXStringList(AcumaticaMX.Common.PayForm.Values)]
-        [PXUIField(DisplayName = "Forma de Pago")]
+        [PXDefault(AcumaticaMX.Common.PayForm.Partial)]
+        [PXStringList(
+            new string[]
+            {
+                Common.PayForm.One,
+                Common.PayForm.Partial,
+            },
+            new string[]
+            {
+                Common.PayForm.OneLabel,
+                Common.PayForm.PartialLabel,
+            }
+            )]
+        [PXUIField(DisplayName = "Metodo de Pago")]
         public virtual string PaymentForm { get; set; }
 
         #endregion FormaDePago
@@ -42,26 +62,10 @@ namespace AcumaticaMX
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
         [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
-        [PXStringList(
-            new string[]
-            {
-                AcumaticaMX.Common.PayMethod.Cash, AcumaticaMX.Common.PayMethod.Cheque,
-                AcumaticaMX.Common.PayMethod.Transfer, AcumaticaMX.Common.PayMethod.CreditCard,
-                AcumaticaMX.Common.PayMethod.Wallet, AcumaticaMX.Common.PayMethod.Electronic,
-                AcumaticaMX.Common.PayMethod.Coupons, AcumaticaMX.Common.PayMethod.DebitCard,
-                AcumaticaMX.Common.PayMethod.ServiceCard, AcumaticaMX.Common.PayMethod.NAFE,
-                AcumaticaMX.Common.PayMethod.NACE, AcumaticaMX.Common.PayMethod.Other,
-            },
-            new string[]
-            {
-                AcumaticaMX.Common.PayMethod.CashLabel, AcumaticaMX.Common.PayMethod.ChequeLabel,
-                AcumaticaMX.Common.PayMethod.TransferLabel, AcumaticaMX.Common.PayMethod.CreditCardLabel,
-                AcumaticaMX.Common.PayMethod.WalletLabel, AcumaticaMX.Common.PayMethod.ElectronicLabel,
-                AcumaticaMX.Common.PayMethod.CouponsLabel, AcumaticaMX.Common.PayMethod.DebitCardLabel,
-                AcumaticaMX.Common.PayMethod.ServiceCardLabel, AcumaticaMX.Common.PayMethod.NAFELabel,
-                AcumaticaMX.Common.PayMethod.NACELabel, AcumaticaMX.Common.PayMethod.OtherLabel,
-            }, MultiSelect = true)]
-        [PXUIField(DisplayName = "Metodo de Pago")]
+        [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
+            typeof(MXFESatPaymentMethodList.description),
+            DescriptionField = typeof(MXFESatPaymentMethodList.description))]
+        [PXUIField(DisplayName = "Forma de Pago")]
         public virtual string PaymentMethod { get; set; }
 
         #endregion MetodoDePago
@@ -95,6 +99,17 @@ namespace AcumaticaMX
         public virtual string DiscountReason { get; set; }
 
         #endregion MotivoDeDescuento
+
+        #region TipoCambio
+
+        public abstract class currencyRate : IBqlField { }
+
+        [PXDBDecimal(6)]
+        [PXUIField(DisplayName = "Tipo de Cambio actual")]
+        public virtual decimal? CurrencyRate { get; set; }
+
+        #endregion TipoCambio
+
         //  -- Datos de sello del comprobante
 
         #region noCertificado
@@ -284,7 +299,7 @@ namespace AcumaticaMX
         [PXBool()]
         [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
         [PXUIField(DisplayName = "No Timbrar", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
-        [StampableStatus()]
+        [StampableStatus(typeof(notStampable), typeof(stampStatus), typeof(uuid))]
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
@@ -294,5 +309,21 @@ namespace AcumaticaMX
         [PXDBDateAndTime(PreserveTime = true)]
         public virtual DateTime? DocDateTime { get; set; }
         #endregion DocDateTime
+
+        #region UseCfdiCD
+        public abstract class useCfdiCD : PX.Data.IBqlField
+        {
+        }
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.UseCFDI)]
+        public virtual string UseCfdiCD { get; set; }
+        #endregion UseCfdiCD
+
+        #region PaymentDocDateTime
+        public abstract class paymentDocDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
+        public virtual DateTime? PaymentDocDateTime { get; set; }
+        #endregion PaymentDocDateTime
     }
 }

@@ -21,6 +21,11 @@
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
   <col name="DocDateTime" type="SmallDateTime" nullable="true" />
   <col name="DiscountReason" type="NVarChar(250)" nullable="true" />
+  <col name="UseCfdiCD" type="NVarChar(3)" nullable="true" />
+  <col name="PaymentDocDateTime" type="SmallDateTime" nullable="true" />
+  <col name="CurrencyRate" type="Decimal(19,6)" nullable="true" />
+  <col name="Version" type="NVarChar(3)" nullable="true" />
+  <col name="IsExternalTrade" type="Bit" nullable="true" raw-default="1" />
   <index name="MXARRegisterExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DocType" />

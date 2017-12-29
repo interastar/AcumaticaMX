@@ -24,7 +24,7 @@ namespace AcumaticaMX
         public abstract class groupingCodeID : PX.Data.IBqlField
         {
         }
-
+        [PXUIField(DisplayName = Messages.GroupingCodeIDLabel)]
         [PXDBInt]
         public virtual int? GroupingCodeID { get; set; }
 
@@ -59,7 +59,7 @@ namespace AcumaticaMX
         public abstract class parentCD : PX.Data.IBqlField
         {
         }
-
+        [PXUIField(DisplayName = Messages.ParentCD)]
         [PXDBString(6, IsUnicode = true)]
         public virtual string ParentCD { get; set; }
 

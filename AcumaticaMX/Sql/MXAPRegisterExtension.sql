@@ -42,10 +42,14 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	[CancelDate]		[smalldatetime] NULL,
 
 	-- Datos de Validación
+	[DocumentType]		[nvarchar](1) NULL,
+	[Folio]				[nvarchar](25) NULL,
 	[Import]			BIT NULL DEFAULT ((1)),
 	[Provider]			[nvarchar](13) NULL,
 	[TotalTaxes]		DECIMAL(19, 4) NULL,
 	[TotalAmount]		DECIMAL(19, 4) NULL,
+	-- Datos de poliza
+	[BankCD]			[nvarchar](3) NULL,
 
 	CONSTRAINT [MXAPRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(

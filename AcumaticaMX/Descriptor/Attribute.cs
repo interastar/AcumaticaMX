@@ -1,4 +1,4 @@
-using PX.Common;
+using System.Text.RegularExpressions;
 using PX.Data;
 using PX.Objects.AR;
 using PX.Objects.IN;
@@ -312,6 +312,17 @@ namespace AcumaticaMX
 
     public class StampableStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
     {
+        private string _StampStatusField;
+        private string _UuidField;
+        private string _NotStampableField;
+
+        public StampableStatusAttribute(Type NotStampableFieldType, Type StampStatusFieldType, Type UuidFieldType) : base()
+        {
+            _StampStatusField = StampStatusFieldType.Name;
+            _UuidField = UuidFieldType.Name;
+            _NotStampableField = NotStampableFieldType.Name;
+        }
+
         public override void CacheAttached(PXCache sender)
         {
             base.CacheAttached(sender);
@@ -326,60 +337,71 @@ namespace AcumaticaMX
             });
         }
 
-        protected virtual void StatusSet(PXCache sender, ARRegister doc)
+        protected virtual void StatusSet(PXCache sender, object row)
         {
+            //Obtenemos el valor de stamStatus
+            var stampStatus = sender.GetValue(row, this._StampStatusField);
+            var uuid = sender.GetValue(row, this._UuidField);
             // Solo seguimos si tenemos el registro
-            var cfdi = doc.GetExtension<MXARRegisterExtension>();
+            //var cfdi = row.GetExtension<MXARRegisterExtension>();
 
-            if (cfdi == null) return;
+            if (stampStatus == null) return;
             var check = false;
 
             // Si el documento está timbrado o cancelado limpiamos la bandera
-            if (cfdi.StampStatus == CfdiStatus.Stamped || cfdi.StampStatus == CfdiStatus.Canceled)
+            if (stampStatus?.ToString() == CfdiStatus.Stamped || stampStatus?.ToString() == CfdiStatus.Canceled)
             {
                 check = false;
             }
             // Si tiene valor en ceros
-            else if (cfdi.Uuid.HasValue && cfdi.Uuid == Guid.Empty)
+            else if (!string.IsNullOrEmpty(uuid?.ToString()) && Guid.Parse(uuid?.ToString()) == Guid.Empty)
             {
                 check = true;
             }
 
-            sender.SetValue<MXARRegisterExtension.notStampable>(doc, check);
+            //sender.SetValue<MXARRegisterExtension.notStampable>(row, check);
+            sender.SetValue(row, this. _NotStampableField, check);
         }
 
         public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
         {
-            var doc = e.Row as ARRegister;
-            if (doc != null)
+            //var doc = e.Row as ARRegister;
+            if (e.Row != null)
             {
-                StatusSet(sender, doc);
+                StatusSet(sender, e.Row);
             }
         }
 
         public void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
         {
-            var item = (ARRegister)e.Row;
+            //var item = (ARRegister)e.Row;
 
-            if (item != null)
+            if (e.Row != null)
             {
-                var ext = item.GetExtension<MXARRegisterExtension>();
-                if (ext == null) return;
+                var notStampable = sender.GetValue(e.Row, this._NotStampableField);
+                var uuid = sender.GetValue(e.Row, this._UuidField);
+                //var ext = item.GetExtension<MXARRegisterExtension>();
+                //if (ext == null) return;
 
-                if (((bool?)e.OldValue != true) && ext.NotStampable == true && ext.Uuid == null)
+                if (((bool?)e.OldValue != true) && System.Convert.ToBoolean(notStampable?.ToString()) == true 
+                    && uuid == null)
                 {
                     //ext.Uuid = Guid.Empty;
-                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, Guid.Empty);
+                    //sender.SetValueExt<MXARRegisterExtension.uuid>(item, Guid.Empty);
+                    sender.SetValue(e.Row, this._UuidField, Guid.Empty);
                     return;
                 }
 
-                if (((bool?)e.OldValue == true) && ext.NotStampable != true && ext.Uuid == Guid.Empty)
+                if (((bool?)e.OldValue == true) && System.Convert.ToBoolean(notStampable?.ToString()) != true 
+                    && Guid.Parse(uuid?.ToString()) == Guid.Empty)
                 {
                     //ext.Uuid = null;
-                    sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
+                    //sender.SetValueExt<MXARRegisterExtension.uuid>(item, null);
+                    sender.SetValue(e.Row, this._UuidField, null);
                     return;
                 }
             }
+
         }
     }
 
@@ -388,7 +410,7 @@ namespace AcumaticaMX
         private List<string> _SourceFields;
         private string _ErrorMsg;
 
-        public ValidateFieldsAttribute(string ErrorMsg,params Type[] SourceFieldTypes)
+        public ValidateFieldsAttribute(string ErrorMsg, params Type[] SourceFieldTypes)
             : base()
         {
             _ErrorMsg = ErrorMsg;
@@ -412,7 +434,7 @@ namespace AcumaticaMX
             if (value != null ||
                 ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
             {
-                foreach(var field in _SourceFields)
+                foreach (var field in _SourceFields)
                 {
                     var fieldValue = sender.GetValue(e.Row, field);
 
@@ -426,7 +448,7 @@ namespace AcumaticaMX
                     }
                     else if ((fieldValue.GetType() == typeof(string)))
                     {
-                        if(string.IsNullOrEmpty((string)fieldValue))
+                        if (string.IsNullOrEmpty((string)fieldValue))
                         {
                             sender.RaiseExceptionHandling(field,
                                e.Row, null, new PXSetPropertyException(_ErrorMsg, PXErrorLevel.RowError));
@@ -437,4 +459,192 @@ namespace AcumaticaMX
         }
     }
 
+    public class RequestNumberAttribute : PXEventSubscriberAttribute, IPXRowPersistingSubscriber, IPXRowSelectingSubscriber, IPXRowPersistedSubscriber
+    {
+        private List<string> _SourceFields;
+        private string _ErrorMsg;
+
+        public RequestNumberAttribute(string ErrorMsg, params Type[] SourceFieldTypes)
+            : base()
+        {
+            _ErrorMsg = ErrorMsg;
+
+            if (SourceFieldTypes.Length > 0)
+            {
+                _SourceFields = new List<string>(SourceFieldTypes.Select(t => t.Name));
+            }
+            else
+            {
+                throw new PXArgumentException();
+            }
+        }
+
+        public virtual void RowPersisting(PXCache sender, PXRowPersistingEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, this._FieldName);
+
+            if (value != null ||
+                ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
+            {
+                foreach (var field in _SourceFields)
+                {
+                    var fieldValue = sender.GetValue(e.Row, field);
+
+                    // Si es nulo o
+                    //  es una cadena vacía...
+                    if (fieldValue == null || string.IsNullOrEmpty((string)fieldValue))
+                    {
+                        sender.RaiseExceptionHandling(field,
+                                e.Row, null, new PXSetPropertyException(_ErrorMsg, PXErrorLevel.RowError));
+                    }
+                    else
+                    {
+                        var rowValue = fieldValue.ToString();
+                        var parsedValue = rowValue.Substring(0, 2) + "  " + rowValue.Substring(2, 2) + "  " + 
+                            rowValue.Substring(4, 4).Trim().PadLeft(4,'0') + "  " + rowValue.Substring(8, 7);
+                        sender.SetValue(e.Row, this._FieldName, parsedValue);
+                    }
+                }
+            }
+        }
+
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, this._FieldName);
+
+            if (value != null ||
+                ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
+            {
+                foreach (var field in _SourceFields)
+                {
+                    var fieldValue = sender.GetValue(e.Row, field);
+
+                    if (fieldValue != null || !string.IsNullOrEmpty(fieldValue.ToString()))
+                    {
+                        var joinValue = String.Join("", fieldValue.ToString().Split(' '));
+                        sender.SetValue(e.Row, this._FieldName, joinValue);
+                    }
+                }
+            }
+        }
+
+        public virtual void RowPersisted(PXCache sender, PXRowPersistedEventArgs e)
+        {
+            if (e.Row == null) return;
+
+            var value = sender.GetValue(e.Row, this._FieldName);
+
+            if (value != null ||
+                ((value?.GetType() == typeof(string)) && (!string.IsNullOrEmpty((string)value))))
+            {
+                foreach (var field in _SourceFields)
+                {
+                    var fieldValue = sender.GetValue(e.Row, field);
+
+                    if (fieldValue != null || !string.IsNullOrEmpty(fieldValue.ToString()))
+                    {
+                        var joinValue = String.Join("", fieldValue.ToString().Split(' '));
+                        sender.SetValue(e.Row, this._FieldName, joinValue);
+                    }
+                }
+            }
+        }
+    }
+
+    public class CfdiStatusAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
+    {
+        private string _TargetField;
+        private string _SourceField;
+        private string _CancelField;
+
+        public CfdiStatusAttribute(Type TargetFieldType, Type SourceField, Type CancelField) : base()
+        {
+            _TargetField = TargetFieldType.Name;
+            _SourceField = SourceField.Name;
+            _CancelField = CancelField.Name;
+        }
+
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+            var value = sender.GetValue(e.Row, this._SourceField);
+            if(value != null)
+            {
+                value = sender.GetValue(e.Row, this._CancelField);
+                if (value != null)
+                {
+                    sender.SetValue(e.Row, this._TargetField, CfdiStatus.Canceled);
+                }
+                else
+                {
+                    sender.SetValue(e.Row, this._TargetField, CfdiStatus.Stamped);
+                }
+            }
+            else
+            {
+                sender.SetValue(e.Row, this._TargetField, CfdiStatus.Clean);
+            }
+        }
+
+        public virtual void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            if (e.Row == null) return;
+            var value = sender.GetValue(e.Row, this._SourceField);
+            if (value != null)
+            {
+                value = sender.GetValue(e.Row, this._CancelField);
+                if (value != null)
+                {
+                    sender.SetValue(e.Row, this._TargetField, CfdiStatus.Canceled);
+                }
+                else
+                {
+                    sender.SetValue(e.Row, this._TargetField, CfdiStatus.Stamped);
+                }
+            }
+            else
+            {
+                sender.SetValue(e.Row, this._TargetField, CfdiStatus.Clean);
+            }
+        }
+    }
+
+    public class FieldPatternVerifyingAttribute : PXEventSubscriberAttribute, IPXFieldUpdatedSubscriber, IPXRowSelectingSubscriber
+    {
+        private string _Pattern;
+        private string _TargetField;
+        private Regex _Rgx;
+        public FieldPatternVerifyingAttribute(Type TargetFieldType, string Pattern) : base()
+        {
+            _Pattern = Pattern;
+            _TargetField = TargetFieldType.Name;
+            _Rgx = new Regex(Pattern);
+        }
+
+        public virtual void RowSelecting(PXCache sender, PXRowSelectingEventArgs e)
+        {
+            if (e.Row == null) return;
+            var value = sender.GetValue(e.Row, this._TargetField);
+            if(!_Rgx.IsMatch(value.ToString()))
+            {
+                sender.RaiseExceptionHandling(_TargetField, e.Row, value, 
+                    new PXSetPropertyException("No campo no cumple con las reglas del SAT"));
+            }
+        }
+
+        public virtual void FieldUpdated(PXCache sender, PXFieldUpdatedEventArgs e)
+        {
+            if (e.Row == null) return;
+            var value = sender.GetValue(e.Row, this._TargetField);
+            if (!_Rgx.IsMatch(value.ToString()))
+            {
+                sender.RaiseExceptionHandling(_TargetField, e.Row, value,
+                    new PXSetPropertyException("No campo no cumple con las reglas del SAT"));
+            }
+        }
+    }
 }

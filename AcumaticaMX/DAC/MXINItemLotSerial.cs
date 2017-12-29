@@ -26,6 +26,17 @@ namespace AcumaticaMX
         public virtual int? InventoryID { get; set; }
 
         #endregion InventoryID
+        
+        #region LineNbr
+
+        public abstract class lineNbr : IBqlField
+        {
+        }
+        [PXDefault]
+        [PXDBInt(IsKey = true)]
+        public virtual int? LineNbr { get; set; }
+
+        #endregion LineNbr
 
         #region LotSerialNbr
 
@@ -33,7 +44,7 @@ namespace AcumaticaMX
         {
         }
         [PXDefault]
-        [PXDBString(15, IsUnicode = true, IsKey = true)]
+        [PXDBString(50, IsUnicode = true, IsKey = true)]
         [PXParent(typeof(Select<PX.Objects.IN.INItemLotSerial,
             Where<PX.Objects.IN.INItemLotSerial.lotSerialNbr,
                 Equal<Current<lotSerialNbr>>>>))]
@@ -47,7 +58,7 @@ namespace AcumaticaMX
         {
         }
 
-        [PXDBString(40, IsUnicode = true)]
+        [PXDBString(255, IsUnicode = true)]
         [PXUIField(DisplayName = Messages.Customs)]
         public virtual string Customs { get; set; }
 
@@ -73,21 +84,10 @@ namespace AcumaticaMX
 
         [PXDBString(40, IsUnicode = true)]
         [PXUIField(DisplayName = Messages.RequestNumber)]
-        [ValidateFields(Messages.ErrorCustoms, typeof(customs), typeof(importDate))]
+        [RequestNumber("Es necesario asignar el numero de pedimento",typeof(requestNbr))]
         public virtual string RequestNbr { get; set; }
 
         #endregion RequestNbr
-
-        #region LineNbr
-
-        public abstract class lineNbr : IBqlField
-        {
-        }
-        [PXDefault]
-        [PXDBInt(IsKey = true)]
-        public virtual int? LineNbr { get; set; }
-
-        #endregion LineNbr
 
         #region ItemSold
 
