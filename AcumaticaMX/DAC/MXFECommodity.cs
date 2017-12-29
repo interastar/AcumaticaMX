@@ -1,58 +1,68 @@
 ﻿using System;
 using PX.Data;
 using PX.Objects.AR;
+using PX.Objects.IN;
 namespace AcumaticaMX
 {
     [Serializable]
     public class MXFECommodity : IBqlTable
     {
-        #region RefNbr
-
-        public abstract class refNbr : IBqlField
-        {
-        }
-        [PXDBString(15, IsKey = true)]
-        [PXParent(typeof(Select<ARTran,
-            Where<ARTran.refNbr,
-                Equal<Current<refNbr>>>>))]
-        [PXDBDefault(typeof(ARTran.refNbr))]
-        public virtual string RefNbr { get; set; }
-
-        #endregion RefNbr
-
         #region DocType
 
         public abstract class docType : IBqlField
         {
         }
-        [PXDBString(3, IsKey = true)]
+
+        [PXDBString(3, IsKey = true, IsFixed = true)]
         [PXDBDefault(typeof(ARTran.tranType))]
         public virtual string DocType { get; set; }
 
         #endregion DocType
 
-        #region InventoryID
+        #region RefNbr
 
-        public abstract class inventoryID : IBqlField
+        public abstract class refNbr : IBqlField
         {
         }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(ARTran.inventoryID))]
-        [PXUIField(DisplayName = Messages.InventoryItem, Enabled = false)]
-        public virtual int? InventoryID { get; set; }
 
-        #endregion InventoryID
+        [PXDBString(15, IsKey = true, IsUnicode = true)]
+        [PXDBDefault(typeof(ARTran.refNbr))]
+        public virtual string RefNbr { get; set; }
+
+        #endregion RefNbr
 
         #region LineNbr
 
         public abstract class lineNbr : IBqlField
         {
         }
+
         [PXDBInt(IsKey = true)]
+        [PXParent(typeof(Select<ARTran,
+            Where<ARTran.refNbr,
+                Equal<Current<refNbr>>,
+                And<ARTran.tranType,
+                    Equal<Current<docType>>,
+                    And<ARTran.lineNbr,
+                        Equal<Current<lineNbr>>>>>>))]
         [PXDBDefault(typeof(ARTran.lineNbr))]
         public virtual int? LineNbr { get; set; }
 
         #endregion LineNbr
+
+
+        #region InventoryID
+
+        public abstract class inventoryID : IBqlField
+        {
+        }
+        [PXDBInt]
+        [PXSelector(typeof(Search<InventoryItem.inventoryID>))]
+        //[PXUIField(DisplayName = Messages.InventoryItem, Enabled = false)]
+        public virtual int? InventoryID { get; set; }
+
+        #endregion InventoryID
+
 
         #region Numero de identificacion
 
@@ -60,6 +70,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(100)]
+        [PXFormula(typeof(Selector<inventoryID, InventoryItem.inventoryCD>))]
         [PXUIField(DisplayName = Messages.NumberID, Enabled = false)]
         public virtual string IdentificationCD { get; set; }
 
@@ -91,8 +102,11 @@ namespace AcumaticaMX
         public abstract class customsUnit : IBqlField
         {
         }
-        [PXDBString(2)]
-        [PXUIField(DisplayName = Messages.CustomsUnit, Enabled = true)]
+        [PXDBString(3)]
+        [PXSelector(typeof(Search<MXFESatMeasureList.measureCD>),
+            SubstituteKey = typeof(MXFESatMeasureList.name),
+            SelectorMode = PXSelectorMode.TextMode)]
+        [PXUIField(DisplayName = Messages.CustomsUnit, Enabled = false)]
         public virtual string CustomsUnit { get; set; }
 
         #endregion Unidad Aduana
@@ -114,7 +128,8 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(4)]
-        [PXUIField(DisplayName = Messages.UsdAmt, Enabled = true)]
+        [PXUIField(DisplayName = Messages.UsdAmt, Enabled = false)]
+        [PXFormula(typeof(Mult<customsQty, customsUnitAmt>))]
         public virtual decimal? UsdAmt { get; set; }
 
         #endregion Valor en Dolares

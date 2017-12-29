@@ -15,16 +15,17 @@ Create Table [dbo].[MXFECommodity]
 	
 	-- Llaves de relación con documento contable (ARRegister en Acumatica)
 	[DocType]				char(3) NOT NULL,
-	[RefNbr]				char(15) NOT NULL,
-	[InventoryID]			int NOT NULL,
+	[RefNbr]				nvarchar(15) NOT NULL,
 	[LineNbr]				int NOT NULL,
 
-	[IdentificationCD]		nvarchar(100) NOT NULL,
-	[TariffFraction]		nvarchar(100) NOT NULL,
-	[CustomsQty]			decimal(25,6) NOT NULL,
-	[CustomsUnit]			nvarchar(2)	  NOT NULL,
-	[CustomsUnitAmt]		decimal(19,4) NOT NULL,
-	[UsdAmt]				decimal(19,4) NOT NULL,
+	
+	[InventoryID]			int NULL,
+	[IdentificationCD]		nvarchar(100) NULL,
+	[TariffFraction]		nvarchar(100) NULL,
+	[CustomsQty]			decimal(25,6) NULL,
+	[CustomsUnit]			nvarchar(3)	  NULL,
+	[CustomsUnitAmt]		decimal(19,4) NULL,
+	[UsdAmt]				decimal(19,4) NULL,
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
 	-- handle concurrency
