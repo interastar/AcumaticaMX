@@ -18,6 +18,7 @@ CREATE TABLE [dbo].[MXBAccountExtension](
 
 	-- extension fields
 	[TaxRegimeID]			[int] NULL DEFAULT ((0)),
+	[Regimen]				[nvarchar](100) NULL,
 	[UseCfdiCD]				[nvarchar](3) NULL,
 	[IsNaturalPerson]		[bit] NULL DEFAULT ((0)),
 	[DefaultOriginAccount]	[nvarchar](30) NULL,
