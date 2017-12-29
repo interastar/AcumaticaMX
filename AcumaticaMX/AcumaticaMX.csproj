@@ -83,7 +83,7 @@
     <Compile Include="DAC\MXFESatUseCFDIList.cs" />
     <Compile Include="DAC\MXFESpecificDescription.cs" />
     <Compile Include="DAC\MXINInventoryItemExtension.cs" />
-    <Compile Include="DAC\MXINInvetoryParts.cs" />
+    <Compile Include="DAC\MXINInventoryParts.cs" />
     <Compile Include="DAC\MXINItemLotSerial.cs" />
     <Compile Include="DAC\MXCESatAccountList.cs" />
     <Compile Include="DAC\MXINTran.cs" />

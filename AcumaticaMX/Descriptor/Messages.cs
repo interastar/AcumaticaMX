@@ -170,6 +170,7 @@ namespace AcumaticaMX
         public const string CustomsUnit = "Unidad Aduana";
         public const string CustomsUnitAmt = "Valor unitario Aduana";
         public const string UsdAmt = "Valor en Dolares";
+        public const string TransferReason = "Motivo de Traslado";
         #endregion Comercio Exterior
 
         #region Acuerdos
