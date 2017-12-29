@@ -2,15 +2,15 @@
     <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFECommodity">
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="DocType" type="Char(3)" />
-  <col name="RefNbr" type="Char(15)" />
-  <col name="InventoryID" type="Int" />
+  <col name="RefNbr" type="NVarChar(15)" />
   <col name="LineNbr" type="Int" />
-  <col name="IdentificationCD" type="NVarChar(100)" />
-  <col name="TariffFraction" type="NVarChar(100)" />
-  <col name="CustomsQty" type="Decimal(25,6)" />
-  <col name="CustomsUnit" type="NVarChar(2)" />
-  <col name="CustomsUnitAmt" type="Decimal(19,4)" />
-  <col name="UsdAmt" type="Decimal(19,4)" />
+  <col name="InventoryID" type="Int" nullable="true" />
+  <col name="IdentificationCD" type="NVarChar(100)" nullable="true" />
+  <col name="TariffFraction" type="NVarChar(100)" nullable="true" />
+  <col name="CustomsQty" type="Decimal(25,6)" nullable="true" />
+  <col name="CustomsUnit" type="NVarChar(3)" nullable="true" />
+  <col name="CustomsUnitAmt" type="Decimal(19,4)" nullable="true" />
+  <col name="UsdAmt" type="Decimal(19,4)" nullable="true" />
   <col name="NoteID" type="UniqueIdentifier" nullable="true" />
   <col name="tstamp" type="Timestamp" />
   <col name="CreatedByID" type="UniqueIdentifier" />
