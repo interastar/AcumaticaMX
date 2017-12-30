@@ -32,9 +32,6 @@ namespace AcumaticaMX
         #endregion TaxRegimeID
 
         #region Regimen
-
-
-
         public abstract class regimen : IBqlField
         {
 
