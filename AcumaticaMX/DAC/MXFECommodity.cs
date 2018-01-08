@@ -58,11 +58,9 @@ namespace AcumaticaMX
         }
         [PXDBInt]
         [PXSelector(typeof(Search<InventoryItem.inventoryID>))]
-        //[PXUIField(DisplayName = Messages.InventoryItem, Enabled = false)]
         public virtual int? InventoryID { get; set; }
 
         #endregion InventoryID
-
 
         #region Numero de identificacion
 
@@ -133,6 +131,17 @@ namespace AcumaticaMX
         public virtual decimal? UsdAmt { get; set; }
 
         #endregion Valor en Dolares
+
+        #region LineCntr
+
+        public abstract class lineCntr : IBqlField
+        {
+        }
+        [PXDBInt]
+        [PXDefault(0)]
+        public virtual int? LineCntr { get; set; }
+
+        #endregion LineCntr
 
         #region audit
 
