@@ -161,6 +161,41 @@ namespace AcumaticaMX
             public const string ReasonFiveLabel = "Envío de mercancías propiedad de terceros";
             public const string ReasonSixLabel = "Otros";
         }
+
+        public static class Incoterm
+        {
+            public const string CFR = "CFR";
+            public const string CIF = "CIF";
+            public const string CPT = "CPT";
+            public const string CIP = "CIP";
+            public const string DAF = "DAF";
+            public const string DAP = "DAP";
+            public const string DAT = "DAT";
+            public const string DES = "DES";
+            public const string DEQ = "DEQ";
+            public const string DDU = "DDU";
+            public const string DDP = "DDP";
+            public const string EXW = "EXW";
+            public const string FCA = "FCA";
+            public const string FAS = "FAS";
+            public const string FOB = "FOB";
+
+            public const string CFRLabel = "COSTE Y FLETE (PUERTO DE DESTINO CONVENIDO).";
+            public const string CIFLabel = "COSTE, SEGURO Y FLETE (PUERTO DE DESTINO CONVENIDO).";
+            public const string CPTLabel = "TRANSPORTE PAGADO HASTA (EL LUGAR DE DESTINO CONVENIDO).";
+            public const string CIPLabel = "TRANSPORTE Y SEGURO PAGADOS HASTA (LUGAR DE DESTINO CONVENIDO).";
+            public const string DAFLabel = "ENTREGADA EN FRONTERA (LUGAR CONVENIDO).";
+            public const string DAPLabel = "ENTREGADA EN LUGAR.";
+            public const string DATLabel = "ENTREGADA EN TERMINAL.";
+            public const string DESLabel = "ENTREGADA SOBRE BUQUE (PUERTO DE DESTINO CONVENIDO).";
+            public const string DEQLabel = "ENTREGADA EN MUELLE (PUERTO DE DESTINO CONVENIDO).";
+            public const string DDULabel = "ENTREGADA DERECHOS NO PAGADOS (LUGAR DE DESTINO CONVENIDO).";
+            public const string DDPLabel = "ENTREGADA DERECHOS PAGADOS (LUGAR DE DESTINO CONVENIDO).";
+            public const string EXWLabel = "EN FABRICA (LUGAR CONVENIDO).";
+            public const string FCALabel = "FRANCO TRANSPORTISTA (LUGAR DESIGNADO).";
+            public const string FASLabel = "FRANCO AL COSTADO DEL BUQUE (PUERTO DE CARGA CONVENIDO).";
+            public const string FOBLabel = "FRANCO A BORDO (PUERTO DE CARGA CONVENIDO).";
+        }
     }
 
     public class Convert

@@ -136,7 +136,46 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(3)]
-        [PXUIField(DisplayName = Messages.Incoterm, Enabled = false)]
+        [PXStringList(
+            new string[]
+            {
+                        Common.Incoterm.CFR,
+                        Common.Incoterm.CIF,
+                        Common.Incoterm.CPT,
+                        Common.Incoterm.CIP,
+                        Common.Incoterm.DAF,
+                        Common.Incoterm.DAP,
+                        Common.Incoterm.DAT,
+                        Common.Incoterm.DES,
+                        Common.Incoterm.DEQ,
+                        Common.Incoterm.DDU,
+                        Common.Incoterm.DDP,
+                        Common.Incoterm.EXW,
+                        Common.Incoterm.FCA,
+                        Common.Incoterm.FAS,
+                        Common.Incoterm.FOB,
+            },
+            new string[]
+            {
+                        Common.Incoterm.CFRLabel,
+                        Common.Incoterm.CIFLabel,
+                        Common.Incoterm.CPTLabel,
+                        Common.Incoterm.CIPLabel,
+                        Common.Incoterm.DAFLabel,
+                        Common.Incoterm.DAPLabel,
+                        Common.Incoterm.DATLabel,
+                        Common.Incoterm.DESLabel,
+                        Common.Incoterm.DEQLabel,
+                        Common.Incoterm.DDULabel,
+                        Common.Incoterm.DDPLabel,
+                        Common.Incoterm.EXWLabel,
+                        Common.Incoterm.FCALabel,
+                        Common.Incoterm.FASLabel,
+                        Common.Incoterm.FOBLabel,
+
+            }
+        )]
+        [PXUIField(DisplayName = Messages.Incoterm, Enabled = true)]
         public virtual string Incoterm { get; set; }
 
         #endregion Incoterm
@@ -190,7 +229,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(40)]
-        [PXUIField(DisplayName = Messages.UsdTotal)]
+        //[PXUIField(DisplayName = Messages.UsdTotal)]
         public virtual string OwnerTaxRegistrationID { get; set; }
 
         #endregion Numero de Registro del Propietario
