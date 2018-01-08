@@ -14,15 +14,16 @@ Create Table [dbo].[MXFESpecificDescription]
 	
 	
 	-- Llaves de relación
-	[RefNbr]				char(15) NOT NULL,
+	[RefNbr]				nvarchar(15) NOT NULL,
 	[DocType]				char(3) NOT NULL,
 	[InventoryID]			int NOT NULL,
 	[CommodityLineNbr]		int NOT NULL,
 	[LineNbr]				int NOT NULL,
 
-	[Brand]					nvarchar(100) NOT NULL,
-	[SubModel]				nvarchar(50) NOT NULL,
-	[SerieNbr]				nvarchar(50) NOT NULL,
+	[Brand]					nvarchar(100) NULL,
+	[Model]					nvarchar(80) NULL,
+	[SubModel]				nvarchar(50) NULL,
+	[SerieNbr]				nvarchar(50) NULL,
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
 	-- handle concurrency

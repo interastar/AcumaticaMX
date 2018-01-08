@@ -1,6 +1,6 @@
 ﻿using System;
 using PX.Data;
-
+using PX.Objects.IN;
 namespace AcumaticaMX
 {
     [Serializable]
@@ -11,7 +11,8 @@ namespace AcumaticaMX
         public abstract class refNbr : IBqlField
         {
         }
-        [PXDBString(15)]
+        [PXDBString(15, IsKey = true)]
+        [PXDBDefault(typeof(MXFECommodity.refNbr))]
         public virtual string RefNbr { get; set; }
 
         #endregion RefNbr
@@ -21,7 +22,8 @@ namespace AcumaticaMX
         public abstract class docType : IBqlField
         {
         }
-        [PXDBString(3)]
+        [PXDBString(3, IsKey = true)]
+        [PXDBDefault(typeof(MXFECommodity.docType))]
         public virtual string DocType { get; set; }
 
         #endregion DocType
@@ -31,7 +33,9 @@ namespace AcumaticaMX
         public abstract class inventoryID : IBqlField
         {
         }
-        [PXDBInt]
+        [PXDBInt(IsKey = true)]
+        [PXDBDefault(typeof(MXFECommodity.inventoryID))]
+        [PXSelector(typeof(Search<InventoryItem.inventoryID>))]
         public virtual int? InventoryID { get; set; }
 
         #endregion InventoryID
@@ -41,17 +45,28 @@ namespace AcumaticaMX
         public abstract class commodityLineNbr : IBqlField
         {
         }
-        [PXDBInt]
+        [PXDBInt(IsKey = true)]
+        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
         public virtual int? CommodityLineNbr { get; set; }
 
         #endregion CommodityLineNbr
 
         #region LineNbr
-
+        [PXParent(typeof(Select<MXFECommodity,
+        Where<MXFECommodity.refNbr,
+            Equal<Current<refNbr>>,
+            And<MXFECommodity.docType,
+                Equal<Current<docType>>,
+                And<MXFECommodity.inventoryID,
+                    Equal<Current<inventoryID>>,
+                    And<MXFECommodity.lineNbr,
+                        Equal<Current<lineNbr>>>>>>>))]
+        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
         public abstract class lineNbr : IBqlField
         {
         }
-        [PXDBIdentity]
+        [PXLineNbr(typeof(MXFECommodity.lineCntr))]
+        [PXDBInt(IsKey = true)]
         public virtual int? LineNbr { get; set; }
 
         #endregion LineNbr
@@ -61,7 +76,7 @@ namespace AcumaticaMX
         public abstract class brand : IBqlField { }
 
         [PXDBString(35)]
-        //[PXUIField(DisplayName = Messages.Brand)]
+        [PXUIField(DisplayName = Messages.Brand)]
         public virtual string Brand { get; set; }
 
         #endregion Marca
@@ -70,7 +85,7 @@ namespace AcumaticaMX
 
         public abstract class model : IBqlField { }
         [PXDBString(80)]
-        //[PXUIField(DisplayName = Messages.Model)]
+        [PXUIField(DisplayName = Messages.Model)]
         public virtual string Model { get; set; }
 
         #endregion Modelo
@@ -79,7 +94,7 @@ namespace AcumaticaMX
 
         public abstract class subModel : IBqlField { }
         [PXDBString(50)]
-        //[PXUIField(DisplayName = Messages.Model)]
+        [PXUIField(DisplayName = Messages.SubModel)]
         public virtual string SubModel { get; set; }
 
         #endregion SubModelo
@@ -88,7 +103,7 @@ namespace AcumaticaMX
 
         public abstract class serieNbr : IBqlField { }
         [PXDBString(50)]
-        //[PXUIField(DisplayName = Messages.Model)]
+        [PXUIField(DisplayName = Messages.SerieNbr)]
         public virtual string SerieNbr { get; set; }
 
         #endregion Numero de Serie
