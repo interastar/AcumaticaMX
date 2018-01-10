@@ -79,6 +79,13 @@ namespace AcumaticaMX
 
         #endregion Catalogo de Códigos Postales
 
+        #region Catalogo de Colonias
+
+        //*** ZipCodeList
+        public const string NeighborhoodCD = "Colonia";
+
+        #endregion Catalogo de Colonias
+
         #region Catalogo de Productos y Sevicios
         public const string ProdServCode = "Clave Producto Servicio";
         public const string ProdServIVA = "Incluir IVA trasladado";
@@ -154,6 +161,7 @@ namespace AcumaticaMX
         #region Comercio Exterior
         public const string OperationType = "Tipo de Operación";
         public const string RequestKey = "Clave de Pedimento";
+        public const string IsOriginCertificateNbr = "Funge como certificado de Origen";
         public const string OriginCertificateNbr = "Número de Certificado de Origen";
         public const string TrustworthyExporterNbr = "Número de Exportador Confiable";
         public const string Incoterm = "Incoterm";

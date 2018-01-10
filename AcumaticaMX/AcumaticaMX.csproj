@@ -66,6 +66,9 @@
     <Compile Include="DAC\MXFECurrency.cs" />
     <Compile Include="DAC\MXFEExternalTrade.cs" />
     <Compile Include="DAC\MXFESatIncotermList.cs" />
+    <Compile Include="DAC\MXFESatLocationList.cs" />
+    <Compile Include="DAC\MXFESatNeighborhoodList.cs" />
+    <Compile Include="DAC\MXFESatMunicipalityList.cs" />
     <Compile Include="DAC\MXINInventoryKits.cs" />
     <Compile Include="DAC\MXFEPayments.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
@@ -130,7 +133,9 @@
     <Content Include="Sql\MXFESatCurrencyList.sql" />
     <Content Include="Sql\MXFESatCustomsList.sql" />
     <Content Include="Sql\MXFESatCustomsRequestNumberList.sql" />
+    <Content Include="Sql\MXFESatLocationList.sql" />
     <Content Include="Sql\MXFESatMeasureList.sql" />
+    <Content Include="Sql\MXFESatNeighborhoodList.sql" />
     <Content Include="Sql\MXFESatPatentList.sql" />
     <Content Include="Sql\MXFESatPaymentMethodList.sql" />
     <Content Include="Sql\MXFESatProductServiceList.sql" />
