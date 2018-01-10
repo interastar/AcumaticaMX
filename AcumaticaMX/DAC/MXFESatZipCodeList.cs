@@ -5,19 +5,13 @@ namespace AcumaticaMX
 {
     public class MXFESatZipCodeList : IBqlTable
     {
-        public abstract class zipCodeID: IBqlField
-        {
-        }
-        [PXDBIdentity]
-        public virtual int? ZipCodeID { get; set; }
-
         public abstract class zipCodeCD : IBqlField
         {
         }
         [PXDBString(5, IsKey = true, IsUnicode = true, InputMask = ">CCCCC")]
         [PXDefault]
         [PXUIField(DisplayName = Messages.ZipCodeCD)]
-        public virtual int? ZipCodeCD { get; set; }
+        public virtual string ZipCodeCD { get; set; }
 
         public abstract class state : IBqlField
         {
@@ -26,20 +20,6 @@ namespace AcumaticaMX
         [PXDefault]
         [PXUIField(DisplayName = Messages.State)]
         public virtual string State { get; set; }
-
-        public abstract class municipality : IBqlField
-        {
-        }
-        [PXDBString(3, IsUnicode = true, InputMask = ">CCC")]
-        [PXUIField(DisplayName = Messages.Municipality)]
-        public virtual string Municipality { get; set; }
-
-        public abstract class town : IBqlField
-        {
-        }
-        [PXDBString(3, IsUnicode = true, InputMask = ">CCC")]
-        [PXUIField(DisplayName = Messages.Town)]
-        public virtual string Town { get; set; }
 
         #region audit
 

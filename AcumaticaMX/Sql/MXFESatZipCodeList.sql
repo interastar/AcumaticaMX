@@ -7,12 +7,9 @@ Create Table [dbo].[MXFESatZipCodeList]
 	[CompanyID]			int NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[ZipCodeID]	        int IDENTITY(1,1) NOT NULL,
 	[ZipCodeCD]			nvarchar(5) NOT NULL,
 
 	[State]				nvarchar(3) NOT NULL,
-	[Municipality]		nvarchar(3) NULL,
-	[Town]				nvarchar(3) NULL,
 
 	-- handle concurrency
 	[tstamp]			timestamp NOT NULL,
