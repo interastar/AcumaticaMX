@@ -104,6 +104,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBBool]
+        [PXUIField(DisplayName = Messages.IsOriginCertificateNbr)]
         public virtual bool? IsOriginCertificate { get; set; }
 
         #endregion CertificadoOrigen
