@@ -1,0 +1,45 @@
+﻿<Sql TableName="AlterAddressAndContact" CustomScript="#CDATA">
+    <CDATA name="CustomScript"><![CDATA[--Address
+GO
+ALTER TABLE [dbo].[Address] ALTER COLUMN [AddressLine1] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[Address] ALTER COLUMN [AddressLine2] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[Address] ALTER COLUMN [AddressLine3] NVARCHAR (250) NULL;
+
+--APAddress
+GO
+ALTER TABLE [dbo].[APAddress] ALTER COLUMN [AddressLine1] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[APAddress] ALTER COLUMN [AddressLine2] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[APAddress] ALTER COLUMN [AddressLine3] NVARCHAR (250) NULL;
+
+--ARAddress
+GO
+ALTER TABLE [dbo].[ARAddress] ALTER COLUMN [AddressLine1] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[ARAddress] ALTER COLUMN [AddressLine2] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[ARAddress] ALTER COLUMN [AddressLine3] NVARCHAR (250) NULL;
+
+-- Contact
+GO
+ALTER TABLE [dbo].[Contact] ALTER COLUMN [LastName] NVARCHAR (200) NULL;
+
+--POAddress
+GO
+ALTER TABLE [dbo].[POAddress] ALTER COLUMN [AddressLine1] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[POAddress] ALTER COLUMN [AddressLine2] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[POAddress] ALTER COLUMN [AddressLine3] NVARCHAR (250) NULL;
+
+--SOAddress
+GO
+ALTER TABLE [dbo].[SOAddress] ALTER COLUMN [AddressLine1] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[SOAddress] ALTER COLUMN [AddressLine2] NVARCHAR (250) NULL;
+
+ALTER TABLE [dbo].[SOAddress] ALTER COLUMN [AddressLine3] NVARCHAR (250) NULL;]]></CDATA>
+</Sql>
