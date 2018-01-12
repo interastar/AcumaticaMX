@@ -24,7 +24,6 @@
   <col name="LastModifiedDateTime" type="DateTime" />
   <col name="RevisionID" type="Int" nullable="true" />
   <col name="NoteID" type="UniqueIdentifier" nullable="true" />
-  <col name="UsrTipoOperDiot" type="NVarChar(3)" nullable="true" />
   <index name="Address_BAccountID">
     <col name="CompanyID" />
     <col name="BAccountID" />

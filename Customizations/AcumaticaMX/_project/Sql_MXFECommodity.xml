@@ -4,6 +4,7 @@
   <col name="DocType" type="Char(3)" />
   <col name="RefNbr" type="NVarChar(15)" />
   <col name="LineNbr" type="Int" />
+  <col name="LineCntr" type="Int" />
   <col name="InventoryID" type="Int" nullable="true" />
   <col name="IdentificationCD" type="NVarChar(100)" nullable="true" />
   <col name="TariffFraction" type="NVarChar(100)" nullable="true" />
