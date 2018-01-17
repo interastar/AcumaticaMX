@@ -122,6 +122,7 @@
     <Content Include="Sql\MXARCustomsInformation.sql" />
     <Content Include="Sql\MXCSCountryExtension.sql" />
     <Content Include="Sql\MXCSShipTermsExtension.sql" />
+    <Content Include="Sql\MXCSStateExtension.sql" />
     <Content Include="Sql\MXFEAgreement.sql" />
     <Content Include="Sql\MXFEAgreementItem.sql" />
     <Content Include="Sql\MXFECommodity.sql" />
