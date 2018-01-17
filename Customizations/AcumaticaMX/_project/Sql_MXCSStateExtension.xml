@@ -1,0 +1,8 @@
+﻿<Sql TableName="MXCSStateExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXCSStateExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="CountryID" type="NVarChar(2)" default="Zero" />
+  <col name="StateID" type="NVarChar(50)" nullable="true" />
+  <col name="StateCD" type="NVarChar(3)" nullable="true" />
+</table>]]></CDATA>
+</Sql>
