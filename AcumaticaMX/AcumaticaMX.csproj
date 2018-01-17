@@ -62,6 +62,7 @@
     <Compile Include="DAC\MXCSCountryExtension.cs" />
     <Compile Include="DAC\MXCSShipTermsExtension.cs" />
     <Compile Include="DAC\MXCSStateExtension.cs" />
+    <Compile Include="DAC\MXFEAddressed.cs" />
     <Compile Include="DAC\MXFEAgreement.cs" />
     <Compile Include="DAC\MXFEAgreementItem.cs" />
     <Compile Include="DAC\MXFECommodity.cs" />
@@ -123,6 +124,7 @@
     <Content Include="Sql\MXCSCountryExtension.sql" />
     <Content Include="Sql\MXCSShipTermsExtension.sql" />
     <Content Include="Sql\MXCSStateExtension.sql" />
+    <Content Include="Sql\MXFEAddressed.sql" />
     <Content Include="Sql\MXFEAgreement.sql" />
     <Content Include="Sql\MXFEAgreementItem.sql" />
     <Content Include="Sql\MXFECommodity.sql" />

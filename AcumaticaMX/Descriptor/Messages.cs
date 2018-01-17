@@ -70,15 +70,6 @@ namespace AcumaticaMX
 
         #endregion Catalogo de Cuentas
 
-        #region Catalogo de Códigos Postales
-
-        //*** ZipCodeList
-        public const string ZipCodeCD = "Código Postal";
-        public const string State = "Estado";
-        public const string Town = "Localidad";
-
-        #endregion Catalogo de Códigos Postales
-
         #region Catalogo de Colonias
 
         //*** ZipCodeList
@@ -145,6 +136,12 @@ namespace AcumaticaMX
         public const string RefNbr = "No. Referencia";
         public const string Customer = "Cliente";
         public const string InventoryItem = "InventoryItem";
+        public const string ZipCodeCD = "Código Postal";
+        public const string State = "Estado";
+        public const string Town = "Localidad";
+        public const string Street = "Calle";
+        public const string OutdoorNumber = "Numero Exterior";
+        public const string IndoorNumber = "Numero Interior";
         #endregion
 
         #region Catalogo de Monedas
@@ -174,8 +171,6 @@ namespace AcumaticaMX
         public const string UsdTotal = "Total en Dolares";
         public const string OwnerTaxRegistrationID = "Número de registro del Propietario";
         public const string OwnerFiscalAddress = "Dirección Fiscal del Propietario";
-        public const string ReceiverTaxRegistrationID = "Número de registro del Destinatario";
-        public const string ReceiverName = "Nombre del Destinatario";
         public const string NumberID = "No. Identificación";
         public const string TarrifFraction = "Fracción Arancelaría";
         public const string CustomsQty = "Cantidad Aduana";
@@ -188,6 +183,12 @@ namespace AcumaticaMX
         public const string SubModel = "SubModelo";
         public const string SerieNbr = "Numero de Serie";
         #endregion Comercio Exterior
+
+        #region Addressed
+        public const string HasAddressed = "El destinatario es diferente al receptor del cfdi";
+        public const string ReceiverTaxRegistrationID = "Número de registro del Destinatario";
+        public const string ReceiverName = "Nombre del Destinatario";
+        #endregion Addressed
 
         #region Acuerdos
         public const string AgreemenName = "Nombre del acuerdo";
