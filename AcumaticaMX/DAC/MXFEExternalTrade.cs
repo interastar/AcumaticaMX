@@ -245,28 +245,6 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.UsdTotal)]
         #endregion Residencia Fiscal del Propietario
 
-        #region Numero de Registro  del Destinatario
-
-        public abstract class receiverTaxRegistrationID : IBqlField
-        {
-        }
-        [PXDBString(40)]
-        [PXUIField(DisplayName = Messages.ReceiverTaxRegistrationID)]
-        public virtual string ReceiverTaxRegistrationID { get; set; }
-
-        #endregion Numero de Registro del Destinatario
-
-        #region Nombre del Destinatario
-
-        public abstract class receiverName : IBqlField
-        {
-        }
-        [PXDBString(40)]
-        [PXUIField(DisplayName = Messages.ReceiverName)]
-        public virtual string ReceiverName { get; set; }
-
-        #endregion Nombre del Destinatario
-
         #region audit
 
         #region NoteID
