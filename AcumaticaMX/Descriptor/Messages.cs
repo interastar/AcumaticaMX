@@ -128,6 +128,10 @@ namespace AcumaticaMX
         public const string IncotermCD = "INCOTERM";
         #endregion
 
+        #region Catalogo de Paises
+        public const string Country = "Pais";
+        #endregion
+
         #region Common
         public const string ValidityStartDate = "Inicio Vigencia";
         public const string ValidityEndDate = "Fin Vigencia";
