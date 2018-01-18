@@ -13,11 +13,12 @@ CREATE TABLE [dbo].[MXTXTaxExtension](
 	-- Campo de soporte multiempresa
 	[CompanyID]			[int] NOT NULL DEFAULT ((0)),
 
-	-- Llaves de relacion del Documento de Recepcion y la Linea
+	-- Llave de la tabla original
 	[TaxID]				[nvarchar] (30)	NOT NULL,
 
-	-- Datos de Informacion Aduanera
+	-- Impuesto SAT
 	[SatTax]			[nvarchar](4) NOT NULL,
+	[Exempt]			[bit] NOT NULL DEFAULT ((0)),
 
 	CONSTRAINT [MXTXTaxExtension_PK] PRIMARY KEY CLUSTERED 
 	(
