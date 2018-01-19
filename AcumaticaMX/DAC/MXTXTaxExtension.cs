@@ -7,6 +7,8 @@ namespace AcumaticaMX
     [PXTable(typeof(Tax.taxID), IsOptional = true)]
     public class MXTXTaxExtension : PXCacheExtension<Tax>
     {
+        #region Sat Tax
+
         public abstract class satTax : IBqlField
         {
         }
@@ -29,5 +31,20 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.Tax, Enabled = true)]
         [PXDefault(Common.Tax.IVA)]
         public virtual string SatTax { get; set; }
+
+        #endregion
+
+        #region Exempt
+
+        public abstract class exempt : PX.Data.IBqlField
+        {
+        }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = Messages.Exempt)]
+        public virtual bool? Exempt { get; set; }
+
+        #endregion Exempt
     }
 }

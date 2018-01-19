@@ -7,5 +7,6 @@
   <col name="ProductServiceCD" type="NVarChar(8)" nullable="true" />
   <col name="MeasureCD" type="NVarChar(3)" nullable="true" />
   <col name="MeasureName" type="NVarChar(1000)" nullable="true" />
+  <col name="DescriptionBackUp" type="NVarChar(1000)" nullable="true" />
 </table>]]></CDATA>
 </Sql>
