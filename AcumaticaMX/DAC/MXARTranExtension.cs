@@ -24,12 +24,20 @@ namespace AcumaticaMX
         }
         [PXDBString]
         public virtual string MeasureCD { get; set; }
-
+        #region MeasureName
         public abstract class measureName : IBqlField
         {
         }
         [PXDBString]
-        //[PXFormula(typeof(Selector<measureCD, MXFESatMeasureList.name>))]
         public virtual string MeasureName { get; set; }
+        #endregion MeasureName
+
+        #region DescriptionBackUp
+        public abstract class descriptionBackUp : IBqlField
+        {
+        }
+        [PXDBString(1000)]
+        public virtual string DescriptionBackUp { get; set; }
+        #endregion DescriptionBackUp
     }
 }

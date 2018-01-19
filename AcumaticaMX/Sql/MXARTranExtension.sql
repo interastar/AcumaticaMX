@@ -22,4 +22,6 @@ CREATE TABLE [dbo].[MXARTranExtension](
 	[ProductServiceCD]		[nvarchar](8) NULL,
 	[MeasureCD]				[nvarchar](3) NULL,
 	[MeasureName]			[nvarchar](1000) NULL,
+	[DescriptionBackUp]		[nvarchar](1000) NULL,
+
 )
