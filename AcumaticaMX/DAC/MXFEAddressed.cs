@@ -50,7 +50,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(40)]
-        [PXUIField(DisplayName = Messages.ReceiverTaxRegistrationID)]
+        [PXUIField(DisplayName = Messages.ReceiverTaxRegistrationID, Enabled = false)]
         public virtual string ReceiverTaxRegistrationID { get; set; }
 
         #endregion Numero de Registro del Destinatario
@@ -61,7 +61,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(300)]
-        [PXUIField(DisplayName = Messages.ReceiverName)]
+        [PXUIField(DisplayName = Messages.ReceiverName, Enabled = false)]
         public virtual string ReceiverName { get; set; }
 
         #endregion Nombre del Destinatario
@@ -72,7 +72,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(100)]
-        [PXUIField(DisplayName = Messages.Street)]
+        [PXUIField(DisplayName = Messages.Street, Enabled = false)]
         public virtual string Street { get; set; }
 
         #endregion Street
@@ -83,7 +83,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(55)]
-        [PXUIField(DisplayName = Messages.OutdoorNumber)]
+        [PXUIField(DisplayName = Messages.OutdoorNumber, Enabled = false)]
         public virtual string OutdoorNumber { get; set; }
 
         #endregion OutdoorNumber
@@ -94,7 +94,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(55)]
-        [PXUIField(DisplayName = Messages.IndoorNumber)]
+        [PXUIField(DisplayName = Messages.IndoorNumber, Enabled = false)]
         public virtual string IndoorNumber { get; set; }
 
         #endregion IndoorNumber
@@ -105,7 +105,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(120)]
-        [PXUIField(DisplayName = Messages.NeighborhoodCD)]
+        [PXUIField(DisplayName = Messages.NeighborhoodCD, Enabled = false)]
         public virtual string Neighborhood { get; set; }
 
         #endregion Neighborhood
@@ -116,7 +116,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(120)]
-        [PXUIField(DisplayName = Messages.Town)]
+        [PXUIField(DisplayName = Messages.Town, Enabled = false)]
         public virtual string Location { get; set; }
 
         #endregion Location
@@ -127,7 +127,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(120)]
-        [PXUIField(DisplayName = Messages.Municipality)]
+        [PXUIField(DisplayName = Messages.Municipality, Enabled = false)]
         public virtual string Municipality { get; set; }
 
         #endregion Municipality
@@ -138,7 +138,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(30)]
-        [PXUIField(DisplayName = Messages.State)]
+        [PXUIField(DisplayName = Messages.State, Enabled = false)]
         public virtual string State { get; set; }
 
         #endregion State
@@ -152,7 +152,7 @@ namespace AcumaticaMX
         [PXSelector(typeof(Search<MXFESatCountryList.countryCD>),
             typeof(MXFESatCountryList.name),
             DescriptionField = typeof(MXFESatCountryList.name))]
-        [PXUIField(DisplayName = Messages.Country)]
+        [PXUIField(DisplayName = Messages.Country, Enabled = false)]
         public virtual string Country { get; set; }
 
         #endregion Country
@@ -163,7 +163,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(12)]
-        [PXUIField(DisplayName = Messages.ZipCodeCD)]
+        [PXUIField(DisplayName = Messages.ZipCodeCD, Enabled = false)]
         public virtual string ZipCode { get; set; }
 
         #endregion ZipCode
