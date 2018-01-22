@@ -28,8 +28,6 @@ Create Table [dbo].[MXFEExternalTrade]
 	[UsdTotal]					decimal(19, 4) NULL,
 	[OwnerTaxRegistrationID]	nvarchar(40) NULL,
 	[OwnerFiscalAddress]		nvarchar(3) NULL,
-	[ReceiverTaxRegistrationID]	nvarchar(40) NULL,
-	[ReceiverName]				nvarchar(40) NULL,
 	-- Notes support
 	[NoteID]					uniqueidentifier NULL,
 	-- handle concurrency

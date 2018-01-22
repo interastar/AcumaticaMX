@@ -68,7 +68,7 @@ namespace AcumaticaMX
                         Common.TransferReason.ReasonSixLabel,
             }
         )]
-        [PXUIField(DisplayName = Messages.TransferReason)]
+        [PXUIField(DisplayName = Messages.TransferReason, Enabled = false)]
         [PXDBString(2)]
         public virtual string TransferReason { get; set; }
 
