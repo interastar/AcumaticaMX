@@ -30,7 +30,7 @@ namespace AcumaticaMX
         public abstract class paymentForm : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayForm.One)]
+        //[PXDefault(AcumaticaMX.Common.PayForm.One)]
         [PXStringList(
             new string[]
             {
@@ -53,7 +53,7 @@ namespace AcumaticaMX
         public abstract class paymentMethod : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+        //[PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
         [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
             typeof(MXFESatPaymentMethodList.description),
             DescriptionField = typeof(MXFESatPaymentMethodList.description))]
@@ -187,8 +187,8 @@ namespace AcumaticaMX
         public abstract class stampStatus : IBqlField { }
 
         [PXString(1, IsFixed = true)]
-        [PXDefault(CfdiStatus.Clean)]
-        [PXUnboundDefault(CfdiStatus.Clean)]
+        //[PXDefault(CfdiStatus.Clean)]
+        //[PXUnboundDefault(CfdiStatus.Clean)]
         [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
         [CfdiStatus.List()]
         [SetCfdiStatus()]
@@ -201,7 +201,7 @@ namespace AcumaticaMX
         public abstract class notStampable : IBqlField { }
 
         [PXBool()]
-        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        //[PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
         [PXUIField(DisplayName = "No Timbrar", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
         [StampableStatus(typeof(notStampable), typeof(stampStatus), typeof(uuid))]
         public virtual bool? NotStampable { get; set; }
@@ -254,7 +254,7 @@ namespace AcumaticaMX
         public abstract class documentType : IBqlField { }
 
         [PXDBString(1, IsFixed = false, IsUnicode = true)]
-        [PXDefault(Common.DocumentType.Cfdi)]
+        //[PXDefault(Common.DocumentType.Cfdi)]
         [PXStringList(
             new string[]
             {

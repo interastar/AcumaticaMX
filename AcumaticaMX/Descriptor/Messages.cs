@@ -153,6 +153,7 @@ namespace AcumaticaMX
 
         #region Impuestos
         public const string Tax = "Sat Tipo de Impuesto";
+        public const string Exempt = "Exento";
         #endregion
 
         #region Complemento de Pagos
