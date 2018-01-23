@@ -90,7 +90,7 @@ namespace AcumaticaMX
         public abstract class customsQty : IBqlField
         {
         }
-        [PXDBDecimal]
+        [PXDBDecimal(3)]
         public virtual decimal? CustomsQty { get; set; }
 
         #endregion Cantidad Aduana
