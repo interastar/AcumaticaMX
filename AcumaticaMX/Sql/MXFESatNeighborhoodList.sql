@@ -7,7 +7,7 @@ Create Table [dbo].[MXFESatNeighborhoodList]
 	[CompanyID]			int NOT NULL DEFAULT ((0)),
 
 	-- surrogate/natural key
-	[NeighborhoodCD]	nvarchar(5) NOT NULL,
+	[NeighborhoodCD]	nvarchar(4) NOT NULL,
 	[ZipCodeCD]			nvarchar(5) NOT NULL,
 
 	[Name]				nvarchar(500) NULL,

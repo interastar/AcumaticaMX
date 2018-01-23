@@ -8,7 +8,7 @@ namespace AcumaticaMX
         public abstract class neighborhoodCD : IBqlField
         {
         }
-        [PXDBString(5, IsKey = true, IsFixed = true)]
+        [PXDBString(4, IsKey = true, IsFixed = true)]
         [PXDefault]
         [PXUIField(DisplayName = Messages.NeighborhoodCD)]
         public virtual string NeighborhoodCD { get; set; }
