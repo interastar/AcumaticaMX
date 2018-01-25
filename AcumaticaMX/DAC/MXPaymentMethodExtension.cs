@@ -8,19 +8,6 @@ namespace AcumaticaMX
     [PXTable(typeof(PaymentMethod.paymentMethodID), IsOptional = true)]
     public class MXPaymentMethodExtension : PXCacheExtension<PaymentMethod>
     {
-        #region PaymentMethodID
-
-        public abstract class paymentMethodID : PX.Data.IBqlField
-        {
-        }
-
-        [PXDBString(10, IsUnicode = true, IsKey = true)]
-        [PXDefault()]
-        [PXSelector(typeof(Search<PaymentMethod.paymentMethodID>))]
-        public virtual string PaymentMethodID { set; get; }
-
-        #endregion PaymentMethodID
-
         #region SatPaymentMethod
 
         public abstract class satPaymentMethod : IBqlField
