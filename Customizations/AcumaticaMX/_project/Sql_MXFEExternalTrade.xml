@@ -17,8 +17,6 @@
   <col name="UsdTotal" type="Decimal(19,4)" nullable="true" />
   <col name="OwnerTaxRegistrationID" type="NVarChar(40)" nullable="true" />
   <col name="OwnerFiscalAddress" type="NVarChar(3)" nullable="true" />
-  <col name="ReceiverTaxRegistrationID" type="NVarChar(40)" nullable="true" />
-  <col name="ReceiverName" type="NVarChar(40)" nullable="true" />
   <col name="NoteID" type="UniqueIdentifier" nullable="true" />
   <col name="tstamp" type="Timestamp" />
   <col name="CreatedByID" type="UniqueIdentifier" />

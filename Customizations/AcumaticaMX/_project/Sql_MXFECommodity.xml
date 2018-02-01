@@ -7,7 +7,7 @@
   <col name="LineCntr" type="Int" />
   <col name="InventoryID" type="Int" nullable="true" />
   <col name="IdentificationCD" type="NVarChar(100)" nullable="true" />
-  <col name="TariffFraction" type="NVarChar(100)" nullable="true" />
+  <col name="TariffFraction" type="NVarChar(8)" nullable="true" />
   <col name="CustomsQty" type="Decimal(25,6)" nullable="true" />
   <col name="CustomsUnit" type="NVarChar(3)" nullable="true" />
   <col name="CustomsUnitAmt" type="Decimal(19,4)" nullable="true" />
