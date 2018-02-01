@@ -21,7 +21,7 @@ Create Table [dbo].[MXFECommodity]
 	[LineCntr]				int NOT NULL,
 	[InventoryID]			int NULL,
 	[IdentificationCD]		nvarchar(100) NULL,
-	[TariffFraction]		nvarchar(100) NULL,
+	[TariffFraction]		nvarchar(8) NULL,
 	[CustomsQty]			decimal(25,6) NULL,
 	[CustomsUnit]			nvarchar(3)	  NULL,
 	[CustomsUnitAmt]		decimal(19,4) NULL,

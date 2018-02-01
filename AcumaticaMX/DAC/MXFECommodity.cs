@@ -50,7 +50,6 @@ namespace AcumaticaMX
 
         #endregion LineNbr
 
-
         #region InventoryID
 
         public abstract class inventoryID : IBqlField
@@ -79,7 +78,11 @@ namespace AcumaticaMX
         public abstract class tariffFraction : IBqlField
         {
         }
-        [PXDBString(100)]
+        [PXDBString(8)]
+        [PXSelector(
+            typeof(Search<MXFESatTariffFractionList.tariffFractionCD>),
+            typeof(MXFESatTariffFractionList.description),
+            DescriptionField = typeof(MXFESatTariffFractionList.description))]
         [PXUIField(DisplayName = Messages.TarrifFraction, Enabled = true)]
         public virtual string TariffFraction { get; set; }
 
@@ -101,9 +104,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(3)]
-        [PXSelector(typeof(Search<MXFESatMeasureList.measureCD>),
-            SubstituteKey = typeof(MXFESatMeasureList.name),
-            SelectorMode = PXSelectorMode.TextMode)]
+        [PXFormula(typeof(Selector<tariffFraction, MXFESatTariffFractionList.uOM>))]
         [PXUIField(DisplayName = Messages.CustomsUnit, Enabled = false)]
         public virtual string CustomsUnit { get; set; }
 
