@@ -123,6 +123,12 @@ namespace AcumaticaMX
         public const string Country = "Pais";
         #endregion
 
+        #region Catalogo de Fraccion Arancelaria
+        public const string TariffFraction = "Fraccion Arancelaria";
+        public const string TaxImp = "Impuesto Imp";
+        public const string TaxExp = "Impuesto Exp";
+        #endregion Catalogo de Fraccion Arancelaria
+
         #region Common
         public const string ValidityStartDate = "Inicio Vigencia";
         public const string ValidityEndDate = "Fin Vigencia";

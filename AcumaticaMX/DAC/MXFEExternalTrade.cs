@@ -81,7 +81,7 @@ namespace AcumaticaMX
         }
         [PXDBInt]
         [PXDefault(2)]
-        [PXUIField( DisplayName = Messages.OperationType, Enabled = false )]
+        [PXUIField(DisplayName = Messages.OperationType, Enabled = false)]
         public virtual int? OperationType { get; set; }
 
         #endregion TipoOperacion
@@ -104,7 +104,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBBool]
-        [PXUIField(DisplayName = Messages.IsOriginCertificateNbr)]
+        [PXUIField(DisplayName = Messages.IsOriginCertificateNbr, Enabled = false)]
         public virtual bool? IsOriginCertificate { get; set; }
 
         #endregion CertificadoOrigen
@@ -115,7 +115,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(40)]
-        [PXUIField(DisplayName = Messages.OriginCertificateNbr)]
+        [PXUIField(DisplayName = Messages.OriginCertificateNbr, Enabled = false)]
         public virtual string OriginCertificateNbr { get; set; }
 
         #endregion Numero de Certificado de Origen
@@ -126,7 +126,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.TrustworthyExporterNbr)]
+        [PXUIField(DisplayName = Messages.TrustworthyExporterNbr, Enabled = false)]
         public virtual string TrustworthyExporterNbr { get; set; }
 
         #endregion Numero de Exportador Confiable
@@ -176,7 +176,7 @@ namespace AcumaticaMX
 
             }
         )]
-        [PXUIField(DisplayName = Messages.Incoterm, Enabled = true)]
+        [PXUIField(DisplayName = Messages.Incoterm, Enabled = false)]
         public virtual string Incoterm { get; set; }
 
         #endregion Incoterm
@@ -187,7 +187,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBBool]
-        [PXUIField(DisplayName = Messages.Subdivision)]
+        [PXUIField(DisplayName = Messages.Subdivision, Enabled = false)]
         public virtual bool? HasSubdivision { get; set; }
 
         #endregion Subdivision
@@ -198,7 +198,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(300)]
-        [PXUIField(DisplayName = Messages.Description)]
+        [PXUIField(DisplayName = Messages.Description, Enabled = false)]
         public virtual string Description { get; set; }
 
         #endregion Observaciones
@@ -219,7 +219,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(4)]
-        [PXUIField(DisplayName = Messages.UsdTotal)]
+        [PXUIField(DisplayName = Messages.UsdTotal, Enabled = false)]
         public virtual decimal? UsdTotal { get; set; }
 
         #endregion Total USD
