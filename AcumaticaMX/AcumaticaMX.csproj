@@ -74,6 +74,7 @@
     <Compile Include="DAC\MXFESatNeighborhoodList.cs" />
     <Compile Include="DAC\MXFESatMunicipalityList.cs" />
     <Compile Include="DAC\MXFESatStateList.cs" />
+    <Compile Include="DAC\MXFESatTariffFractionList.cs" />
     <Compile Include="DAC\MXINInventoryKits.cs" />
     <Compile Include="DAC\MXFEPayments.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
@@ -149,6 +150,7 @@
     <Content Include="Sql\MXFESatPaymentMethodList.sql" />
     <Content Include="Sql\MXFESatProductServiceList.sql" />
     <Content Include="Sql\MXFESatStateList.sql" />
+    <Content Include="Sql\MXFESatTariffFractionList.sql" />
     <Content Include="Sql\MXFESatTaxRegimeList.sql" />
     <Content Include="Sql\MXFESatUseCFDIList.sql" />
     <Content Include="Sql\MXFESpecificDescription.sql" />
