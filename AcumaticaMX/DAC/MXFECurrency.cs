@@ -12,6 +12,7 @@ namespace AcumaticaMX
         {
         }
         [PXSelector(typeof(Search<Currency.curyID>))]
+        [PXUIField(DisplayName = Messages.CuryID)]
         [PXDBString(5, IsKey = true)]
         public virtual string CuryID { get; set; }
 
@@ -26,6 +27,7 @@ namespace AcumaticaMX
             typeof(MXFESatCurrencyList.description),
             DescriptionField = typeof(MXFESatCurrencyList.description))]
         [PXDBString(3)]
+        [PXUIField(DisplayName = Messages.SatCuryID)]
         public virtual string CurrencyCD { get; set; }
 
         #endregion CurrencyCD
