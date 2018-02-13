@@ -9,7 +9,7 @@ namespace AcumaticaMX
         public abstract class stateCD : IBqlField
         {
         }
-        [PXDBString(3, IsKey = true, IsUnicode = true, InputMask = ">CCC")]
+        [PXDBString(IsKey = true, IsUnicode = true)]
         [PXUIField(DisplayName = Messages.State)]
         public virtual string StateCD { get; set; }
         #endregion State
