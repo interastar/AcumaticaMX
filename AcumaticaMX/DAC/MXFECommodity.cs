@@ -116,7 +116,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(4)]
-        [PXUIField(DisplayName = Messages.CustomsUnitAmt, Enabled = true)]
+        [PXUIField(DisplayName = Messages.CustomsUnitAmt, Enabled = false)]
         public virtual decimal? CustomsUnitAmt { get; set; }
 
         #endregion Valor Unitario de Aduana
