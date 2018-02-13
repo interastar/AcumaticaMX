@@ -66,6 +66,20 @@ namespace AcumaticaMX
 
         #endregion Nombre del Destinatario
 
+        #region Country
+
+        public abstract class country : IBqlField
+        {
+        }
+        [PXDBString(3)]
+        [PXSelector(typeof(Search<MXFESatCountryList.countryCD>),
+            typeof(MXFESatCountryList.name),
+            DescriptionField = typeof(MXFESatCountryList.name))]
+        [PXUIField(DisplayName = Messages.Country, Required = true, Enabled = false)]
+        public virtual string Country { get; set; }
+
+        #endregion Country
+
         #region Street
 
         public abstract class street : IBqlField
@@ -138,24 +152,16 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(30)]
-        [PXUIField(DisplayName = Messages.State, Enabled = false)]
+        [PXUIField(DisplayName = Messages.State, Required = true,  Enabled = false)]
+        [PXSelector(
+            typeof(Search<MXFESatStateList.stateCD,
+            Where<MXFESatStateList.countryCD,
+                Equal<Current<country>>>>),
+            DescriptionField = typeof(MXFESatStateList.name),
+            ValidateValue = false)]
         public virtual string State { get; set; }
 
         #endregion State
-
-        #region Country
-
-        public abstract class country : IBqlField
-        {
-        }
-        [PXDBString(3)]
-        [PXSelector(typeof(Search<MXFESatCountryList.countryCD>),
-            typeof(MXFESatCountryList.name),
-            DescriptionField = typeof(MXFESatCountryList.name))]
-        [PXUIField(DisplayName = Messages.Country, Enabled = false)]
-        public virtual string Country { get; set; }
-
-        #endregion Country
 
         #region ZipCode
 
