@@ -176,6 +176,7 @@ namespace AcumaticaMX
 
             }
         )]
+        [PXDefault(Common.Incoterm.CFR)]
         [PXUIField(DisplayName = Messages.Incoterm, Enabled = false)]
         public virtual string Incoterm { get; set; }
 
