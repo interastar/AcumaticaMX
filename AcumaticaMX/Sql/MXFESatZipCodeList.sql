@@ -11,6 +11,10 @@ Create Table [dbo].[MXFESatZipCodeList]
 
 	[State]				nvarchar(3) NOT NULL,
 
+	[Municipality]		nvarchar(3) NULL,
+
+	[Location]			nvarchar(2) NULL,
+
 	-- handle concurrency
 	[tstamp]			timestamp NOT NULL,
 
