@@ -148,6 +148,8 @@ namespace AcumaticaMX
         public const string Street = "Calle";
         public const string OutdoorNumber = "Numero Exterior";
         public const string IndoorNumber = "Numero Interior";
+        public const string CuryID = "Moneda";
+        public const string SatCuryID = "Moneda Sat";
         #endregion
 
         #region Catalogo de Monedas
