@@ -24,6 +24,7 @@ namespace AcumaticaMX
         }
         [PXDBString]
         public virtual string MeasureCD { get; set; }
+
         #region MeasureName
         public abstract class measureName : IBqlField
         {
@@ -39,5 +40,25 @@ namespace AcumaticaMX
         [PXDBString(1000)]
         public virtual string DescriptionBackUp { get; set; }
         #endregion DescriptionBackUp
+
+        //Esto guarda la referencia al tipo de documento a la que se le esta haciendo el cargo
+        //por linea
+        #region AppliedDocType
+        public abstract class appliedDocType : IBqlField
+        {
+        }
+        [PXDBString(3)]
+        public virtual string AppliedDocType { get; set; }
+        #endregion AppliedDocType
+
+        //Esto guarda la referencia al documento a la que se le esta haciendo el cargo
+        //por linea
+        #region AppliedRefNbr
+        public abstract class appliedRefNbr : IBqlField
+        {
+        }
+        [PXDBString(15)]
+        public virtual string AppliedRefNbr { get; set; }
+        #endregion AppliedRefNbr
     }
 }
