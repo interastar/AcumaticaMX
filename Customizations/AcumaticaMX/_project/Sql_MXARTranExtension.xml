@@ -8,5 +8,7 @@
   <col name="MeasureCD" type="NVarChar(3)" nullable="true" />
   <col name="MeasureName" type="NVarChar(1000)" nullable="true" />
   <col name="DescriptionBackUp" type="NVarChar(1000)" nullable="true" />
+  <col name="AppliedDocType" type="NVarChar(3)" nullable="true" />
+  <col name="AppliedRefNbr" type="NVarChar(15)" nullable="true" />
 </table>]]></CDATA>
 </Sql>
