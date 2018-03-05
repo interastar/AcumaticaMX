@@ -3,7 +3,7 @@ using PX.Data;
 
 namespace AcumaticaMX
 {
-    public class MXFEAdvance : IBqlTable
+    public class MXFERelatedDocument : IBqlTable
     {
         #region DocType
 
@@ -25,25 +25,35 @@ namespace AcumaticaMX
 
         #endregion RefNbr
 
-        #region AdvanceDocType
+        #region RelatedDocType
 
-        public abstract class advanceDocType : IBqlField
+        public abstract class relatedDocType : IBqlField
         {
         }
         [PXDBString(3, IsKey = true)]
-        public virtual string AdvanceDocType { get; set; }
+        public virtual string RelatedDocType { get; set; }
 
-        #endregion AdvanceDocType
+        #endregion RelatedDocType
 
-        #region AdvanceRefNbr
+        #region RelatedRefNbr
 
-        public abstract class advanceRefNbr : IBqlField
+        public abstract class relatedRefNbr : IBqlField
         {
         }
         [PXDBString(15, IsKey = true)]
-        public virtual string AdvanceRefNbr { get; set; }
+        public virtual string RelatedRefNbr { get; set; }
 
-        #endregion AdvanceRefNbr
+        #endregion RelatedRefNbr
+
+        #region RelationType
+
+        public abstract class relationType : IBqlField
+        {
+        }
+        [PXDBString(2)]
+        public virtual string RelationType { get; set; }
+
+        #endregion RelationType
 
         #region audit
 

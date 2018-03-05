@@ -1,13 +1,13 @@
-﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[MXFEAdvance]') And type in (N'U'))
-	Drop Table [dbo].[MXFEAdvance]
+﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[MXFERelatedDocument]') And type in (N'U'))
+	Drop Table [dbo].[MXFERelatedDocument]
 Go
-/****** Object:  Table [dbo].[MXFEAdvance] ******/
+/****** Object:  Table [dbo].[MXFERelatedDocument] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-Create Table [dbo].[MXFEAdvance]
+Create Table [dbo].[MXFERelatedDocument]
 (
 	-- multi-tenancy support
 	[CompanyID]				int NOT NULL DEFAULT ((0)),
@@ -15,8 +15,9 @@ Create Table [dbo].[MXFEAdvance]
 	
 	[RefNbr]				nvarchar(15) NOT NULL,
 	[DocType]				nvarchar(3) NOT NULL,
-	[AdvanceRefNbr]			nvarchar(15) NOT NULL,
-	[AdvanceDocType]		nvarchar(3) NOT NULL,
+	[RelatedRefNbr]			nvarchar(15) NOT NULL,
+	[RelatedDocType]		nvarchar(3) NOT NULL,
+	[RelationType]			nvarchar(2) NOT NULL,
 
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
@@ -31,12 +32,12 @@ Create Table [dbo].[MXFEAdvance]
 	[LastModifiedByScreenID]char(8) NOT NULL,
 	[LastModifiedDateTime]	smalldatetime NOT NULL,
 
-	CONSTRAINT [MXFEAdvance_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [MXFERelatedDocument_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
 		[RefNbr] ASC,
 		[DocType] ASC,
-		[AdvanceRefNbr] ASC,
-		[AdvanceDocType] ASC
+		[RelatedRefNbr] ASC,
+		[RelatedDocType] ASC
 	)
 )
