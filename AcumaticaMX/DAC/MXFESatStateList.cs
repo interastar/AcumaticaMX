@@ -29,7 +29,7 @@ namespace AcumaticaMX
         public abstract class name : IBqlField
         {
         }
-        [PXDBString(250, IsUnicode = true)]
+        [PXDBString(250, IsKey = true, IsUnicode = true)]
         [PXUIField(DisplayName = Messages.Name)]
         public virtual string Name { get; set; }
         #endregion Name
