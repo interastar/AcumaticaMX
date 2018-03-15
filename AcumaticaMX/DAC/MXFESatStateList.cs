@@ -5,15 +5,6 @@ namespace AcumaticaMX
 {
     public class MXFESatStateList : IBqlTable
     {
-        #region State
-        public abstract class stateCD : IBqlField
-        {
-        }
-        [PXDBString(IsKey = true, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.State)]
-        public virtual string StateCD { get; set; }
-        #endregion State
-
         #region Country
 
         public abstract class countryCD : IBqlField
@@ -25,11 +16,20 @@ namespace AcumaticaMX
 
         #endregion Country
 
+        #region State
+        public abstract class stateCD : IBqlField
+        {
+        }
+        [PXDBString(3,IsKey = true, IsUnicode = true, InputMask = ">CCC")]
+        [PXUIField(DisplayName = Messages.State)]
+        public virtual string StateCD { get; set; }
+        #endregion State
+
         #region Name
         public abstract class name : IBqlField
         {
         }
-        [PXDBString(250, IsKey = true, IsUnicode = true)]
+        [PXDBString(250, IsUnicode = true)]
         [PXUIField(DisplayName = Messages.Name)]
         public virtual string Name { get; set; }
         #endregion Name
