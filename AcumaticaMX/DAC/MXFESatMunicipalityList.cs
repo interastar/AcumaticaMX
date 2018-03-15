@@ -1,131 +1,39 @@
 ﻿using System;
 using PX.Data;
-using PX.Objects.IN;
+
 namespace AcumaticaMX
 {
-    [Serializable]
-    public class MXFESpecificDescription : IBqlTable
+    public class MXFESatMunicipalityList : IBqlTable
     {
-        #region RefNbr
-
-        public abstract class refNbr : IBqlField
+        public abstract class currencyCD : IBqlField
         {
         }
-        [PXDBString(15, IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.refNbr))]
-        public virtual string RefNbr { get; set; }
+        [PXDBString(3, IsKey = true, IsUnicode = true, InputMask = ">CCC")]
+        [PXUIField(DisplayName = Messages.CurrencyCD)]
+        public virtual string CurrencyCD { get; set; }
 
-        #endregion RefNbr
-
-        #region DocType
-
-        public abstract class docType : IBqlField
+        public abstract class description : IBqlField
         {
         }
-        [PXDBString(3, IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.docType))]
-        public virtual string DocType { get; set; }
+        [PXDBString(255, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.DescriptionLabel)]
+        public virtual string Description { get; set; }
 
-        #endregion DocType
-
-        #region InventoryID
-
-        public abstract class inventoryID : IBqlField
+        public abstract class precision : IBqlField
         {
         }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.inventoryID))]
-        [PXSelector(typeof(Search<InventoryItem.inventoryID>))]
-        public virtual int? InventoryID { get; set; }
+        [PXDBInt]
+        [PXUIField(DisplayName = Messages.Precision)]
+        public virtual int? Precision { get; set; }
 
-        #endregion InventoryID
-
-        #region CommodityLineNbr
-
-        public abstract class commodityLineNbr : IBqlField
+        public abstract class variation : IBqlField
         {
         }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
-        public virtual int? CommodityLineNbr { get; set; }
-
-        #endregion CommodityLineNbr
-
-        #region LineNbr
-        [PXParent(typeof(Select<MXFECommodity,
-        Where<MXFECommodity.refNbr,
-            Equal<Current<refNbr>>,
-            And<MXFECommodity.docType,
-                Equal<Current<docType>>,
-                And<MXFECommodity.inventoryID,
-                    Equal<Current<inventoryID>>,
-                    And<MXFECommodity.lineNbr,
-                        Equal<Current<lineNbr>>>>>>>))]
-        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
-        public abstract class lineNbr : IBqlField
-        {
-        }
-        [PXLineNbr(typeof(MXFECommodity.lineCntr))]
-        [PXDBInt(IsKey = true)]
-        public virtual int? LineNbr { get; set; }
-
-        #endregion LineNbr
-
-        #region Marca
-
-        public abstract class brand : IBqlField { }
-
-        [PXDBString(35)]
-        [PXUIField(DisplayName = Messages.Brand)]
-        public virtual string Brand { get; set; }
-
-        #endregion Marca
-
-        #region Modelo
-
-        public abstract class model : IBqlField { }
-        [PXDBString(80)]
-        [PXUIField(DisplayName = Messages.Model)]
-        public virtual string Model { get; set; }
-
-        #endregion Modelo
-
-        #region SubModelo
-
-        public abstract class subModel : IBqlField { }
-        [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.SubModel)]
-        public virtual string SubModel { get; set; }
-
-        #endregion SubModelo
-
-        #region Numero de Serie
-
-        public abstract class serieNbr : IBqlField { }
-        [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.SerieNbr)]
-        public virtual string SerieNbr { get; set; }
-
-        #endregion Numero de Serie
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.Variation)]
+        public virtual string Variation { get; set; }
 
         #region audit
-
-        #region NoteID
-
-        public abstract class noteID : PX.Data.IBqlField
-        {
-        }
-
-        /// <summary>
-        /// Identifier of the <see cref="PX.Data.Note">Note</see> object, associated with the document.
-        /// </summary>
-        /// <value>
-        /// Corresponds to the <see cref="PX.Data.Note.NoteID">Note.NoteID</see> field.
-        /// </value>
-        [PXNote(ShowInReferenceSelector = true)]
-        public Guid? NoteID { get; set; }
-
-        #endregion NoteID
 
         #region tstamp
 
