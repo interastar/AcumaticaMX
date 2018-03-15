@@ -13,17 +13,13 @@ namespace AcumaticaMX
         public abstract class stateCD : IBqlField
         {
         }
-        [PXSelector(
-            typeof(Search2<MXFESatStateList.stateCD,
-            InnerJoin<Country,
-                On<Country.countryID,
-                    Equal<Current<State.countryID>>>>,
-            Where<MXCSCountryExtension.countryCD,
-                Equal<MXFESatStateList.countryCD>>>),
-            typeof(MXFESatStateList.countryCD),
-            typeof(MXFESatStateList.name),
-            DescriptionField = typeof(MXFESatStateList.name))]
         [PXDBString(3, IsUnicode = true)]
+        [PXSelector(
+            typeof(Search<MXFESatStateList.stateCD,
+                Where<MXFESatStateList.countryCD,
+                    Equal<Current<MXCSCountryExtension.countryCD>>>>),
+            typeof(MXFESatStateList.countryCD),
+            typeof(MXFESatStateList.name))]
         [PXUIField(DisplayName = Messages.State)]
         public virtual string StateCD { get; set; }
 
