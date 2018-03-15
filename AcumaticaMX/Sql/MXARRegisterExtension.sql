@@ -55,6 +55,10 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[PaymentDocDateTime][smalldatetime] NULL,
 	[CurrencyRate]		[decimal](19, 6) NULL,
 	[Version]			[nvarchar](3) NULL,
+	[IsExternalTrade]	[bit] NULL DEFAULT ((1)),
+
+	-- Comercio Exterior
+	[ExternalTrade]		bit NOT NULL DEFAULT ((0)),
 
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(

@@ -1,131 +1,162 @@
 ﻿using System;
 using PX.Data;
-using PX.Objects.IN;
+using PX.Objects;
+using PX.Objects.AR;
+
 namespace AcumaticaMX
 {
-    [Serializable]
-    public class MXFESpecificDescription : IBqlTable
+    public class MXARTranExternalTrade : IBqlTable
     {
-        #region RefNbr
-
-        public abstract class refNbr : IBqlField
-        {
-        }
-        [PXDBString(15, IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.refNbr))]
-        public virtual string RefNbr { get; set; }
-
-        #endregion RefNbr
 
         #region DocType
-
-        public abstract class docType : IBqlField
+        public abstract class docType : PX.Data.IBqlField
         {
         }
-        [PXDBString(3, IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.docType))]
+
+        [PXDBString(IsKey = true)]
+        [PXDBDefault(typeof(ARTran.tranType))]
         public virtual string DocType { get; set; }
 
         #endregion DocType
 
-        #region InventoryID
+        #region RefNbr
 
-        public abstract class inventoryID : IBqlField
+        public abstract class refNbr : PX.Data.IBqlField
         {
         }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.inventoryID))]
-        [PXSelector(typeof(Search<InventoryItem.inventoryID>))]
-        public virtual int? InventoryID { get; set; }
 
-        #endregion InventoryID
+        [PXDBString(IsKey = true)]
+        [PXDBDefault(typeof(ARTran.refNbr))]
+        public virtual string RefNbr { get; set; }
 
-        #region CommodityLineNbr
-
-        public abstract class commodityLineNbr : IBqlField
-        {
-        }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
-        public virtual int? CommodityLineNbr { get; set; }
-
-        #endregion CommodityLineNbr
+        #endregion RefNbr
 
         #region LineNbr
-        [PXParent(typeof(Select<MXFECommodity,
-        Where<MXFECommodity.refNbr,
-            Equal<Current<refNbr>>,
-            And<MXFECommodity.docType,
-                Equal<Current<docType>>,
-                And<MXFECommodity.inventoryID,
-                    Equal<Current<inventoryID>>,
-                    And<MXFECommodity.lineNbr,
-                        Equal<Current<lineNbr>>>>>>>))]
-        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
+
         public abstract class lineNbr : IBqlField
         {
         }
-        [PXLineNbr(typeof(MXFECommodity.lineCntr))]
+
         [PXDBInt(IsKey = true)]
+        [PXDBDefault(typeof(ARTran.lineNbr))]
+        [PXParent(typeof(Select<ARTran,
+            Where<ARTran.tranType, Equal<Current<docType>>, 
+            And<ARTran.refNbr, Equal<Current<refNbr>>,
+            And<ARTran.lineNbr, Equal<Current<lineNbr>>>>>>))]
         public virtual int? LineNbr { get; set; }
 
         #endregion LineNbr
 
-        #region Marca
+        #region Qyt
 
-        public abstract class brand : IBqlField { }
-
-        [PXDBString(35)]
-        [PXUIField(DisplayName = Messages.Brand)]
-        public virtual string Brand { get; set; }
-
-        #endregion Marca
-
-        #region Modelo
-
-        public abstract class model : IBqlField { }
-        [PXDBString(80)]
-        [PXUIField(DisplayName = Messages.Model)]
-        public virtual string Model { get; set; }
-
-        #endregion Modelo
-
-        #region SubModelo
-
-        public abstract class subModel : IBqlField { }
-        [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.SubModel)]
-        public virtual string SubModel { get; set; }
-
-        #endregion SubModelo
-
-        #region Numero de Serie
-
-        public abstract class serieNbr : IBqlField { }
-        [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.SerieNbr)]
-        public virtual string SerieNbr { get; set; }
-
-        #endregion Numero de Serie
-
-        #region audit
-
-        #region NoteID
-
-        public abstract class noteID : PX.Data.IBqlField
+        public abstract class qty : IBqlField
         {
         }
 
-        /// <summary>
-        /// Identifier of the <see cref="PX.Data.Note">Note</see> object, associated with the document.
-        /// </summary>
-        /// <value>
-        /// Corresponds to the <see cref="PX.Data.Note.NoteID">Note.NoteID</see> field.
-        /// </value>
-        [PXNote(ShowInReferenceSelector = true)]
-        public Guid? NoteID { get; set; }
+        [PXDecimal]
+        [PXFormula(typeof(Parent<ARTran.qty>))]
+        [PXUIField(DisplayName = "Cantidad")]
+        public virtual Decimal? Qty { get; set; }
 
-        #endregion NoteID
+        #endregion Qyt
+
+        #region TariffUnit
+
+        public abstract class tariffUnit : IBqlField
+        {
+        }
+
+        [PXDBString(2, IsUnicode = true)]
+        [PXUIField(DisplayName = "Unidad Aduana")]
+        public virtual string TariffUnit { get; set; }
+
+        #endregion TariffUnit
+
+        #region TariffFraction
+
+        public abstract class tariffFraction : IBqlField
+        {
+        }
+
+        [PXDBString(50, IsUnicode = true)]
+        [PXUIField(DisplayName = "Fracción Arancelaría")]
+        public virtual string TariffFraction { get; set; }
+
+        #endregion TariffFraction
+
+        #region TariffUnitValue
+
+        public abstract class tariffUnitValue : IBqlField
+        {
+        }
+
+        [PXDBDecimal]
+        [PXUIField(DisplayName = "Valor Unitario Aduanal")]
+        public virtual decimal? TariffUnitValue { get; set; }
+
+        #endregion TariffUnitValue
+
+        #region TariffTotalValue
+
+        public abstract class tariffTotalValue : IBqlField
+        {
+        }
+
+        [PXDBDecimal]
+        [PXUIField(DisplayName = "Valor Total Aduanal")]
+        public virtual decimal? TariffTotalValue { get; set; }
+
+        #endregion TariffTotalValue
+
+        #region Brand
+
+        public abstract class brand : IBqlField
+        {
+        }
+
+        [PXDBString(35)]
+        [PXUIField(DisplayName = "Marca")]
+        public virtual string Brand { get; set; }
+
+        #endregion Brand
+
+        #region Model
+
+        public abstract class model : IBqlField
+        {
+        }
+
+        [PXDBString(35)]
+        [PXUIField(DisplayName = "Modelo")]
+        public virtual string Model { get; set; }
+
+        #endregion Model
+
+        #region SubModel
+
+        public abstract class subModel : IBqlField
+        {
+        }
+
+        [PXDBString(35)]
+        [PXUIField(DisplayName = "SubModelo")]
+        public virtual string SubModel { get; set; }
+
+        #endregion SubModel
+
+        #region SerieNumber
+
+        public abstract class serieNumber : IBqlField
+        {
+        }
+
+        [PXDBString(35)]
+        [PXUIField(DisplayName = "Numero de Serie")]
+        public virtual string SerieNumber { get; set; }
+
+        #endregion SerieNumber
+
+        // Audit
 
         #region tstamp
 
@@ -287,7 +318,5 @@ namespace AcumaticaMX
         }
 
         #endregion LastModifiedDateTime
-
-        #endregion audit
     }
 }

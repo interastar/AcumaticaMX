@@ -1,0 +1,32 @@
+﻿<Sql TableName="MXFEAddressed" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFEAddressed">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="DocType" type="Char(3)" />
+  <col name="RefNbr" type="NVarChar(15)" />
+  <col name="HasAddressed" type="Bit" nullable="true" default="Zero" />
+  <col name="ReceiverTaxRegistrationID" type="NVarChar(40)" nullable="true" />
+  <col name="ReceiverName" type="NVarChar(40)" nullable="true" />
+  <col name="Street" type="NVarChar(100)" nullable="true" />
+  <col name="OutdoorNumber" type="NVarChar(55)" nullable="true" />
+  <col name="IndoorNumber" type="NVarChar(55)" nullable="true" />
+  <col name="Neighborhood" type="NVarChar(120)" nullable="true" />
+  <col name="Location" type="NVarChar(120)" nullable="true" />
+  <col name="Municipality" type="NVarChar(120)" nullable="true" />
+  <col name="State" type="NVarChar(30)" nullable="true" />
+  <col name="Country" type="NVarChar(3)" nullable="true" />
+  <col name="ZipCode" type="NVarChar(12)" nullable="true" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXFEAddressede_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="DocType" />
+    <col name="RefNbr" />
+  </index>
+</table>]]></CDATA>
+</Sql>
