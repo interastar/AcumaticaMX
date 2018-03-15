@@ -1,31 +1,29 @@
-﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[MXFECommodity]') And type in (N'U'))
-	Drop Table [dbo].[MXFECommodity]
+﻿If Exists(Select* From sys.objects Where object_id = OBJECT_ID(N'[MXFESpecificDescription]') And type in (N'U'))
+	Drop Table [dbo].[MXFESpecificDescription]
 Go
-/****** Object:  Table [dbo].[MXFECommodity] ******/
+/****** Object:  Table [dbo].[MXFESpecificDescription] ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-Create Table [dbo].[MXFECommodity]
+Create Table [dbo].[MXFESpecificDescription]
 (
 	-- multi-tenancy support
 	[CompanyID]				int NOT NULL DEFAULT ((0)),
 	
 	
-	-- Llaves de relación con documento contable (ARRegister en Acumatica)
-	[DocType]				char(3) NOT NULL,
+	-- Llaves de relación
 	[RefNbr]				nvarchar(15) NOT NULL,
+	[DocType]				char(3) NOT NULL,
+	[InventoryID]			int NOT NULL,
+	[CommodityLineNbr]		int NOT NULL,
 	[LineNbr]				int NOT NULL,
 
-	[LineCntr]				int NOT NULL,
-	[InventoryID]			int NULL,
-	[IdentificationCD]		nvarchar(100) NULL,
-	[TariffFraction]		nvarchar(8) NULL,
-	[CustomsQty]			decimal(25,6) NULL,
-	[CustomsUnit]			nvarchar(3)	  NULL,
-	[CustomsUnitAmt]		decimal(19,4) NULL,
-	[UsdAmt]				decimal(19,4) NULL,
+	[Brand]					nvarchar(100) NULL,
+	[Model]					nvarchar(80) NULL,
+	[SubModel]				nvarchar(50) NULL,
+	[SerieNbr]				nvarchar(50) NULL,
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
 	-- handle concurrency
@@ -39,11 +37,13 @@ Create Table [dbo].[MXFECommodity]
 	[LastModifiedByScreenID]char(8) NOT NULL,
 	[LastModifiedDateTime]	smalldatetime NOT NULL,
 
-	CONSTRAINT [MXFECommodity_PK] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [MXFESpecificDescription_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
 		[DocType] ASC,
 		[RefNbr] ASC,
+		[InventoryID] ASC,
+		[CommodityLineNbr] ASC,
 		[LineNbr] ASC
 	)
 )

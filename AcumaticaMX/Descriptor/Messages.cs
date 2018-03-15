@@ -70,14 +70,12 @@ namespace AcumaticaMX
 
         #endregion Catalogo de Cuentas
 
-        #region Catalogo de Códigos Postales
+        #region Catalogo de Colonias
 
         //*** ZipCodeList
-        public const string ZipCodeCD = "Código Postal";
-        public const string State = "Estado";
-        public const string Town = "Localidad";
+        public const string NeighborhoodCD = "Colonia";
 
-        #endregion Catalogo de Códigos Postales
+        #endregion Catalogo de Colonias
 
         #region Catalogo de Productos y Sevicios
         public const string ProdServCode = "Clave Producto Servicio";
@@ -111,11 +109,25 @@ namespace AcumaticaMX
         public const string MeasureCD = "Clave Unidad de Medida";
         #endregion
 
-        #region Catalogo Unidades de Medida
+        #region Catalogo Unidades de Monedas
         public const string CurrencyCD = "Moneda";
         public const string Precision = "Decimales";
         public const string Variation = "Variacion";
         #endregion
+
+        #region Catalogo Unidades de Incoterm
+        public const string IncotermCD = "INCOTERM";
+        #endregion
+
+        #region Catalogo de Paises
+        public const string Country = "Pais";
+        #endregion
+
+        #region Catalogo de Fraccion Arancelaria
+        public const string TariffFraction = "Fraccion Arancelaria";
+        public const string TaxImp = "Impuesto Imp";
+        public const string TaxExp = "Impuesto Exp";
+        #endregion Catalogo de Fraccion Arancelaria
 
         #region Common
         public const string ValidityStartDate = "Inicio Vigencia";
@@ -130,6 +142,14 @@ namespace AcumaticaMX
         public const string RefNbr = "No. Referencia";
         public const string Customer = "Cliente";
         public const string InventoryItem = "InventoryItem";
+        public const string ZipCodeCD = "Código Postal";
+        public const string State = "Estado";
+        public const string Town = "Localidad";
+        public const string Street = "Calle";
+        public const string OutdoorNumber = "Numero Exterior";
+        public const string IndoorNumber = "Numero Interior";
+        public const string CuryID = "Moneda";
+        public const string SatCuryID = "Moneda Sat";
         #endregion
 
         #region Catalogo de Monedas
@@ -147,6 +167,37 @@ namespace AcumaticaMX
         #region Complemento de Pagos
         public const string PaymentRefNbr = "No. Referencia de Complemento de Pago";
         #endregion Complemento de Pagos
+        
+        #region Comercio Exterior
+        public const string OperationType = "Tipo de Operación";
+        public const string RequestKey = "Clave de Pedimento";
+        public const string IsOriginCertificateNbr = "Funge como certificado de Origen";
+        public const string OriginCertificateNbr = "Número de Certificado de Origen";
+        public const string TrustworthyExporterNbr = "Número de Exportador Confiable";
+        public const string Incoterm = "Incoterm";
+        public const string Subdivision = "Subdivision";
+        public const string Description = "Observaciones";
+        public const string UsdTotal = "Total en Dolares";
+        public const string OwnerTaxRegistrationID = "Número de registro del Propietario";
+        public const string OwnerFiscalAddress = "Dirección Fiscal del Propietario";
+        public const string NumberID = "No. Identificación";
+        public const string TarrifFraction = "Fracción Arancelaría";
+        public const string CustomsQty = "Cantidad Aduana";
+        public const string CustomsUnit = "Unidad Aduana";
+        public const string CustomsUnitAmt = "Valor unitario Aduana";
+        public const string UsdAmt = "Valor en Dolares";
+        public const string TransferReason = "Motivo de Traslado";
+        public const string Brand = "Marca";
+        public const string Model = "Modelo";
+        public const string SubModel = "SubModelo";
+        public const string SerieNbr = "Numero de Serie";
+        #endregion Comercio Exterior
+
+        #region Addressed
+        public const string HasAddressed = "El destinatario es diferente al receptor del cfdi";
+        public const string ReceiverTaxRegistrationID = "Número de registro del Destinatario";
+        public const string ReceiverName = "Nombre del Destinatario";
+        #endregion Addressed
 
         #region Acuerdos
         public const string AgreemenName = "Nombre del acuerdo";

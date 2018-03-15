@@ -1,18 +1,23 @@
 ﻿using System;
 using PX.Data;
-using PX.Objects.IN;
+using PX.Objects.AR;
+using PX.Objects.CR;
+
 namespace AcumaticaMX
 {
     [Serializable]
-    public class MXFESpecificDescription : IBqlTable
+    public class MXFEAddressed : IBqlTable
     {
         #region RefNbr
 
         public abstract class refNbr : IBqlField
         {
         }
+        [PXParent(typeof(Select<ARRegister,
+            Where<ARRegister.refNbr,
+                Equal<Current<refNbr>>>>))]
         [PXDBString(15, IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.refNbr))]
+        [PXDefault(typeof(ARRegister.refNbr))]
         public virtual string RefNbr { get; set; }
 
         #endregion RefNbr
@@ -23,90 +28,151 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(3, IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.docType))]
+        [PXDefault(typeof(ARRegister.docType))]
         public virtual string DocType { get; set; }
 
         #endregion DocType
 
-        #region InventoryID
+        #region HasAddressed
 
-        public abstract class inventoryID : IBqlField
+        public abstract class hasAddressed : IBqlField
         {
         }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.inventoryID))]
-        [PXSelector(typeof(Search<InventoryItem.inventoryID>))]
-        public virtual int? InventoryID { get; set; }
+        [PXDBBool]
+        [PXUIField(DisplayName = Messages.HasAddressed)]
+        public virtual bool? HasAddressed { get; set; }
 
-        #endregion InventoryID
+        #endregion HasAddressed
 
-        #region CommodityLineNbr
+        #region Numero de Registro  del Destinatario
 
-        public abstract class commodityLineNbr : IBqlField
+        public abstract class receiverTaxRegistrationID : IBqlField
         {
         }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
-        public virtual int? CommodityLineNbr { get; set; }
+        [PXDBString(40)]
+        [PXUIField(DisplayName = Messages.ReceiverTaxRegistrationID, Enabled = false)]
+        public virtual string ReceiverTaxRegistrationID { get; set; }
 
-        #endregion CommodityLineNbr
+        #endregion Numero de Registro del Destinatario
 
-        #region LineNbr
-        [PXParent(typeof(Select<MXFECommodity,
-        Where<MXFECommodity.refNbr,
-            Equal<Current<refNbr>>,
-            And<MXFECommodity.docType,
-                Equal<Current<docType>>,
-                And<MXFECommodity.inventoryID,
-                    Equal<Current<inventoryID>>,
-                    And<MXFECommodity.lineNbr,
-                        Equal<Current<lineNbr>>>>>>>))]
-        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
-        public abstract class lineNbr : IBqlField
+        #region Nombre del Destinatario
+
+        public abstract class receiverName : IBqlField
         {
         }
-        [PXLineNbr(typeof(MXFECommodity.lineCntr))]
-        [PXDBInt(IsKey = true)]
-        public virtual int? LineNbr { get; set; }
+        [PXDBString(300)]
+        [PXUIField(DisplayName = Messages.ReceiverName, Enabled = false)]
+        public virtual string ReceiverName { get; set; }
 
-        #endregion LineNbr
+        #endregion Nombre del Destinatario
 
-        #region Marca
+        #region Country
 
-        public abstract class brand : IBqlField { }
+        public abstract class country : IBqlField
+        {
+        }
+        [PXDBString(3)]
+        [PXSelector(typeof(Search<MXFESatCountryList.countryCD>),
+            typeof(MXFESatCountryList.name),
+            DescriptionField = typeof(MXFESatCountryList.name))]
+        [PXUIField(DisplayName = Messages.Country, Required = true, Enabled = false)]
+        public virtual string Country { get; set; }
 
-        [PXDBString(35)]
-        [PXUIField(DisplayName = Messages.Brand)]
-        public virtual string Brand { get; set; }
+        #endregion Country
 
-        #endregion Marca
+        #region Street
 
-        #region Modelo
+        public abstract class street : IBqlField
+        {
+        }
+        [PXDBString(100)]
+        [PXUIField(DisplayName = Messages.Street, Enabled = false)]
+        public virtual string Street { get; set; }
 
-        public abstract class model : IBqlField { }
-        [PXDBString(80)]
-        [PXUIField(DisplayName = Messages.Model)]
-        public virtual string Model { get; set; }
+        #endregion Street
 
-        #endregion Modelo
+        #region OutdoorNumber
 
-        #region SubModelo
+        public abstract class outdoorNumber : IBqlField
+        {
+        }
+        [PXDBString(55)]
+        [PXUIField(DisplayName = Messages.OutdoorNumber, Enabled = false)]
+        public virtual string OutdoorNumber { get; set; }
 
-        public abstract class subModel : IBqlField { }
-        [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.SubModel)]
-        public virtual string SubModel { get; set; }
+        #endregion OutdoorNumber
 
-        #endregion SubModelo
+        #region IndoorNumber
 
-        #region Numero de Serie
+        public abstract class indoorNumber : IBqlField
+        {
+        }
+        [PXDBString(55)]
+        [PXUIField(DisplayName = Messages.IndoorNumber, Enabled = false)]
+        public virtual string IndoorNumber { get; set; }
 
-        public abstract class serieNbr : IBqlField { }
-        [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.SerieNbr)]
-        public virtual string SerieNbr { get; set; }
+        #endregion IndoorNumber
 
-        #endregion Numero de Serie
+        #region Neighborhood
+
+        public abstract class neighborhood : IBqlField
+        {
+        }
+        [PXDBString(120)]
+        [PXUIField(DisplayName = Messages.NeighborhoodCD, Enabled = false)]
+        public virtual string Neighborhood { get; set; }
+
+        #endregion Neighborhood
+
+        #region Location
+
+        public abstract class location : IBqlField
+        {
+        }
+        [PXDBString(120)]
+        [PXUIField(DisplayName = Messages.Town, Enabled = false)]
+        public virtual string Location { get; set; }
+
+        #endregion Location
+
+        #region Municipality
+
+        public abstract class municipality : IBqlField
+        {
+        }
+        [PXDBString(120)]
+        [PXUIField(DisplayName = Messages.Municipality, Enabled = false)]
+        public virtual string Municipality { get; set; }
+
+        #endregion Municipality
+
+        #region State
+
+        public abstract class state : IBqlField
+        {
+        }
+        [PXDBString(30)]
+        [PXUIField(DisplayName = Messages.State, Required = true,  Enabled = false)]
+        [PXSelector(
+            typeof(Search<MXFESatStateList.stateCD,
+            Where<MXFESatStateList.countryCD,
+                Equal<Current<country>>>>),
+            DescriptionField = typeof(MXFESatStateList.name),
+            ValidateValue = false)]
+        public virtual string State { get; set; }
+
+        #endregion State
+
+        #region ZipCode
+
+        public abstract class zipCode : IBqlField
+        {
+        }
+        [PXDBString(12)]
+        [PXUIField(DisplayName = Messages.ZipCodeCD, Enabled = false)]
+        public virtual string ZipCode { get; set; }
+
+        #endregion ZipCode
 
         #region audit
 

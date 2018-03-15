@@ -1,131 +1,56 @@
 ﻿using System;
 using PX.Data;
-using PX.Objects.IN;
+
 namespace AcumaticaMX
 {
-    [Serializable]
-    public class MXFESpecificDescription : IBqlTable
+    public class MXFESatTariffFractionList : IBqlTable
     {
-        #region RefNbr
-
-        public abstract class refNbr : IBqlField
+        #region TariffFraction
+        public abstract class tariffFractionCD : IBqlField
         {
         }
-        [PXDBString(15, IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.refNbr))]
-        public virtual string RefNbr { get; set; }
+        [PXDBString(8, IsKey = true, IsFixed = true, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.TariffFraction)]
+        public virtual string TariffFractionCD { get; set; }
+        #endregion TariffFraction
 
-        #endregion RefNbr
-
-        #region DocType
-
-        public abstract class docType : IBqlField
+        #region UOM
+        public abstract class uOM : IBqlField
         {
         }
-        [PXDBString(3, IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.docType))]
-        public virtual string DocType { get; set; }
+        [PXDBString(2, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.MeasureCD)]
+        public virtual string UOM { get; set; }
+        #endregion UOM
 
-        #endregion DocType
-
-        #region InventoryID
-
-        public abstract class inventoryID : IBqlField
+        #region TaxImp
+        public abstract class taxImp : IBqlField
         {
         }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.inventoryID))]
-        [PXSelector(typeof(Search<InventoryItem.inventoryID>))]
-        public virtual int? InventoryID { get; set; }
+        [PXDBString(9, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.TaxImp)]
+        public virtual string TaxImp { get; set; }
+        #endregion TaxImp
 
-        #endregion InventoryID
-
-        #region CommodityLineNbr
-
-        public abstract class commodityLineNbr : IBqlField
+        #region TaxExp
+        public abstract class taxExp : IBqlField
         {
         }
-        [PXDBInt(IsKey = true)]
-        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
-        public virtual int? CommodityLineNbr { get; set; }
+        [PXDBString(9, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.TaxExp)]
+        public virtual string TaxExp { get; set; }
+        #endregion TaxExp
 
-        #endregion CommodityLineNbr
-
-        #region LineNbr
-        [PXParent(typeof(Select<MXFECommodity,
-        Where<MXFECommodity.refNbr,
-            Equal<Current<refNbr>>,
-            And<MXFECommodity.docType,
-                Equal<Current<docType>>,
-                And<MXFECommodity.inventoryID,
-                    Equal<Current<inventoryID>>,
-                    And<MXFECommodity.lineNbr,
-                        Equal<Current<lineNbr>>>>>>>))]
-        [PXDBDefault(typeof(MXFECommodity.lineNbr))]
-        public abstract class lineNbr : IBqlField
+        #region Description
+        public abstract class description : IBqlField
         {
         }
-        [PXLineNbr(typeof(MXFECommodity.lineCntr))]
-        [PXDBInt(IsKey = true)]
-        public virtual int? LineNbr { get; set; }
-
-        #endregion LineNbr
-
-        #region Marca
-
-        public abstract class brand : IBqlField { }
-
-        [PXDBString(35)]
-        [PXUIField(DisplayName = Messages.Brand)]
-        public virtual string Brand { get; set; }
-
-        #endregion Marca
-
-        #region Modelo
-
-        public abstract class model : IBqlField { }
-        [PXDBString(80)]
-        [PXUIField(DisplayName = Messages.Model)]
-        public virtual string Model { get; set; }
-
-        #endregion Modelo
-
-        #region SubModelo
-
-        public abstract class subModel : IBqlField { }
-        [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.SubModel)]
-        public virtual string SubModel { get; set; }
-
-        #endregion SubModelo
-
-        #region Numero de Serie
-
-        public abstract class serieNbr : IBqlField { }
-        [PXDBString(50)]
-        [PXUIField(DisplayName = Messages.SerieNbr)]
-        public virtual string SerieNbr { get; set; }
-
-        #endregion Numero de Serie
+        [PXDBString(500, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.DescriptionLabel)]
+        public virtual string Description { get; set; }
+        #endregion Description
 
         #region audit
-
-        #region NoteID
-
-        public abstract class noteID : PX.Data.IBqlField
-        {
-        }
-
-        /// <summary>
-        /// Identifier of the <see cref="PX.Data.Note">Note</see> object, associated with the document.
-        /// </summary>
-        /// <value>
-        /// Corresponds to the <see cref="PX.Data.Note.NoteID">Note.NoteID</see> field.
-        /// </value>
-        [PXNote(ShowInReferenceSelector = true)]
-        public Guid? NoteID { get; set; }
-
-        #endregion NoteID
 
         #region tstamp
 

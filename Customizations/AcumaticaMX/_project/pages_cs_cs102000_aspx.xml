@@ -4,7 +4,7 @@
             <AddItem>
                 <PXSelector TypeFullName="PX.Web.UI.PXSelector">
                     <Prop Key="Virtual:ApplyStylesheetSkin" />
-                    <Prop Key="ID" Value="edTaxRegimeID" />
+                    <Prop Key="ID" Value="CstPXSelector18" />
                     <Prop Key="DataField" Value="TaxRegimeID" />
                 </PXSelector>
             </AddItem>
