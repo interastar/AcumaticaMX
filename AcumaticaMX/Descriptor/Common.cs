@@ -80,8 +80,7 @@ namespace AcumaticaMX
             public const string Coupons = "08";
             public const string DebitCard = "28";
             public const string ServiceCard = "29";
-            public const string NAFE = "NA";
-            public const string NACE = "98";
+            public const string NA = "98";
             public const string Other = "99";
 
             public static string Values
@@ -101,8 +100,7 @@ namespace AcumaticaMX
             public const string CouponsLabel = "Vales de despensa";
             public const string DebitCardLabel = "Tarjeta de Débito";
             public const string ServiceCardLabel = "Tarjeta de Servicio";
-            public const string NAFELabel = "NA Facturacion Electrónica";
-            public const string NACELabel = "NA Contabilidad Electónica";
+            public const string NALabel = "NA";
             public const string OtherLabel = "Otros";
 
             public static string Labels
@@ -124,16 +122,89 @@ namespace AcumaticaMX
             public const string IVALabel = "IVA";
             public const string IEPSLabel = "IEPS";
         }
-
         public static class TaxType
+
         {
+
             public const string Holding = "R";
+
             public const string Transfer = "T";
 
+
+
             public const string HoldingLabel = "Retención";
+
             public const string TransferLabel = "Traslado";
+
         }
 
+	/// <summary>
+        /// Catálogo de Unidades
+        /// </summary>
+        public static class SatUnits
+        {
+            public const string Kilo = "01";
+            public const string Gram = "02";
+            public const string LinealMeter = "03";
+            public const string SquareMeter = "04";
+            public const string CubicMeter = "05";
+            public const string Piece = "06";
+            public const string Head = "07";
+            public const string Liter = "08";
+            public const string Pair = "09";
+            public const string KiloWatt = "10";
+            public const string Thousand = "11";
+            public const string Set = "12";
+            public const string KiloWatt_Hour = "13";
+            public const string Ton = "14";
+            public const string Berrel = "15";
+            public const string GramNet = "16";
+            public const string Ten = "17";
+            public const string Hundred = "18";
+            public const string Dozen = "19";
+            public const string Box = "20";
+            public const string Bottle = "21";
+            public const string Service = "99";
+
+            public static string Values
+            {
+                get
+                {
+                    return string.Join(",", typeof(SatUnits).GetFields().Where(x => !x.Name.Contains("Label")).Select(x => x.GetValue(null)));
+                }
+            }
+
+            public const string KiloLabel = "Kilo";
+            public const string GramLabel = "Gramo";
+            public const string LinealMeterLabel = "Metro Lineal";
+            public const string SquareMeterLabel = "Metro Cuadrado";
+            public const string CubicMeterLabel = "Metro Cubico";
+            public const string PieceLabel = "Pieza";
+            public const string HeadLabel = "Cabeza";
+            public const string LiterLabel = "Litro";
+            public const string PairLabel = "Par";
+            public const string KiloWattLabel = "KiloWatt";
+            public const string ThousandLabel = "Millar";
+            public const string SetLabel = "Juego";
+            public const string KiloWatt_HourLabel = "KiloWatt/Hora";
+            public const string TonLabel = "Tonelada";
+            public const string BerrelLabel = "Barril";
+            public const string GramNetLabel = "Gramo Neto";
+            public const string TenLabel = "Decena";
+            public const string HundredLabel = "Cientos";
+            public const string DozenLabel = "Docena";
+            public const string BoxLabel = "Caja";
+            public const string BottleLabel = "Botella";
+            public const string ServiceLabel = "Servicio";
+
+            public static string Labels
+            {
+                get
+                {
+                    return string.Join(",", typeof(SatUnits).GetFields().Where(x => x.Name.Contains("Label")).Select(x => x.GetValue(null)));
+                }
+            }
+        }
         public static class DocumentType
         {
             public const string Cfdi = "C";
@@ -143,6 +214,59 @@ namespace AcumaticaMX
             public const string CfdiLabel = "CFDI";
             public const string CfdCbbLabel = "CFD/CBB";
             public const string ForeignLabel = "Factura Extranjera";
+        }    
+
+        public static class TransferReason
+        {
+            public const string ReasonOne = "01";
+            public const string ReasonTwo = "02";
+            public const string ReasonThree = "03";
+            public const string ReasonFour = "04";
+            public const string ReasonFive = "05";
+            public const string ReasonSix = "99";
+
+            public const string ReasonOneLabel = "Envío de mercancias facturadas con anterioridad";
+            public const string ReasonTwoLabel = "Reubicación de mercancías propias";
+            public const string ReasonThreeLabel = "Envío de mercancías objeto de contrato de consignación";
+            public const string ReasonFourLabel = "Envío de mercancías para posterior enajenación";
+            public const string ReasonFiveLabel = "Envío de mercancías propiedad de terceros";
+            public const string ReasonSixLabel = "Otros";
+        }
+
+
+        public static class Incoterm
+        {
+            public const string CFR = "CFR";
+            public const string CIF = "CIF";
+            public const string CPT = "CPT";
+            public const string CIP = "CIP";
+            public const string DAF = "DAF";
+            public const string DAP = "DAP";
+            public const string DAT = "DAT";
+            public const string DES = "DES";
+            public const string DEQ = "DEQ";
+            public const string DDU = "DDU";
+            public const string DDP = "DDP";
+            public const string EXW = "EXW";
+            public const string FCA = "FCA";
+            public const string FAS = "FAS";
+            public const string FOB = "FOB";
+
+            public const string CFRLabel = "COSTE Y FLETE (PUERTO DE DESTINO CONVENIDO).";
+            public const string CIFLabel = "COSTE, SEGURO Y FLETE (PUERTO DE DESTINO CONVENIDO).";
+            public const string CPTLabel = "TRANSPORTE PAGADO HASTA (EL LUGAR DE DESTINO CONVENIDO).";
+            public const string CIPLabel = "TRANSPORTE Y SEGURO PAGADOS HASTA (LUGAR DE DESTINO CONVENIDO).";
+            public const string DAFLabel = "ENTREGADA EN FRONTERA (LUGAR CONVENIDO).";
+            public const string DAPLabel = "ENTREGADA EN LUGAR.";
+            public const string DATLabel = "ENTREGADA EN TERMINAL.";
+            public const string DESLabel = "ENTREGADA SOBRE BUQUE (PUERTO DE DESTINO CONVENIDO).";
+            public const string DEQLabel = "ENTREGADA EN MUELLE (PUERTO DE DESTINO CONVENIDO).";
+            public const string DDULabel = "ENTREGADA DERECHOS NO PAGADOS (LUGAR DE DESTINO CONVENIDO).";
+            public const string DDPLabel = "ENTREGADA DERECHOS PAGADOS (LUGAR DE DESTINO CONVENIDO).";
+            public const string EXWLabel = "EN FABRICA (LUGAR CONVENIDO).";
+            public const string FCALabel = "FRANCO TRANSPORTISTA (LUGAR DESIGNADO).";
+            public const string FASLabel = "FRANCO AL COSTADO DEL BUQUE (PUERTO DE CARGA CONVENIDO).";
+            public const string FOBLabel = "FRANCO A BORDO (PUERTO DE CARGA CONVENIDO).";
         }
     }
 

@@ -1,3 +1,4 @@
+using PX.Common;
 using System.Text.RegularExpressions;
 using PX.Data;
 using PX.Objects.AR;
@@ -67,7 +68,7 @@ namespace AcumaticaMX
     /// </summary>
     public class SetCfdiStatusAttribute : PXEventSubscriberAttribute, IPXFieldVerifyingSubscriber, IPXRowSelectingSubscriber, IPXRowUpdatingSubscriber, IPXRowInsertingSubscriber//, IPXRowSelectedSubscriber
     {
-        public static void StatusSet(PXCache sender, ARRegister doc)
+        protected virtual void StatusSet(PXCache sender, ARRegister doc)
         {
             var docExt = doc.GetExtension<MXARRegisterExtension>();
             if (docExt == null) return;
@@ -401,7 +402,6 @@ namespace AcumaticaMX
                     return;
                 }
             }
-
         }
     }
 
@@ -647,4 +647,5 @@ namespace AcumaticaMX
             }
         }
     }
+
 }
