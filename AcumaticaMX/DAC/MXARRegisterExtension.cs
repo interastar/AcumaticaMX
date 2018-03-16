@@ -8,7 +8,7 @@ namespace AcumaticaMX
     /// Extensión de ARRegister para asociar información de CFDIs
     /// </summary>
     [PXTable(typeof(ARRegister.docType), typeof(ARRegister.refNbr), IsOptional = true)]
-    public class MXARRegisterExtension : PXCacheExtension<PX.Objects.AR.ARRegister>
+    public class MXARRegisterExtension : PXCacheExtension<ARRegister>
     {
         // Campos persistentes (en BD) *************
 
