@@ -6,6 +6,7 @@
   <col name="RelatedRefNbr" type="NVarChar(15)" />
   <col name="RelatedDocType" type="NVarChar(3)" />
   <col name="RelationType" type="NVarChar(2)" />
+  <col name="Uuid" type="UniqueIdentifier" nullable="true" />
   <col name="NoteID" type="UniqueIdentifier" nullable="true" />
   <col name="tstamp" type="Timestamp" />
   <col name="CreatedByID" type="UniqueIdentifier" />

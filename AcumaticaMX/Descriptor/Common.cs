@@ -232,8 +232,7 @@ namespace AcumaticaMX
             public const string ReasonFiveLabel = "Envío de mercancías propiedad de terceros";
             public const string ReasonSixLabel = "Otros";
         }
-
-
+        
         public static class Incoterm
         {
             public const string CFR = "CFR";
@@ -267,6 +266,25 @@ namespace AcumaticaMX
             public const string FCALabel = "FRANCO TRANSPORTISTA (LUGAR DESIGNADO).";
             public const string FASLabel = "FRANCO AL COSTADO DEL BUQUE (PUERTO DE CARGA CONVENIDO).";
             public const string FOBLabel = "FRANCO A BORDO (PUERTO DE CARGA CONVENIDO).";
+        }
+
+        public static class RelationType
+        {
+            public const string CreditMemo = "01";
+            public const string DebitMemo = "02";
+            public const string Refund = "03";
+            public const string Replace = "04";
+            public const string Transfers = "05";
+            public const string InvoiceTransfers = "06";
+            public const string Advance = "07";
+
+            public const string CreditMemoLabel = "Nota de crédito de los documentos relacionados";
+            public const string DebitMemoLabel = "Nota de débito de los documentos relacionados";
+            public const string RefundLabel = "Devolución de mercancía sobre facturas o traslados previos";
+            public const string ReplaceLabel = "Sustitución de los CFDI previos";
+            public const string TransfersLabel = "Traslados de mercancias facturados previamente";
+            public const string InvoiceTransfersLabel = "Factura generada por los traslados previos";
+            public const string AdvanceLabel = "CFDI por aplicación de anticipo";
         }
     }
 

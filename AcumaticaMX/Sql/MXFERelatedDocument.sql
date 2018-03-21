@@ -11,13 +11,14 @@ Create Table [dbo].[MXFERelatedDocument]
 (
 	-- multi-tenancy support
 	[CompanyID]				int NOT NULL DEFAULT ((0)),
-	
-	
+
 	[RefNbr]				nvarchar(15) NOT NULL,
 	[DocType]				nvarchar(3) NOT NULL,
 	[RelatedRefNbr]			nvarchar(15) NOT NULL,
 	[RelatedDocType]		nvarchar(3) NOT NULL,
 	[RelationType]			nvarchar(2) NOT NULL,
+
+	[Uuid]				[uniqueidentifier] NULL,
 
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
