@@ -14,7 +14,7 @@ namespace AcumaticaMX
         public abstract class documentID : IBqlField { }
 
         [PXDBGuid]
-        [PXUIField(DisplayName = "Folio Fiscal de la factura relacionada")]
+        [PXUIField(DisplayName = "Folio Fiscal de la factura relacionada", Enabled = false)]
         public virtual Guid? DocumentID { get; set; }
 
         #endregion DocumentID
@@ -49,7 +49,7 @@ namespace AcumaticaMX
         public abstract class partiality : IBqlField { }
 
         [PXDBInt]
-        [PXUIField(DisplayName = "Parcialidad")]
+        [PXUIField(DisplayName = "Parcialidad", Enabled = false)]
         public virtual int? Partiality { get; set; }
 
         #endregion Partiality
@@ -62,7 +62,7 @@ namespace AcumaticaMX
         public abstract class debtAmt : IBqlField { }
 
         [PXDBDecimal]
-        [PXUIField(DisplayName = "Saldo Insoluto Anterior")]
+        [PXUIField(DisplayName = "Saldo Insoluto Anterior", Enabled = false)]
         public virtual decimal? DebtAmt { get; set; }
 
         #endregion DebtAmt
@@ -75,7 +75,7 @@ namespace AcumaticaMX
         public abstract class newDebtAmt : IBqlField { }
 
         [PXDBDecimal]
-        [PXUIField(DisplayName = "Nuevo Saldo Insoluto")]
+        [PXUIField(DisplayName = "Nuevo Saldo Insoluto", Enabled = false)]
         public virtual decimal? NewDebtAmt { get; set; }
 
         #endregion NewDebtAmt
