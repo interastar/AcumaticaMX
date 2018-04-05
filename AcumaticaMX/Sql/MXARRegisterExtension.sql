@@ -49,16 +49,16 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 
 	-- Descuentos
 	[DiscountReason]	[nvarchar](250) NULL,
-
 	[UseCfdiCD]			[nvarchar](3) NULL,
-
-	[PaymentDocDateTime][smalldatetime] NULL,
 	[CurrencyRate]		[decimal](19, 6) NULL,
 	[Version]			[nvarchar](3) NULL,
-	[IsExternalTrade]	[bit] NULL DEFAULT ((1)),
+
+	--Complemento de Pagos
+	[PaymentDocDateTime][smalldatetime] NULL,
+	[OperationNbr]		[nvarchar](100) NULL,
 
 	-- Comercio Exterior
-	[ExternalTrade]		bit NOT NULL DEFAULT ((0)),
+	[IsExternalTrade]	[bit] NULL DEFAULT ((1)),
 
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
 	(

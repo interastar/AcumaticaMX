@@ -110,6 +110,21 @@ namespace AcumaticaMX
 
         #endregion TipoCambio
 
+        #region DocDateTime
+        public abstract class docDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? DocDateTime { get; set; }
+        #endregion DocDateTime
+
+        #region UseCfdiCD
+        public abstract class useCfdiCD : PX.Data.IBqlField
+        {
+        }
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.UseCFDI)]
+        public virtual string UseCfdiCD { get; set; }
+        #endregion UseCfdiCD
+
         //  -- Datos de sello del comprobante
 
         #region noCertificado
@@ -303,21 +318,8 @@ namespace AcumaticaMX
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
-
-        #region DocDateTime
-        public abstract class docDateTime : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        public virtual DateTime? DocDateTime { get; set; }
-        #endregion DocDateTime
-
-        #region UseCfdiCD
-        public abstract class useCfdiCD : PX.Data.IBqlField
-        {
-        }
-        [PXDBString]
-        [PXUIField(DisplayName = Messages.UseCFDI)]
-        public virtual string UseCfdiCD { get; set; }
-        #endregion UseCfdiCD
+        
+        // Complemento de Pagos
 
         #region PaymentDocDateTime
         public abstract class paymentDocDateTime : IBqlField { }
@@ -325,6 +327,15 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
         public virtual DateTime? PaymentDocDateTime { get; set; }
         #endregion PaymentDocDateTime
+
+        #region Numero de Operacion
+        public abstract class operationNbr : IBqlField { }
+        [PXDBString(100, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.OperationNbr)]
+        public virtual string OperationNbr { get; set; }
+        #endregion Numero de Operacion
+
+        // Comercio exterior
 
         #region External Trade
 
