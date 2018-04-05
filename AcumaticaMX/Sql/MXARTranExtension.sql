@@ -23,5 +23,7 @@ CREATE TABLE [dbo].[MXARTranExtension](
 	[MeasureCD]				[nvarchar](3) NULL,
 	[MeasureName]			[nvarchar](1000) NULL,
 	[DescriptionBackUp]		[nvarchar](1000) NULL,
+	[AppliedRefNbr]			[nvarchar](15) NULL,
+	[AppliedDocType]		[nvarchar](3) NULL,
 
 )

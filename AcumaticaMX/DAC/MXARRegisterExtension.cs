@@ -8,7 +8,7 @@ namespace AcumaticaMX
     /// Extensión de ARRegister para asociar información de CFDIs
     /// </summary>
     [PXTable(typeof(ARRegister.docType), typeof(ARRegister.refNbr), IsOptional = true)]
-    public class MXARRegisterExtension : PXCacheExtension<PX.Objects.AR.ARRegister>
+    public class MXARRegisterExtension : PXCacheExtension<ARRegister>
     {
         // Campos persistentes (en BD) *************
 
@@ -243,6 +243,39 @@ namespace AcumaticaMX
 
         #endregion CadenaOriginalTFD
 
+        #region DocDateTime
+        public abstract class docDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? DocDateTime { get; set; }
+        #endregion DocDateTime
+
+        #region UseCfdiCD
+        public abstract class useCfdiCD : PX.Data.IBqlField
+        {
+        }
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.UseCFDI)]
+        public virtual string UseCfdiCD { get; set; }
+        #endregion UseCfdiCD
+
+        #region PaymentDocDateTime
+        public abstract class paymentDocDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
+        public virtual DateTime? PaymentDocDateTime { get; set; }
+        #endregion PaymentDocDateTime
+
+        #region External Trade
+
+        public abstract class isExternalTrade : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Comercio Exterior", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
+        public virtual bool? IsExternalTrade { get; set; }
+
+        #endregion External Trade
+
         // Campos no persistentes *************
 
         #region CadenaOriginal
@@ -318,8 +351,53 @@ namespace AcumaticaMX
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
-        
-        // Complemento de Pagos
+
+        #region DocDateTime
+        public abstract class docDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? DocDateTime { get; set; }
+        #endregion DocDateTime
+
+        #region UseCfdiCD
+        public abstract class useCfdiCD : PX.Data.IBqlField
+        {
+        }
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.UseCFDI)]
+        public virtual string UseCfdiCD { get; set; }
+        #endregion UseCfdiCD
+
+        #region RelationType
+
+        public abstract class relationType : IBqlField
+        {
+        }
+        [PXDBString(2)]
+        [PXStringList(
+            new string[]
+            {
+                Common.RelationType.CreditMemo,
+                Common.RelationType.DebitMemo,
+                Common.RelationType.Refund,
+                Common.RelationType.Replace,
+                Common.RelationType.Transfers,
+                Common.RelationType.InvoiceTransfers,
+                Common.RelationType.Advance,
+            },
+            new string[]
+            {
+                Common.RelationType.CreditMemoLabel,
+                Common.RelationType.DebitMemoLabel,
+                Common.RelationType.RefundLabel,
+                Common.RelationType.ReplaceLabel,
+                Common.RelationType.TransfersLabel,
+                Common.RelationType.InvoiceTransfersLabel,
+                Common.RelationType.AdvanceLabel,
+            }
+            )]
+        [PXUIField(DisplayName = "Tipo de relación")]
+        public virtual string RelationType { get; set; }
+	#endregion RelationType
 
         #region PaymentDocDateTime
         public abstract class paymentDocDateTime : IBqlField { }

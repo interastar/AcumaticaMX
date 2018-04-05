@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAC\MXARRegisterADExtension.cs" />
+    <Compile Include="DAC\MXFERelatedDocument.cs" />
     <Compile Include="DAC\MXAPRegisterExtension.cs" />
     <Compile Include="DAC\MXAPVendorPayments.cs" />
     <Compile Include="DAC\MXARAdjustExtension.cs" />
@@ -122,6 +124,8 @@
     <Content Include="Sql\MXARAdjustExtension.sql" />
     <Content Include="Sql\MXARCustomerPaymentMethodExtension.sql" />
     <Content Include="Sql\MXARCustomsInformation.sql" />
+    <Content Include="Sql\MXARRegisterADExtension.sql" />
+    <Content Include="Sql\MXFERelatedDocument.sql" />
     <Content Include="Sql\MXCSCountryExtension.sql" />
     <Content Include="Sql\MXCSShipTermsExtension.sql" />
     <Content Include="Sql\MXCSStateExtension.sql" />
