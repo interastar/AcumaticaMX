@@ -58,7 +58,7 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[OperationNbr]		[nvarchar](100) NULL,
 
 	-- Comercio Exterior
-	[IsExternalTrade]	[bit] NULL DEFAULT ((1)),
+	[IsExternalTrade]	[bit] NULL DEFAULT ((0)),
 	[RelationType]		[nvarchar](2) NULL,
 
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
