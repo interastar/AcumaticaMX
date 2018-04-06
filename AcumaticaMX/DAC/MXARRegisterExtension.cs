@@ -243,39 +243,13 @@ namespace AcumaticaMX
 
         #endregion CadenaOriginalTFD
 
-        #region DocDateTime
-        public abstract class docDateTime : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        public virtual DateTime? DocDateTime { get; set; }
-        #endregion DocDateTime
-
-        #region UseCfdiCD
-        public abstract class useCfdiCD : PX.Data.IBqlField
-        {
-        }
-        [PXDBString]
-        [PXUIField(DisplayName = Messages.UseCFDI)]
-        public virtual string UseCfdiCD { get; set; }
-        #endregion UseCfdiCD
-
         #region PaymentDocDateTime
         public abstract class paymentDocDateTime : IBqlField { }
         [PXDBDateAndTime(PreserveTime = true)]
         [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
         public virtual DateTime? PaymentDocDateTime { get; set; }
         #endregion PaymentDocDateTime
-
-        #region External Trade
-
-        public abstract class isExternalTrade : IBqlField { }
-
-        [PXDBBool()]
-        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXUIField(DisplayName = "Comercio Exterior", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
-        public virtual bool? IsExternalTrade { get; set; }
-
-        #endregion External Trade
-
+        
         // Campos no persistentes *************
 
         #region CadenaOriginal
@@ -352,21 +326,6 @@ namespace AcumaticaMX
 
         #endregion Timbrable
 
-        #region DocDateTime
-        public abstract class docDateTime : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        public virtual DateTime? DocDateTime { get; set; }
-        #endregion DocDateTime
-
-        #region UseCfdiCD
-        public abstract class useCfdiCD : PX.Data.IBqlField
-        {
-        }
-        [PXDBString]
-        [PXUIField(DisplayName = Messages.UseCFDI)]
-        public virtual string UseCfdiCD { get; set; }
-        #endregion UseCfdiCD
-
         #region RelationType
 
         public abstract class relationType : IBqlField
@@ -398,13 +357,6 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Tipo de relación")]
         public virtual string RelationType { get; set; }
 	#endregion RelationType
-
-        #region PaymentDocDateTime
-        public abstract class paymentDocDateTime : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
-        public virtual DateTime? PaymentDocDateTime { get; set; }
-        #endregion PaymentDocDateTime
 
         #region Numero de Operacion
         public abstract class operationNbr : IBqlField { }
