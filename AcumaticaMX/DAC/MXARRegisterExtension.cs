@@ -250,7 +250,7 @@ namespace AcumaticaMX
         public virtual DateTime? PaymentDocDateTime { get; set; }
         #endregion PaymentDocDateTime
         
-        // Campos no persistentes *************
+        // -- Campos no persistentes *************
 
         #region CadenaOriginal
 
@@ -326,6 +326,8 @@ namespace AcumaticaMX
 
         #endregion Timbrable
 
+        // -- Documentos Relacionados
+
         #region RelationType
 
         public abstract class relationType : IBqlField
@@ -357,6 +359,8 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = "Tipo de relación")]
         public virtual string RelationType { get; set; }
 	#endregion RelationType
+
+        // -- Complemento de Pagos
 
         #region Numero de Operacion
         public abstract class operationNbr : IBqlField { }
