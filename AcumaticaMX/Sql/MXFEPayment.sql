@@ -23,7 +23,7 @@ Create Table [dbo].[MXFEPayment]
 	[CancelDate]			smalldatetime NULL,
 	[QrCode]				nvarchar(95) NULL,
 	[Version]               nvarchar(3) NULL,
-
+	[Sended]				bit NULL DEFAULT ((0)),
 	--Opcionales
 	[OperationNbr]			nvarchar(100) NULL,
 	[RfcEmisorCtaOrd]		nvarchar(13) NULL,
