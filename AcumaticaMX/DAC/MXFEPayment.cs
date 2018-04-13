@@ -144,6 +144,17 @@ namespace AcumaticaMX
 
         #endregion Version
 
+        #region Enviado
+
+        public abstract class sended : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Enviado",  Enabled = false)]
+        public virtual bool? Sended { get; set; }
+
+        #endregion Enviado
+
         // Opcionales
 
         #region Numero de Operacion
