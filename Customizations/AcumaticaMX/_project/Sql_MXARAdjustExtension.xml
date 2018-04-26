@@ -4,12 +4,13 @@
   <col name="AdjgDocType" type="NVarChar(3)" />
   <col name="AdjgRefNbr" type="NVarChar(15)" />
   <col name="AdjNbr" type="Int" default="Zero" />
-  <col name="AdjdDocType" type="NVarChar(3)" />
-  <col name="AdjdRefNbr" type="NVarChar(15)" />
+  <col name="AdjdDocType" type="Char(3)" />
+  <col name="AdjdRefNbr" type="Char(15)" />
   <col name="DocumentID" type="UniqueIdentifier" nullable="true" />
   <col name="PaymentForm" type="NVarChar(3)" nullable="true" />
   <col name="Partiality" type="Int" nullable="true" />
   <col name="DebtAmt" type="Decimal(19,4)" nullable="true" />
+  <col name="PaymentAmt" type="Decimal(19,4)" nullable="true" />
   <col name="NewDebtAmt" type="Decimal(19,4)" nullable="true" />
   <col name="Uuid" type="UniqueIdentifier" nullable="true" />
   <col name="PaymentRefNbr" type="NVarChar(15)" nullable="true" />
