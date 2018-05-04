@@ -14,6 +14,7 @@ Create Table [dbo].[MXFEPayment]
 	
 	
 	[RefNbr]				nvarchar(15) NOT NULL,
+	[DocType]				nvarchar(3) NOT NULL,
 	[Uuid]					uniqueidentifier NOT NULL,
 	[CustomerID]			int NOT NULL,
 	[Stamp]					nvarchar(500) NOT NULL,

@@ -22,6 +22,19 @@ namespace AcumaticaMX
 
         #endregion RefNbr
 
+        #region DocType
+
+        public abstract class docType : IBqlField
+        {
+        }
+
+        [PXDBString(3, IsFixed = true)]
+        [PXDefault(typeof(PaymentDocType))]
+        [PXUIField(DisplayName = "Tipo de Documento", Enabled = false)]
+        public virtual string DocType { get; set; }
+
+        #endregion DocType
+
         #region Uuid
 
         public abstract class uuid : IBqlField { }
@@ -408,5 +421,12 @@ namespace AcumaticaMX
         #endregion LastModifiedDateTime
 
         #endregion audit
+    }
+
+    public class PaymentDocType : Constant<String>
+    {
+        public PaymentDocType() : base("CDP")
+        {
+        }
     }
 }
