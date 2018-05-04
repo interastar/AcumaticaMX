@@ -2,6 +2,7 @@
     <CDATA name="TableSchemaXml"><![CDATA[<table name="MXFEPayment">
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="RefNbr" type="NVarChar(15)" />
+  <col name="DocType" type="NVarChar(3)" />
   <col name="Uuid" type="UniqueIdentifier" />
   <col name="CustomerID" type="Int" />
   <col name="Stamp" type="NVarChar(500)" />
