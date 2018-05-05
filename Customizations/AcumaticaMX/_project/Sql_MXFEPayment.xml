@@ -3,6 +3,8 @@
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="RefNbr" type="NVarChar(15)" />
   <col name="DocType" type="NVarChar(3)" />
+  <col name="Serie" type="NVarChar(25)" nullable="true" />
+  <col name="Folio" type="NVarChar(25)" nullable="true" />
   <col name="Uuid" type="UniqueIdentifier" />
   <col name="CustomerID" type="Int" />
   <col name="Stamp" type="NVarChar(500)" />
