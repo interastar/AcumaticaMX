@@ -34,6 +34,26 @@ namespace AcumaticaMX
         public virtual string DocType { get; set; }
 
         #endregion DocType
+        
+        #region Serie
+
+        public abstract class serie : IBqlField { }
+
+        [PXDBString(25, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Serie", Enabled = false)]
+        public virtual string Serie { get; set; }
+
+        #endregion Serie
+
+        #region Folio
+
+        public abstract class folio : IBqlField { }
+
+        [PXDBString(25, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Folio", Enabled = false)]
+        public virtual string Folio { get; set; }
+
+        #endregion Folio
 
         #region Uuid
 
