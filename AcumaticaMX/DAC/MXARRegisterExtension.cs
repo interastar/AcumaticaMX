@@ -110,6 +110,17 @@ namespace AcumaticaMX
 
         #endregion TipoCambio
 
+        #region Generic Invoice
+
+        public abstract class isGenericInvoice : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Publico en General", Enabled = true)]
+        public virtual bool? IsGenericInvoice { get; set; }
+
+        #endregion Generic Invoice
+
         //  -- Datos de sello del comprobante
 
         #region noCertificado

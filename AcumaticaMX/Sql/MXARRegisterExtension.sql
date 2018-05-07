@@ -56,6 +56,7 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[CurrencyRate]		[decimal](19, 6) NULL,
 	[Version]			[nvarchar](3) NULL,
 	[IsExternalTrade]	[bit] NULL DEFAULT ((1)),
+	[IsGenericInvoice]	[bit] NULL DEFAULT ((1)),
 	[RelationType]		[nvarchar](2) NULL,
 
 	CONSTRAINT [MXARRegisterExtension_PK] PRIMARY KEY CLUSTERED 
