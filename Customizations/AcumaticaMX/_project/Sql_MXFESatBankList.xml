@@ -3,7 +3,7 @@
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="BankCD" type="NVarChar(3)" />
   <col name="BankName" type="NVarChar(255)" />
-  <col name="BankRFC" type="NVarChar(50)" />
+  <col name="BankRFC" type="NVarChar(50)" nullable="true" />
   <col name="tstamp" type="Timestamp" />
   <col name="CreatedByID" type="UniqueIdentifier" />
   <col name="CreatedByScreenID" type="Char(8)" />
