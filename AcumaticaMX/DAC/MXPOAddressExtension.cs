@@ -31,25 +31,25 @@ namespace AcumaticaMX
 
         #region Mandatory fields
 
-        //[PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
-        //[PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", false)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
         //[PXDefault()]
-        //public string City { get; set; }
+        public string City { get; set; }
 
-        //[PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
-        //[PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", false)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
         //[PXDefault()]
-        //public string CountryID { get; set; }
+        public string CountryID { get; set; }
 
-        //[PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
-        //[PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", false)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
         //[PXDefault()]
-        //public string State { get; set; }
+        public string State { get; set; }
 
-        //[PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", true)]
-        //[PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXCustomizeBaseAttribute(typeof(PXUIFieldAttribute), "Required", false)]
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
         //[PXDefault()]
-        //public string PostalCode { get; set; }
+        public string PostalCode { get; set; }
 
         #endregion Mandatory fields
 
