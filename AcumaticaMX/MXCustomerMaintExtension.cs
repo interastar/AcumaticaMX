@@ -10,6 +10,22 @@ namespace AcumaticaMX
 
     public class MXCustomerMaintExtension : PXGraphExtension<CustomerMaint>
     {
+        [PXMergeAttributes(Method = MergeMethod.Merge)]
+        [PXDefault(Common.PayForm.Partial)]
+        [PXStringList(
+            new string[]
+            {
+                Common.PayForm.One,
+                Common.PayForm.Partial,
+            },
+            new string[]
+            {
+                Common.PayForm.OneLabel,
+                Common.PayForm.PartialLabel,
+            }
+            )]
+        protected void Customer_PaymentForm_CacheAttached(PXCache sender) { }
+
         #region Event Handlers
 
         protected virtual void Customer_RowSelected(PXCache sender, PXRowSelectedEventArgs e, PXRowSelected InvokeBaseHandler)
