@@ -4,6 +4,7 @@ using PX.Data;
 using PX.Objects.AR;
 using PX.Objects.IN;
 using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -645,6 +646,33 @@ namespace AcumaticaMX
                 sender.RaiseExceptionHandling(_TargetField, e.Row, value,
                     new PXSetPropertyException("No campo no cumple con las reglas del SAT"));
             }
+        }
+    }
+
+    public class ToWordsESAttribute : PXEventSubscriberAttribute, IPXFieldSelectingSubscriber
+    {
+        protected string _DecimalField = null;
+        protected string _CuyField = "MXN";
+        public ToWordsESAttribute(Type ValueField)
+        {
+            _DecimalField = ValueField.Name;
+            //_CuyField = Cury.Name;
+        }
+
+        public virtual void FieldSelecting(PXCache sender, PXFieldSelectingEventArgs e)
+        {
+            e.ReturnState = PXStringState.CreateInstance(e.ReturnState, 255, null, _FieldName, null, null, null, null, null, false, null);
+            var value = sender.GetValue(e.Row, _DecimalField) as decimal?;
+            var cury = sender.GetValue(e.Row, _CuyField) as string;
+            e.ReturnValue = LangEs.ToWords(value, cury);
+        }
+    }
+
+    public static class LangEs
+    {
+        public static string ToWords(decimal? CuryOrigDocAmt, string CuryID)
+        {
+            return Convert.ToWords(CuryOrigDocAmt, CuryID);
         }
     }
 
