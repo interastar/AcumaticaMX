@@ -2,8 +2,10 @@ using PX.Common;
 using System.Text.RegularExpressions;
 using PX.Data;
 using PX.Objects.AR;
+using PX.Objects.AP;
 using PX.Objects.IN;
 using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -645,6 +647,41 @@ namespace AcumaticaMX
                 sender.RaiseExceptionHandling(_TargetField, e.Row, value,
                     new PXSetPropertyException("No campo no cumple con las reglas del SAT"));
             }
+        }
+    }
+
+    public class ToWordsESAttribute : PXEventSubscriberAttribute, IPXFieldSelectingSubscriber
+    {
+        public virtual void FieldSelecting(PXCache sender, PXFieldSelectingEventArgs e)
+        {
+            var document = e.Row as APPayment;
+            if (document == null) return;
+
+            //Consulta el apregister por que no se puede obtener el curyId por medio del sender.getvalue
+            var register = LangEs.GetAPRegister(sender, document?.DocType, document?.RefNbr);
+            if (register == null || string.IsNullOrEmpty(register?.DocType) || register?.RefNbr?.Contains("SELECT") == true) return;
+            var value = register?.CuryOrigDocAmt;
+            var cury = register?.CuryID;
+            e.ReturnValue = LangEs.ToWords(value, cury);
+        }
+    }
+
+    public static class LangEs
+    {
+        public static string ToWords(decimal? CuryOrigDocAmt, string CuryID)
+        {
+            return Convert.ToWords(CuryOrigDocAmt, CuryID);
+        }
+
+        public static APRegister GetAPRegister(PXCache sender, string DocType, string RefNbr)
+        {
+            var register = PXSelect<APRegister,
+                Where<APRegister.docType,
+                Equal<Required<APRegister.docType>>,
+                    And<APRegister.refNbr,
+                    Equal<Required<APRegister.refNbr>>>>>.Select(sender.Graph, DocType, RefNbr);
+
+            return register;
         }
     }
 
