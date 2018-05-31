@@ -652,14 +652,6 @@ namespace AcumaticaMX
 
     public class ToWordsESAttribute : PXEventSubscriberAttribute, IPXFieldSelectingSubscriber
     {
-        protected string _DecimalField = null;
-        protected string _CuyField = null;
-        public ToWordsESAttribute(Type ValueField, Type CuyField) : base()
-        {
-            _DecimalField = ValueField.Name;
-            _CuyField = CuyField.Name;
-        }
-
         public virtual void FieldSelecting(PXCache sender, PXFieldSelectingEventArgs e)
         {
             var document = e.Row as APPayment;

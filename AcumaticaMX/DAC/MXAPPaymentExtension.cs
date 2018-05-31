@@ -7,7 +7,7 @@ namespace AcumaticaMX
     [Serializable]
     public class MXAPPaymentExtension : PXCacheExtension<APRegister>
     {
-        [ToWordsES(typeof(Current<APRegister.curyOrigDocAmt>), typeof(Current<APRegister.curyID>))]
+        [ToWordsES]
         public virtual string AmountToWords { get; set; }
     }
 }
