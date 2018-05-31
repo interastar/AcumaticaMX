@@ -5,11 +5,9 @@ using System;
 namespace AcumaticaMX
 {
     [Serializable]
-    [PXTable(typeof(APPayment.docType), typeof(APPayment.refNbr), IsOptional = true)]
-    public class MXAPPaymentExtension : PXCacheExtension<APPayment>
+    public class MXAPPaymentExtension : PXCacheExtension<APRegister>
     {
-        //[PXMergeAttributes(Method = MergeMethod.Replace)]
-        [ToWordsES(typeof(APPayment.curyOrigDocAmt))]
+        [ToWordsES(typeof(Current<APRegister.curyOrigDocAmt>), typeof(Current<APRegister.curyID>))]
         public virtual string AmountToWords { get; set; }
     }
 }

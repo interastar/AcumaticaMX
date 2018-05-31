@@ -2,6 +2,7 @@ using PX.Common;
 using System.Text.RegularExpressions;
 using PX.Data;
 using PX.Objects.AR;
+using PX.Objects.AP;
 using PX.Objects.IN;
 using System;
 using System.Text;
@@ -652,18 +653,23 @@ namespace AcumaticaMX
     public class ToWordsESAttribute : PXEventSubscriberAttribute, IPXFieldSelectingSubscriber
     {
         protected string _DecimalField = null;
-        protected string _CuyField = "MXN";
-        public ToWordsESAttribute(Type ValueField)
+        protected string _CuyField = null;
+        public ToWordsESAttribute(Type ValueField, Type CuyField) : base()
         {
             _DecimalField = ValueField.Name;
-            //_CuyField = Cury.Name;
+            _CuyField = CuyField.Name;
         }
 
         public virtual void FieldSelecting(PXCache sender, PXFieldSelectingEventArgs e)
         {
-            e.ReturnState = PXStringState.CreateInstance(e.ReturnState, 255, null, _FieldName, null, null, null, null, null, false, null);
-            var value = sender.GetValue(e.Row, _DecimalField) as decimal?;
-            var cury = sender.GetValue(e.Row, _CuyField) as string;
+            var document = e.Row as APPayment;
+            if (document == null) return;
+
+            //Consulta el apregister por que no se puede obtener el curyId por medio del sender.getvalue
+            var register = LangEs.GetAPRegister(sender, document?.DocType, document?.RefNbr);
+            if (register == null || string.IsNullOrEmpty(register?.DocType) || register?.RefNbr?.Contains("SELECT") == true) return;
+            var value = register?.CuryOrigDocAmt;
+            var cury = register?.CuryID;
             e.ReturnValue = LangEs.ToWords(value, cury);
         }
     }
@@ -673,6 +679,17 @@ namespace AcumaticaMX
         public static string ToWords(decimal? CuryOrigDocAmt, string CuryID)
         {
             return Convert.ToWords(CuryOrigDocAmt, CuryID);
+        }
+
+        public static APRegister GetAPRegister(PXCache sender, string DocType, string RefNbr)
+        {
+            var register = PXSelect<APRegister,
+                Where<APRegister.docType,
+                Equal<Required<APRegister.docType>>,
+                    And<APRegister.refNbr,
+                    Equal<Required<APRegister.refNbr>>>>>.Select(sender.Graph, DocType, RefNbr);
+
+            return register;
         }
     }
 
