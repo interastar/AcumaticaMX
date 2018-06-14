@@ -5,7 +5,7 @@ using System;
 namespace AcumaticaMX
 {
     [Serializable]
-    public class MXAPPaymentExtension : PXCacheExtension<APRegister>
+    public class MXAPPaymentExtension : PXCacheExtension<APPayment>
     {
         [ToWordsES]
         public virtual string AmountToWords { get; set; }
