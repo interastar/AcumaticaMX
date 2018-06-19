@@ -110,20 +110,16 @@ namespace AcumaticaMX
 
         #endregion TipoCambio
 
-        #region DocDateTime
-        public abstract class docDateTime : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        public virtual DateTime? DocDateTime { get; set; }
-        #endregion DocDateTime
+        #region Generic Invoice
 
-        #region UseCfdiCD
-        public abstract class useCfdiCD : PX.Data.IBqlField
-        {
-        }
-        [PXDBString]
-        [PXUIField(DisplayName = Messages.UseCFDI)]
-        public virtual string UseCfdiCD { get; set; }
-        #endregion UseCfdiCD
+        public abstract class isGenericInvoice : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Publico en General", Enabled = true)]
+        public virtual bool? IsGenericInvoice { get; set; }
+
+        #endregion Generic Invoice
 
         //  -- Datos de sello del comprobante
 

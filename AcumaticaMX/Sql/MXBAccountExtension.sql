@@ -23,6 +23,7 @@ CREATE TABLE [dbo].[MXBAccountExtension](
 	[IsNaturalPerson]		[bit] NULL DEFAULT ((0)),
 	[DefaultOriginAccount]	[nvarchar](30) NULL,
 	[DefaultPaymentMethod]	[nvarchar](50) NULL,
+	[PaymentForm]			[nvarchar](3) NULL,
 
 	CONSTRAINT [MXBAccountExtension_PK] PRIMARY KEY CLUSTERED 
 	(

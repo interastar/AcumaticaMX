@@ -129,5 +129,15 @@ namespace AcumaticaMX
         public virtual string DefaultPaymentMethod { get; set; }
 
         #endregion DefaultPaymentMethod
+
+        #region FormaDePago
+
+        public abstract class paymentForm : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Metodo de Pago")]
+        public virtual string PaymentForm { get; set; }
+
+        #endregion FormaDePago
     }
 }
