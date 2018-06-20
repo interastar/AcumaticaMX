@@ -322,6 +322,25 @@ namespace AcumaticaMX
 
         #endregion Timbrable
 
+
+        #region DocDateTime
+
+        public abstract class docDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? DocDateTime { get; set; }
+
+        #endregion DocDateTime
+
+
+        #region UseCfdiCD
+
+        public abstract class useCfdiCD : PX.Data.IBqlField{}
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.UseCFDI)]
+        public virtual string UseCfdiCD { get; set; }
+
+        #endregion UseCfdiCD
+
         // -- Documentos Relacionados
 
         #region RelationType
