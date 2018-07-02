@@ -238,13 +238,6 @@ namespace AcumaticaMX
         public virtual string StampString { get; set; }
 
         #endregion CadenaOriginalTFD
-
-        #region PaymentDocDateTime
-        public abstract class paymentDocDateTime : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
-        public virtual DateTime? PaymentDocDateTime { get; set; }
-        #endregion PaymentDocDateTime
         
         // -- Campos no persistentes *************
 
