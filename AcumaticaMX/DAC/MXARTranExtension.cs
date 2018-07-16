@@ -7,6 +7,7 @@ namespace AcumaticaMX
     [PXTable(typeof(ARTran.tranType),typeof(ARTran.refNbr), typeof(ARTran.lineNbr),IsOptional = true)]
     public class MXARTranExtension : PXCacheExtension<ARTran>
     {
+        #region ProductServiceCD
         public abstract class productServiceCD : IBqlField
         {
         }
@@ -18,12 +19,15 @@ namespace AcumaticaMX
         [PXFormula(typeof(Selector<ARTran.inventoryID, MXINInventoryItemExtension.productServiceCD>))]
         [PXUIField(DisplayName = Messages.ProductService)]
         public virtual string ProductServiceCD { get; set; }
+        #endregion ProductServiceCD
 
+        #region MeasureCD
         public abstract class measureCD : IBqlField
         {
         }
         [PXDBString]
         public virtual string MeasureCD { get; set; }
+        #endregion MeasureCD
 
         #region MeasureName
         public abstract class measureName : IBqlField
