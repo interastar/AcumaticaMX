@@ -247,8 +247,7 @@ namespace AcumaticaMX
         #endregion TotalAmount
 
         // -- Datos para poliza
-
-
+        
         #region Document Type
 
         public abstract class documentType : IBqlField { }

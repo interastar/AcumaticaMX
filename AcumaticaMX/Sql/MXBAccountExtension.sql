@@ -25,6 +25,10 @@ CREATE TABLE [dbo].[MXBAccountExtension](
 	[DefaultPaymentMethod]	[nvarchar](50) NULL,
 	[PaymentForm]			[nvarchar](3) NULL,
 
+	--Diot Vendor Field
+	[VendorType]			[nvarchar](10) NULL,
+	[OperationType]			[nvarchar](50) NULL,
+
 	CONSTRAINT [MXBAccountExtension_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,

@@ -138,7 +138,7 @@ namespace AcumaticaMX
 
         }
 
-	/// <summary>
+	    /// <summary>
         /// Catálogo de Unidades
         /// </summary>
         public static class SatUnits
@@ -285,6 +285,32 @@ namespace AcumaticaMX
             public const string TransfersLabel = "Traslados de mercancias facturados previamente";
             public const string InvoiceTransfersLabel = "Factura generada por los traslados previos";
             public const string AdvanceLabel = "CFDI por aplicación de anticipo";
+        }
+
+        public static class VendorType
+        {
+            public const string Empty = "";
+            public const string National = "Nacional";
+            public const string Foreign = "Extranjero";
+            public const string Global = "Global";
+
+            public const string EmptyLabel = "";
+            public const string NationalLabel = "Nacional";
+            public const string ForeignLabel = "Extranjero";
+            public const string GlobalLabel = "Global";
+        }
+
+        public static class VendorOperationType
+        {
+            public const string Empty = "";
+            public const string Services = "Prestación de servicios profesionales";
+            public const string LeasingEstate = "Arrendamiento de inmuebles";
+            public const string Others = "Otros";
+
+            public const string EmptyLabel = Empty;
+            public const string ServicesLabel = Services;
+            public const string LeasingEstateLabel = LeasingEstate;
+            public const string OthersLabel = Others;
         }
     }
 

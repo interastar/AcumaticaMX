@@ -9,6 +9,8 @@
   <col name="DefaultOriginAccount" type="NVarChar(30)" nullable="true" />
   <col name="DefaultPaymentMethod" type="NVarChar(50)" nullable="true" />
   <col name="PaymentForm" type="NVarChar(3)" nullable="true" />
+  <col name="VendorType" type="NVarChar(10)" nullable="true" />
+  <col name="OperationType" type="NVarChar(50)" nullable="true" />
   <index name="MXBAccountExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="BAccountID" />
