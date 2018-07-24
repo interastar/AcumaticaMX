@@ -18,6 +18,7 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	[RefNbr]			char(15) NOT NULL,
 
 	-- Datos del comprobante fiscal
+	[Version]			[nvarchar](3) NULL,
 	[Series]			[nvarchar](25) NULL,
 	[PaymentForm]		[nvarchar](50) NULL,
 	[PaymentMethod]		[nvarchar](50) NULL,
