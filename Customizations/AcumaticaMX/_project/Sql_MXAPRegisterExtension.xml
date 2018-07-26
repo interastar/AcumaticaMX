@@ -3,6 +3,7 @@
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="DocType" type="Char(3)" />
   <col name="RefNbr" type="Char(15)" />
+  <col name="Version" type="NVarChar(3)" nullable="true" />
   <col name="Series" type="NVarChar(25)" nullable="true" />
   <col name="PaymentForm" type="NVarChar(50)" nullable="true" />
   <col name="PaymentMethod" type="NVarChar(50)" nullable="true" />
@@ -19,7 +20,7 @@
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
   <col name="DocumentType" type="NVarChar(1)" nullable="true" />
   <col name="Folio" type="NVarChar(25)" nullable="true" />
-  <col name="Import" type="Bit" nullable="true" />
+  <col name="Import" type="Bit" nullable="true" default="Zero" />
   <col name="Provider" type="NVarChar(13)" nullable="true" />
   <col name="TotalTaxes" type="Decimal(19,4)" nullable="true" />
   <col name="TotalAmount" type="Decimal(19,4)" nullable="true" />
