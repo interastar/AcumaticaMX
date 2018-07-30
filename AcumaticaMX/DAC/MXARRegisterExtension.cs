@@ -61,7 +61,7 @@ namespace AcumaticaMX
         public abstract class paymentMethod : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+        [PXDefault(Common.PayMethod.Transfer)]
         [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
             typeof(MXFESatPaymentMethodList.description),
             DescriptionField = typeof(MXFESatPaymentMethodList.description))]
