@@ -29,7 +29,7 @@ namespace AcumaticaMX
             }
             )]
         [PXUIField(DisplayName = Messages.Tax, Enabled = true)]
-        [PXDefault(Common.Tax.IVA)]
+        //[PXDefault(Common.Tax.IVA)]
         public virtual string SatTax { get; set; }
 
         #endregion
