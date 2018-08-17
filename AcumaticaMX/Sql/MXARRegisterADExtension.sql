@@ -21,6 +21,7 @@ CREATE TABLE [dbo].[MXARRegisterADExtension](
 	[OrderTypeSO]			char(2) NULL,
 	[OrderNbrSO]			nvarchar(15) NULL,
 	[CreditMemoCheck]		bit NULL DEFAULT ((0)),
+	[EarlyInvoice]			bit NULL DEFAULT ((0)),
 
 	CONSTRAINT [MXARRegisterADExtension_PK] PRIMARY KEY CLUSTERED 
 	(
