@@ -150,6 +150,16 @@ namespace AcumaticaMX
         public const string IndoorNumber = "Numero Interior";
         public const string CuryID = "Moneda";
         public const string SatCuryID = "Moneda Sat";
+        public const string OperationNbr = "Numero de Operacion";
+        public const string RfcEmisorCtaOrd = "Rfc Cuenta Ordenante";
+        public const string NomBancoOrdExt = "Nombre del Banco Ordenante";
+        public const string CtaOrdenante = "Cuenta Ordenante";
+        public const string RfcEmisorCtaBen = "Rfc Cuenta Beneficiaria";
+        public const string CtaBeneficiario = "Cuenta Beneficiario";
+        public const string TipoCadPago = "Tipo de Cadena de Pago";
+        public const string CertPago = "Certificado de Pago";
+        public const string CadPago = "Cadena Original de Pago";
+        public const string SelloPago = "Sello Digital de Pago";
         #endregion
 
         #region Catalogo de Monedas

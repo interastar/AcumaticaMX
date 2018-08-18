@@ -5,33 +5,66 @@ using PX.Objects.CR;
 namespace AcumaticaMX
 {
     [Serializable]
-    public class MXFEPayments : IBqlTable
+    public class MXFEPayment : IBqlTable
     {
-        #region PaymentRefNbr
+        #region RefNbr
 
-        public abstract class paymentRefNbr : IBqlField
+        public abstract class refNbr : IBqlField
         {
         }
 
         [PXDBString(15, IsKey = true, InputMask = ">CCCCCCCCCC")]
-        [PXSelector(typeof(Search<MXFEPayments.paymentRefNbr>),
-            typeof(paymentRefNbr),
+        [PXSelector(typeof(Search<MXFEPayment.refNbr>),
+            typeof(refNbr),
             typeof(customerID))]
         [PXUIField(DisplayName = "Numero de pago", Visible = true, Visibility = PXUIVisibility.SelectorVisible)]
-        public virtual string PaymentRefNbr { get; set; }
+        public virtual string RefNbr { get; set; }
 
-        #endregion PaymentRefNbr
+        #endregion RefNbr
 
-        #region StampedUuid
+        #region DocType
 
-        public abstract class stampedUuid : IBqlField { }
+        public abstract class docType : IBqlField
+        {
+        }
+
+        [PXDBString(3, IsFixed = true)]
+        [PXDefault(typeof(PaymentDocType))]
+        [PXUIField(DisplayName = "Tipo de Documento", Enabled = false)]
+        public virtual string DocType { get; set; }
+
+        #endregion DocType
+        
+        #region Serie
+
+        public abstract class serie : IBqlField { }
+
+        [PXDBString(25, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Serie", Enabled = false)]
+        public virtual string Serie { get; set; }
+
+        #endregion Serie
+
+        #region Folio
+
+        public abstract class folio : IBqlField { }
+
+        [PXDBString(25, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Folio", Enabled = false)]
+        public virtual string Folio { get; set; }
+
+        #endregion Folio
+
+        #region Uuid
+
+        public abstract class uuid : IBqlField { }
 
         [PXDBGuid]
-        [PXUIField(DisplayName = "Folio Fiscal del Complemento de Pago", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
-        [CfdiStatus(typeof(stampStatus), typeof(stampedUuid), typeof(cancelDate))]
-        public virtual Guid? StampedUuid { get; set; }
+        [PXUIField(DisplayName = "Folio Fiscal del Complemento de Pago", Enabled = false)]
+        [CfdiStatus(typeof(stampStatus), typeof(uuid), typeof(cancelDate))]
+        public virtual Guid? Uuid { get; set; }
 
-        #endregion StampedUuid
+        #endregion Uuid
 
         #region CancelDate
 
@@ -69,11 +102,11 @@ namespace AcumaticaMX
 
         #region Sello CFD
 
-        public abstract class cFDSeal : IBqlField { }
+        public abstract class seal : IBqlField { }
 
         [PXDBString(500, IsFixed = false, IsUnicode = true)]
         [PXUIField(DisplayName = "Sello CFD", Enabled = false)]
-        public virtual string CFDSeal { get; set; }
+        public virtual string Seal { get; set; }
 
         #endregion Sello CFD
 
@@ -95,15 +128,6 @@ namespace AcumaticaMX
         public virtual DateTime? StampDate { get; set; }
 
         #endregion FechaTimbrado
-
-        #region AttachedUuid
-
-        public abstract class attachedUuid : IBqlField { }
-
-        [PXDBGuid]
-        public virtual Guid? AttachedUuid { get; set; }
-
-        #endregion AttachedUuid
 
         #region Estado
 
@@ -152,6 +176,89 @@ namespace AcumaticaMX
         public virtual string Version { get; set; }
 
         #endregion Version
+
+        #region Enviado
+
+        public abstract class sended : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Enviado",  Enabled = false)]
+        public virtual bool? Sended { get; set; }
+
+        #endregion Enviado
+
+        // Opcionales
+
+        #region Numero de Operacion
+        public abstract class operationNbr : IBqlField { }
+        [PXDBString(100, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.OperationNbr)]
+        public virtual string OperationNbr { get; set; }
+        #endregion Numero de Operacion
+
+        #region Rfc Emisor de la Cuenta Ordenante
+        public abstract class rfcEmisorCtaOrd : IBqlField { }
+        [PXDBString(13, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.RfcEmisorCtaOrd)]
+        public virtual string RfcEmisorCtaOrd { get; set; }
+        #endregion Rfc Emisor de la Cuenta Ordenante
+
+        #region Nombre del Banco Ordenante Extranjero
+        public abstract class nomBancoOrdExt : IBqlField { }
+        [PXDBString(300, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.NomBancoOrdExt)]
+        public virtual string NomBancoOrdExt { get; set; }
+        #endregion Nombre del Banco Ordenante Extranjero
+
+        #region Cuenta Ordenante
+        public abstract class ctaOrdenante : IBqlField { }
+        [PXDBString(50, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.CtaOrdenante)]
+        public virtual string CtaOrdenante { get; set; }
+        #endregion Cuenta Ordenante
+
+        #region Rfc Emisor de la Cuenta Beneficiaria
+        public abstract class rfcEmisorCtaBen : IBqlField { }
+        [PXDBString(13, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.RfcEmisorCtaBen)]
+        public virtual string RfcEmisorCtaBen { get; set; }
+        #endregion Rfc Emisor de la Cuenta Beneficiaria
+
+        #region Cuenta Beneficiaria
+        public abstract class ctaBeneficiario : IBqlField { }
+        [PXDBString(50, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.CtaBeneficiario)]
+        public virtual string CtaBeneficiario { get; set; }
+        #endregion Cuenta Beneficiaria
+
+        #region Tipo de Cadena de Pago
+        public abstract class tipoCadPago : IBqlField { }
+        [PXDBString(2, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.TipoCadPago)]
+        public virtual string TipoCadPago { get; set; }
+        #endregion Tipo de Cadena de Pago
+
+        #region Certificado de Pago
+        public abstract class certPago : IBqlField { }
+        [PXDBString(500, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.CertPago)]
+        public virtual string CertPago { get; set; }
+        #endregion Certificado de Pago
+
+        #region Cadena Original de Pago
+        public abstract class cadPago : IBqlField { }
+        [PXDBString(8192, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.CadPago)]
+        public virtual string CadPago { get; set; }
+        #endregion Cadena Original de Pago
+
+        #region Sello Pago
+        public abstract class selloPago : IBqlField { }
+        [PXDBString(500, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.SelloPago)]
+        public virtual string SelloPago { get; set; }
+        #endregion Sello Pago
 
         #region audit
 
@@ -334,5 +441,12 @@ namespace AcumaticaMX
         #endregion LastModifiedDateTime
 
         #endregion audit
+    }
+
+    public class PaymentDocType : Constant<String>
+    {
+        public PaymentDocType() : base("CDP")
+        {
+        }
     }
 }
