@@ -7,7 +7,7 @@ namespace AcumaticaMX
 {
     public class MXFEUnit : IBqlTable
     {
-
+        #region System UOM
         public abstract class unitCD : IBqlField
         {
         }
@@ -22,7 +22,9 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.Unit)]
         [PXDefault]
         public virtual string UnitCD { get; set; }
+        #endregion System UOM
 
+        #region Sat UOM
         public abstract class measureCD : IBqlField
         {
         }
@@ -35,6 +37,7 @@ namespace AcumaticaMX
         [PXDefault]
         [PXUIField(DisplayName = Messages.Measure)]
         public virtual string MeasureCD { get; set; }
+        #endregion Sat UOM
 
         #region audit
 

@@ -25,7 +25,6 @@ namespace AcumaticaMX
         {
         }
         [PXDBString(50, IsUnicode = true)]
-        [PXDefault]
         [PXUIField(DisplayName = Messages.BankRFC)]
         public virtual string BankRFC { get; set; }
 

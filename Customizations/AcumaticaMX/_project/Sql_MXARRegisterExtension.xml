@@ -28,6 +28,7 @@
   <col name="IsExternalTrade" type="Bit" nullable="true" />
   <col name="IsGenericInvoice" type="Bit" nullable="true" />
   <col name="RelationType" type="NVarChar(2)" nullable="true" />
+  <col name="OperationNbr" type="NVarChar(100)" nullable="true" />
   <index name="MXARRegisterExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="DocType" />

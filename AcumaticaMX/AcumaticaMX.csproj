@@ -80,7 +80,7 @@
     <Compile Include="DAC\MXFESatStateList.cs" />
     <Compile Include="DAC\MXFESatTariffFractionList.cs" />
     <Compile Include="DAC\MXINInventoryKits.cs" />
-    <Compile Include="DAC\MXFEPayments.cs" />
+    <Compile Include="DAC\MXFEPayment.cs" />
     <Compile Include="DAC\MXARTranExtension.cs" />
     <Compile Include="DAC\MXCACashAccountExtension.cs" />
     <Compile Include="DAC\MXARCustomerPaymentMethodExtension.cs" />
@@ -140,7 +140,7 @@
     <Content Include="Sql\MXFEExternalTrade.sql" />
     <Content Include="Sql\MXFESatCountryList.sql" />
     <Content Include="Sql\MXFESatIncotermList.sql" />
-    <Content Include="Sql\MXFEPayments.sql" />
+    <Content Include="Sql\MXFEPayment.sql" />
     <Content Include="Sql\MXARRegisterExtension.sql" />
     <Content Include="Sql\MXARTranExtension.sql" />
     <Content Include="Sql\MXBAccountExtension.sql" />
