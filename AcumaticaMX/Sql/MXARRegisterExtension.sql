@@ -51,11 +51,11 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[DiscountReason]	[nvarchar](250) NULL,
 	[UseCfdiCD]			[nvarchar](3) NULL,
 	[CurrencyRate]		[decimal](19, 6) NULL,
-	[Version]		[nvarchar](3) NULL,
+	[Version]			[nvarchar](3) NULL,
 
 	--Complemento de Pagos
-	[PaymentDocDateTime][smalldatetime] NULL,
-	[OperationNbr]		[nvarchar](100) NULL,
+	[PaymentExpirationDate]	[smalldatetime] NULL,
+	[OperationNbr]			[nvarchar](100) NULL,
 
 	-- Comercio Exterior
 	[IsExternalTrade]	[bit] NULL DEFAULT ((0)),
