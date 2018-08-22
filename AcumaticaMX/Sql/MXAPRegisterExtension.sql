@@ -18,6 +18,7 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	[RefNbr]			char(15) NOT NULL,
 
 	-- Datos del comprobante fiscal
+	[Version]			[nvarchar](3) NULL,
 	[Series]			[nvarchar](25) NULL,
 	[PaymentForm]		[nvarchar](50) NULL,
 	[PaymentMethod]		[nvarchar](50) NULL,
@@ -44,7 +45,7 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	-- Datos de Validación
 	[DocumentType]		[nvarchar](1) NULL,
 	[Folio]				[nvarchar](25) NULL,
-	[Import]			BIT NULL DEFAULT ((1)),
+	[Import]			BIT NULL DEFAULT ((0)),
 	[Provider]			[nvarchar](13) NULL,
 	[TotalTaxes]		DECIMAL(19, 4) NULL,
 	[TotalAmount]		DECIMAL(19, 4) NULL,

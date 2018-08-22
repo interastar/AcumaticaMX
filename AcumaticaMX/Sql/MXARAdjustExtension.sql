@@ -18,15 +18,14 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 	[AdjgDocType]				[NVARCHAR](3) NOT NULL,
 	[AdjgRefNbr]				[NVARCHAR] (15) NOT NULL,
 	[AdjNbr]					[INT] NOT NULL DEFAULT ((0)),
-	[AdjdDocType]				[CHAR] (3) NOT NULL,
-	[AdjdRefNbr]				[CHAR] (15) NOT NULL,
+	[AdjdDocType]				[NVARCHAR](3) NOT NULL,
+	[AdjdRefNbr]				[NVARCHAR] (15) NOT NULL,
 
 	-- Informacion adicional
 	[DocumentID]				[UNIQUEIDENTIFIER] NULL,
-	[PaymentForm]				[nvarchar](3) NULL,
+	[PaymentForm]				[NVARCHAR](3) NULL,
 	[Partiality]				[INT] NULL,
 	[DebtAmt]					DECIMAL(19, 4) NULL,
-	[PaymentAmt]				DECIMAL(19, 4) NULL,
 	[NewDebtAmt]				DECIMAL(19, 4) NULL,
 	[Uuid]						[UNIQUEIDENTIFIER] NULL,
 	[PaymentRefNbr]				[NVARCHAR] (15) NULL,

@@ -61,7 +61,7 @@ namespace AcumaticaMX
         public abstract class paymentMethod : IBqlField { }
 
         [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXDefault(AcumaticaMX.Common.PayMethod.Transfer)]
+        [PXDefault(Common.PayMethod.Transfer)]
         [PXSelector(typeof(Search<MXFESatPaymentMethodList.satPaymentMethod>),
             typeof(MXFESatPaymentMethodList.description),
             DescriptionField = typeof(MXFESatPaymentMethodList.description))]
@@ -238,41 +238,8 @@ namespace AcumaticaMX
         public virtual string StampString { get; set; }
 
         #endregion CadenaOriginalTFD
-
-        #region DocDateTime
-        public abstract class docDateTime : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        public virtual DateTime? DocDateTime { get; set; }
-        #endregion DocDateTime
-
-        #region UseCfdiCD
-        public abstract class useCfdiCD : PX.Data.IBqlField
-        {
-        }
-        [PXDBString]
-        [PXUIField(DisplayName = Messages.UseCFDI)]
-        public virtual string UseCfdiCD { get; set; }
-        #endregion UseCfdiCD
-
-        #region PaymentDocDateTime
-        public abstract class paymentDocDateTime : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        [PXUIField(DisplayName = Messages.PaymentDocDateTime)]
-        public virtual DateTime? PaymentDocDateTime { get; set; }
-        #endregion PaymentDocDateTime
-
-        #region External Trade
-
-        public abstract class isExternalTrade : IBqlField { }
-
-        [PXDBBool()]
-        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXUIField(DisplayName = "Comercio Exterior", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
-        public virtual bool? IsExternalTrade { get; set; }
-
-        #endregion External Trade
-
-        // Campos no persistentes *************
+        
+        // -- Campos no persistentes *************
 
         #region CadenaOriginal
 
@@ -348,6 +315,27 @@ namespace AcumaticaMX
 
         #endregion Timbrable
 
+
+        #region DocDateTime
+
+        public abstract class docDateTime : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? DocDateTime { get; set; }
+
+        #endregion DocDateTime
+
+
+        #region UseCfdiCD
+
+        public abstract class useCfdiCD : PX.Data.IBqlField{}
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.UseCFDI)]
+        public virtual string UseCfdiCD { get; set; }
+
+        #endregion UseCfdiCD
+
+        // -- Documentos Relacionados
+
         #region RelationType
 
         public abstract class relationType : IBqlField
@@ -378,7 +366,36 @@ namespace AcumaticaMX
             )]
         [PXUIField(DisplayName = "Tipo de relación")]
         public virtual string RelationType { get; set; }
+	#endregion RelationType
 
-        #endregion RelationType
+        // -- Complemento de Pagos
+
+        #region Numero de Operacion
+        public abstract class operationNbr : IBqlField { }
+        [PXDBString(100, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = Messages.OperationNbr)]
+        public virtual string OperationNbr { get; set; }
+        #endregion Numero de Operacion
+
+        #region PaymentExpirationDate
+
+        public abstract class paymentExpirationDate : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? PaymentExpirationDate { get; set; }
+
+        #endregion PaymentExpirationDate
+
+        // Comercio exterior
+
+        #region External Trade
+
+        public abstract class isExternalTrade : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Comercio Exterior", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
+        public virtual bool? IsExternalTrade { get; set; }
+
+        #endregion External Trade
     }
 }
