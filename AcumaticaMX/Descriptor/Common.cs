@@ -312,6 +312,13 @@ namespace AcumaticaMX
             public const string LeasingEstateLabel = LeasingEstate;
             public const string OthersLabel = Others;
         }
+
+        public static class TypeOfImport
+        {
+            public const string Expenses = "E";
+
+            public const string ExpensesLabel = "Gastos";
+        }
     }
 
     public class Convert
