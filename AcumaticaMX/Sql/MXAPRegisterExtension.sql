@@ -49,6 +49,7 @@ CREATE TABLE [dbo].[MXAPRegisterExtension](
 	[Provider]			[nvarchar](13) NULL,
 	[TotalTaxes]		DECIMAL(19, 4) NULL,
 	[TotalAmount]		DECIMAL(19, 4) NULL,
+	[IsExpenseInvoice]	BIT NULL DEFAULT ((0)),
 	-- Datos de poliza
 	[BankCD]			[nvarchar](3) NULL,
 
