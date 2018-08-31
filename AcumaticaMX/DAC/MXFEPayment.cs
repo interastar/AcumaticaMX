@@ -7,6 +7,14 @@ namespace AcumaticaMX
     [Serializable]
     public class MXFEPayment : IBqlTable
     {
+        #region Selected
+        public abstract class selected : IBqlField { }
+        [PXBool()]
+        [PXDefault(false)]
+        [PXUIField(DisplayName = "Selected")]
+        public virtual bool? Selected { get; set; }
+        #endregion
+
         #region RefNbr
 
         public abstract class refNbr : IBqlField
@@ -182,8 +190,8 @@ namespace AcumaticaMX
         public abstract class sended : IBqlField { }
 
         [PXDBBool()]
-        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXUIField(DisplayName = "Enviado",  Enabled = false)]
+        [PXDefault(false)]
+        [PXUIField(DisplayName = "Enviado",  Enabled = true)]
         public virtual bool? Sended { get; set; }
 
         #endregion Enviado
