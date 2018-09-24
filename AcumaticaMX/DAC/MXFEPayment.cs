@@ -176,6 +176,16 @@ namespace AcumaticaMX
 
         #endregion QrCodeImg
 
+        #region report
+        public abstract class report : IBqlField
+        {
+        }
+
+        [PXString]
+        [PXUIField(DisplayName = "Reporte", Visible = true)]
+        public virtual string Report { get; set; }
+        #endregion report
+
         #region Version
 
         public abstract class version : IBqlField { }
