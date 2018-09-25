@@ -139,57 +139,5 @@ namespace AcumaticaMX
         public virtual string PaymentForm { get; set; }
 
         #endregion FormaDePago
-
-        //Campos para la DIOT
-
-        #region VendorType
-        public abstract class vendorType : IBqlField { }
-
-        [PXDBString(10, IsFixed = false, IsUnicode = true)]
-        [PXStringList(
-            new string[]
-            {
-                Common.VendorType.Empty,
-                Common.VendorType.National,
-                Common.VendorType.Foreign,
-                Common.VendorType.Global,
-            },
-            new string[]
-            {
-                Common.VendorType.EmptyLabel,
-                Common.VendorType.NationalLabel,
-                Common.VendorType.ForeignLabel,
-                Common.VendorType.GlobalLabel,
-            }
-            )]
-        [PXUIField(DisplayName = "Tipo de proveedor")]
-        public virtual string VendorType { get; set; }
-
-        #endregion VendorType
-
-        #region OperationType
-        public abstract class operationType : IBqlField { }
-
-        [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXStringList(
-            new string[]
-            {
-                Common.VendorOperationType.Empty,
-                Common.VendorOperationType.Services,
-                Common.VendorOperationType.LeasingEstate,
-                Common.VendorOperationType.Others,
-            },
-            new string[]
-            {
-                Common.VendorOperationType.EmptyLabel,
-                Common.VendorOperationType.ServicesLabel,
-                Common.VendorOperationType.LeasingEstateLabel,
-                Common.VendorOperationType.OthersLabel,
-            }
-            )]
-        [PXUIField(DisplayName = "Tipo de operación")]
-        public virtual string OperationType { get; set; }
-
-        #endregion OperationType
     }
 }

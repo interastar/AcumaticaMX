@@ -255,6 +255,19 @@ namespace AcumaticaMX
         public virtual decimal? TotalAmount { get; set; }
         #endregion TotalAmount
 
+
+        #region Factura de Gastos
+
+        public abstract class isExpenseInvoice : IBqlField { }
+
+        [PXDBBool()]
+        [PXDefault(false)]
+        //[PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        [PXUIField(DisplayName = "Factura de Gasto", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
+        public virtual bool? IsExpenseInvoice { get; set; }
+
+        #endregion Factura de Gastos
+
         // -- Datos para poliza
 
         #region Document Type
