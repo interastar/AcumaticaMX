@@ -15,14 +15,16 @@ Create Table [dbo].[MXFEPayment]
 	
 	[RefNbr]				nvarchar(15) NOT NULL,
 	[DocType]				nvarchar(3) NOT NULL,
+	[DocDate]				smalldatetime NOT NULL,
+	[OrigRefNbr]			nvarchar(15) NOT NULL,
 	[Serie]					nvarchar(25) NULL,
 	[Folio]					nvarchar(25) NULL,
-	[Uuid]					uniqueidentifier NOT NULL,
+	[Uuid]					uniqueidentifier NULL,
 	[CustomerID]			int NOT NULL,
-	[Stamp]					nvarchar(500) NOT NULL,
-	[Seal]					nvarchar(500) NOT NULL,
-	[StampString]			nvarchar(1000) NOT NULL,
-	[StampDate]				smalldatetime NOT NULL,
+	[Stamp]					nvarchar(500) NULL,
+	[Seal]					nvarchar(500) NULL,
+	[StampString]			nvarchar(1000) NULL,
+	[StampDate]				smalldatetime NULL,
 	[CancelDate]			smalldatetime NULL,
 	[QrCode]				nvarchar(95) NULL,
 	[Version]               nvarchar(3) NULL,
@@ -54,7 +56,7 @@ Create Table [dbo].[MXFEPayment]
 	CONSTRAINT [MXFEPayment_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
-		[Uuid] ASC
+		[RefNbr] ASC
 	)
 )
 

@@ -42,7 +42,27 @@ namespace AcumaticaMX
         public virtual string DocType { get; set; }
 
         #endregion DocType
-        
+
+        #region DocDate
+        public abstract class docDate : IBqlField
+        {
+        }
+        [PXDBDateAndTime(PreserveTime = true)]
+        [PXDefault(typeof(AccessInfo.businessDate))]
+        [PXUIField(DisplayName = "Fecha", Visibility = PXUIVisibility.SelectorVisible)]
+        public virtual DateTime? DocDate{ get;set; }
+        #endregion
+
+        #region Fecha de Pago
+        public abstract class paymentDate : IBqlField
+        {
+        }
+        [PXDBDate]
+        [PXDefault]
+        [PXUIField(DisplayName = "Fecha de Pago", Visibility = PXUIVisibility.SelectorVisible)]
+        public virtual DateTime? PaymentDate { get; set; }
+        #endregion Fecha de Pago
+
         #region Serie
 
         public abstract class serie : IBqlField { }
@@ -205,6 +225,14 @@ namespace AcumaticaMX
         public virtual bool? Sended { get; set; }
 
         #endregion Enviado
+
+        #region OrigRefNbr
+        public abstract class origRefNbr : IBqlField { }
+
+        [PXDBString(15, IsUnicode = true)]
+        [PXUIField(DisplayName = "Origen", Enabled = false)]
+        public virtual string OrigRefNbr { get; set; }
+        #endregion OrigRefNbr
 
         // Opcionales
 
