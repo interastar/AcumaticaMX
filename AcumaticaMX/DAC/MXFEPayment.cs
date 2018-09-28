@@ -7,6 +7,24 @@ namespace AcumaticaMX
     [Serializable]
     public class MXFEPayment : IBqlTable
     {
+        #region Version Cfdi
+
+        public abstract class version : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        public virtual string Version { get; set; }
+
+        #endregion Version Cfdi
+
+        #region Version Complemento de Pago
+
+        public abstract class paymentVersion : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        public virtual string PaymentVersion { get; set; }
+
+        #endregion Version Complemento de Pago
+
         #region Selected
         public abstract class selected : IBqlField { }
         [PXBool()]
@@ -59,9 +77,34 @@ namespace AcumaticaMX
         }
         [PXDBDate]
         [PXDefault]
-        [PXUIField(DisplayName = "Fecha de Pago", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Fecha de Pago", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
         public virtual DateTime? PaymentDate { get; set; }
         #endregion Fecha de Pago
+
+        #region CustomerID
+
+        public abstract class customerID : PX.Data.IBqlField
+        {
+        }
+
+        [PXDBInt]
+        [PXSelector(typeof(Search<BAccount.bAccountID,
+            Where<BAccount.bAccountID,
+                Equal<Current<ARPayment.customerID>>>>),
+            SubstituteKey = typeof(BAccount.acctName))]
+        [PXUIField(DisplayName = "Cliente", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
+        public virtual int? CustomerID { get; set; }
+
+        #endregion CustomerID        
+        
+        #region UseCfdiCD
+
+        public abstract class useCfdiCD : PX.Data.IBqlField { }
+        [PXDBString]
+        [PXUIField(DisplayName = Messages.UseCFDI, Enabled = false)]
+        public virtual string UseCfdiCD { get; set; }
+
+        #endregion UseCfdiCD
 
         #region Serie
 
@@ -83,17 +126,6 @@ namespace AcumaticaMX
 
         #endregion Folio
 
-        #region Uuid
-
-        public abstract class uuid : IBqlField { }
-
-        [PXDBGuid]
-        [PXUIField(DisplayName = "Folio Fiscal del Complemento de Pago", Enabled = false)]
-        [CfdiStatus(typeof(stampStatus), typeof(uuid), typeof(cancelDate))]
-        public virtual Guid? Uuid { get; set; }
-
-        #endregion Uuid
-
         #region CancelDate
 
         public abstract class cancelDate : IBqlField { }
@@ -102,21 +134,47 @@ namespace AcumaticaMX
 
         #endregion CancelDate
 
-        #region CustomerID
+        //  -- Datos de sello del comprobante
 
-        public abstract class customerID : PX.Data.IBqlField
-        {
-        }
+        #region noCertificado
 
-        [PXDBInt]
-        [PXSelector(typeof(Search<BAccount.bAccountID,
-            Where<BAccount.bAccountID,
-                Equal<Current<ARPayment.customerID>>>>),
-            SubstituteKey = typeof(BAccount.acctName))]
-        [PXUIField(DisplayName = "Cliente", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
-        public virtual int? CustomerID { get; set; }
+        public abstract class certificateNum : IBqlField { }
 
-        #endregion CustomerID
+        [PXDBString(20, IsFixed = true, IsUnicode = false)]
+        [PXUIField(DisplayName = "Certificado del Emisor", Enabled = false)]
+        public virtual string CertificateNum { get; set; }
+
+        #endregion noCertificado
+
+        #region certificado
+
+        public abstract class certificate : IBqlField { }
+
+        [PXDBString(2500, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Certificado", Enabled = false)]
+        public virtual string Certificate { get; set; }
+
+        #endregion certificado
+
+        #region SealDate
+
+        public abstract class sealDate : IBqlField { }
+
+        [PXDBDateAndTime(PreserveTime = true)]
+        [PXUIField(DisplayName = "Fecha de Emisión", Enabled = false)]
+        public virtual DateTime? SealDate { get; set; }
+
+        #endregion SealDate
+
+        #region NoCertificadoSAT
+
+        public abstract class satCertificateNum : IBqlField { }
+
+        [PXDBString(20, IsFixed = true, IsUnicode = false)]
+        [PXUIField(DisplayName = "No. Certificado SAT", Enabled = false)]
+        public virtual string SatCertificateNum { get; set; }
+
+        #endregion NoCertificadoSAT
 
         #region SelloSAT
 
@@ -157,16 +215,16 @@ namespace AcumaticaMX
 
         #endregion FechaTimbrado
 
-        #region Estado
+        #region Uuid
 
-        public abstract class stampStatus : IBqlField { }
+        public abstract class uuid : IBqlField { }
 
-        [PXString(1, IsFixed = true)]
-        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
-        [CfdiStatus.List()]
-        public virtual string StampStatus { get; set; }
+        [PXDBGuid]
+        [PXUIField(DisplayName = "Folio Fiscal del Complemento de Pago", Enabled = false)]
+        [CfdiStatus(typeof(stampStatus), typeof(uuid), typeof(cancelDate))]
+        public virtual Guid? Uuid { get; set; }
 
-        #endregion Estado
+        #endregion Uuid
 
         #region QrCode
 
@@ -178,6 +236,18 @@ namespace AcumaticaMX
 
         #endregion QrCode
 
+        // -- Campos no persistentes *************
+
+        #region CadenaOriginal
+
+        public abstract class documentString : IBqlField { }
+
+        [PXString(4000, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Cadena Original", Enabled = false)]
+        public virtual string DocumentString { get; set; }
+
+        #endregion CadenaOriginal
+        
         #region QrCodeImg
 
         public abstract class qrCodeImg : PX.Data.IBqlField
@@ -196,6 +266,17 @@ namespace AcumaticaMX
 
         #endregion QrCodeImg
 
+        #region Estado
+
+        public abstract class stampStatus : IBqlField { }
+
+        [PXString(1, IsFixed = true)]
+        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
+        [CfdiStatus.List()]
+        public virtual string StampStatus { get; set; }
+
+        #endregion Estado
+
         #region report
         public abstract class report : IBqlField
         {
@@ -206,14 +287,8 @@ namespace AcumaticaMX
         public virtual string Report { get; set; }
         #endregion report
 
-        #region Version
+        // -- Temporales
 
-        public abstract class version : IBqlField { }
-
-        [PXDBString(3, IsFixed = false, IsUnicode = true)]
-        public virtual string Version { get; set; }
-
-        #endregion Version
 
         #region Enviado
 
