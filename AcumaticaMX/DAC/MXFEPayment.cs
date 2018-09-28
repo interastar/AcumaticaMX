@@ -10,7 +10,6 @@ namespace AcumaticaMX
         #region Selected
         public abstract class selected : IBqlField { }
         [PXBool()]
-        [PXDefault(false)]
         [PXUIField(DisplayName = "Selected")]
         public virtual bool? Selected { get; set; }
         #endregion
