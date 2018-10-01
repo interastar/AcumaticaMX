@@ -1,0 +1,27 @@
+﻿<Sql TableName="MXINInventoryParts" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXINInventoryParts">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="KitInventoryID" type="Int" />
+  <col name="KitLotSerialNbr" type="NVarChar(50)" />
+  <col name="KitNbr" type="Int" />
+  <col name="InventoryID" type="Int" />
+  <col name="LotSerialNbr" type="NVarChar(50)" />
+  <col name="Qty" type="Decimal(25,6)" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="MXINInventoryParts_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="KitInventoryID" />
+    <col name="KitLotSerialNbr" />
+    <col name="KitNbr" />
+    <col name="InventoryID" />
+    <col name="LotSerialNbr" />
+    <col name="Qty" />
+  </index>
+</table>]]></CDATA>
+</Sql>
