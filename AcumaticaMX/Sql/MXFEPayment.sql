@@ -18,7 +18,6 @@ Create Table [dbo].[MXFEPayment]
 	[CustomerID]			int NOT NULL,
 	[DocDate]				smalldatetime NOT NULL,
 	[OrigRefNbr]			nvarchar(15) NOT NULL,
-	[PaymentDate]			smalldatetime NOT NULL,
 	[Serie]					nvarchar(25) NULL,
 	[CancelDate]			smalldatetime NULL,
 	[Folio]					nvarchar(25) NULL,
@@ -38,17 +37,6 @@ Create Table [dbo].[MXFEPayment]
 	[PaymentVersion]        nvarchar(3) NULL,
 	--
 	[Sended]				bit NULL DEFAULT ((0)),
-	--Opcionales
-	[OperationNbr]			nvarchar(100) NULL,
-	[RfcEmisorCtaOrd]		nvarchar(13) NULL,
-	[NomBancoOrdExt]		nvarchar(300) NULL,
-	[CtaOrdenante]			nvarchar(50) NULL,
-	[RfcEmisorCtaBen]		nvarchar(13) NULL,
-	[CtaBeneficiario]		nvarchar(50) NULL,
-	[TipoCadPago]			nvarchar(2) NULL,
-	[CertPago]				nvarchar(500) NULL,
-	[CadPago]				nvarchar(max) NULL,
-	[SelloPago]				nvarchar(500) NULL,
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
 	-- handle concurrency

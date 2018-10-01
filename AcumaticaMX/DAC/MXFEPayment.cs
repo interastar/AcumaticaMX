@@ -71,16 +71,6 @@ namespace AcumaticaMX
         public virtual DateTime? DocDate{ get;set; }
         #endregion
 
-        #region Fecha de Pago
-        public abstract class paymentDate : IBqlField
-        {
-        }
-        [PXDBDate]
-        [PXDefault]
-        [PXUIField(DisplayName = "Fecha de Pago", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
-        public virtual DateTime? PaymentDate { get; set; }
-        #endregion Fecha de Pago
-
         #region CustomerID
 
         public abstract class customerID : PX.Data.IBqlField
@@ -289,7 +279,6 @@ namespace AcumaticaMX
 
         // -- Temporales
 
-
         #region Enviado
 
         public abstract class sended : IBqlField { }
@@ -300,86 +289,6 @@ namespace AcumaticaMX
         public virtual bool? Sended { get; set; }
 
         #endregion Enviado
-
-        #region OrigRefNbr
-        public abstract class origRefNbr : IBqlField { }
-
-        [PXDBString(15, IsUnicode = true)]
-        [PXUIField(DisplayName = "Origen", Enabled = false)]
-        public virtual string OrigRefNbr { get; set; }
-        #endregion OrigRefNbr
-
-        // Opcionales
-
-        #region Numero de Operacion
-        public abstract class operationNbr : IBqlField { }
-        [PXDBString(100, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.OperationNbr)]
-        public virtual string OperationNbr { get; set; }
-        #endregion Numero de Operacion
-
-        #region Rfc Emisor de la Cuenta Ordenante
-        public abstract class rfcEmisorCtaOrd : IBqlField { }
-        [PXDBString(13, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.RfcEmisorCtaOrd)]
-        public virtual string RfcEmisorCtaOrd { get; set; }
-        #endregion Rfc Emisor de la Cuenta Ordenante
-
-        #region Nombre del Banco Ordenante Extranjero
-        public abstract class nomBancoOrdExt : IBqlField { }
-        [PXDBString(300, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.NomBancoOrdExt)]
-        public virtual string NomBancoOrdExt { get; set; }
-        #endregion Nombre del Banco Ordenante Extranjero
-
-        #region Cuenta Ordenante
-        public abstract class ctaOrdenante : IBqlField { }
-        [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.CtaOrdenante)]
-        public virtual string CtaOrdenante { get; set; }
-        #endregion Cuenta Ordenante
-
-        #region Rfc Emisor de la Cuenta Beneficiaria
-        public abstract class rfcEmisorCtaBen : IBqlField { }
-        [PXDBString(13, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.RfcEmisorCtaBen)]
-        public virtual string RfcEmisorCtaBen { get; set; }
-        #endregion Rfc Emisor de la Cuenta Beneficiaria
-
-        #region Cuenta Beneficiaria
-        public abstract class ctaBeneficiario : IBqlField { }
-        [PXDBString(50, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.CtaBeneficiario)]
-        public virtual string CtaBeneficiario { get; set; }
-        #endregion Cuenta Beneficiaria
-
-        #region Tipo de Cadena de Pago
-        public abstract class tipoCadPago : IBqlField { }
-        [PXDBString(2, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.TipoCadPago)]
-        public virtual string TipoCadPago { get; set; }
-        #endregion Tipo de Cadena de Pago
-
-        #region Certificado de Pago
-        public abstract class certPago : IBqlField { }
-        [PXDBString(500, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.CertPago)]
-        public virtual string CertPago { get; set; }
-        #endregion Certificado de Pago
-
-        #region Cadena Original de Pago
-        public abstract class cadPago : IBqlField { }
-        [PXDBString(8192, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.CadPago)]
-        public virtual string CadPago { get; set; }
-        #endregion Cadena Original de Pago
-
-        #region Sello Pago
-        public abstract class selloPago : IBqlField { }
-        [PXDBString(500, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = Messages.SelloPago)]
-        public virtual string SelloPago { get; set; }
-        #endregion Sello Pago
 
         #region audit
 
