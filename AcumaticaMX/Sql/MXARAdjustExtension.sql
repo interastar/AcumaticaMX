@@ -27,9 +27,29 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 	[Partiality]				[INT] NULL,
 	[DebtAmt]					DECIMAL(19, 4) NULL,
 	[NewDebtAmt]				DECIMAL(19, 4) NULL,
-	[Uuid]						[UNIQUEIDENTIFIER] NULL,
-	[PaymentRefNbr]				[NVARCHAR] (15) NULL,
 	[CancelDate]				[SMALLDATETIME] NULL,
+
+	-- Datos generales del pago
+
+	[PaymentRefNbr]				[NVARCHAR] (15) NULL,
+	[PaymentDate]				smalldatetime NULL,
+	[Uuid]						[UNIQUEIDENTIFIER] NULL,
+	[PaymentAmt]				DECIMAL(19, 4) NULL,
+	[CuryIDP]					[NVARCHAR] (3) NULL,
+	[PaymentMethodP]			[NVARCHAR] (2) NULL,
+	[CurrencyRateP]				[decimal](19, 6) NULL,
+
+	--Opcionales
+	[OperationNbr]			nvarchar(100) NULL,
+	[RfcEmisorCtaOrd]		nvarchar(13) NULL,
+	[NomBancoOrdExt]		nvarchar(300) NULL,
+	[CtaOrdenante]			nvarchar(50) NULL,
+	[RfcEmisorCtaBen]		nvarchar(13) NULL,
+	[CtaBeneficiario]		nvarchar(50) NULL,
+	[TipoCadPago]			nvarchar(2) NULL,
+	[CertPago]				nvarchar(500) NULL,
+	[CadPago]				nvarchar(max) NULL,
+	[SelloPago]				nvarchar(500) NULL,
 	
 	CONSTRAINT MXARAdjustExtension_PK PRIMARY KEY
     (
