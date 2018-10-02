@@ -256,17 +256,15 @@ namespace AcumaticaMX
         #endregion TotalAmount
 
 
-        #region Factura de Gastos
+        #region Factura de gastos
 
         public abstract class isExpenseInvoice : IBqlField { }
 
-        [PXDBBool()]
-        [PXDefault(false)]
-        //[PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXUIField(DisplayName = "Factura de Gasto", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
+        [PXDBBool]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
         public virtual bool? IsExpenseInvoice { get; set; }
 
-        #endregion Factura de Gastos
+        #endregion Factura de gastos
 
         // -- Datos para poliza
 
