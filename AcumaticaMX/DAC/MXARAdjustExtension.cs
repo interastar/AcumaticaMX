@@ -9,6 +9,7 @@ namespace AcumaticaMX
         typeof(ARAdjust.adjdDocType), typeof(ARAdjust.adjdRefNbr), IsOptional = true)]
     public class MXARAdjustExtension : PXCacheExtension<ARAdjust>
     {
+        //-- Documento Relacionado
         #region DocumentID
 
         public abstract class documentID : IBqlField { }
@@ -93,6 +94,23 @@ namespace AcumaticaMX
         public virtual Guid? Uuid { get; set; }
 
         #endregion Uuid
+
+        #region Moneda de la Factura
+
+        public abstract class curyIDDR : IBqlField { }
+
+        [PXDBString]
+        public virtual string CuryIDDR { get; set; }
+        #endregion Moneda de la Factura
+
+        #region Tipo de cambio del Pago
+        public abstract class currencyRateDR : IBqlField { }
+
+        [PXDBDecimal]
+        [PXUIField(DisplayName = "Tipo de CambioR", Enabled = false)]
+        public virtual decimal? CurrencyRateDR { get; set; }
+
+        #endregion Tipo de cambio del Pago
 
         //-- Datos Generales del Pago
 

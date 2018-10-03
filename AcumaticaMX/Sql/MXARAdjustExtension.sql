@@ -21,13 +21,15 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 	[AdjdDocType]				[NVARCHAR](3) NOT NULL,
 	[AdjdRefNbr]				[NVARCHAR] (15) NOT NULL,
 
-	-- Informacion adicional
+	-- Pago Documento Relacionado
 	[DocumentID]				[UNIQUEIDENTIFIER] NULL,
 	[PaymentForm]				[NVARCHAR](3) NULL,
 	[Partiality]				[INT] NULL,
 	[DebtAmt]					DECIMAL(19, 4) NULL,
 	[NewDebtAmt]				DECIMAL(19, 4) NULL,
 	[CancelDate]				[SMALLDATETIME] NULL,
+	[CuryIDDR]					[NVARCHAR] (3) NULL,
+	[CurrencyRateDR]			[DECIMAL](19, 6) NULL,
 
 	-- Datos generales del pago
 
@@ -37,7 +39,7 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 	[PaymentAmt]				DECIMAL(19, 4) NULL,
 	[CuryIDP]					[NVARCHAR] (3) NULL,
 	[PaymentMethodP]			[NVARCHAR] (2) NULL,
-	[CurrencyRateP]				[decimal](19, 6) NULL,
+	[CurrencyRateP]				[DECIMAL](19, 6) NULL,
 
 	--Opcionales
 	[OperationNbr]			nvarchar(100) NULL,
