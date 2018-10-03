@@ -12,9 +12,9 @@ Create Table [dbo].[MXFEPayment]
 	-- multi-tenancy support
 	[CompanyID]				int NOT NULL DEFAULT ((0)),
 	
-	
+	[TypeP]					nvarchar(1)	 NULL,
 	[RefNbr]				nvarchar(15) NOT NULL,
-	[DocType]				nvarchar(3) NOT NULL,
+	[DocType]				nvarchar(3)  NOT NULL,
 	[CustomerID]			int NOT NULL,
 	[DocDate]				smalldatetime NOT NULL,
 	[Serie]					nvarchar(25) NULL,

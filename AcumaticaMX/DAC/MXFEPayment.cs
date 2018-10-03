@@ -9,11 +9,22 @@ namespace AcumaticaMX
     {
         #region Tipo Entrada/Salida
 
-        public abstract class GType : IBqlField { }
+        public abstract class typeP : IBqlField { }
 
         [PXDBString(1, IsFixed = false, IsUnicode = true)]
-        [PXStringList]
-        public virtual string gType { get; set; }
+        [PXStringList(
+            new string[]
+            {
+                Common.PaymentType.Input,
+                Common.PaymentType.Output,
+            },
+            new string[]
+            {
+                Common.PaymentType.InputLabel,
+                Common.PaymentType.OutputLabel,
+            }
+            )]
+        public virtual string TypeP { get; set; }
 
         #endregion Tipo Entrada/Salida
 
