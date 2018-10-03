@@ -89,7 +89,6 @@ namespace AcumaticaMX
         public abstract class uuid : IBqlField { }
 
         [PXDBGuid]
-        [CfdiStatus(typeof(stampStatus), typeof(uuid), typeof(cancelDate))]
         [PXUIField(DisplayName = "Uuid")]
         public virtual Guid? Uuid { get; set; }
 
@@ -165,7 +164,6 @@ namespace AcumaticaMX
         public virtual decimal? CurrencyRateP { get; set; }
 
         #endregion Tipo de cambio del Pago
-
 
         // Opcionales
 
@@ -243,7 +241,6 @@ namespace AcumaticaMX
 
         #endregion Opcionales
 
-
         #region CancelDate
 
         public abstract class cancelDate : IBqlField { }
@@ -263,15 +260,13 @@ namespace AcumaticaMX
 
         #endregion PaymentRefNbr
 
-        #region Estado
 
-        public abstract class stampStatus : IBqlField { }
+        #region PaymentExpirationDate
 
-        [PXString(1, IsFixed = true)]
-        [PXUIField(DisplayName = "Edo. Timbrado", Visibility = PXUIVisibility.SelectorVisible, IsReadOnly = true, Enabled = false)]
-        [CfdiStatus.List()]
-        public virtual string StampStatus { get; set; }
+        public abstract class paymentExpirationDate : IBqlField { }
+        [PXDBDateAndTime(PreserveTime = true)]
+        public virtual DateTime? PaymentExpirationDate { get; set; }
 
-        #endregion Estado
+        #endregion PaymentExpirationDate
     }
 }

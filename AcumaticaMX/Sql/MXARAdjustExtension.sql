@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 	[CancelDate]				[SMALLDATETIME] NULL,
 	[CuryIDDR]					[NVARCHAR] (3) NULL,
 	[CurrencyRateDR]			[DECIMAL](19, 6) NULL,
-
+	[PaymentExpirationDate]		[SMALLDATETIME] NULL,
 	-- Datos generales del pago
 
 	[PaymentRefNbr]				[NVARCHAR] (15) NULL,
