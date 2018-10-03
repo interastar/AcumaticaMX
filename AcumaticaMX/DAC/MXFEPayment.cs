@@ -7,6 +7,16 @@ namespace AcumaticaMX
     [Serializable]
     public class MXFEPayment : IBqlTable
     {
+        #region Tipo Entrada/Salida
+
+        public abstract class GType : IBqlField { }
+
+        [PXDBString(1, IsFixed = false, IsUnicode = true)]
+        [PXStringList]
+        public virtual string gType { get; set; }
+
+        #endregion Tipo Entrada/Salida
+
         #region Version Cfdi
 
         public abstract class version : IBqlField { }
@@ -66,7 +76,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDateAndTime(PreserveTime = true)]
-        [PXDefault(typeof(AccessInfo.businessDate))]
+        [PXDefault(typeof(AccessInfo.businessDate), PersistingCheck = PXPersistingCheck.Nothing)]
         [PXUIField(DisplayName = "Fecha", Visibility = PXUIVisibility.SelectorVisible)]
         public virtual DateTime? DocDate{ get;set; }
         #endregion

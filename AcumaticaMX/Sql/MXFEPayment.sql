@@ -17,7 +17,6 @@ Create Table [dbo].[MXFEPayment]
 	[DocType]				nvarchar(3) NOT NULL,
 	[CustomerID]			int NOT NULL,
 	[DocDate]				smalldatetime NOT NULL,
-	[OrigRefNbr]			nvarchar(15) NOT NULL,
 	[Serie]					nvarchar(25) NULL,
 	[CancelDate]			smalldatetime NULL,
 	[Folio]					nvarchar(25) NULL,
