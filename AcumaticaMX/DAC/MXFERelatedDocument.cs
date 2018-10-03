@@ -94,7 +94,7 @@ namespace AcumaticaMX
 
         public abstract class uuid : IBqlField { }
 
-        [PXDBGuid()]
+        [PXDBGuid]
         [PXFormula(typeof(Selector<MXFERelatedDocument.relatedRefNbr, MXARRegisterExtension.uuid>))]
         [PXUIField(DisplayName = "UUID", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual Guid? Uuid { get; set; }
