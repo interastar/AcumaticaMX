@@ -32,6 +32,7 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[Seal]				[nvarchar](500) NULL,
 
 	-- Datos del timbrado del comprobante
+	[StampTest]			[bit] NULL DEFAULT ((0)),
 	[Uuid]				[uniqueidentifier] NULL,
 	[SatCertificateNum]	char(20) NULL,
  	[StampDate]			[smalldatetime] NULL,

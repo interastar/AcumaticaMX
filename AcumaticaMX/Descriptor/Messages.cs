@@ -27,6 +27,7 @@ namespace AcumaticaMX
         public const string StampedCfdi = "Timbrado";
         public const string CanceledCfdi = "Cancelado";
         public const string BlockedCfdi = "Bloqueado";
+        public const string StampedTestCfdi = "Timbrado en pruebas";
 
         #endregion Estados
 

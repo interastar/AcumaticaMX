@@ -167,6 +167,16 @@ namespace AcumaticaMX
 
         // -- Datos del timbrado del comprobante
 
+        #region Timbrado de prueba
+
+        public abstract class stampTest : IBqlField { }
+
+        [PXDBBool]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        public virtual bool? StampTest { get; set; }
+
+        #endregion Timbrado de prueba
+
         #region Uuid
 
         public abstract class uuid : IBqlField { }
