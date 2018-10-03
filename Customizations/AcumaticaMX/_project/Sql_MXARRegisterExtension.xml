@@ -24,7 +24,6 @@
   <col name="UseCfdiCD" type="NVarChar(3)" nullable="true" />
   <col name="CurrencyRate" type="Decimal(19,6)" nullable="true" />
   <col name="Version" type="NVarChar(3)" nullable="true" />
-  <col name="PaymentExpirationDate" type="SmallDateTime" nullable="true" />
   <col name="OperationNbr" type="NVarChar(100)" nullable="true" />
   <col name="IsExternalTrade" type="Bit" nullable="true" default="Zero" />
   <col name="IsGenericInvoice" type="Bit" nullable="true" raw-default="1" />
