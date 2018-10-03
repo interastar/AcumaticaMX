@@ -376,15 +376,7 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.OperationNbr)]
         public virtual string OperationNbr { get; set; }
         #endregion Numero de Operacion
-
-        #region PaymentExpirationDate
-
-        public abstract class paymentExpirationDate : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        public virtual DateTime? PaymentExpirationDate { get; set; }
-
-        #endregion PaymentExpirationDate
-
+        
         // Comercio exterior
 
         #region External Trade
