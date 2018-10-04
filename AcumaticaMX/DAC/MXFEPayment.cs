@@ -67,7 +67,7 @@ namespace AcumaticaMX
         public virtual string RefNbr { get; set; }
 
         #endregion RefNbr
-
+        //Hacerlo iskey en el futuro
         #region DocType
 
         public abstract class docType : IBqlField
@@ -100,7 +100,7 @@ namespace AcumaticaMX
         [PXDBInt]
         [PXSelector(typeof(Search<BAccount.bAccountID,
             Where<BAccount.bAccountID,
-                Equal<Current<ARPayment.customerID>>>>),
+                Equal<Current<MXFEPayment.customerID>>>>),
             SubstituteKey = typeof(BAccount.acctName))]
         [PXUIField(DisplayName = "Cliente", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual int? CustomerID { get; set; }
