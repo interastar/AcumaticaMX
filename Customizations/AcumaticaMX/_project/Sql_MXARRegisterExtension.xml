@@ -12,6 +12,7 @@
   <col name="Certificate" type="NVarChar(2500)" nullable="true" />
   <col name="SealDate" type="SmallDateTime" nullable="true" />
   <col name="Seal" type="NVarChar(500)" nullable="true" />
+  <col name="StampTest" type="Bit" nullable="true" default="Zero" />
   <col name="Uuid" type="UniqueIdentifier" nullable="true" />
   <col name="SatCertificateNum" type="Char(20)" nullable="true" />
   <col name="StampDate" type="SmallDateTime" nullable="true" />
