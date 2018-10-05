@@ -37,6 +37,7 @@ CREATE TABLE [dbo].[MXFEPaymentTran](
 
 	CONSTRAINT [MXFEPaymentTran_PK] PRIMARY KEY CLUSTERED 
 	(
+			[CompanyID] ASC,
 			[DocType] ASC,
 			[RefNbr] ASC,
 			[AdjgDocType]	ASC,
