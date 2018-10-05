@@ -17,6 +17,7 @@
   <col name="LastModifiedByScreenID" type="Char(8)" />
   <col name="LastModifiedDateTime" type="SmallDateTime" />
   <index name="MXFEPaymentTran_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
     <col name="DocType" />
     <col name="RefNbr" />
     <col name="AdjgDocType" />
