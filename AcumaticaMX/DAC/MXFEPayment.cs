@@ -7,62 +7,18 @@ namespace AcumaticaMX
     [Serializable]
     public class MXFEPayment : IBqlTable
     {
-        #region Tipo Entrada/Salida
-
-        public abstract class typeP : IBqlField { }
-
-        [PXDBString(1, IsFixed = false, IsUnicode = true)]
-        [PXStringList(
-            new string[]
-            {
-                Common.PaymentType.Input,
-                Common.PaymentType.Output,
-            },
-            new string[]
-            {
-                Common.PaymentType.InputLabel,
-                Common.PaymentType.OutputLabel,
-            }
-            )]
-        public virtual string TypeP { get; set; }
-
-        #endregion Tipo Entrada/Salida
-
-        #region Version Cfdi
-
-        public abstract class version : IBqlField { }
-
-        [PXDBString(3, IsFixed = false, IsUnicode = true)]
-        public virtual string Version { get; set; }
-
-        #endregion Version Cfdi
-
-        #region Version Complemento de Pago
-
-        public abstract class paymentVersion : IBqlField { }
-
-        [PXDBString(3, IsFixed = false, IsUnicode = true)]
-        public virtual string PaymentVersion { get; set; }
-
-        #endregion Version Complemento de Pago
-
-        #region Selected
-        public abstract class selected : IBqlField { }
-        [PXBool()]
-        [PXUIField(DisplayName = "Selected")]
-        public virtual bool? Selected { get; set; }
-        #endregion
-
         #region RefNbr
 
         public abstract class refNbr : IBqlField
         {
         }
 
-        [PXDBString(15, IsKey = true, InputMask = ">CCCCCCCCCC")]
+        [PXDBString(15, IsKey = true, IsFixed = false)]
         [PXSelector(typeof(Search<MXFEPayment.refNbr>),
             typeof(refNbr),
-            typeof(customerID))]
+            typeof(customerID),
+            ValidateValue = true,
+            IsDirty = true)]
         [PXUIField(DisplayName = "Numero de pago", Visible = true, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string RefNbr { get; set; }
 
@@ -297,6 +253,54 @@ namespace AcumaticaMX
         public virtual string Report { get; set; }
         #endregion report
 
+
+        //---
+        #region Tipo Entrada/Salida
+
+        public abstract class typeP : IBqlField { }
+
+        [PXDBString(1, IsFixed = false, IsUnicode = true)]
+        [PXStringList(
+            new string[]
+            {
+                Common.PaymentType.Input,
+                Common.PaymentType.Output,
+            },
+            new string[]
+            {
+                Common.PaymentType.InputLabel,
+                Common.PaymentType.OutputLabel,
+            }
+            )]
+        public virtual string TypeP { get; set; }
+
+        #endregion Tipo Entrada/Salida
+
+        #region Version Cfdi
+
+        public abstract class version : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        public virtual string Version { get; set; }
+
+        #endregion Version Cfdi
+
+        #region Version Complemento de Pago
+
+        public abstract class paymentVersion : IBqlField { }
+
+        [PXDBString(3, IsFixed = false, IsUnicode = true)]
+        public virtual string PaymentVersion { get; set; }
+
+        #endregion Version Complemento de Pago
+
+        #region Selected
+        public abstract class selected : IBqlField { }
+        [PXBool()]
+        [PXUIField(DisplayName = "Selected")]
+        public virtual bool? Selected { get; set; }
+        #endregion
+
         // -- Temporales
 
         #region Enviado
@@ -491,6 +495,8 @@ namespace AcumaticaMX
         #endregion LastModifiedDateTime
 
         #endregion audit
+
+
     }
 
     public class PaymentDocType : Constant<String>
