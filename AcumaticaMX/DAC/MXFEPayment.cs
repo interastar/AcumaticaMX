@@ -16,9 +16,7 @@ namespace AcumaticaMX
         [PXDBString(15, IsKey = true, IsFixed = false)]
         [PXSelector(typeof(Search<MXFEPayment.refNbr>),
             typeof(refNbr),
-            typeof(customerID),
-            ValidateValue = true,
-            IsDirty = true)]
+            typeof(customerID))]
         [PXUIField(DisplayName = "Numero de pago", Visible = true, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string RefNbr { get; set; }
 
