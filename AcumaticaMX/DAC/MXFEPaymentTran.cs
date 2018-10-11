@@ -1,107 +1,112 @@
 ﻿using System;
 using PX.Data;
-using PX.Objects.AR;
+
 namespace AcumaticaMX
 {
-    [Serializable]
-    public class MXFERelatedDocument : IBqlTable
+   
+    public class MXFEPaymentTran : IBqlTable
     {
+        //Pagos
+        //Hacerlo iskey en el futuro
         #region DocType
 
         public abstract class docType : IBqlField
         {
         }
-        [PXDBString(3, IsKey = true, IsFixed = true)]
-        [PXDBDefault(typeof(ARRegister.docType))]
-        [PXUIField(DisplayName = "Tipo (Principal)")]
+
+        [PXDBString(3, IsFixed = true)]
+        [PXDefault(typeof(MXFEPayment.docType))]
+        [PXUIField(DisplayName = "Tipo de Documento", Enabled = false)]
         public virtual string DocType { get; set; }
 
         #endregion DocType
 
         #region RefNbr
 
-        public abstract class refNbr : IBqlField
-        {
-        }
-        [PXDBString(15, IsUnicode = true, IsKey = true)]
-        [PXDBDefault(typeof(ARRegister.refNbr))]
-        [PXParent(typeof(Select<ARRegister,
-            Where<ARRegister.docType,
-                Equal<Current<docType>>,
-                And<ARRegister.refNbr,
-                    Equal<Current<refNbr>>>>>))]
-        [PXUIField(DisplayName = "No. Referencia (Principal)")]
+        public abstract class refNbr : IBqlField{}
+
+        [PXDBString(15, IsKey = true, InputMask = ">CCCCCCCCCC")]
+        [PXParent(typeof(Select<MXFEPayment, 
+            Where<MXFEPayment.docType, 
+                Equal<Current<MXFEPaymentTran.docType>>, 
+                And<MXFEPayment.refNbr, 
+                    Equal<Current<MXFEPaymentTran.refNbr>>>>>))]
+        [PXDefault(typeof(MXFEPayment.refNbr))]
+        [PXUIField(DisplayName = "Numero de pago", Visible = true, Visibility = PXUIVisibility.SelectorVisible)]
         public virtual string RefNbr { get; set; }
 
         #endregion RefNbr
 
-        #region RelatedDocType
+        //Ajustes
 
-        public abstract class relatedDocType : IBqlField
+        //Documento de Pago
+        #region AdjgDocType
+        public abstract class adjgDocType : IBqlField{}
+        [PXDBString(3, IsKey = true, IsFixed = true, InputMask = "")]
+        public virtual String AdjgDocType
         {
+            set;get;
         }
-        [PXDBString(3, IsKey = true, IsFixed = true)]
-        [PXUIField( DisplayName = "Tipo")]
-        public virtual string RelatedDocType { get; set; }
+        #endregion
 
-        #endregion RelatedDocType
 
-        #region RelatedRefNbr
-
-        public abstract class relatedRefNbr : IBqlField
-        {
-        }
+        #region AdjgRefNbr
+        public abstract class adjgRefNbr : IBqlField{}
         [PXDBString(15, IsUnicode = true, IsKey = true)]
-        [PXUIField(DisplayName = "No. Referencia")]
-        public virtual string RelatedRefNbr { get; set; }
-
-        #endregion RelatedRefNbr
-
-        #region RelationType
-
-        public abstract class relationType : IBqlField
+        public virtual String AdjgRefNbr
         {
+            set;get;
         }
-        [PXDBString(2)]
-        [PXStringList(
-            new string[]
-            {
-                Common.RelationType.CreditMemo,
-                Common.RelationType.DebitMemo,
-                Common.RelationType.Refund,
-                Common.RelationType.Replace,
-                Common.RelationType.Transfers,
-                Common.RelationType.InvoiceTransfers,
-                Common.RelationType.Advance,
-            },
-            new string[]
-            {
-                Common.RelationType.CreditMemoLabel,
-                Common.RelationType.DebitMemoLabel,
-                Common.RelationType.RefundLabel,
-                Common.RelationType.ReplaceLabel,
-                Common.RelationType.TransfersLabel,
-                Common.RelationType.InvoiceTransfersLabel,
-                Common.RelationType.AdvanceLabel,
-            }
-            )]
-        [PXUIField(DisplayName = "Tipo de relación", Enabled = false)]
-        public virtual string RelationType { get; set; }
+        #endregion
 
-        #endregion RelationType
+        //Factura Aplicada
 
-        #region Uuid
+        #region AdjdDocType
+        public abstract class adjdDocType : IBqlField{ }
+        [PXDBString(3, IsKey = true, IsFixed = true, InputMask = "")]
+        public virtual string AdjdDocType
+        {
+            get;
+            set;
+        }
+        #endregion
 
-        public abstract class uuid : IBqlField { }
+        public abstract class adjdRefNbr : IBqlField{}
+        [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
+        public virtual string AdjdRefNbr
+        {
+            set; get;
+        }
 
-        [PXDBGuid]
-        [PXFormula(typeof(Selector<MXFERelatedDocument.relatedRefNbr, MXARRegisterExtension.uuid>))]
-        [PXUIField(DisplayName = "UUID", Enabled = false, Visibility = PXUIVisibility.SelectorVisible)]
-        public virtual Guid? Uuid { get; set; }
+        //Linea
+        #region AdjNbr
+        public abstract class adjNbr : IBqlField{}
+        [PXDBInt(IsKey = true)]
+        public virtual Int32? AdjNbr
+        {
+            set;get;
+        }
+        #endregion
 
-        #endregion Uuid
 
         #region audit
+
+        #region NoteID
+
+        public abstract class noteID : PX.Data.IBqlField
+        {
+        }
+
+        /// <summary>
+        /// Identifier of the <see cref="PX.Data.Note">Note</see> object, associated with the document.
+        /// </summary>
+        /// <value>
+        /// Corresponds to the <see cref="PX.Data.Note.NoteID">Note.NoteID</see> field.
+        /// </value>
+        [PXNote(ShowInReferenceSelector = true)]
+        public Guid? NoteID { get; set; }
+
+        #endregion NoteID
 
         #region tstamp
 
@@ -265,5 +270,6 @@ namespace AcumaticaMX
         #endregion LastModifiedDateTime
 
         #endregion audit
+
     }
 }

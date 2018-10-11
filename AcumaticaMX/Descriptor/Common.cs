@@ -319,6 +319,14 @@ namespace AcumaticaMX
 
             public const string ExpensesLabel = "Gastos";
         }
+
+        public static class PaymentType {
+            public const string Input = "E";
+            public const string Output = "S";
+
+            public const string InputLabel = "Entrada";
+            public const string OutputLabel = "Salida";
+        }
     }
 
     public class Convert

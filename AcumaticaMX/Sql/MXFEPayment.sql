@@ -12,32 +12,30 @@ Create Table [dbo].[MXFEPayment]
 	-- multi-tenancy support
 	[CompanyID]				int NOT NULL DEFAULT ((0)),
 	
-	
+	[TypeP]					nvarchar(1)	 NULL,
 	[RefNbr]				nvarchar(15) NOT NULL,
-	[DocType]				nvarchar(3) NOT NULL,
-	[Serie]					nvarchar(25) NULL,
-	[Folio]					nvarchar(25) NULL,
-	[Uuid]					uniqueidentifier NOT NULL,
+	[DocType]				nvarchar(3)  NOT NULL,
 	[CustomerID]			int NOT NULL,
-	[Stamp]					nvarchar(500) NOT NULL,
-	[Seal]					nvarchar(500) NOT NULL,
-	[StampString]			nvarchar(1000) NOT NULL,
-	[StampDate]				smalldatetime NOT NULL,
+	[DocDate]				smalldatetime NOT NULL,
+	[Serie]					nvarchar(25) NULL,
 	[CancelDate]			smalldatetime NULL,
+	[Folio]					nvarchar(25) NULL,
+	[UseCfdiCD]				nvarchar(3) NULL,
+	-- Timbrado
+	[CertificateNum]		char(20) NULL,
+	[Certificate]			nvarchar(2500) NULL,
+	[Uuid]					uniqueidentifier NULL,
+	[Stamp]					nvarchar(500) NULL,
+	[Seal]					nvarchar(500) NULL,
+ 	[SealDate]				smalldatetime NULL,
+	[StampString]			nvarchar(1000) NULL,
+	[StampDate]				smalldatetime NULL,
 	[QrCode]				nvarchar(95) NULL,
+	[SatCertificateNum]		char(20) NULL,
 	[Version]               nvarchar(3) NULL,
+	[PaymentVersion]        nvarchar(3) NULL,
+	--
 	[Sended]				bit NULL DEFAULT ((0)),
-	--Opcionales
-	[OperationNbr]			nvarchar(100) NULL,
-	[RfcEmisorCtaOrd]		nvarchar(13) NULL,
-	[NomBancoOrdExt]		nvarchar(300) NULL,
-	[CtaOrdenante]			nvarchar(50) NULL,
-	[RfcEmisorCtaBen]		nvarchar(13) NULL,
-	[CtaBeneficiario]		nvarchar(50) NULL,
-	[TipoCadPago]			nvarchar(2) NULL,
-	[CertPago]				nvarchar(500) NULL,
-	[CadPago]				nvarchar(max) NULL,
-	[SelloPago]				nvarchar(500) NULL,
 	-- Notes support
 	[NoteID]				uniqueidentifier NULL,
 	-- handle concurrency
@@ -54,7 +52,7 @@ Create Table [dbo].[MXFEPayment]
 	CONSTRAINT [MXFEPayment_PK] PRIMARY KEY CLUSTERED 
 	(
 		[CompanyID] ASC,
-		[Uuid] ASC
+		[RefNbr] ASC
 	)
 )
 

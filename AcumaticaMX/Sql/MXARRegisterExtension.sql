@@ -55,7 +55,6 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[Version]			[nvarchar](3) NULL,
 
 	--Complemento de Pagos
-	[PaymentExpirationDate]	[smalldatetime] NULL,
 	[OperationNbr]			[nvarchar](100) NULL,
 
 	-- Comercio Exterior
