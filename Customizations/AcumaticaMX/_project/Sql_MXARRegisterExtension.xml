@@ -20,6 +20,7 @@
   <col name="QrCode" type="NVarChar(95)" nullable="true" />
   <col name="StampString" type="NVarChar(1000)" nullable="true" />
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
+  <col name="CancelStatus" type="NVarChar(50)" nullable="true" />
   <col name="DocDateTime" type="SmallDateTime" nullable="true" />
   <col name="DiscountReason" type="NVarChar(250)" nullable="true" />
   <col name="UseCfdiCD" type="NVarChar(3)" nullable="true" />

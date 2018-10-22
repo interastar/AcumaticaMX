@@ -45,6 +45,8 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 
 	-- Cancelación
 	[CancelDate]		[smalldatetime] NULL,
+	[CancelStatus]		[nvarchar](50) NULL,
+
 	--Fecha de creación
 	[DocDateTime]		[smalldatetime] NULL,
 

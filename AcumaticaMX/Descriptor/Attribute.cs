@@ -103,7 +103,7 @@ namespace AcumaticaMX
                 status = CfdiStatus.Clean;
             }
 
-            if (docExt.StampTest == true && docExt.Uuid.HasValue)
+            if (docExt.StampTest == true && docExt.Uuid.HasValue && !docExt.CancelDate.HasValue)
             {
                 status = CfdiStatus.StampedTest;
             }
