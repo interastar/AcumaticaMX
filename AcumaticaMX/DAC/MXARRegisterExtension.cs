@@ -215,6 +215,14 @@ namespace AcumaticaMX
 
         #endregion FechaCancelacion
 
+        #region Estado de Cancelacion
+        public abstract class cancelStatus : IBqlField { }
+
+        [PXDBString(50, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Edo. Cancelacion", Enabled = false)]
+        public virtual string CancelStatus { get; set; }
+        #endregion Estado de Cancelacion
+
         // --- Sello del SAT
 
         #region SelloSAT
@@ -324,8 +332,7 @@ namespace AcumaticaMX
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
-
-
+        
         #region DocDateTime
 
         public abstract class docDateTime : IBqlField { }
