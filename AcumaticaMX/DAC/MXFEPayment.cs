@@ -98,6 +98,14 @@ namespace AcumaticaMX
 
         #endregion CancelDate
 
+        #region Estado de Cancelacion
+        public abstract class cancelStatus : IBqlField { }
+
+        [PXDBString(50, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Edo. Cancelacion", Enabled = false)]
+        public virtual string CancelStatus { get; set; }
+        #endregion Estado de Cancelacion
+
         //  -- Datos de sello del comprobante
 
         #region noCertificado

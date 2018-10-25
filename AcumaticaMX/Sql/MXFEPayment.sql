@@ -19,6 +19,7 @@ Create Table [dbo].[MXFEPayment]
 	[DocDate]				smalldatetime NOT NULL,
 	[Serie]					nvarchar(25) NULL,
 	[CancelDate]			smalldatetime NULL,
+	[CancelStatus]			nvarchar(50) NULL,
 	[Folio]					nvarchar(25) NULL,
 	[UseCfdiCD]				nvarchar(3) NULL,
 	-- Timbrado
