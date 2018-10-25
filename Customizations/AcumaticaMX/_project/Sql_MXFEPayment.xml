@@ -8,6 +8,7 @@
   <col name="DocDate" type="SmallDateTime" />
   <col name="Serie" type="NVarChar(25)" nullable="true" />
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
+  <col name="CancelStatus" type="NVarChar(50)" nullable="true" />
   <col name="Folio" type="NVarChar(25)" nullable="true" />
   <col name="UseCfdiCD" type="NVarChar(3)" nullable="true" />
   <col name="CertificateNum" type="Char(20)" nullable="true" />
