@@ -4,17 +4,34 @@
   <col name="AdjgDocType" type="NVarChar(3)" />
   <col name="AdjgRefNbr" type="NVarChar(15)" />
   <col name="AdjNbr" type="Int" default="Zero" />
-  <col name="AdjdDocType" type="Char(3)" />
-  <col name="AdjdRefNbr" type="Char(15)" />
+  <col name="AdjdDocType" type="NVarChar(3)" />
+  <col name="AdjdRefNbr" type="NVarChar(15)" />
   <col name="DocumentID" type="UniqueIdentifier" nullable="true" />
   <col name="PaymentForm" type="NVarChar(3)" nullable="true" />
   <col name="Partiality" type="Int" nullable="true" />
   <col name="DebtAmt" type="Decimal(19,4)" nullable="true" />
-  <col name="PaymentAmt" type="Decimal(19,4)" nullable="true" />
   <col name="NewDebtAmt" type="Decimal(19,4)" nullable="true" />
-  <col name="Uuid" type="UniqueIdentifier" nullable="true" />
-  <col name="PaymentRefNbr" type="NVarChar(15)" nullable="true" />
   <col name="CancelDate" type="SmallDateTime" nullable="true" />
+  <col name="CuryIDDR" type="NVarChar(3)" nullable="true" />
+  <col name="CurrencyRateDR" type="Decimal(19,6)" nullable="true" />
+  <col name="PaymentExpirationDate" type="SmallDateTime" nullable="true" />
+  <col name="PaymentRefNbr" type="NVarChar(15)" nullable="true" />
+  <col name="PaymentDate" type="SmallDateTime" nullable="true" />
+  <col name="Uuid" type="UniqueIdentifier" nullable="true" />
+  <col name="PaymentAmt" type="Decimal(19,4)" nullable="true" />
+  <col name="CuryIDP" type="NVarChar(3)" nullable="true" />
+  <col name="PaymentMethodP" type="NVarChar(2)" nullable="true" />
+  <col name="CurrencyRateP" type="Decimal(19,6)" nullable="true" />
+  <col name="OperationNbr" type="NVarChar(100)" nullable="true" />
+  <col name="RfcEmisorCtaOrd" type="NVarChar(13)" nullable="true" />
+  <col name="NomBancoOrdExt" type="NVarChar(300)" nullable="true" />
+  <col name="CtaOrdenante" type="NVarChar(50)" nullable="true" />
+  <col name="RfcEmisorCtaBen" type="NVarChar(13)" nullable="true" />
+  <col name="CtaBeneficiario" type="NVarChar(50)" nullable="true" />
+  <col name="TipoCadPago" type="NVarChar(2)" nullable="true" />
+  <col name="CertPago" type="NVarChar(500)" nullable="true" />
+  <col name="CadPago" type="NVarChar(MAX)" nullable="true" />
+  <col name="SelloPago" type="NVarChar(500)" nullable="true" />
   <index name="MXARAdjustExtension_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="AdjgDocType" />

@@ -13,8 +13,8 @@ namespace AcumaticaMX
 {
     public class CfdiStatus
     {
-        public static readonly string[] Values = { Clean, Stamped, Canceled, Blocked };
-        public static readonly string[] Labels = { Messages.CleanCfdi, Messages.StampedCfdi, Messages.CanceledCfdi, Messages.BlockedCfdi };
+        public static readonly string[] Values = { Clean, Stamped, Canceled, Blocked, StampedTest };
+        public static readonly string[] Labels = { Messages.CleanCfdi, Messages.StampedCfdi, Messages.CanceledCfdi, Messages.BlockedCfdi, Messages.StampedTestCfdi };
 
         public class ListAttribute : PXStringListAttribute
         {
@@ -28,6 +28,7 @@ namespace AcumaticaMX
         public const string Stamped = "S";
         public const string Canceled = "C";
         public const string Blocked = "B";
+        public const string StampedTest = "T";
 
         public class clean : Constant<string>
         {
@@ -56,6 +57,14 @@ namespace AcumaticaMX
         public class blocked : Constant<string>
         {
             public blocked() : base(Blocked)
+            {
+                ;
+            }
+        }
+
+        public class stampedtest : Constant<string>
+        {
+            public stampedtest() : base(StampedTest)
             {
                 ;
             }
@@ -92,6 +101,11 @@ namespace AcumaticaMX
             else
             {
                 status = CfdiStatus.Clean;
+            }
+
+            if (docExt.StampTest == true && docExt.Uuid.HasValue && !docExt.CancelDate.HasValue)
+            {
+                status = CfdiStatus.StampedTest;
             }
 
             sender.SetValue<MXARRegisterExtension.stampStatus>(doc, status);

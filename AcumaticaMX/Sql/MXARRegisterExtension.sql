@@ -32,6 +32,7 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[Seal]				[nvarchar](500) NULL,
 
 	-- Datos del timbrado del comprobante
+	[StampTest]			[bit] NULL DEFAULT ((0)),
 	[Uuid]				[uniqueidentifier] NULL,
 	[SatCertificateNum]	char(20) NULL,
  	[StampDate]			[smalldatetime] NULL,
@@ -44,6 +45,8 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 
 	-- Cancelación
 	[CancelDate]		[smalldatetime] NULL,
+	[CancelStatus]		[nvarchar](50) NULL,
+
 	--Fecha de creación
 	[DocDateTime]		[smalldatetime] NULL,
 
@@ -54,7 +57,6 @@ CREATE TABLE [dbo].[MXARRegisterExtension](
 	[Version]			[nvarchar](3) NULL,
 
 	--Complemento de Pagos
-	[PaymentExpirationDate]	[smalldatetime] NULL,
 	[OperationNbr]			[nvarchar](100) NULL,
 
 	-- Comercio Exterior

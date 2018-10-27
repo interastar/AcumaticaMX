@@ -21,15 +21,37 @@ CREATE TABLE [dbo].[MXARAdjustExtension](
 	[AdjdDocType]				[NVARCHAR](3) NOT NULL,
 	[AdjdRefNbr]				[NVARCHAR] (15) NOT NULL,
 
-	-- Informacion adicional
+	-- Pago Documento Relacionado
 	[DocumentID]				[UNIQUEIDENTIFIER] NULL,
 	[PaymentForm]				[NVARCHAR](3) NULL,
 	[Partiality]				[INT] NULL,
 	[DebtAmt]					DECIMAL(19, 4) NULL,
 	[NewDebtAmt]				DECIMAL(19, 4) NULL,
-	[Uuid]						[UNIQUEIDENTIFIER] NULL,
-	[PaymentRefNbr]				[NVARCHAR] (15) NULL,
 	[CancelDate]				[SMALLDATETIME] NULL,
+	[CuryIDDR]					[NVARCHAR] (3) NULL,
+	[CurrencyRateDR]			[DECIMAL](19, 6) NULL,
+	[PaymentExpirationDate]		[SMALLDATETIME] NULL,
+	-- Datos generales del pago
+
+	[PaymentRefNbr]				[NVARCHAR] (15) NULL,
+	[PaymentDate]				smalldatetime NULL,
+	[Uuid]						[UNIQUEIDENTIFIER] NULL,
+	[PaymentAmt]				DECIMAL(19, 4) NULL,
+	[CuryIDP]					[NVARCHAR] (3) NULL,
+	[PaymentMethodP]			[NVARCHAR] (2) NULL,
+	[CurrencyRateP]				[DECIMAL](19, 6) NULL,
+
+	--Opcionales
+	[OperationNbr]			nvarchar(100) NULL,
+	[RfcEmisorCtaOrd]		nvarchar(13) NULL,
+	[NomBancoOrdExt]		nvarchar(300) NULL,
+	[CtaOrdenante]			nvarchar(50) NULL,
+	[RfcEmisorCtaBen]		nvarchar(13) NULL,
+	[CtaBeneficiario]		nvarchar(50) NULL,
+	[TipoCadPago]			nvarchar(2) NULL,
+	[CertPago]				nvarchar(500) NULL,
+	[CadPago]				nvarchar(max) NULL,
+	[SelloPago]				nvarchar(500) NULL,
 	
 	CONSTRAINT MXARAdjustExtension_PK PRIMARY KEY
     (

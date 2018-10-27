@@ -167,6 +167,16 @@ namespace AcumaticaMX
 
         // -- Datos del timbrado del comprobante
 
+        #region Timbrado de prueba
+
+        public abstract class stampTest : IBqlField { }
+
+        [PXDBBool]
+        [PXDefault(false, PersistingCheck = PXPersistingCheck.Nothing)]
+        public virtual bool? StampTest { get; set; }
+
+        #endregion Timbrado de prueba
+
         #region Uuid
 
         public abstract class uuid : IBqlField { }
@@ -204,6 +214,14 @@ namespace AcumaticaMX
         public virtual DateTime? CancelDate { get; set; }
 
         #endregion FechaCancelacion
+
+        #region Estado de Cancelacion
+        public abstract class cancelStatus : IBqlField { }
+
+        [PXDBString(50, IsFixed = false, IsUnicode = true)]
+        [PXUIField(DisplayName = "Edo. Cancelacion", Enabled = false)]
+        public virtual string CancelStatus { get; set; }
+        #endregion Estado de Cancelacion
 
         // --- Sello del SAT
 
@@ -314,8 +332,7 @@ namespace AcumaticaMX
         public virtual bool? NotStampable { get; set; }
 
         #endregion Timbrable
-
-
+        
         #region DocDateTime
 
         public abstract class docDateTime : IBqlField { }
@@ -376,15 +393,7 @@ namespace AcumaticaMX
         [PXUIField(DisplayName = Messages.OperationNbr)]
         public virtual string OperationNbr { get; set; }
         #endregion Numero de Operacion
-
-        #region PaymentExpirationDate
-
-        public abstract class paymentExpirationDate : IBqlField { }
-        [PXDBDateAndTime(PreserveTime = true)]
-        public virtual DateTime? PaymentExpirationDate { get; set; }
-
-        #endregion PaymentExpirationDate
-
+        
         // Comercio exterior
 
         #region External Trade
