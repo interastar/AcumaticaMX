@@ -24,7 +24,7 @@ namespace AcumaticaMX
         public abstract class taxRegistrationID : PX.Data.IBqlField { }
 
         [PXDBString(50, IsUnicode = true)]
-        [PXUIField(DisplayName = "RFC", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "RFC", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
         public string TaxRegistrationID { get; set; }
 
         #endregion RFC
@@ -34,7 +34,7 @@ namespace AcumaticaMX
         public abstract class name : PX.Data.IBqlField { }
 
         [PXDBString(100, IsUnicode = true)]
-        [PXUIField(DisplayName = "Nombre", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Nombre", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
         public virtual string Name { get; set; }
 
         #endregion
@@ -44,7 +44,7 @@ namespace AcumaticaMX
         public abstract class folio : IBqlField { }
 
         [PXDBString(25, IsFixed = false, IsUnicode = true)]
-        [PXUIField(DisplayName = "Folio", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "Folio", Visibility = PXUIVisibility.SelectorVisible, Enabled = true)]
         public virtual string Folio { get; set; }
         #endregion Folio
 
@@ -53,7 +53,7 @@ namespace AcumaticaMX
         public abstract class uuid : IBqlField { }
 
         [PXDBGuid()]
-        [PXUIField(DisplayName = "UUID", Visibility = PXUIVisibility.SelectorVisible)]
+        [PXUIField(DisplayName = "UUID", Visibility = PXUIVisibility.SelectorVisible, Enabled = false)]
         public virtual Guid? Uuid { get; set; }
 
         #endregion Uuid
@@ -63,7 +63,7 @@ namespace AcumaticaMX
         public abstract class docDate : IBqlField { }
 
         [PXDBDate()]
-        [PXUIField(DisplayName = "Fecha Doc.")]
+        [PXUIField(DisplayName = "Fecha Doc.", Enabled = false)]
         public virtual DateTime? DocDate { get; set; }
 
         #endregion Fecha Documento
@@ -73,7 +73,7 @@ namespace AcumaticaMX
         public abstract class totalTaxes : IBqlField { }
 
         [PXDBDecimal]
-        [PXUIField(DisplayName = "Total de Impuestos")]
+        [PXUIField(DisplayName = "Total de Impuestos", Enabled = false)]
         public virtual decimal? TotalTaxes { get; set; }
 
         #endregion Total Impuesto
@@ -83,7 +83,7 @@ namespace AcumaticaMX
         public abstract class totalAmount : IBqlField { }
 
         [PXDBDecimal]
-        [PXUIField(DisplayName = "Monto total")]
+        [PXUIField(DisplayName = "Monto total", Enabled = false)]
         public virtual decimal? TotalAmount { get; set; }
 
         #endregion Total Monto
@@ -108,7 +108,7 @@ namespace AcumaticaMX
                 Common.DocumentType.ForeignLabel,
             }
             )]
-        [PXUIField(DisplayName = "Tipo de documento")]
+        [PXUIField(DisplayName = "Tipo de documento", Enabled = false)]
         public virtual string DocumentType { get; set; }
 
         #endregion Tipo Documento
