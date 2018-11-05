@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="DAC\MXAPPaymentExtension.cs" />
     <Compile Include="DAC\MXARRegisterADExtension.cs" />
+    <Compile Include="DAC\MXGLBatchExtension.cs" />
     <Compile Include="DAC\MXFEPaymentTran.cs" />
     <Compile Include="DAC\MXFERelatedDocument.cs" />
     <Compile Include="DAC\MXAPRegisterExtension.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="MXCustomerMaintExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\MXGLBatchExtension.sql" />
     <Content Include="Sql\MXAPRegisterExtension.sql" />
     <Content Include="Sql\MXAPVendorPayment.sql" />
     <Content Include="Sql\MXARAdjustExtension.sql" />
