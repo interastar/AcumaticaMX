@@ -1,7 +1,5 @@
 using PX.Data;
 using PX.Objects.CR;
-using PX.Objects.CR.MassProcess;
-
 namespace AcumaticaMX
 {
     public class MXAddressExtension : PXCacheExtension<PX.Objects.CR.Address>, IMXAddressExtension
