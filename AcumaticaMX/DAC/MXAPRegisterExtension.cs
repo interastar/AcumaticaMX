@@ -273,7 +273,7 @@ namespace AcumaticaMX
         public abstract class documentType : IBqlField { }
 
         [PXDBString(1, IsFixed = false, IsUnicode = true)]
-        //[PXDefault(Common.DocumentType.Cfdi)]
+        [PXDefault(Common.DocumentType.Cfdi, PersistingCheck = PXPersistingCheck.Nothing)]
         [PXStringList(
             new string[]
             {
