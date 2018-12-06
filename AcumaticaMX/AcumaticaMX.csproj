@@ -108,6 +108,7 @@
     <Compile Include="DAC\MXAPAddressExtension.cs" />
     <Compile Include="DAC\MXPaymentMethodExtension.cs" />
     <Compile Include="DAC\MXFESatZipCodeList.cs" />
+    <Compile Include="DAC\MXSOShipmentADExtension.cs" />
     <Compile Include="DAC\MXTXTaxExtension.cs" />
     <Compile Include="Descriptor\Attribute.cs" />
     <Compile Include="Descriptor\Messages.cs" />
@@ -172,6 +173,7 @@
     <Content Include="Sql\MXPaymentMethodExtension.sql" />
     <Content Include="Sql\MXPOReceiptLineExtension.sql" />
     <Content Include="Sql\MXFESatZipCodeList.sql" />
+    <Content Include="Sql\MXSOShipmentADExtension.sql" />
     <Content Include="Sql\MXTXTaxExtension.sql" />
   </ItemGroup>
   <ItemGroup>
