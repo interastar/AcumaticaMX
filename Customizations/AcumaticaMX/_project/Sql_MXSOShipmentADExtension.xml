@@ -1,0 +1,11 @@
+﻿<Sql TableName="MXSOShipmentADExtension" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="MXSOShipmentADExtension">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="ShipmentNbr" type="Char(15)" />
+  <col name="EarlyInvoice" type="Bit" nullable="true" default="Zero" />
+  <index name="MXSOShipmentADExtension_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="ShipmentNbr" />
+  </index>
+</table>]]></CDATA>
+</Sql>
