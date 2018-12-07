@@ -260,7 +260,6 @@ namespace AcumaticaMX
 
         #endregion PaymentRefNbr
 
-
         #region PaymentExpirationDate
 
         public abstract class paymentExpirationDate : IBqlField { }
