@@ -122,6 +122,7 @@ namespace AcumaticaMX
             public const string IVALabel = "IVA";
             public const string IEPSLabel = "IEPS";
         }
+
         public static class TaxType
 
         {

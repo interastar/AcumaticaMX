@@ -255,7 +255,6 @@ namespace AcumaticaMX
         public virtual decimal? TotalAmount { get; set; }
         #endregion TotalAmount
 
-
         #region Factura de gastos
 
         public abstract class isExpenseInvoice : IBqlField { }

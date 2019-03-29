@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAC\AR\DAC\ARInvoiceISDDExt.cs" />
     <Compile Include="DAC\MXAPPaymentExtension.cs" />
     <Compile Include="DAC\MXARRegisterADExtension.cs" />
     <Compile Include="DAC\MXGLBatchExtension.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="MXCustomerMaintExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\ARInvoiceISDDExt.sql" />
     <Content Include="Sql\MXGLBatchExtension.sql" />
     <Content Include="Sql\MXAPRegisterExtension.sql" />
     <Content Include="Sql\MXAPVendorPayment.sql" />
