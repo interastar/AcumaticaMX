@@ -1,0 +1,59 @@
+﻿<Sql TableName="ISMXVoucher" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="ISMXVoucher">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="VoucherID" type="Int" identity="true" />
+  <col name="Version" type="NVarChar(3)" nullable="true" />
+  <col name="DocType" type="NVarChar(1)" />
+  <col name="Serie" type="NVarChar(25)" nullable="true" />
+  <col name="Folio" type="NVarChar(25)" nullable="true" />
+  <col name="DocDateTime" type="SmallDateTime" />
+  <col name="PaymentForm" type="NVarChar(50)" />
+  <col name="PaymentMethod" type="NVarChar(50)" />
+  <col name="PaymentTerms" type="NVarChar(100)" nullable="true" />
+  <col name="ZipCode" type="NVarChar(5)" />
+  <col name="CuryID" type="NVarChar(3)" />
+  <col name="CuryRate" type="Decimal(19,6)" nullable="true" />
+  <col name="DisccountAmt" type="Decimal(19,6)" nullable="true" />
+  <col name="VoucherSubTotal" type="Decimal(19,4)" />
+  <col name="VoucherTotal" type="Decimal(19,4)" />
+  <col name="PacConfirmation" type="NVarChar(5)" />
+  <col name="CertificateNbr" type="Char(20)" nullable="true" />
+  <col name="Certificate" type="NVarChar(2500)" nullable="true" />
+  <col name="SealDate" type="SmallDateTime" nullable="true" />
+  <col name="Seal" type="NVarChar(500)" nullable="true" />
+  <col name="Uuid" type="UniqueIdentifier" nullable="true" />
+  <col name="SatCertificateNbr" type="Char(20)" nullable="true" />
+  <col name="StampDate" type="SmallDateTime" nullable="true" />
+  <col name="Stamp" type="NVarChar(500)" nullable="true" />
+  <col name="QrCode" type="NVarChar(95)" nullable="true" />
+  <col name="StampString" type="NVarChar(1000)" nullable="true" />
+  <col name="CancelStatus" type="NVarChar(50)" nullable="true" />
+  <col name="CancelDate" type="SmallDateTime" nullable="true" />
+  <col name="IssuerTaxRegistrationID" type="NVarChar(13)" nullable="true" />
+  <col name="Issuer" type="NVarChar(254)" nullable="true" />
+  <col name="ReceiverTaxRegistrationID" type="NVarChar(13)" nullable="true" />
+  <col name="Receiver" type="NVarChar(254)" nullable="true" />
+  <col name="UseCfdiCD" type="NVarChar(3)" nullable="true" />
+  <col name="TaxTransferredTotal" type="Decimal(19,4)" nullable="true" />
+  <col name="TaxHoldingTotal" type="Decimal(19,4)" nullable="true" />
+  <col name="DocRef" type="UniqueIdentifier" />
+  <col name="Module" type="NVarChar(2)" />
+  <col name="HasExternalTrade" type="Bit" nullable="true" default="Zero" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="SmallDateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="SmallDateTime" />
+  <index name="ISMXVoucher_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="VoucherID" />
+  </index>
+  <index name="ISMXVoucher|" unique="true">
+    <col name="CompanyID" />
+    <col name="VoucherID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

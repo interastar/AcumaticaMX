@@ -10,6 +10,9 @@ namespace AcumaticaMX
     /// </summary>
     public static class Common
     {
+        public const string defaultCfdiVersion = "3.3";
+        public const string defaultPaymentMethod = "03";
+
         /// <summary>
         /// Catálogo de regimenes fiscales
         /// </summary>

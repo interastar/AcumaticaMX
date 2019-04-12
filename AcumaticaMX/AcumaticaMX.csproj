@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAC\AR\DAC\ARInvoiceISDDExt.cs" />
+    <Compile Include="DAC\ISMXPayload.cs" />
+    <Compile Include="DAC\ISMXVoucher.cs" />
     <Compile Include="DAC\MXAPPaymentExtension.cs" />
     <Compile Include="DAC\MXARRegisterADExtension.cs" />
     <Compile Include="DAC\MXGLBatchExtension.cs" />
@@ -125,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\ARInvoiceISDDExt.sql" />
+    <Content Include="Sql\ISMXPayload.sql" />
+    <Content Include="Sql\ISMXVoucher.sql" />
     <Content Include="Sql\MXGLBatchExtension.sql" />
     <Content Include="Sql\MXAPRegisterExtension.sql" />
     <Content Include="Sql\MXAPVendorPayment.sql" />
