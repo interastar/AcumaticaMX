@@ -94,6 +94,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(3)]
+        [PXUIField(DisplayName = Messages.CustomsQty, Enabled = true)]
         public virtual decimal? CustomsQty { get; set; }
 
         #endregion Cantidad Aduana
@@ -116,7 +117,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(4)]
-        [PXUIField(DisplayName = Messages.CustomsUnitAmt, Enabled = false)]
+        [PXUIField(DisplayName = Messages.CustomsUnitAmt, Enabled = true)]
         public virtual decimal? CustomsUnitAmt { get; set; }
 
         #endregion Valor Unitario de Aduana
@@ -127,7 +128,7 @@ namespace AcumaticaMX
         {
         }
         [PXDBDecimal(4)]
-        [PXUIField(DisplayName = Messages.UsdAmt, Enabled = false)]
+        [PXUIField(DisplayName = Messages.UsdAmt, Enabled = true)]
         [PXFormula(typeof(Mult<customsQty, customsUnitAmt>))]
         public virtual decimal? UsdAmt { get; set; }
 
